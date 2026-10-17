@@ -1,0 +1,44 @@
+{
+  "curso": "Física",
+  "tema": "Resistores en serie",
+  "glosario": {
+    "Conexión en serie": "Elementos conectados uno a continuación de otro",
+    "Resistencia equivalente": "Resistencia única que reemplaza a un conjunto",
+    "Caída de tensión": "Voltaje consumido por un resistor al paso de la corriente",
+    "Intensidad": "Carga que atraviesa una sección por unidad de tiempo",
+    "Ohmio": "Unidad de resistencia en el Sistema Internacional"
+  },
+  "theory": [
+    {
+      "titulo": "Resistencia equivalente",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: Req = R1 + R2 + ...",
+          "explicacion": "Todos los resistores en serie tienen la misma intensidad de corriente."
+        },
+        {
+          "texto": "La resistencia equivalente es mayor que la mayor de las resistencias.",
+          "explicacion": "Cada resistor añade oposición al paso de la corriente."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo numérico",
+      "puntos": [
+        {
+          "texto": "R1 = 4 Ω y R2 = 6 Ω en serie con una fuente de 20 V.",
+          "explicacion": "Req = 10 Ω, I = 20 / 10 = 2 A; V1 = 2 × 4 = 8 V y V2 = 2 × 6 = 12 V, con suma 20 V."
+        }
+      ]
+    },
+    {
+      "titulo": "Reparto de tensión",
+      "puntos": [
+        {
+          "texto": "La tensión se reparte proporcionalmente a cada resistencia.",
+          "explicacion": "El resistor de mayor valor tiene la mayor caída de tensión."
+        }
+      ]
+    }
+  ]
+}

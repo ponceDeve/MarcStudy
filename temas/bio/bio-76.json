@@ -1,54 +1,108 @@
 {
-  "curso": "Biología",
-  "tema": "Conceptos básicos de genética",
-  "glosario": {
-    "Gen": "Segmento de ADN que codifica un carácter hereditario.",
-    "Alelo": "Versión alternativa de un gen en un locus.",
-    "Locus": "Posición específica de un gen en un cromosoma.",
-    "Genotipo": "Conjunto de alelos que tiene un individuo para un carácter.",
-    "Fenotipo": "Expresión observable de un carácter.",
-    "Homocigoto": "Individuo con dos alelos iguales para un carácter.",
-    "Heterocigoto": "Individuo con dos alelos distintos para un carácter.",
-    "Alelo dominante": "Alelo que se expresa en el heterocigoto.",
-    "Alelo recesivo": "Alelo que solo se expresa en homocigosis.",
-    "Línea pura": "Individuos que, al autofecundarse, producen siempre la misma descendencia.",
-    "Cuadro de Punnett": "Diagrama que predice los genotipos de la descendencia."
-  },
-  "theory": [
-    {
-      "titulo": "Gen y alelo",
-      "puntos": [
-        { "texto": "Un «gen» es un segmento de ADN que determina un carácter.", "explicacion": "Cada gen puede presentar distintas versiones llamadas alelos." },
-        { "texto": "Los dos alelos de un gen ocupan el mismo «locus» en cromosomas homólogos.", "explicacion": "Un individuo hereda un alelo de cada progenitor." }
-      ]
-    },
-    {
-      "titulo": "Genotipo y fenotipo",
-      "puntos": [
-        { "texto": "El «genotipo» es la combinación de alelos de un individuo.", "explicacion": "No siempre se observa directamente en el individuo." },
-        { "texto": "El «fenotipo» es el carácter que se observa.", "explicacion": "Depende del genotipo y, en algunos casos, del ambiente." }
-      ]
-    },
-    {
-      "titulo": "Relación entre alelos",
-      "puntos": [
-        { "texto": "Un «alelo dominante» se expresa en el heterocigoto.", "explicacion": "Suele representarse con mayúscula, como en A." },
-        { "texto": "Un «alelo recesivo» se expresa solo en el homocigoto.", "explicacion": "Suele representarse con minúscula, como en a." },
-        { "texto": "Un «homocigoto» tiene dos alelos iguales; un «heterocigoto», dos distintos.", "explicacion": "Por ejemplo, AA y aa son homocigotos, y Aa es heterocigoto." }
-      ]
-    },
-    {
-      "titulo": "Herramientas de predicción",
-      "puntos": [
-        { "texto": "Una «línea pura» produce siempre la misma descendencia al autofecundarse.", "explicacion": "Sus individuos son homocigotos para el carácter estudiado." },
-        { "texto": "El «cuadro de Punnett» predice las proporciones de la descendencia.", "explicacion": "Se ubican los gametos de cada progenitor en los bordes del cuadro." }
-      ]
-    },
-    {
-      "titulo": "Conexión",
-      "puntos": [
-        { "texto": "Las leyes de la herencia se estudian en los temas siguientes.", "explicacion": "Explican cómo se transmiten los alelos de una generación a otra." }
-      ]
-    }
-  ]
+"curso":"Biología",
+"tema":"Conceptos básicos de genética",
+"glosario":{
+"gen":"segmento de ADN con información hereditaria",
+"locus":"posición fija de un gen en el cromosoma",
+"alelo":"forma alternativa de un mismo gen",
+"alelo dominante":"alelo que se expresa en el heterocigoto",
+"alelo recesivo":"alelo que solo se expresa en homocigosis",
+"genotipo":"conjunto de alelos de un individuo",
+"fenotipo":"características observables de un individuo",
+"homocigoto":"individuo con dos alelos iguales",
+"heterocigoto":"individuo con dos alelos distintos",
+"cromosomas homólogos":"par de cromosomas con los mismos genes",
+"autosoma":"cromosoma que no determina el sexo",
+"diploide":"célula con dos juegos de cromosomas",
+"haploide":"célula con un solo juego de cromosomas",
+"genoma":"conjunto total del material genético",
+"cromatina":"ADN asociado a proteínas en el núcleo",
+"cromátida":"cada copia de un cromosoma duplicado",
+"centrómero":"región que une las dos cromátidas",
+"línea pura":"población homocigota que se mantiene igual",
+"híbrido":"descendiente de progenitores genéticamente distintos",
+"monohíbrido":"heterocigoto para un solo carácter",
+"dihíbrido":"heterocigoto para dos caracteres",
+"cigoto":"célula formada por la unión de gametos",
+"gameto":"célula sexual haploide",
+"autofecundación":"unión de gametos del mismo individuo",
+"cuadro de Punnett":"tabla que predice combinaciones de gametos",
+"ambiente":"conjunto de factores externos al organismo",
+"carácter":"rasgo general observable de un organismo",
+"tipo silvestre":"forma más común de un gen"
+},
+"theory":[
+{"titulo":"Gen","puntos":[
+{"texto":"«Gen» = segmento de ADN con información hereditaria","explicacion":"El ADN (Ácido Desoxirribonucleico) es la molécula que guarda la información genética. Cada gen contiene las instrucciones para fabricar una proteína o una molécula de ARN (Ácido Ribonucleico) funcional, y de ellas depende un carácter del organismo."},
+{"texto":"Gen = unidad de la herencia","explicacion":"Es la unidad básica que se transmite de padres a hijos. Gregor Johann Mendel lo llamó «factor hereditario» y Wilhelm Johannsen propuso el término gen en 1909."},
+{"texto":"Factor hereditario = nombre mendeliano del gen","explicacion":"Mendel dedujo que existían partículas que determinaban los caracteres, sin saber de qué estaban formadas. Hoy sabemos que esos factores son los genes ubicados en los cromosomas."},
+{"texto":"Gen ∈ cromosoma","explicacion":"Cada cromosoma contiene muchos genes dispuestos en fila a lo largo de una molécula de ADN. Por eso los genes se heredan en conjunto con el cromosoma que los lleva."},
+{"texto":"«Locus» = posición fija de un gen en el cromosoma","explicacion":"El plural es loci. Cada gen tiene su lugar propio, y los cromosomas homólogos tienen los mismos genes en los mismos loci, como casas con la misma dirección en dos calles paralelas."},
+{"texto":"«Alelo» = forma alternativa de un mismo gen","explicacion":"Un gen puede existir en versiones distintas que ocupan el mismo locus. Por ejemplo, el gen del color de la semilla de arveja tiene un alelo para semilla amarilla y otro para semilla verde."},
+{"texto":"Individuo diploide ⇒ dos alelos por cada gen","explicacion":"Uno de los alelos proviene del padre y el otro de la madre, porque cada gameto aporta un cromosoma de cada par. Una población puede tener más de dos alelos del mismo gen, pero cada individuo solo lleva dos."},
+{"texto":"«Alelo dominante» = se expresa en el heterocigoto","explicacion":"Cuando hay un alelo dominante, su efecto aparece en el fenotipo aunque el otro alelo sea distinto. Se representa con letra mayúscula, por ejemplo A."},
+{"texto":"«Alelo recesivo» = solo se expresa en homocigosis","explicacion":"Su efecto queda oculto si el otro alelo es dominante, y solo se observa cuando el individuo tiene dos copias iguales. Se representa con la misma letra en minúscula, por ejemplo a."},
+{"texto":"Alelo dominante ≠ alelo más frecuente","explicacion":"La dominancia describe cómo se expresa un alelo, no cuán común es. Por ejemplo, la polidactilia (dedos de más) es un rasgo dominante, pero es poco frecuente en la población."},
+{"texto":"«Tipo silvestre» = forma más común del gen en la naturaleza","explicacion":"Se toma como referencia para comparar con las formas alteradas o mutantes. Se suele simbolizar con un signo más como superíndice, sobre todo en la mosca Drosophila."},
+{"texto":"Símbolos genéticos ⇒ letras mayúsculas + minúsculas","explicacion":"Se elige una letra para cada carácter, por lo general la inicial del rasgo dominante. La mayúscula indica el alelo dominante y la minúscula el recesivo, como A y a."}
+]},
+{"titulo":"Cromosomas y genoma","puntos":[
+{"texto":"«Cromosoma» = estructura que contiene el ADN + proteínas","explicacion":"Se forma cuando la cromatina se condensa antes de la división celular. Cada cromosoma lleva una molécula de ADN muy larga, empaquetada con proteínas llamadas histonas."},
+{"texto":"«Cromatina» = ADN asociado a proteínas en el núcleo","explicacion":"En la célula que no se divide aparece como una masa de filamentos finos y difusos. Al condensarse, se vuelve visible como cromosomas."},
+{"texto":"Cromosoma duplicado ⊃ dos cromátidas hermanas","explicacion":"Antes de dividirse la célula copia su ADN, de modo que cada cromosoma queda con dos copias idénticas unidas. Cada una de ellas se denomina cromátida."},
+{"texto":"«Centrómero» = región que une las dos cromátidas","explicacion":"Es un estrechamiento visible del cromosoma. A él se unen las fibras del huso durante la mitosis y la meiosis, lo que permite repartir los cromosomas entre las células hijas."},
+{"texto":"«Cromosomas homólogos» = par con los mismos genes","explicacion":"Tienen igual tamaño, forma y posición del centrómero, y contienen los mismos genes en los mismos loci. Un cromosoma de cada par viene de la madre y el otro del padre."},
+{"texto":"Alelos de un gen ∈ cromosomas homólogos","explicacion":"Los dos alelos de un individuo ocupan el mismo locus en los dos cromosomas del par. Pueden ser iguales o distintos."},
+{"texto":"Célula «diploide» = dos juegos de cromosomas","explicacion":"Se representa como 2n, donde n es el número de cromosomas de un juego. Las células del cuerpo, llamadas somáticas, son diploides y en la especie humana tienen 46 cromosomas."},
+{"texto":"Célula «haploide» = un solo juego de cromosomas","explicacion":"Se representa como n. Los gametos son haploides y en la especie humana tienen 23 cromosomas, lo que permite que la fecundación restablezca el número 2n."},
+{"texto":"Especie humana ⇒ 23 pares de cromosomas homólogos","explicacion":"Suman 46 cromosomas. De ellos, 22 pares son autosomas y el par restante son los cromosomas sexuales."},
+{"texto":"«Autosomas» = cromosomas que no determinan el sexo","explicacion":"En la especie humana son 22 pares, es decir 44 cromosomas. Los genes que contienen determinan caracteres que no dependen del sexo, como el grupo sanguíneo o el color de ojos."},
+{"texto":"«Genoma» = conjunto total del material genético","explicacion":"Incluye todos los genes y el ADN que está entre ellos. En una célula humana haploide, el genoma abarca alrededor de 3 000 millones de pares de bases."},
+{"texto":"«Gameto» = célula sexual haploide","explicacion":"Cada gameto lleva un solo alelo de cada gen, porque la meiosis separa los cromosomas homólogos. Es el vehículo que transmite la información genética a la descendencia."},
+{"texto":"«Cigoto» = célula formada por la unión de dos gametos","explicacion":"Se origina en la fecundación y es diploide. Recibe un alelo de cada gen de cada progenitor y es el origen de todas las células del nuevo individuo."}
+]},
+{"titulo":"Genotipo y fenotipo","puntos":[
+{"texto":"«Genotipo» = conjunto de alelos de un individuo","explicacion":"Puede referirse a todos los genes o solo a los que se estudian en un cruce. No siempre se puede ver: para conocerlo se hacen cruzamientos o análisis de ADN."},
+{"texto":"«Fenotipo» = características observables de un individuo","explicacion":"Incluye rasgos físicos, fisiológicos, bioquímicos y de conducta, como la altura, el grupo sanguíneo o la tolerancia a la lactosa. Es lo que resulta de la expresión del genotipo en un ambiente."},
+{"texto":"Términos genotipo + fenotipo ⇒ propuestos por Wilhelm Johannsen","explicacion":"El botánico danés los introdujo en 1909 para separar lo que un organismo hereda de lo que muestra. Esta distinción es básica para entender la genética."},
+{"texto":"Genotipo + ambiente ⇒ fenotipo","explicacion":"El fenotipo no depende solo de los genes: el ambiente también influye. Una persona puede tener genes para ser alta, pero si se alimenta mal en la niñez no alcanza esa estatura."},
+{"texto":"Mismo genotipo ≠ siempre mismo fenotipo","explicacion":"Gemelos idénticos tienen el mismo genotipo, pero pueden diferir en peso, cicatrices o habilidades por vivir en ambientes distintos."},
+{"texto":"Conejo himalayo ⇒ ejemplo de influencia de la temperatura","explicacion":"Este conejo tiene pelaje negro solo en orejas, patas, cola y hocico, las zonas más frías. Si se mantiene una zona del cuerpo a temperatura baja, el pelo que crece ahí también se oscurece, aunque el genotipo no cambia."},
+{"texto":"Hortensia ⇒ ejemplo de influencia del suelo","explicacion":"El color de sus flores cambia de rosado a azul según la acidez del suelo, porque esta modifica la disponibilidad de aluminio. La planta tiene el mismo genotipo en ambos casos."},
+{"texto":"Distintos genotipos ⇒ pueden dar el mismo fenotipo","explicacion":"Un individuo con dos alelos dominantes y otro con un dominante y un recesivo muestran el mismo rasgo dominante, porque el recesivo queda oculto."}
+]},
+{"titulo":"Homocigoto y heterocigoto","puntos":[
+{"texto":"«Homocigoto» = individuo con dos alelos iguales","explicacion":"Proviene del griego homos, que significa igual. También se llama puro para ese carácter y produce un solo tipo de gameto."},
+{"texto":"«Homocigoto dominante» = dos alelos dominantes","explicacion":"Se escribe con dos mayúsculas, como AA. Su fenotipo es el del rasgo dominante y todos sus gametos llevan el alelo A."},
+{"texto":"«Homocigoto recesivo» = dos alelos recesivos","explicacion":"Se escribe con dos minúsculas, como aa. Es el único genotipo que muestra el rasgo recesivo, y todos sus gametos llevan el alelo a."},
+{"texto":"«Heterocigoto» = individuo con dos alelos distintos","explicacion":"Proviene del griego heteros, que significa distinto. Se escribe con una mayúscula y una minúscula, como Aa, y su fenotipo suele ser el dominante."},
+{"texto":"Heterocigoto ⇒ produce dos tipos de gametos","explicacion":"En la meiosis se separan los alelos, de modo que la mitad de los gametos lleva el alelo dominante y la otra mitad el recesivo. En un individuo Aa, la mitad de los gametos lleva A y la otra mitad a."},
+{"texto":"Homocigoto ⇒ un solo tipo de gameto","explicacion":"Como ambos alelos son iguales, todos los gametos llevan el mismo alelo. Un individuo AA solo produce gametos A y uno aa solo produce gametos a."},
+{"texto":"Alelo recesivo ✓ homocigosis para expresarse","explicacion":"En el heterocigoto el recesivo está presente pero oculto. Por eso un rasgo recesivo puede saltarse una generación y reaparecer en los nietos."},
+{"texto":"Portador = heterocigoto para un alelo recesivo","explicacion":"Lleva el alelo recesivo pero no muestra el rasgo. Es frecuente en enfermedades hereditarias recesivas, donde dos padres sanos portadores pueden tener un hijo afectado."}
+]},
+{"titulo":"Líneas y generaciones","puntos":[
+{"texto":"«Línea pura» = población homocigota que se mantiene igual","explicacion":"Sus individuos, al autofecundarse o cruzarse entre sí, producen siempre descendientes con el mismo carácter. Mendel comenzó sus experimentos con líneas puras de arveja."},
+{"texto":"«Híbrido» = descendiente de progenitores genéticamente distintos","explicacion":"En genética se aplica al individuo heterocigoto para uno o más caracteres. Su condición resulta de unir gametos con alelos diferentes."},
+{"texto":"«Monohíbrido» = heterocigoto para un solo carácter","explicacion":"Su genotipo es Aa. El cruce entre dos monohíbridos se llama cruce monohíbrido y estudia un carácter a la vez."},
+{"texto":"«Dihíbrido» = heterocigoto para dos caracteres","explicacion":"Su genotipo es AaBb, donde A y B son alelos de dos genes distintos. Permite estudiar cómo se heredan dos caracteres simultáneamente."},
+{"texto":"«Generación Parental (P)» = progenitores del cruce inicial","explicacion":"La letra P significa parental. Son los individuos que se cruzan al comienzo de un experimento, generalmente líneas puras."},
+{"texto":"«Primera Generación Filial (F1)» = hijos de la generación parental","explicacion":"La letra F proviene del latín filius, hijo, y el número indica el orden de la generación. Los individuos de F1 resultan del cruce de P."},
+{"texto":"«Segunda Generación Filial (F2)» = hijos de F1","explicacion":"Se obtiene cruzando individuos de F1 entre sí o permitiendo su autofecundación. En esta generación reaparecen rasgos que no se veían en F1."},
+{"texto":"«Autofecundación» = unión de gametos del mismo individuo","explicacion":"Es frecuente en plantas con flores que tienen órganos masculinos y femeninos, como la arveja. Mantiene la pureza de las líneas."},
+{"texto":"Cruzamiento = unión de gametos de individuos distintos","explicacion":"Mendel realizaba cruzamientos artificiales retirando las anteras de una flor y colocando en su estigma el polen de otra planta."}
+]},
+{"titulo":"Cuadro de Punnett","puntos":[
+{"texto":"«Cuadro de Punnett» = tabla que predice combinaciones de gametos","explicacion":"Fue ideado por el genetista británico Reginald Crundall Punnett. Se colocan los gametos de un progenitor en las filas y los del otro en las columnas, y cada casilla muestra un posible genotipo del hijo."},
+{"texto":"Cuadro de Punnett ⇒ muestra probabilidades, no resultados fijos","explicacion":"Indica la proporción esperada, pero en cada fecundación los gametos se unen al azar. Por eso en familias pequeñas los resultados reales pueden alejarse de lo previsto."},
+{"texto":"Cuadro de Punnett se arma en tres pasos","explicacion":"Primero se escriben los genotipos de los progenitores, luego los gametos que produce cada uno, y finalmente se combinan en el cuadro. Por ejemplo, un cruce Aa × Aa produce gametos A y a por parte de cada progenitor."},
+{"texto":"Cruce Aa × Aa ⇒ cuatro combinaciones: AA, Aa, Aa, aa","explicacion":"Cada casilla tiene la misma probabilidad. El resultado es un cuarto de AA, la mitad de Aa y un cuarto de aa. La interpretación de estas proporciones se estudia con las leyes de la herencia."}
+]},
+{"titulo":"Conexión con otros temas","puntos":[
+{"texto":"Experimentos de Mendel usan estos conceptos","explicacion":"Los experimentos con arvejas y las leyes que de ellos se deducen se desarrollan en temas aparte."},
+{"texto":"Otros tipos de herencia amplían la dominancia simple","explicacion":"La dominancia incompleta, la codominancia y los alelos múltiples son casos en que la relación entre alelos no sigue la dominancia simple. Se estudian en sus propios temas."},
+{"texto":"Cromosomas sexuales + herencia ligada al sexo se estudian aparte","explicacion":"Los cromosomas X e Y y la herencia de los genes que contienen se tratan en los temas de genética del sexo."},
+{"texto":"Cruce de prueba usa estos conceptos","explicacion":"Sirve para saber si un individuo con fenotipo dominante es homocigoto o heterocigoto. Se desarrolla en su propio tema."}
+]}
+]
 }

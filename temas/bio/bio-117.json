@@ -2,38 +2,176 @@
   "curso": "Biología",
   "tema": "Flujo de energía",
   "glosario": {
-    "Flujo de energía": "Paso unidireccional de energía a través de los niveles tróficos.",
-    "Nivel trófico": "Posición que ocupa un organismo en la cadena alimentaria.",
-    "Productividad primaria": "Energía que los productores fijan mediante la fotosíntesis.",
-    "Energía térmica": "Energía que se pierde como calor en los procesos metabólicos.",
-    "Pirámide de energía": "Representación de la energía disponible en cada nivel trófico."
+    "Flujo de energía": "Transferencia unidireccional de energía entre niveles de un ecosistema",
+    "Nivel trófico": "Posición que ocupa un organismo en la cadena alimentaria",
+    "Productividad primaria bruta": "Energía total fijada por los productores mediante fotosíntesis",
+    "Productividad primaria neta": "Energía fijada por los productores menos la que ellos respiran",
+    "Eficiencia ecológica": "Porcentaje de energía que pasa de un nivel trófico al siguiente",
+    "Entropía": "Medida del desorden de un sistema, que aumenta en los procesos naturales",
+    "Pirámide ecológica": "Gráfico que representa cantidades de energía, biomasa o individuos por nivel trófico",
+    "Respiración celular": "Proceso que libera la energía química de la materia orgánica",
+    "Detritívoro": "Organismo que se alimenta de restos orgánicos muertos"
   },
   "theory": [
     {
-      "titulo": "Principio general",
+      "titulo": "Concepto de flujo de energía",
       "puntos": [
-        { "texto": "La energía fluye de forma unidireccional a través del ecosistema.", "explicacion": "A diferencia de la materia, la energía no se recicla, sino que se pierde como calor." },
-        { "texto": "La energía que ingresa al ecosistema proviene principalmente del Sol.", "explicacion": "Los productores la capturan mediante la fotosíntesis." }
+        {
+          "texto": "Flujo de energía: transferencia unidireccional entre niveles",
+          "explicacion": "La energía entra al ecosistema desde el Sol y pasa de un nivel trófico a otro. A diferencia de los materiales, no se recicla y se pierde en forma de calor."
+        },
+        {
+          "texto": "Fuente principal de energía ⇒ radiación solar",
+          "explicacion": "Los productores capturan una pequeña fracción de la luz que recibe la superficie terrestre. Esta energía se convierte en energía química mediante la fotosíntesis."
+        },
+        {
+          "texto": "Energía no reciclable ⇒ se disipa en cada transferencia",
+          "explicacion": "Los materiales como el carbono y el nitrógeno pueden reciclarse, pero la energía debe ser repuesta constantemente desde el Sol. Por eso los ecosistemas dependen de un flujo continuo."
+        }
       ]
     },
     {
-      "titulo": "Transferencia entre niveles",
+      "titulo": "Leyes de la termodinámica",
       "puntos": [
-        { "texto": "Solo una pequeña parte de la energía pasa de un nivel trófico al siguiente.", "explicacion": "En promedio, alrededor del diez por ciento se transfiere al nivel superior." },
-        { "texto": "La mayor parte de la energía se pierde como calor en la respiración.", "explicacion": "Esta pérdida es inevitable según las leyes de la termodinámica." }
+        {
+          "texto": "Primera ley ⇒ la energía no se crea ni se destruye",
+          "explicacion": "La energía solo cambia de forma, por ejemplo de luz a energía química y después a calor. Esta ley explica que la energía consumida por un organismo se distribuye en diferentes destinos."
+        },
+        {
+          "texto": "Segunda ley ⇒ en cada transformación aumenta la entropía",
+          "explicacion": "Parte de la energía se libera como calor, que no puede reutilizarse para la mayoría de los procesos biológicos. Por eso ningún ecosistema puede funcionar sin aporte externo de energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Productividad primaria",
+      "puntos": [
+        {
+          "texto": "Productividad primaria bruta ⇒ energía total fijada",
+          "explicacion": "Es la cantidad de energía que los productores capturan mediante la fotosíntesis en un periodo. Representa toda la energía disponible al inicio de la cadena."
+        },
+        {
+          "texto": "Productividad primaria neta ⇒ energía disponible para consumidores",
+          "explicacion": "Es la energía que queda después de que los productores usan una parte en su propia respiración. Es la energía que realmente se almacena en nuevos tejidos vegetales."
+        },
+        {
+          "texto": "Productividad neta = productividad bruta − respiración",
+          "explicacion": "Si una planta fija 1000 kilocalorías y respira 400, su productividad neta es 1000 − 400 = 600 kilocalorías. Este valor es el que queda disponible para los herbívoros."
+        }
+      ]
+    },
+    {
+      "titulo": "Transferencia entre niveles tróficos",
+      "puntos": [
+        {
+          "texto": "Eficiencia ecológica ⇒ porcentaje de energía transferida",
+          "explicacion": "Se calcula dividiendo la energía del nivel superior entre la energía del nivel inferior, multiplicada por 100. En promedio, la transferencia es de alrededor del 10 %."
+        },
+        {
+          "texto": "Eficiencia = (nivel superior ÷ nivel inferior) × 100",
+          "explicacion": "Si los productores tienen 10 000 kilocalorías y los herbívoros reciben 1000, la eficiencia es (1000 ÷ 10 000) × 100 = 10 %. El 90 % restante se pierde en el proceso."
+        },
+        {
+          "texto": "Regla del 10 %: propuesta por Raymond Lindeman en 1942",
+          "explicacion": "Raymond Lindeman analizó la transferencia de energía en un lago y encontró que solo una pequeña fracción pasa al siguiente nivel. Su trabajo es la base de las pirámides de energía."
+        },
+        {
+          "texto": "Energía asimilada ⇒ parte del alimento que el organismo utiliza",
+          "explicacion": "No todo el alimento ingerido es absorbido. Una parte se elimina en las heces, y solo la energía asimilada puede emplearse en el metabolismo y en el crecimiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Destino de la energía",
+      "puntos": [
+        {
+          "texto": "Respiración celular ⇒ mayor pérdida de energía como calor",
+          "explicacion": "Los organismos liberan energía química de los alimentos para realizar sus funciones. Gran parte de esa energía sale del sistema como calor metabólico."
+        },
+        {
+          "texto": "Excreción ⇒ energía contenida en desechos orgánicos",
+          "explicacion": "Las heces y la orina conservan parte de la energía del alimento. Esa energía pasa a los descomponedores y no al siguiente nivel trófico."
+        },
+        {
+          "texto": "Crecimiento y reproducción ⇒ energía almacenada en biomasa",
+          "explicacion": "La energía que se incorpora en tejidos nuevos o en descendientes queda disponible para los consumidores siguientes. Esta fracción suele ser la más pequeña del total."
+        }
       ]
     },
     {
       "titulo": "Pirámides ecológicas",
       "puntos": [
-        { "texto": "La pirámide de energía siempre tiene forma de pirámide.", "explicacion": "La base es más ancha porque los productores tienen la mayor cantidad de energía." },
-        { "texto": "La pirámide de números puede invertirse en algunos ecosistemas.", "explicacion": "Por ejemplo, un árbol puede alimentar a muchos insectos." }
+        {
+          "texto": "Pirámide de energía ⇒ siempre tiene forma piramidal",
+          "explicacion": "La energía disminuye en cada nivel trófico, por lo que la base siempre es mayor que la cima. Esta forma es una consecuencia directa de la pérdida de energía."
+        },
+        {
+          "texto": "Pirámide de biomasa ⇒ masa total por nivel trófico",
+          "explicacion": "Representa la cantidad de materia viva en cada nivel. En algunos ecosistemas acuáticos puede ser invertida, porque los productores se reproducen con mucha rapidez."
+        },
+        {
+          "texto": "Pirámide de números ⇒ cantidad de individuos por nivel",
+          "explicacion": "Muestra cuántos organismos hay en cada nivel, y puede variar mucho según el tamaño de las especies. Un árbol puede sostener a muchos insectos."
+        }
       ]
     },
     {
-      "titulo": "Importancia",
+      "titulo": "Flujo de energía en el Perú",
       "puntos": [
-        { "texto": "El flujo limitado de energía explica por qué hay pocos depredadores en la cima.", "explicacion": "Un nivel alto necesita grandes cantidades de energía de los niveles inferiores." }
+        {
+          "texto": "Corriente de Humboldt ⇒ alta productividad marina",
+          "explicacion": "Sus aguas frías transportan nutrientes desde el fondo hacia la superficie, lo que favorece el crecimiento del fitoplancton. Esta productividad sostiene una cadena trófica muy rica."
+        },
+        {
+          "texto": "Anchoveta ⇒ eslabón clave entre el plancton y depredadores",
+          "explicacion": "Engraulis ringens se alimenta de plancton y es presa de aves, lobos marinos y peces mayores. Su abundancia depende de la productividad primaria de la corriente."
+        },
+        {
+          "texto": "Pesca intensiva ⇒ desvío de energía hacia el ser humano",
+          "explicacion": "Al capturar anchoveta, parte de la energía que sostiene a aves y mamíferos marinos se dirige a la industria pesquera. Un exceso de captura reduce la energía disponible para el resto de la cadena."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Fotosíntesis (tema 33) y fase lumínica (tema 34)",
+          "explicacion": "La captura inicial de energía solar se estudió en los temas 33 y 34."
+        },
+        {
+          "texto": "Cadenas tróficas (tema 118)",
+          "explicacion": "Las secuencias de transferencia entre especies se desarrollan en el tema 118."
+        },
+        {
+          "texto": "Respiración aeróbica (tema 37)",
+          "explicacion": "La liberación de energía en la respiración celular se estudió en el tema 37."
+        },
+        {
+          "texto": "Ecosistemas (tema 115) y ciclos biogeoquímicos (tema 119)",
+          "explicacion": "La energía fluye por los componentes del ecosistema, estudiados en el tema 115, mientras que los materiales se reciclan como se explica en el tema 119."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre flujo de energía",
+      "puntos": [
+        {
+          "texto": "La energía se recicla igual que el carbono ✗",
+          "explicacion": "La energía se disipa en forma de calor y no vuelve al inicio de la cadena. Los materiales en cambio pueden reutilizarse."
+        },
+        {
+          "texto": "Un depredador recibe toda la energía de su presa ✗",
+          "explicacion": "Solo una parte de la energía de la presa se transfiere, porque parte se pierde en calor, excretas o partes no consumidas. La eficiencia es mucho menor que el 100 %."
+        },
+        {
+          "texto": "La pirámide de energía puede invertirse ✗",
+          "explicacion": "La energía siempre disminuye en cada nivel trófico por las leyes de la termodinámica. Solo la pirámide de biomasa o de números puede presentar formas invertidas."
+        },
+        {
+          "texto": "Los descomponedores no forman parte del flujo de energía",
+          "explicacion": "Reciben la energía contenida en los desechos y restos orgánicos. Aunque no sean consumidores directos, su papel en el ecosistema es central."
+        }
       ]
     }
   ]

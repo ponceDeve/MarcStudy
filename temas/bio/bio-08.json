@@ -2,57 +2,243 @@
   "curso": "Biología",
   "tema": "Carbohidratos",
   "glosario": {
-    "Glúcido": "Biomolécula formada por carbono, hidrógeno y oxígeno.",
-    "Monosacárido": "Azúcar simple que no se hidroliza en unidades menores.",
+    "Carbohidrato": "Biomolécula orgánica formada por carbono, hidrógeno y oxígeno, también llamada glúcido.",
+    "Monosacárido": "Carbohidrato simple que no se puede hidrolizar en otros más simples.",
     "Disacárido": "Carbohidrato formado por la unión de dos monosacáridos.",
-    "Polisacárido": "Polímero formado por muchos monosacáridos unidos.",
-    "Enlace glucosídico": "Unión covalente que une dos monosacáridos.",
-    "Hidrólisis": "Ruptura de un enlace mediante incorporación de agua.",
-    "Isómero": "Molécula con la misma fórmula y distinta disposición atómica.",
-    "Pentosa": "Monosacárido de cinco átomos de carbono.",
-    "Quitina": "Polisacárido nitrogenado que forma exoesqueletos.",
-    "Celulosa": "Polisacárido estructural de la pared celular vegetal."
+    "Oligosacárido": "Carbohidrato formado por la unión de pocos monosacáridos, generalmente de dos a diez.",
+    "Polisacárido": "Carbohidrato formado por la unión de muchos monosacáridos.",
+    "Hexosa": "Monosacárido de seis carbonos, como la glucosa.",
+    "Pentosa": "Monosacárido de cinco carbonos, como la ribosa.",
+    "Enlace glucosídico": "Unión covalente que une dos monosacáridos mediante un oxígeno.",
+    "Hidrólisis": "Ruptura de un enlace mediante la adición de agua.",
+    "Homopolisacárido": "Polisacárido formado por un solo tipo de monosacárido.",
+    "Heteropolisacárido": "Polisacárido formado por distintos tipos de monosacáridos.",
+    "Amilosa": "Componente del almidón formado por cadenas lineales de glucosa.",
+    "Amilopectina": "Componente del almidón formado por cadenas ramificadas de glucosa.",
+    "Glucógeno": "Polisacárido de reserva energética en animales.",
+    "Quitina": "Polisacárido estructural que forma el exoesqueleto de artrópodos.",
+    "Celulosa": "Polisacárido estructural de las paredes celulares de las plantas.",
+    "Aldosa": "Monosacárido que contiene un grupo aldehído.",
+    "Cetosa": "Monosacárido que contiene un grupo cetona."
   },
   "theory": [
     {
       "titulo": "Concepto de carbohidratos",
       "puntos": [
-        { "texto": "Los carbohidratos son biomoléculas formadas por C, H y O.", "explicacion": "También se llaman glúcidos o hidratos de carbono." },
-        { "texto": "Los carbohidratos se clasifican en monosacáridos, disacáridos y polisacáridos.", "explicacion": "La clasificación depende del número de unidades de monosacárido que contienen." }
+        {
+          "texto": "Los carbohidratos son biomoléculas orgánicas formadas por C, H y O",
+          "explicacion": "También se llaman hidratos de carbono, glúcidos o azúcares, y tienen fórmula general (CH₂O)n."
+        },
+        {
+          "texto": "Los carbohidratos tienen un grupo aldehído o cetona",
+          "explicacion": "Son derivados aldehídos o cetónicos de alcoholes polivalentes, lo que determina su reactividad química."
+        },
+        {
+          "texto": "Las plantas producen carbohidratos mediante la fotosíntesis",
+          "explicacion": "A partir de CO₂, agua y energía solar se sintetiza glucosa, que es una forma de energía química."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de carbohidratos",
+      "puntos": [
+        {
+          "texto": "Los carbohidratos se clasifican en monosacáridos, disacáridos y polisacáridos",
+          "explicacion": "La clasificación se basa en el número de unidades de monosacárido que contiene cada molécula."
+        },
+        {
+          "texto": "Los oligosacáridos tienen entre dos y diez monosacáridos",
+          "explicacion": "Incluyen los disacáridos y los trisacáridos, y algunos participan en el reconocimiento entre células."
+        },
+        {
+          "texto": "Los polisacáridos tienen más de diez monosacáridos",
+          "explicacion": "Se forman por la unión de muchos monosacáridos mediante enlaces glucosídicos."
+        }
       ]
     },
     {
       "titulo": "Monosacáridos",
       "puntos": [
-        { "texto": "Los «monosacáridos» son azúcares simples.", "explicacion": "Son la unidad básica de los demás carbohidratos y no se hidrolizan." },
-        { "texto": "Glucosa, fructosa y galactosa tienen la misma fórmula.", "explicacion": "Difieren en la disposición de sus átomos, por eso son isómeros." },
-        { "texto": "La glucosa es el combustible metabólico principal.", "explicacion": "Se oxida en la respiración celular para liberar energía." },
-        { "texto": "La ribosa es una pentosa presente en el ARN.", "explicacion": "Su presencia en el ARN la vincula con la síntesis de proteínas." }
+        {
+          "texto": "Los monosacáridos son los carbohidratos más simples",
+          "explicacion": "Son las unidades básicas que forman los disacáridos y los polisacáridos."
+        },
+        {
+          "texto": "Los monosacáridos pueden ser pentosas o hexosas",
+          "explicacion": "Las pentosas tienen cinco carbonos, como la ribosa y la desoxirribosa; las hexosas tienen seis, como la glucosa."
+        },
+        {
+          "texto": "Los monosacáridos biológicamente importantes son ribosa y desoxirribosa",
+          "explicacion": "Forman parte de los ácidos nucleicos: la ribosa del ARN y la desoxirribosa del ADN."
+        },
+        {
+          "texto": "La glucosa es el monosacárido más importante y principal combustible metabólico",
+          "explicacion": "Las células la utilizan para obtener energía y es el componente de los polisacáridos de reserva y estructurales."
+        },
+        {
+          "texto": "La fructosa es un monosacárido presente en frutas y en la miel",
+          "explicacion": "Dato por confirmar: junto con la glucosa forma el disacárido sacarosa."
+        },
+        {
+          "texto": "La galactosa es un monosacárido presente en la leche",
+          "explicacion": "Dato por confirmar: se une a la glucosa para formar la lactosa."
+        },
+        {
+          "texto": "Las hexosas glucosa, fructosa y galactosa tienen seis carbonos",
+          "explicacion": "Tienen la misma fórmula general, pero diferente disposición de sus átomos, por eso son isómeros."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de monosacáridos",
+      "puntos": [
+        {
+          "texto": "Los monosacáridos se clasifican como aldosas o cetosas",
+          "explicacion": "Las aldosas tienen grupo aldehído y las cetosas tienen grupo cetona, en el carbono que forma su estructura."
+        },
+        {
+          "texto": "La glucosa es una aldosa de seis carbonos",
+          "explicacion": "Dato por confirmar: tiene grupo aldehído en el primer carbono, por lo que pertenece a las aldohexosas."
+        },
+        {
+          "texto": "La fructosa es una cetosa de seis carbonos",
+          "explicacion": "Dato por confirmar: tiene grupo cetona en el segundo carbono, por lo que pertenece a las cetohexosas."
+        }
       ]
     },
     {
       "titulo": "Disacáridos",
       "puntos": [
-        { "texto": "Los «disacáridos» tienen dos monosacáridos unidos.", "explicacion": "La unión se realiza mediante enlace glucosídico y se rompe por hidrólisis." },
-        { "texto": "La sacarosa está formada por glucosa y fructosa.", "explicacion": "Es el azúcar común, presente en la caña de azúcar y la remolacha." },
-        { "texto": "La lactosa está formada por glucosa y galactosa.", "explicacion": "Es el azúcar característico de la leche de los mamíferos." },
-        { "texto": "La maltosa está formada por dos moléculas de glucosa.", "explicacion": "Se origina en la digestión parcial del almidón." }
+        {
+          "texto": "Los disacáridos están formados por dos monosacáridos",
+          "explicacion": "Se unen mediante un enlace glucosídico y se pueden separar por hidrólisis en sus monosacáridos componentes."
+        },
+        {
+          "texto": "La sacarosa está formada por glucosa y fructosa",
+          "explicacion": "Es el azúcar común de mesa y se obtiene de la caña de azúcar y de la remolacha."
+        },
+        {
+          "texto": "La lactosa está formada por glucosa y galactosa",
+          "explicacion": "Es el azúcar de la leche de los mamíferos."
+        },
+        {
+          "texto": "La maltosa está formada por dos moléculas de glucosa",
+          "explicacion": "Se obtiene como producto de la hidrólisis del almidón y del glucógeno."
+        },
+        {
+          "texto": "La celobiosa está formada por dos moléculas de glucosa",
+          "explicacion": "Dato por confirmar: es el disacárido que resulta de la hidrólisis de la celulosa."
+        }
       ]
     },
     {
-      "titulo": "Polisacáridos de reserva",
+      "titulo": "Polisacáridos",
       "puntos": [
-        { "texto": "Los «polisacáridos» son polímeros de muchos monosacáridos.", "explicacion": "Pueden ser homopolisacáridos, con un solo tipo de monosacárido, o heteropolisacáridos." },
-        { "texto": "El almidón es la reserva de glucosa en vegetales.", "explicacion": "Se acumula en raíces, tallos, semillas y tubérculos." },
-        { "texto": "El glucógeno es la reserva de glucosa en animales.", "explicacion": "Se almacena principalmente en el hígado y en los músculos." }
+        {
+          "texto": "Los polisacáridos son polímeros formados por muchos monosacáridos",
+          "explicacion": "Pueden ser homopolisacáridos, de un solo tipo de monosacárido, o heteropolisacáridos, de distintos tipos."
+        },
+        {
+          "texto": "Los polisacáridos cumplen funciones de reserva o estructurales",
+          "explicacion": "Los de reserva almacenan energía y los estructurales dan soporte a las células y a los organismos."
+        },
+        {
+          "texto": "El enlace alfa de los polisacáridos suele tener función de reserva",
+          "explicacion": "Dato por confirmar: los polímeros de glucosa con enlace alfa, como el almidón y el glucógeno, se hidrolizan con facilidad."
+        },
+        {
+          "texto": "El enlace beta de los polisacáridos suele tener función estructural",
+          "explicacion": "Dato por confirmar: la celulosa y la quitina tienen enlaces beta, que les dan rigidez y resistencia."
+        }
       ]
     },
     {
-      "titulo": "Polisacáridos estructurales",
+      "titulo": "Almidón",
       "puntos": [
-        { "texto": "La «celulosa» aporta rigidez a la pared celular vegetal.", "explicacion": "Sus glucosas están unidas por enlace beta, que el ser humano no puede digerir." },
-        { "texto": "La «quitina» forma el exoesqueleto de los artrópodos.", "explicacion": "Está compuesta por N-acetilglucosamina, derivado nitrogenado de la glucosa." },
-        { "texto": "Enlace alfa cumple reserva; enlace beta cumple estructura.", "explicacion": "Esta diferencia explica por qué el almidón se digiere y la celulosa no." }
+        {
+          "texto": "El almidón es el polisacárido de reserva de glucosa en las plantas",
+          "explicacion": "Se almacena en semillas, tubérculos y raíces, y puede hidrolizarse para liberar glucosa cuando la planta la necesita."
+        },
+        {
+          "texto": "El almidón está formado por amilosa y amilopectina",
+          "explicacion": "La amilosa tiene cadenas lineales y la amilopectina tiene cadenas ramificadas con menos frecuencia."
+        },
+        {
+          "texto": "La amilosa es una cadena lineal de glucosa",
+          "explicacion": "Sus unidades de glucosa se unen mediante enlaces alfa y forman una estructura helicoidal."
+        },
+        {
+          "texto": "La amilopectina es una cadena ramificada de glucosa",
+          "explicacion": "Sus ramificaciones son menos frecuentes que las del glucógeno y le dan una estructura más compacta."
+        }
+      ]
+    },
+    {
+      "titulo": "Glucógeno",
+      "puntos": [
+        {
+          "texto": "El glucógeno es el polisacárido de reserva de glucosa en los animales",
+          "explicacion": "Se almacena principalmente en el hígado y en los músculos, y se usa cuando se necesita energía."
+        },
+        {
+          "texto": "El glucógeno es más ramificado que el almidón",
+          "explicacion": "Dato por confirmar: sus ramificaciones son más frecuentes, lo que permite liberar glucosa más rápido."
+        }
+      ]
+    },
+    {
+      "titulo": "Celulosa",
+      "puntos": [
+        {
+          "texto": "La celulosa es un polisacárido estructural de las paredes celulares vegetales",
+          "explicacion": "Forma fibras resistentes que dan rigidez a los tallos, las hojas y la madera."
+        },
+        {
+          "texto": "La celulosa es un polímero lineal de glucosa",
+          "explicacion": "Sus unidades de glucosa se unen mediante enlaces beta, por lo que las cadenas se alinean en fibras."
+        },
+        {
+          "texto": "Los humanos no pueden digerir la celulosa",
+          "explicacion": "Dato por confirmar: carecemos de las enzimas necesarias para hidrolizar sus enlaces beta, por lo que forma parte de la fibra dietética."
+        }
+      ]
+    },
+    {
+      "titulo": "Quitina",
+      "puntos": [
+        {
+          "texto": "La quitina es el componente principal del exoesqueleto de los artrópodos",
+          "explicacion": "Da soporte y protección a insectos, arácnidos y crustáceos, como los cangrejos."
+        },
+        {
+          "texto": "La quitina es un polisacárido nitrogenado",
+          "explicacion": "Sus unidades son N-acetilglucosamina en lugar de glucosa, por lo que contiene nitrógeno."
+        },
+        {
+          "texto": "La quitina también se encuentra en la pared celular de los hongos",
+          "explicacion": "Dato por confirmar: aporta rigidez a la pared celular fúngica, igual que la celulosa en las plantas."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones de los carbohidratos",
+      "puntos": [
+        {
+          "texto": "Los carbohidratos son la principal fuente de energía de las células",
+          "explicacion": "Al oxidarse liberan energía que la célula usa para realizar sus funciones vitales."
+        },
+        {
+          "texto": "Los carbohidratos cumplen funciones estructurales",
+          "explicacion": "La celulosa y la quitina dan soporte a las paredes celulares y a los exoesqueletos."
+        },
+        {
+          "texto": "Algunos oligosacáridos participan en la comunicación entre células",
+          "explicacion": "Se ubican en la superficie celular y permiten reconocer a otras células."
+        },
+        {
+          "texto": "Los carbohidratos en exceso se relacionan con enfermedades como la diabetes",
+          "explicacion": "Un consumo excesivo de azúcares puede alterar el control de la glucosa en la sangre."
+        }
       ]
     }
   ]

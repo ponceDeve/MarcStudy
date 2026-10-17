@@ -1,0 +1,25 @@
+{
+  "curso": "Geometría",
+  "tema": "Ecuaciones de la elipse",
+  "glosario": {
+    "Elipse": "Lugar geométrico de puntos cuya suma de distancias a dos focos es constante.",
+    "Centro": "Punto medio de los focos y de los ejes de la elipse.",
+    "Vértice": "Punto donde la elipse corta a sus ejes.",
+    "Semieje": "Mitad de un eje de la elipse."
+  },
+  "theory": [
+    {
+      "titulo": "Centro en el origen",
+      "puntos": [
+        { "texto": "x²/a² + y²/b² = 1: focos sobre el eje x", "explicacion": "Con a > b, los vértices son (±a, 0) y (0, ±b), y los focos (±c, 0) con c² = a² − b². Ejemplo: x²/25 + y²/9 = 1 tiene vértices (±5, 0), (0, ±3) y focos (±4, 0)." },
+        { "texto": "x²/b² + y²/a² = 1: focos sobre el eje y", "explicacion": "Es la misma elipse girada, con el eje mayor vertical. Ejemplo: x²/9 + y²/25 = 1 tiene focos (0, ±4)." }
+      ]
+    },
+    {
+      "titulo": "Centro fuera del origen",
+      "puntos": [
+        { "texto": "(x − h)²/a² + (y − k)²/b² = 1", "explicacion": "El centro es (h, k), y la forma es la misma que con centro en el origen. Ejemplo: (x − 1)²/16 + (y + 2)²/9 = 1 tiene centro (1, −2), a = 4 y b = 3." }
+      ]
+    }
+  ]
+}

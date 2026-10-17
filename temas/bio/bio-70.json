@@ -2,50 +2,998 @@
   "curso": "Biología",
   "tema": "Reproducción sexual en plantas con flores",
   "glosario": {
-    "Androceo": "Conjunto de estambres, órganos masculinos de la flor.",
-    "Gineceo": "Conjunto de pistilos, órganos femeninos de la flor.",
-    "Estambre": "Órgano masculino formado por filamento y antera.",
-    "Antera": "Parte del estambre donde se produce el polen.",
-    "Pistilo": "Órgano femenino formado por estigma, estilo y ovario.",
-    "Estigma": "Parte superior del pistilo donde se deposita el polen.",
-    "Polinización": "Transporte del polen desde el estambre hasta el estigma.",
-    "Doble fecundación": "Proceso en que dos núcleos espermáticos se unen a células del óvulo.",
-    "Endospermo": "Tejido nutritivo de la semilla formado por la doble fecundación.",
-    "Fruto": "Ovario desarrollado que protege y dispersa las semillas."
+    "Angiospermas": "Plantas con flores y semillas en frutos",
+    "Gameto": "Célula sexual haploide que participa en fecundación",
+    "Gametofito": "Fase haploide que produce gametos",
+    "Esporofito": "Fase diploide que produce esporas",
+    "Espora": "Célula haploide que origina un gametofito",
+    "Microspora": "Espora pequeña que origina el polen",
+    "Megáspora": "Espora grande que origina el saco embrionario",
+    "Meiosis": "División que reduce los cromosomas a la mitad",
+    "Mitosis": "División que conserva el número de cromosomas",
+    "Cromosoma": "Estructura que contiene el material genético",
+    "Haploide": "Con un solo juego de cromosomas",
+    "Diploide": "Con dos juegos de cromosomas",
+    "Triploide": "Con tres juegos de cromosomas",
+    "Verticilo": "Conjunto de piezas florales del mismo nivel",
+    "Periantio": "Conjunto formado por cáliz y corola",
+    "Estéril": "Que no produce gametos",
+    "Fértil": "Que produce gametos",
+    "Sésil": "Sin pedúnculo",
+    "Teca": "Mitad de la antera",
+    "Conectivo": "Tejido que une las tecas",
+    "Dehiscencia": "Apertura espontánea de un órgano maduro",
+    "Microsporangio": "Estructura donde se forman microsporas",
+    "Megasporangio": "Estructura donde se forman megásporas",
+    "Receptivo": "Capaz de recibir y permitir germinar el polen",
+    "Funículo": "Pedículo que une el óvulo a la placenta",
+    "Tegumento": "Envoltura del óvulo",
+    "Micrópilo": "Poro de entrada del tubo polínico",
+    "Calaza": "Base del óvulo opuesta al micrópilo",
+    "Nucela": "Tejido central del óvulo",
+    "Esporopolenina": "Sustancia muy resistente de la exina",
+    "Pectina": "Polisacárido de las paredes celulares",
+    "Quimiotropismo": "Crecimiento orientado por sustancias químicas",
+    "Endospermo": "Tejido nutricio de reserva de la semilla",
+    "Plúmula": "Parte del embrión que forma tallo y hojas",
+    "Radícula": "Raíz embrionaria",
+    "Hipocótilo": "Tallo embrionario bajo los cotiledones",
+    "Epicótilo": "Tallo embrionario sobre los cotiledones",
+    "Cotiledón": "Hoja embrionaria de la semilla",
+    "Pericarpio": "Pared del fruto",
+    "Receptáculo": "Extremo ensanchado del pedúnculo floral",
+    "Partenocarpia": "Formación de fruto sin fecundación",
+    "Dispersión": "Traslado de semillas lejos de la planta madre",
+    "Latencia": "Reposo de una semilla viable",
+    "Giberelinas": "Hormonas vegetales que estimulan la germinación",
+    "Imbibición": "Absorción de agua por la semilla",
+    "Plántula": "Planta joven recién germinada",
+    "Auxinas": "Hormonas vegetales que estimulan el crecimiento",
+    "Néctar": "Solución azucarada producida por la flor",
+    "Vilano": "Conjunto de pelos que ayuda a volar"
   },
   "theory": [
     {
-      "titulo": "Partes de la flor",
+      "titulo": "Concepto de flor",
       "puntos": [
-        { "texto": "El androceo está formado por estambres con antera y filamento.", "explicacion": "La antera produce el polen, que contiene los gametos masculinos." },
-        { "texto": "El gineceo está formado por el pistilo, con estigma, estilo y ovario.", "explicacion": "Los óvulos se forman dentro del ovario." }
+        {
+          "texto": "«Flor» = estructura reproductora de las angiospermas",
+          "explicacion": "Es un brote de crecimiento limitado cuyas hojas se modificaron para producir gametos y favorecer la fecundación. En una planta con flores, todo el proceso sexual ocurre allí, desde la formación del polen y de los óvulos hasta el origen del fruto."
+        },
+        {
+          "texto": "«Angiospermas» = plantas con flores y semillas dentro de un fruto",
+          "explicacion": "El nombre viene del griego: angeion significa vaso o recipiente y sperma significa semilla, porque las semillas quedan encerradas en el ovario, que se transforma en fruto. Es el grupo vegetal más numeroso, con aproximadamente 300 000 especies descritas."
+        },
+        {
+          "texto": "Reproducción sexual ⇒ variabilidad genética",
+          "explicacion": "La meiosis recombina los genes y la fecundación une material genético de dos progenitores, de modo que cada descendiente es distinto. Esa diversidad permite que algunos individuos sobrevivan ante plagas, sequías o cambios del ambiente."
+        },
+        {
+          "texto": "«Verticilo» = conjunto de piezas florales en un mismo nivel",
+          "explicacion": "Las piezas de un verticilo nacen alrededor del eje de la flor a la misma altura, como los rayos de una rueda. Son hojas modificadas, cada verticilo con una función distinta."
+        },
+        {
+          "texto": "Flor completa ⊃ cuatro verticilos",
+          "explicacion": "De afuera hacia adentro son el cáliz, la corola, el androceo y el gineceo. Los dos primeros protegen y atraen; los dos últimos producen los gametos."
+        },
+        {
+          "texto": "«Pedúnculo» = tallito que sostiene la flor",
+          "explicacion": "Lleva la flor hacia la luz y hacia los polinizadores. Cuando la flor no tiene pedúnculo y se inserta directamente en el tallo, se llama sésil."
+        },
+        {
+          "texto": "«Receptáculo» = extremo ensanchado del pedúnculo",
+          "explicacion": "Es la base donde se insertan los verticilos florales. En algunas especies crece mucho tras la fecundación, como ocurre en la fresa, donde la parte carnosa y roja es el receptáculo."
+        },
+        {
+          "texto": "«Periantio» = cáliz + corola",
+          "explicacion": "Reúne los verticilos estériles, es decir, los que no producen gametos. Su función es proteger a las partes fértiles y atraer a los polinizadores."
+        },
+        {
+          "texto": "Androceo + gineceo = verticilos fértiles",
+          "explicacion": "Son los que producen gametos: el androceo forma el polen que contiene a los gametos masculinos y el gineceo forma los óvulos que contienen a los gametos femeninos."
+        }
+      ]
+    },
+    {
+      "titulo": "Cáliz",
+      "puntos": [
+        {
+          "texto": "«Cáliz» = conjunto de sépalos",
+          "explicacion": "Es el verticilo más externo de la flor y, por lo general, de color verde. Cuando los sépalos están soldados entre sí se llama gamosépalo y cuando están libres, dialisépalo."
+        },
+        {
+          "texto": "«Sépalo» ⇒ protege el botón floral",
+          "explicacion": "Mientras la flor está cerrada, los sépalos cubren y resguardan a las piezas internas del frío, la desecación y los insectos que las dañarían. Al ser verdes también pueden hacer fotosíntesis."
+        }
+      ]
+    },
+    {
+      "titulo": "Corola",
+      "puntos": [
+        {
+          "texto": "«Corola» = conjunto de pétalos",
+          "explicacion": "Es el verticilo ubicado por dentro del cáliz. Sus colores, formas y aromas varían muchísimo entre especies y son la señal principal que reconocen los polinizadores."
+        },
+        {
+          "texto": "«Pétalo» ⇒ atrae polinizadores",
+          "explicacion": "Pigmentos, aromas y guías de néctar dirigen a insectos o aves hacia el interior de la flor. Gracias a esa atracción el polen se transporta con más probabilidad hacia otra flor."
+        },
+        {
+          "texto": "«Tépalo» = pieza del periantio no diferenciada",
+          "explicacion": "Se presenta cuando el cáliz y la corola son tan parecidos que no se distinguen sépalos de pétalos. Ocurre en el tulipán y en el lirio, cuyas piezas coloridas son todas tépalos."
+        },
+        {
+          "texto": "«Nectario» = glándula productora de néctar",
+          "explicacion": "El néctar es una solución azucarada que sirve de recompensa a los polinizadores. Mientras el animal lo busca, roza las anteras y el estigma y así transporta el polen."
+        }
+      ]
+    },
+    {
+      "titulo": "Androceo",
+      "puntos": [
+        {
+          "texto": "«Androceo» = conjunto de estambres",
+          "explicacion": "Es el verticilo masculino de la flor y se ubica por dentro de la corola. Produce los granos de polen, que son los portadores de los gametos masculinos."
+        },
+        {
+          "texto": "«Estambre» = filamento + antera",
+          "explicacion": "Es cada unidad del androceo. La forma típica es un tallito delgado que sostiene en su extremo una estructura abultada productora de polen."
+        },
+        {
+          "texto": "«Filamento» ⇒ sostiene la antera",
+          "explicacion": "Su longitud coloca la antera en una posición donde el viento o los animales puedan recoger el polen fácilmente."
+        },
+        {
+          "texto": "«Antera» = parte del estambre que produce polen",
+          "explicacion": "Es el extremo ensanchado del estambre. Cuando madura, se abre en una línea llamada de dehiscencia y libera los granos de polen."
+        },
+        {
+          "texto": "Antera ⊃ cuatro sacos polínicos",
+          "explicacion": "La antera tiene dos mitades llamadas tecas y cada teca contiene dos sacos polínicos, de modo que en total hay cuatro. El conectivo es el tejido que une las dos tecas."
+        },
+        {
+          "texto": "«Saco polínico» = microsporangio",
+          "explicacion": "Es la cámara donde las células madre de las microsporas se dividen por meiosis. Se llama microsporangio porque allí se originan las microsporas, que luego forman el polen."
+        }
+      ]
+    },
+    {
+      "titulo": "Gineceo",
+      "puntos": [
+        {
+          "texto": "«Gineceo» = conjunto de carpelos",
+          "explicacion": "Es el verticilo femenino y ocupa el centro de la flor. Encierra los óvulos y, tras la fecundación, forma el fruto."
+        },
+        {
+          "texto": "«Carpelo» = hoja modificada que encierra óvulos",
+          "explicacion": "Es la unidad básica del gineceo y se interpreta como una hoja plegada que protege a los óvulos. Por eso las semillas de las angiospermas quedan cerradas y no expuestas."
+        },
+        {
+          "texto": "«Pistilo» = estigma + estilo + ovario",
+          "explicacion": "Está formado por uno o varios carpelos unidos. Sus tres partes están ordenadas desde la superficie que recibe el polen hasta la cámara donde están los óvulos."
+        },
+        {
+          "texto": "«Estigma» ⇒ recibe el polen",
+          "explicacion": "Es la parte superior del pistilo y tiene una superficie pegajosa o plumosa que retiene los granos de polen. También reconoce si el polen es compatible con la especie."
+        },
+        {
+          "texto": "«Estilo» ⇒ conduce el tubo polínico",
+          "explicacion": "Es un tubo o canal que une el estigma con el ovario. El tubo polínico crece por su interior alimentándose de sus tejidos hasta llegar a los óvulos."
+        },
+        {
+          "texto": "«Ovario» ⊃ óvulos",
+          "explicacion": "Es la base ensanchada del pistilo. Protege a los óvulos durante su desarrollo y, después de la fecundación, se transforma en fruto."
+        },
+        {
+          "texto": "«Placenta» = zona del ovario donde se insertan los óvulos",
+          "explicacion": "Es el tejido al que cada óvulo se une mediante su funículo. A través de ella llegan los nutrientes que necesita el óvulo en desarrollo."
+        },
+        {
+          "texto": "Ovario súpero = inserto sobre los demás verticilos",
+          "explicacion": "Los demás verticilos nacen por debajo del ovario. Es la disposición del tomate y de los cítricos."
+        },
+        {
+          "texto": "Ovario ínfero = inserto bajo los demás verticilos",
+          "explicacion": "Los demás verticilos parecen salir por encima del ovario porque este queda hundido en el receptáculo. Es la disposición de la manzana y de la pera."
+        },
+        {
+          "texto": "Gineceo apocárpico = carpelos libres",
+          "explicacion": "Cada carpelo forma un pistilo independiente dentro de la misma flor. Ocurre en la fresa y en la magnolia."
+        },
+        {
+          "texto": "Gineceo sincárpico = carpelos fusionados",
+          "explicacion": "Los carpelos se sueldan y forman un solo pistilo con ovario compuesto. Es lo que ocurre en el tomate y en el lirio."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de flores",
+      "puntos": [
+        {
+          "texto": "Flor completa = presenta los cuatro verticilos",
+          "explicacion": "Tiene cáliz, corola, androceo y gineceo. La rosa y el hibisco son ejemplos."
+        },
+        {
+          "texto": "Flor incompleta ✗ algún verticilo",
+          "explicacion": "Le falta al menos uno de los cuatro verticilos. Las flores de los pastos, como el trigo, carecen de cáliz y corola vistosos."
+        },
+        {
+          "texto": "«Flor hermafrodita» = androceo + gineceo funcionales",
+          "explicacion": "Una misma flor produce polen y óvulos. Por eso puede autopolinizarse, salvo que existan mecanismos que lo eviten."
+        },
+        {
+          "texto": "Flor perfecta = flor hermafrodita",
+          "explicacion": "Es un sinónimo que destaca que la flor posee ambos órganos sexuales. También se le llama flor bisexual."
+        },
+        {
+          "texto": "«Flor unisexual» = solo androceo o solo gineceo",
+          "explicacion": "Un solo sexo es funcional en esa flor, lo que obliga a la polinización cruzada si las flores de sexos distintos están en individuos diferentes. También se llama flor imperfecta."
+        },
+        {
+          "texto": "Flor masculina = solo androceo funcional",
+          "explicacion": "También se denomina flor estaminada. Produce polen pero no frutos."
+        },
+        {
+          "texto": "Flor femenina = solo gineceo funcional",
+          "explicacion": "También se denomina flor pistilada. Produce óvulos y es la que formará el fruto."
+        },
+        {
+          "texto": "«Planta monoica» ⊃ flores masculinas + flores femeninas",
+          "explicacion": "Ambos tipos de flor unisexual están en el mismo individuo. El maíz tiene flores masculinas en la espiga terminal y femeninas en la mazorca; la calabaza también es monoica."
+        },
+        {
+          "texto": "«Planta dioica» ⇒ individuos masculinos ≠ individuos femeninos",
+          "explicacion": "Cada planta tiene un solo tipo de flor unisexual, por lo que solo los individuos femeninos dan frutos. Son dioicos la palma datilera y el sauce."
+        }
+      ]
+    },
+    {
+      "titulo": "Simetría floral",
+      "puntos": [
+        {
+          "texto": "«Flor actinomorfa» = simetría radial",
+          "explicacion": "Se puede dividir en mitades iguales por varios planos que pasan por el centro. Son actinomorfas la rosa y el tulipán."
+        },
+        {
+          "texto": "«Flor zigomorfa» = simetría bilateral",
+          "explicacion": "Solo un plano divide la flor en dos mitades iguales. Son zigomorfas la orquídea y la salvia."
+        },
+        {
+          "texto": "Flor zigomorfa ⇒ orienta al polinizador",
+          "explicacion": "Su forma obliga al insecto a posarse en una posición determinada, de modo que el polen se deposita siempre en la misma zona de su cuerpo. Eso aumenta la eficacia del transporte hacia otra flor."
+        }
+      ]
+    },
+    {
+      "titulo": "Flores de angiospermas",
+      "puntos": [
+        {
+          "texto": "Monocotiledóneas ⇒ piezas florales en múltiplos de tres",
+          "explicacion": "Es un rasgo típico y se observa en el lirio y el tulipán, que tienen seis tépalos. Es una de las diferencias con las dicotiledóneas."
+        },
+        {
+          "texto": "Dicotiledóneas ⇒ piezas florales en múltiplos de cuatro o cinco",
+          "explicacion": "La rosa y el frijol tienen cinco pétalos. Es un rasgo habitual que se combina con otros, como el número de cotiledones de la semilla."
+        }
+      ]
+    },
+    {
+      "titulo": "Inflorescencias",
+      "puntos": [
+        {
+          "texto": "«Inflorescencia» = agrupación de flores en un mismo eje",
+          "explicacion": "Las flores quedan cercanas y las visitas de un polinizador se vuelven más eficientes. Una sola inflorescencia puede ser tan llamativa como una flor grande."
+        },
+        {
+          "texto": "«Capítulo» = inflorescencia de flores pequeñas sobre un receptáculo",
+          "explicacion": "El girasol y la margarita son ejemplos. Lo que parece una sola flor es en realidad un conjunto de muchas flores diminutas."
+        }
+      ]
+    },
+    {
+      "titulo": "Dotación cromosómica",
+      "puntos": [
+        {
+          "texto": "Haploide (n) = un juego de cromosomas",
+          "explicacion": "La letra n representa el número de cromosomas de un juego completo, que es el que lleva un gameto. En las plantas, las esporas y los gametofitos también son haploides."
+        },
+        {
+          "texto": "Diploide (2n) = dos juegos de cromosomas",
+          "explicacion": "Es la dotación de las células del cuerpo de la planta y del cigoto. Se obtiene cuando se unen dos células haploides, una aportada por cada progenitor."
+        },
+        {
+          "texto": "Triploide (3n) = tres juegos de cromosomas",
+          "explicacion": "Es la dotación del endospermo de las angiospermas. Se forma por la unión de un juego masculino con los dos juegos de la célula central."
+        }
+      ]
+    },
+    {
+      "titulo": "Alternancia de generaciones",
+      "puntos": [
+        {
+          "texto": "«Esporofito» = fase diploide productora de esporas",
+          "explicacion": "Es la planta con flores que se ve en la naturaleza. Dentro de sus flores algunas células diploides realizan meiosis y producen esporas."
+        },
+        {
+          "texto": "«Gametofito» = fase haploide productora de gametos",
+          "explicacion": "Se origina de una espora y produce gametos mediante mitosis. En las angiospermas es microscópico y vive dentro de la flor."
+        },
+        {
+          "texto": "Esporofito ⇒ fase dominante",
+          "explicacion": "En las angiospermas la fase más grande, duradera y visible es el esporofito. En cambio, en las briofitas, como los musgos, domina el gametofito."
+        },
+        {
+          "texto": "Gametofito ⇒ reducido y dependiente del esporofito",
+          "explicacion": "El gametofito masculino es el grano de polen y el femenino es el saco embrionario. Ambos reciben nutrientes de la planta madre."
+        },
+        {
+          "texto": "Meiosis → esporas haploides",
+          "explicacion": "En las plantas la meiosis no produce gametos sino esporas. Esa es una diferencia importante con la reproducción de los animales."
+        },
+        {
+          "texto": "Mitosis → gametos haploides",
+          "explicacion": "Los gametofitos ya son haploides, por lo que forman gametos mediante mitosis y no meiosis. Los gametos conservan así el número n de cromosomas."
+        },
+        {
+          "texto": "Heterosporia = microsporas + megásporas",
+          "explicacion": "Las angiospermas producen dos tipos de esporas: las microsporas, pequeñas, que originan el gametofito masculino, y las megásporas, grandes, que originan el gametofito femenino."
+        },
+        {
+          "texto": "Ciclo: esporofito → esporas → gametofito → gametos → cigoto",
+          "explicacion": "El cigoto diploide se desarrolla en un nuevo esporofito. Así se cierra el ciclo y se alternan una fase diploide y una haploide."
+        }
+      ]
+    },
+    {
+      "titulo": "Microsporogénesis",
+      "puntos": [
+        {
+          "texto": "«Microsporogénesis» = formación de microsporas",
+          "explicacion": "Ocurre dentro de los sacos polínicos de la antera. Es la fase del proceso que reduce el número de cromosomas a la mitad."
+        },
+        {
+          "texto": "Microsporocito (2n) → meiosis → cuatro microsporas (n)",
+          "explicacion": "El microsporocito es la célula madre de las microsporas y es diploide. Su meiosis produce cuatro células haploides."
+        },
+        {
+          "texto": "«Tétrada» = grupo de cuatro microsporas",
+          "explicacion": "Las cuatro microsporas nacen unidas por una pared común. Luego se separan y cada una continúa su desarrollo por separado."
+        },
+        {
+          "texto": "«Tapete» ⇒ nutre a las microsporas",
+          "explicacion": "Es la capa más interna de la pared del saco polínico. Aporta nutrientes y material para la pared del polen, y luego degenera."
+        },
+        {
+          "texto": "«Microgametogénesis» = formación del grano de polen",
+          "explicacion": "Cada microspora se divide por mitosis de forma desigual. Así se obtiene una célula grande y una pequeña que dan lugar al gametofito masculino."
+        },
+        {
+          "texto": "«Célula vegetativa» ⇒ forma el tubo polínico",
+          "explicacion": "Es la célula grande del grano de polen. Su núcleo, llamado núcleo vegetativo, controla el crecimiento del tubo."
+        },
+        {
+          "texto": "«Célula generativa» → dos núcleos espermáticos",
+          "explicacion": "Es la célula pequeña del grano de polen y se divide por mitosis. Esta división puede ocurrir dentro del grano o ya dentro del tubo polínico, según la especie."
+        },
+        {
+          "texto": "«Núcleo espermático» = gameto masculino",
+          "explicacion": "En las angiospermas los gametos masculinos no tienen flagelos. Son llevados hasta el óvulo por el tubo polínico."
+        },
+        {
+          "texto": "«Grano de polen» = gametofito masculino",
+          "explicacion": "Es un gametofito microscópico que contiene la célula vegetativa y los gametos masculinos. Su tamaño es de pocas decenas de micrómetros en la mayoría de especies."
+        },
+        {
+          "texto": "«Exina» = pared externa del grano de polen",
+          "explicacion": "Está formada por esporopolenina, una sustancia muy resistente a la degradación. Por eso el polen se conserva como fósil y su ornamentación permite identificar especies."
+        },
+        {
+          "texto": "«Intina» = pared interna del grano de polen",
+          "explicacion": "Contiene sobre todo pectina y celulosa. Es la capa que se prolonga para formar el tubo polínico."
+        },
+        {
+          "texto": "«Poro germinativo» ⇒ salida del tubo polínico",
+          "explicacion": "Son aperturas de la exina por donde emerge el tubo cuando el grano germina. Su número y su forma varían entre especies."
+        }
+      ]
+    },
+    {
+      "titulo": "Óvulo",
+      "puntos": [
+        {
+          "texto": "«Óvulo» = estructura que contiene el gametofito femenino",
+          "explicacion": "Es un megasporangio rodeado por envolturas y unido a la placenta. Después de la fecundación se transforma en semilla."
+        },
+        {
+          "texto": "«Funículo» = pedículo que une el óvulo a la placenta",
+          "explicacion": "Por él llegan los nutrientes desde la planta madre. Al formarse la semilla, deja una cicatriz llamada hilo."
+        },
+        {
+          "texto": "«Tegumentos» = envolturas del óvulo",
+          "explicacion": "Rodean y protegen a la nucela. Después de la fecundación forman la cubierta de la semilla."
+        },
+        {
+          "texto": "«Primina» = tegumento externo del óvulo",
+          "explicacion": "Es la envoltura más externa. Junto con la secundina deja una pequeña abertura en el extremo."
+        },
+        {
+          "texto": "«Secundina» = tegumento interno del óvulo",
+          "explicacion": "Es la envoltura más cercana a la nucela. Algunas especies tienen un solo tegumento."
+        },
+        {
+          "texto": "«Micrópilo» = abertura de los tegumentos",
+          "explicacion": "Es un pequeño poro por donde suele entrar el tubo polínico. En la semilla permanece como un orificio por donde ingresa el agua al germinar."
+        },
+        {
+          "texto": "«Nucela» = tejido central del óvulo",
+          "explicacion": "Es el megasporangio, donde se forman las megásporas. Nutre al gametofito femenino mientras se desarrolla."
+        },
+        {
+          "texto": "«Calaza» = base del óvulo opuesta al micrópilo",
+          "explicacion": "Es la zona donde se unen los tegumentos y la nucela con el funículo. Es la vía por la que ingresan los nutrientes al óvulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Megasporogénesis",
+      "puntos": [
+        {
+          "texto": "«Megasporogénesis» = formación de megásporas",
+          "explicacion": "Ocurre en la nucela del óvulo. Al igual que en el androceo, reduce el número de cromosomas a la mitad."
+        },
+        {
+          "texto": "Megasporocito (2n) → meiosis → cuatro megásporas (n)",
+          "explicacion": "El megasporocito es la célula madre de las megásporas y es diploide. La meiosis origina cuatro células haploides ordenadas en fila."
+        },
+        {
+          "texto": "Tres megásporas ⇒ degeneran",
+          "explicacion": "Las tres megásporas que quedan más cerca del micrópilo suelen desaparecer en la mayoría de las especies. Así los nutrientes se concentran en una sola célula."
+        },
+        {
+          "texto": "Una megáspora ⇒ funcional",
+          "explicacion": "La megáspora que queda más alejada del micrópilo sobrevive y crece. Dará origen al gametofito femenino."
+        },
+        {
+          "texto": "«Megagametogénesis» = formación del saco embrionario",
+          "explicacion": "La megáspora funcional realiza tres mitosis sucesivas y produce ocho núcleos haploides. Luego los núcleos se organizan en células."
+        }
+      ]
+    },
+    {
+      "titulo": "Saco embrionario",
+      "puntos": [
+        {
+          "texto": "«Saco embrionario» = gametofito femenino",
+          "explicacion": "Es el gametofito femenino maduro de las angiospermas y se encuentra dentro de la nucela. El tipo más frecuente, llamado Polygonum, aparece en aproximadamente el 70 % de las especies."
+        },
+        {
+          "texto": "Saco embrionario ⊃ siete células + ocho núcleos",
+          "explicacion": "Hay una diferencia entre células y núcleos porque la célula central tiene dos núcleos. El resto de las células tiene un núcleo cada una."
+        },
+        {
+          "texto": "«Oosfera» = gameto femenino",
+          "explicacion": "Es la célula que se une al gameto masculino para formar el cigoto. Se ubica en el polo del micrópilo."
+        },
+        {
+          "texto": "«Sinérgidas» ⇒ guían el tubo polínico",
+          "explicacion": "Son dos células junto a la oosfera que secretan sustancias atrayentes. Una de ellas recibe al tubo polínico y degenera."
+        },
+        {
+          "texto": "«Antípodas» = tres células del polo calazal",
+          "explicacion": "Están en el extremo opuesto al micrópilo. Se relacionan con la nutrición del saco embrionario, aunque su función es menos clara."
+        },
+        {
+          "texto": "«Célula central» ⊃ dos núcleos polares",
+          "explicacion": "Es la célula más grande del saco embrionario y ocupa el centro. Los núcleos polares provienen uno de cada polo del saco."
+        },
+        {
+          "texto": "Núcleos polares → núcleo secundario (2n)",
+          "explicacion": "Los dos núcleos polares pueden fusionarse antes o durante la fecundación según la especie. El resultado es un núcleo diploide en la célula central."
+        }
       ]
     },
     {
       "titulo": "Polinización",
       "puntos": [
-        { "texto": "La «polinización» transporta el polen desde la antera hasta el estigma.", "explicacion": "Puede ser autopolinización, si ocurre dentro de la misma flor, o cruzada, si ocurre entre flores distintas." },
-        { "texto": "La polinización puede ser realizada por animales o por el viento.", "explicacion": "Las flores polinizadas por animales suelen ser vistosas y tener néctar." }
+        {
+          "texto": "«Polinización» = transporte del polen de la antera al estigma",
+          "explicacion": "Es el paso previo a la fecundación y requiere un agente que mueva el polen. Puede ser el viento, un animal, el agua o el ser humano."
+        },
+        {
+          "texto": "Polinización ≠ fecundación",
+          "explicacion": "La polinización solo lleva el polen al estigma, mientras que la fecundación es la unión de los gametos dentro del saco embrionario. Entre ambas se desarrolla el tubo polínico."
+        },
+        {
+          "texto": "«Autopolinización» = polen llega al estigma de la misma flor",
+          "explicacion": "Asegura la reproducción cuando no hay polinizadores. Su costo es que disminuye la variabilidad genética. También se llama autogamia."
+        },
+        {
+          "texto": "Autogamia = autopolinización",
+          "explicacion": "Es un sinónimo y proviene de gamos, que significa unión. Se da en flores hermafroditas con anteras y estigma cercanos."
+        },
+        {
+          "texto": "«Cleistogamia» = autopolinización en flor cerrada",
+          "explicacion": "Se da en flores que nunca llegan a abrirse y que se fecundan solas. Ocurre en algunas violetas."
+        },
+        {
+          "texto": "«Polinización cruzada» = polen entre flores de distintas plantas",
+          "explicacion": "Aumenta la variabilidad porque combina genes de dos individuos. También se llama alogamia."
+        },
+        {
+          "texto": "Alogamia = polinización cruzada",
+          "explicacion": "Es el término técnico equivalente. Requiere un vector que transporte el polen entre individuos."
+        },
+        {
+          "texto": "«Xenogamia» = polen entre individuos genéticamente distintos",
+          "explicacion": "Es la forma de polinización cruzada que produce la mayor variabilidad. Se opone a la autogamia y a la geitonogamia."
+        },
+        {
+          "texto": "«Geitonogamia» = polen entre flores del mismo individuo",
+          "explicacion": "Aunque interviene un polinizador, genéticamente se parece a la autogamia porque el polen y los óvulos provienen de la misma planta."
+        },
+        {
+          "texto": "Polinización cruzada ⇒ mayor variabilidad",
+          "explicacion": "Los descendientes reciben genes de dos plantas distintas. Esto da más oportunidades de adaptarse a cambios."
+        },
+        {
+          "texto": "Autopolinización ⇒ menor variabilidad",
+          "explicacion": "Los descendientes se parecen mucho a la planta madre. A cambio, es útil para colonizar lugares con pocos polinizadores."
+        }
       ]
     },
     {
-      "titulo": "Fecundación",
+      "titulo": "Agentes polinizadores",
       "puntos": [
-        { "texto": "En la «doble fecundación», un núcleo espermático se une a la oosfera.", "explicacion": "Forma el cigoto, que da origen al embrión." },
-        { "texto": "El segundo núcleo espermático forma el «endospermo».", "explicacion": "Es un tejido triploide que almacena nutrientes para el embrión." }
+        {
+          "texto": "«Anemofilia» = polinización por el viento",
+          "explicacion": "Las flores son pequeñas, con pétalos poco vistosos, mucho polen liviano y estigmas plumosos. Es el caso de los pastos, como el maíz y el trigo."
+        },
+        {
+          "texto": "«Entomofilia» = polinización por insectos",
+          "explicacion": "Las flores tienen colores vistosos, aroma y néctar, y su polen suele ser pegajoso o con espinas. Abejas, mariposas y escarabajos son los polinizadores típicos."
+        },
+        {
+          "texto": "«Ornitofilia» = polinización por aves",
+          "explicacion": "Las flores suelen ser rojas o anaranjadas, tubulares y con mucho néctar. Los colibríes son los polinizadores más importantes en América."
+        },
+        {
+          "texto": "«Quiropterofilia» = polinización por murciélagos",
+          "explicacion": "Las flores son grandes, de apertura nocturna, de colores claros y con olor intenso. Algunos cactus columnares son polinizados así."
+        },
+        {
+          "texto": "«Hidrofilia» = polinización por el agua",
+          "explicacion": "Es poco frecuente y se da en plantas acuáticas, como Vallisneria. El polen o las flores masculinas flotan hasta alcanzar el estigma."
+        },
+        {
+          "texto": "«Polinización artificial» = realizada por el ser humano",
+          "explicacion": "Se usa para aumentar la producción de frutos o para controlar cruzamientos. La vainilla se poliniza a mano fuera de su lugar de origen, método ideado en 1841 por Edmond Albius."
+        },
+        {
+          "texto": "«Síndrome de polinización» = rasgos florales adaptados al polinizador",
+          "explicacion": "Es la combinación de color, forma, aroma y néctar asociada con un tipo de agente. Refleja una evolución conjunta entre flor y polinizador."
+        }
       ]
     },
     {
-      "titulo": "Semilla y fruto",
+      "titulo": "Evitar autopolinización",
       "puntos": [
-        { "texto": "El óvulo fecundado forma la semilla, que contiene el embrión.", "explicacion": "Los cotiledones y el endospermo almacenan nutrientes para la germinación." },
-        { "texto": "El «fruto» se forma a partir del ovario y protege las semillas.", "explicacion": "Facilita además su dispersión." }
+        {
+          "texto": "«Dicogamia» = maduración no simultánea de los sexos de la flor",
+          "explicacion": "Las anteras y el estigma de una misma flor no están receptivos al mismo tiempo. Así el polen propio no cae sobre un estigma listo para recibirlo."
+        },
+        {
+          "texto": "«Protandria» = estambres maduran antes que el pistilo",
+          "explicacion": "La flor libera polen primero y después su estigma se vuelve receptivo. Se observa en muchas flores compuestas."
+        },
+        {
+          "texto": "«Protoginia» = pistilo madura antes que los estambres",
+          "explicacion": "El estigma está receptivo antes de que la antera libere polen. Ocurre en el aguacate, cuyas flores se abren primero como femeninas y luego como masculinas."
+        },
+        {
+          "texto": "«Hercogamia» = separación espacial entre antera y estigma",
+          "explicacion": "La posición de las piezas evita el contacto directo entre el polen y el estigma de la misma flor. Aun así un polinizador puede transportarlo hacia otra flor."
+        },
+        {
+          "texto": "«Autoincompatibilidad» = rechazo genético del propio polen",
+          "explicacion": "El estigma reconoce el polen de la misma planta y detiene su germinación. Es un mecanismo químico y genético."
+        }
       ]
     },
     {
-      "titulo": "Gimnospermas",
+      "titulo": "Tubo polínico",
       "puntos": [
-        { "texto": "Las gimnospermas tienen óvulos desnudos y no forman fruto.", "explicacion": "Sus semillas se encuentran expuestas, por ejemplo en las piñas de los pinos." }
+        {
+          "texto": "Polen en estigma ⇒ reconocimiento",
+          "explicacion": "El estigma identifica si el polen es de la misma especie y compatible. Si lo es, permite que el grano germine."
+        },
+        {
+          "texto": "Hidratación del polen ⇒ germinación",
+          "explicacion": "El grano absorbe agua del estigma y reactiva su metabolismo. Entonces la intina se prolonga por un poro germinativo."
+        },
+        {
+          "texto": "«Tubo polínico» = prolongación de la célula vegetativa",
+          "explicacion": "Crece por su ápice a través del estilo, digiriendo y utilizando sus tejidos. Su crecimiento puede ser de varios centímetros, según la especie."
+        },
+        {
+          "texto": "Tubo polínico ⇒ transporta los núcleos espermáticos",
+          "explicacion": "Los gametos masculinos no tienen movilidad propia y dependen del tubo para llegar al saco embrionario. Por eso el agua no es necesaria para la fecundación."
+        },
+        {
+          "texto": "Núcleo vegetativo ⇒ dirige el crecimiento del tubo",
+          "explicacion": "Se ubica cerca del ápice del tubo mientras este avanza. Regula la actividad del tubo hasta que llega al óvulo."
+        },
+        {
+          "texto": "«Quimiotropismo» ⇒ guía el tubo hacia el óvulo",
+          "explicacion": "Es el crecimiento hacia una sustancia química. Las sinérgidas secretan atrayentes que orientan el tubo hacia el micrópilo."
+        },
+        {
+          "texto": "«Porogamia» = entrada del tubo por el micrópilo",
+          "explicacion": "Es el camino más frecuente en las angiospermas. Si el tubo entra por la calaza, la entrada se llama calazogamia, que es poco común."
+        },
+        {
+          "texto": "Tubo polínico ⇒ descarga los gametos en el saco embrionario",
+          "explicacion": "El tubo penetra en una sinérgida, que degenera, y libera allí sus dos núcleos espermáticos. Entonces ocurre la fecundación."
+        }
+      ]
+    },
+    {
+      "titulo": "Doble fecundación",
+      "puntos": [
+        {
+          "texto": "«Doble fecundación» = dos fecundaciones en el saco embrionario",
+          "explicacion": "Cada uno de los dos núcleos espermáticos se une con una célula distinta del saco embrionario. Ambas uniones ocurren casi al mismo tiempo."
+        },
+        {
+          "texto": "Sergei Gavrilovich Navashin ⇒ descubre la doble fecundación en 1898",
+          "explicacion": "Navashin la observó en las plantas Lilium y Fritillaria. El botánico francés Léon Guignard la describió de forma independiente en 1899."
+        },
+        {
+          "texto": "Núcleo espermático + oosfera → cigoto (2n)",
+          "explicacion": "La unión de un gameto masculino con el femenino restituye la dotación diploide. El cigoto es la primera célula del nuevo esporofito."
+        },
+        {
+          "texto": "Cigoto ⇒ origina el embrión",
+          "explicacion": "Se divide muchas veces por mitosis y forma una planta en miniatura. Esa planta quedará dentro de la semilla."
+        },
+        {
+          "texto": "Núcleo espermático + dos núcleos polares → núcleo triploide (3n)",
+          "explicacion": "El segundo gameto masculino se une con los dos núcleos haploides de la célula central. De ahí resulta una célula con tres juegos de cromosomas."
+        },
+        {
+          "texto": "Núcleo triploide → endospermo",
+          "explicacion": "La célula central se divide y forma un tejido nutricio de reserva. Alimenta al embrión durante su desarrollo."
+        },
+        {
+          "texto": "Endospermo triploide ⇒ exclusivo de las angiospermas",
+          "explicacion": "Es una característica distintiva de este grupo de plantas. Solo se forma si hubo fecundación, de modo que no se gastan reservas en óvulos sin fecundar."
+        },
+        {
+          "texto": "Sinérgidas + antípodas ⇒ degeneran",
+          "explicacion": "Después de la fecundación, las células restantes del saco embrionario ya no cumplen función. Sus restos los absorbe el endospermo."
+        }
+      ]
+    },
+    {
+      "titulo": "Formación del embrión",
+      "puntos": [
+        {
+          "texto": "Cigoto → proembrión → embrión",
+          "explicacion": "El cigoto se divide de forma desigual y origina dos regiones: una que formará el embrión y otra el suspensor. Luego el embrión continúa su diferenciación."
+        },
+        {
+          "texto": "«Suspensor» = estructura que sostiene y nutre al embrión",
+          "explicacion": "Empuja al embrión hacia el endospermo y le transmite nutrientes. Desaparece cuando el embrión madura."
+        },
+        {
+          "texto": "Embrión dicotiledóneo ⇒ etapa globular → corazón → torpedo",
+          "explicacion": "El nombre de cada etapa describe la forma del embrión. En la etapa corazón aparecen los dos cotiledones."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformaciones posteriores",
+      "puntos": [
+        {
+          "texto": "Óvulo fecundado → semilla",
+          "explicacion": "El óvulo ya fecundado madura y se deshidrata. La semilla protege al embrión y le permite esperar condiciones favorables."
+        },
+        {
+          "texto": "Ovario → fruto",
+          "explicacion": "Después de la fecundación el ovario crece y madura. Su pared se transforma en el pericarpio, que rodea a las semillas."
+        },
+        {
+          "texto": "Tegumentos → testa",
+          "explicacion": "Las envolturas del óvulo se endurecen y forman la cubierta de la semilla. Así protege al embrión de golpes y de la desecación."
+        },
+        {
+          "texto": "Cáliz + corola + estambres ⇒ se marchitan",
+          "explicacion": "Después de la fecundación, estas piezas pierden su función. Se caen o se secan, aunque en algunos frutos el cáliz persiste."
+        },
+        {
+          "texto": "Semillas ⇒ liberan hormonas que desarrollan el fruto",
+          "explicacion": "Hormonas como las auxinas estimulan el crecimiento del ovario. En la fresa, los aquenios producen auxinas y el receptáculo carnoso crece."
+        }
+      ]
+    },
+    {
+      "titulo": "Semilla",
+      "puntos": [
+        {
+          "texto": "«Semilla» = óvulo fecundado y maduro",
+          "explicacion": "Contiene el embrión, el tejido de reserva y una cubierta protectora. Permite dispersión y supervivencia en condiciones desfavorables."
+        },
+        {
+          "texto": "«Testa» = cubierta protectora de la semilla",
+          "explicacion": "Se forma a partir de los tegumentos del óvulo. Es dura en muchas especies, lo que dificulta la entrada de agua."
+        },
+        {
+          "texto": "«Hilo» = cicatriz del funículo en la semilla",
+          "explicacion": "Es la marca por donde la semilla estuvo unida a la planta. En el frijol se ve como una mancha en el borde de la semilla."
+        },
+        {
+          "texto": "Embrión ⊃ radícula + plúmula + cotiledones",
+          "explicacion": "Es una planta miniatura con una raíz embrionaria, un vástago y hojas embrionarias. También incluye el hipocótilo y el epicótilo."
+        },
+        {
+          "texto": "«Radícula» → raíz primaria",
+          "explicacion": "Es la raíz embrionaria y suele ser lo primero que emerge al germinar. Fija la plántula al suelo y absorbe agua."
+        },
+        {
+          "texto": "«Plúmula» → vástago con primeras hojas",
+          "explicacion": "Es el ápice del embrión que formará el tallo y las hojas verdaderas. Está situada sobre los cotiledones."
+        },
+        {
+          "texto": "«Hipocótilo» = tallito bajo los cotiledones",
+          "explicacion": "Está entre la radícula y los cotiledones. Su alargamiento eleva los cotiledones en la germinación epígea."
+        },
+        {
+          "texto": "«Epicótilo» = tallito sobre los cotiledones",
+          "explicacion": "Está entre los cotiledones y la plúmula. Su alargamiento ocurre en la germinación hipógea."
+        },
+        {
+          "texto": "«Cotiledón» = hoja embrionaria de la semilla",
+          "explicacion": "En muchas dicotiledóneas almacena reservas, mientras que en las monocotiledóneas suele absorber nutrientes del endospermo. Cuando está en la superficie puede hacer fotosíntesis."
+        },
+        {
+          "texto": "«Endospermo» ⇒ tejido de reserva de la semilla",
+          "explicacion": "Contiene almidón, proteínas y lípidos que alimentan al embrión durante la germinación. El almidón del trigo y el maíz proviene de él."
+        },
+        {
+          "texto": "Semilla albuminada ⊃ endospermo",
+          "explicacion": "Conserva el endospermo hasta la madurez. Es lo que ocurre en el maíz, el trigo y el ricino."
+        },
+        {
+          "texto": "Semilla exalbuminada ✗ endospermo",
+          "explicacion": "El endospermo se consume durante el desarrollo y las reservas pasan a los cotiledones. Es el caso del frijol, la arveja y el maní."
+        },
+        {
+          "texto": "Monocotiledónea ⊃ un cotiledón",
+          "explicacion": "Su única hoja embrionaria forma parte de un grupo que incluye al maíz, al trigo y al arroz. Sus flores suelen tener piezas en múltiplos de tres."
+        },
+        {
+          "texto": "Dicotiledónea ⊃ dos cotiledones",
+          "explicacion": "Las dos hojas embrionarias son visibles al abrir una semilla de frijol. Con frecuencia concentran las reservas."
+        },
+        {
+          "texto": "«Escutelo» = cotiledón de las gramíneas",
+          "explicacion": "Se ubica entre el endospermo y el embrión. Absorbe los nutrientes del endospermo y los transfiere al embrión."
+        },
+        {
+          "texto": "«Coleoptilo» ⇒ protege la plúmula en gramíneas",
+          "explicacion": "Es una vaina que cubre al ápice del tallo mientras atraviesa el suelo. Se abre cuando llega a la superficie."
+        },
+        {
+          "texto": "«Coleorriza» ⇒ protege la radícula en gramíneas",
+          "explicacion": "Es una vaina que cubre la raíz embrionaria. Se rompe cuando la raíz emerge."
+        }
+      ]
+    },
+    {
+      "titulo": "Fruto",
+      "puntos": [
+        {
+          "texto": "«Fruto» = ovario desarrollado y maduro",
+          "explicacion": "Protege las semillas y ayuda a dispersarlas. Es una novedad evolutiva de las angiospermas."
+        },
+        {
+          "texto": "«Pericarpio» = pared del fruto",
+          "explicacion": "Procede de la pared del ovario y tiene tres capas. Su textura define si el fruto es seco o carnoso."
+        },
+        {
+          "texto": "«Epicarpio» = capa externa del pericarpio",
+          "explicacion": "Es la piel o la cáscara del fruto. También se llama exocarpio."
+        },
+        {
+          "texto": "«Mesocarpio» = capa media del pericarpio",
+          "explicacion": "En frutos carnosos es la parte jugosa que se come, como la pulpa del durazno. En otros es fibrosa."
+        },
+        {
+          "texto": "«Endocarpio» = capa interna del pericarpio",
+          "explicacion": "Rodea a las semillas y puede ser membranoso, jugoso o duro. Cuando es duro forma el hueso del durazno."
+        },
+        {
+          "texto": "«Fruto verdadero» = deriva solo del ovario",
+          "explicacion": "Todas sus partes comestibles o no proceden del ovario. Son verdaderos el tomate y el durazno."
+        },
+        {
+          "texto": "«Pseudofruto» = fruto con otras partes de la flor",
+          "explicacion": "Además del ovario participa otra parte, como el receptáculo. En la manzana la parte carnosa es el receptáculo, y en la fresa también."
+        },
+        {
+          "texto": "«Partenocarpia» = fruto formado sin fecundación",
+          "explicacion": "Produce frutos sin semillas porque no hay fecundación. Ocurre de forma natural en el banano cultivado y en la piña."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de frutos",
+      "puntos": [
+        {
+          "texto": "Fruto simple = deriva de un ovario de una flor",
+          "explicacion": "Es el tipo más frecuente. Puede proceder de un ovario con un carpelo o con varios fusionados."
+        },
+        {
+          "texto": "Fruto agregado = deriva de varios pistilos de una flor",
+          "explicacion": "Cada pistilo forma un frutito pequeño y todos quedan reunidos sobre un mismo receptáculo. La frambuesa es un ejemplo."
+        },
+        {
+          "texto": "Fruto múltiple = deriva de varias flores",
+          "explicacion": "También se llama infrutescencia. Los ovarios de flores vecinas se unen en una sola estructura, como en la piña y el higo."
+        },
+        {
+          "texto": "Fruto carnoso ⇒ pericarpio jugoso",
+          "explicacion": "La pulpa atrae a los animales que dispersan las semillas. Son carnosos la baya, la drupa, el pomo, el hesperidio y la pepónide."
+        },
+        {
+          "texto": "Fruto seco ⇒ pericarpio seco al madurar",
+          "explicacion": "Se clasifica en dehiscente si se abre para liberar las semillas e indehiscente si no se abre. Son secos la legumbre, la cápsula, el aquenio y la cariópside."
+        },
+        {
+          "texto": "«Baya» = fruto carnoso con varias semillas",
+          "explicacion": "Tiene mesocarpio y endocarpio carnosos y las semillas quedan sueltas en la pulpa. Son bayas el tomate, la uva y el pimiento."
+        },
+        {
+          "texto": "«Drupa» = fruto carnoso con endocarpio duro",
+          "explicacion": "Tiene una sola semilla encerrada en un hueso. Son drupas el durazno, la ciruela, la aceituna y el mango."
+        },
+        {
+          "texto": "«Pomo» = fruto carnoso derivado de ovario ínfero",
+          "explicacion": "La pulpa comestible proviene del receptáculo, por eso se considera un pseudofruto. Son pomos la manzana y la pera."
+        },
+        {
+          "texto": "«Hesperidio» = fruto carnoso de los cítricos",
+          "explicacion": "Tiene epicarpio con glándulas de aceite y endocarpio dividido en gajos con vesículas de jugo. Son hesperidios la naranja, el limón y la mandarina."
+        },
+        {
+          "texto": "«Pepónide» = fruto carnoso de las cucurbitáceas",
+          "explicacion": "Es una baya de epicarpio duro y grandes semillas, derivada de un ovario ínfero. Son pepónides la sandía, el zapallo y el pepino."
+        },
+        {
+          "texto": "«Legumbre» = fruto seco dehiscente que se abre por dos suturas",
+          "explicacion": "Es el fruto típico de las leguminosas, con semillas unidas a una sutura. El frijol, la arveja y el haba forman legumbres."
+        },
+        {
+          "texto": "«Silicua» = fruto seco dehiscente con tabique central",
+          "explicacion": "Se abre por dos valvas y deja un tabique donde quedan las semillas. Es característica de las crucíferas, como la mostaza."
+        },
+        {
+          "texto": "«Cápsula» = fruto seco dehiscente de varios carpelos",
+          "explicacion": "Se abre por poros, dientes o valvas para liberar las semillas. Son cápsulas la del algodón y la de la amapola."
+        },
+        {
+          "texto": "«Aquenio» = fruto seco indehiscente con una semilla libre",
+          "explicacion": "La semilla no se une a la pared del ovario. El girasol tiene aquenios."
+        },
+        {
+          "texto": "«Cariópside» = fruto seco con pericarpio soldado a la semilla",
+          "explicacion": "La cubierta del fruto y la de la semilla forman una sola pieza. Es el grano del maíz, del trigo y del arroz."
+        },
+        {
+          "texto": "«Sámara» = fruto seco indehiscente con ala",
+          "explicacion": "El ala facilita la dispersión por el viento. Son sámaras las del arce y el olmo."
+        },
+        {
+          "texto": "«Nuez» = fruto seco indehiscente con pericarpio leñoso",
+          "explicacion": "Su pared dura protege la semilla. Son nueces la avellana y la bellota."
+        }
+      ]
+    },
+    {
+      "titulo": "Dispersión de semillas",
+      "puntos": [
+        {
+          "texto": "«Dispersión» = traslado de semillas lejos de la planta madre",
+          "explicacion": "Reduce la competencia entre la planta madre y sus descendientes. También permite colonizar nuevos lugares."
+        },
+        {
+          "texto": "«Anemocoria» = dispersión por el viento",
+          "explicacion": "Las semillas o los frutos son livianos o tienen alas o pelos. El diente de león tiene vilano y el arce tiene sámaras."
+        },
+        {
+          "texto": "«Hidrocoria» = dispersión por el agua",
+          "explicacion": "Las semillas o frutos flotan y resisten la humedad. El coco puede viajar por el mar hasta otra costa."
+        },
+        {
+          "texto": "«Zoocoria» = dispersión por animales",
+          "explicacion": "Puede ser por ingestión o por adherencia. Es la forma de dispersión más importante en frutos carnosos."
+        },
+        {
+          "texto": "«Endozoocoria» = semillas ingeridas y luego expulsadas",
+          "explicacion": "Las semillas atraviesan el tubo digestivo y salen con las heces, a veces lejos de la planta. Algunas germinan mejor después del paso por el animal."
+        },
+        {
+          "texto": "«Epizoocoria» = semillas adheridas al cuerpo",
+          "explicacion": "Ganchos o espinas se enganchan en el pelo o las plumas. Es el caso del cadillo."
+        },
+        {
+          "texto": "«Autocoria» = dispersión sin agente externo",
+          "explicacion": "La propia planta expulsa las semillas. Algunas legumbres se abren con fuerza al secarse y las lanzan."
+        },
+        {
+          "texto": "«Antropocoria» = dispersión por el ser humano",
+          "explicacion": "El comercio y la agricultura han llevado semillas a regiones lejanas. Muchos cultivos se difundieron así."
+        }
+      ]
+    },
+    {
+      "titulo": "Germinación",
+      "puntos": [
+        {
+          "texto": "«Germinación» = reanudación del crecimiento del embrión",
+          "explicacion": "Termina cuando la radícula atraviesa la testa. Después se forma la plántula, que es la planta joven."
+        },
+        {
+          "texto": "Agua ✓ germinación",
+          "explicacion": "La semilla seca absorbe agua, hidrata sus tejidos y reactiva su metabolismo. Sin agua el embrión permanece inactivo."
+        },
+        {
+          "texto": "Oxígeno ✓ germinación",
+          "explicacion": "La semilla en actividad respira y necesita oxígeno para obtener energía. Un suelo inundado la puede asfixiar."
+        },
+        {
+          "texto": "Temperatura adecuada ✓ germinación",
+          "explicacion": "Cada especie tiene un rango óptimo, ya que las enzimas del embrión funcionan en ciertos límites. Una temperatura muy alta o muy baja detiene el proceso."
+        },
+        {
+          "texto": "Luz ✓ semillas fotoblásticas",
+          "explicacion": "Algunas semillas germinan solo con luz y otras en oscuridad. Es un mecanismo para evitar germinar a una profundidad inadecuada."
+        },
+        {
+          "texto": "«Latencia» = reposo de semillas viables",
+          "explicacion": "Una semilla viva no germina aunque tenga condiciones favorables. Evita germinar en una época en que la plántula no sobreviviría."
+        },
+        {
+          "texto": "«Escarificación» ⇒ rompe la latencia",
+          "explicacion": "Consiste en desgastar la testa, de modo que el agua entre. En la naturaleza lo hacen la abrasión o los jugos digestivos."
+        },
+        {
+          "texto": "«Estratificación» ⇒ rompe la latencia con frío",
+          "explicacion": "Exponer las semillas a bajas temperaturas y humedad durante un tiempo permite que germinen. Imita al invierno de las regiones templadas."
+        },
+        {
+          "texto": "«Imbibición» = absorción de agua por la semilla",
+          "explicacion": "Es el primer paso de la germinación. La semilla se hincha y a veces rompe la testa."
+        },
+        {
+          "texto": "«Giberelinas» ⇒ activan las enzimas de reserva",
+          "explicacion": "Son hormonas producidas por el embrión. En los cereales inducen enzimas como la amilasa, que convierte el almidón del endospermo en azúcares."
+        },
+        {
+          "texto": "Radícula ⇒ primera estructura en emerger",
+          "explicacion": "Su salida asegura que la plántula obtenga agua y se fije al suelo. Luego sale el vástago."
+        },
+        {
+          "texto": "Germinación epígea ⇒ cotiledones sobre el suelo",
+          "explicacion": "El hipocótilo se alarga y levanta los cotiledones. Es el caso del frijol."
+        },
+        {
+          "texto": "Germinación hipógea ⇒ cotiledones bajo el suelo",
+          "explicacion": "El epicótilo se alarga y los cotiledones permanecen enterrados. Es el caso de la arveja y del maíz."
+        },
+        {
+          "texto": "«Plántula» = planta joven recién germinada",
+          "explicacion": "Se alimenta con las reservas de la semilla hasta que sus primeras hojas verdaderas hacen fotosíntesis. Es una etapa muy vulnerable."
+        }
       ]
     }
   ]

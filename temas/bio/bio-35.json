@@ -1,52 +1,176 @@
 {
   "curso": "Biología",
-  "tema": "Ciclo de Calvin y Benson",
+  "tema": "Ciclo de Calvin",
   "glosario": {
-    "Ciclo de Calvin": "Ruta de la fase oscura que fija CO2 en compuestos orgánicos.",
-    "Ribulosa bisfosfato (RuBP)": "Aceptor de CO2 de cinco carbonos en el ciclo de Calvin.",
-    "Ribulosa bisfosfato carboxilasa oxigenasa (Rubisco)": "Enzima que fija el CO2 en el ciclo de Calvin.",
-    "Ácido 3-fosfoglicérico (3-PGA)": "Compuesto de tres carbonos producido en la fijación del CO2.",
-    "Gliceraldehído-3-fosfato (G3P)": "Azúcar de tres carbonos que sale del ciclo para formar glucosa.",
-    "Fotorrespiración": "Reacción de Rubisco con oxígeno que libera CO2 sin producir energía.",
-    "Ciclo C3": "Ruta de fijación de CO2 cuyo primer producto tiene tres carbonos."
+    "Ciclo de Calvin": "Serie de reacciones de la fase oscura que fija el dióxido de carbono y produce azúcares.",
+    "Fase oscura": "Etapa de la fotosíntesis que fija el carbono en el estroma usando ATP y NADPH.",
+    "Fijación del carbono": "Incorporación del dióxido de carbono a una molécula orgánica.",
+    "RuBisCO": "Enzima que fija el dióxido de carbono a la ribulosa 1,5-bisfosfato en el ciclo de Calvin.",
+    "Ribulosa 1,5-bisfosfato": "Azúcar de cinco carbonos que acepta el dióxido de carbono en el ciclo de Calvin.",
+    "3-fosfoglicerato": "Molécula de tres carbonos que se forma al fijarse el dióxido de carbono.",
+    "Gliceraldehído 3-fosfato": "Azúcar de tres carbonos producido en la fase de reducción del ciclo de Calvin.",
+    "Reducción": "Etapa del ciclo en la que el 3-fosfoglicerato se convierte en gliceraldehído 3-fosfato usando ATP y NADPH.",
+    "Regeneración": "Etapa del ciclo en la que se vuelve a formar la ribulosa 1,5-bisfosfato.",
+    "Fotorrespiración": "Proceso en el que la RuBisCO fija oxígeno en lugar de dióxido de carbono y libera dióxido de carbono sin producir azúcar.",
+    "Plantas C3": "Plantas que fijan el carbono directamente por el ciclo de Calvin y forman 3-fosfoglicerato como primer producto estable.",
+    "Plantas C4": "Plantas que fijan primero el carbono en un compuesto de cuatro carbonos y luego lo llevan al ciclo de Calvin.",
+    "Plantas CAM": "Plantas que abren los estomas de noche para fijar el carbono y lo usan de día en el ciclo de Calvin."
   },
   "theory": [
     {
-      "titulo": "Concepto y lugar",
+      "titulo": "Concepto del ciclo de Calvin",
       "puntos": [
-        { "texto": "El ciclo de Calvin y Benson es la fase oscura de la fotosíntesis.", "explicacion": "Tampoco se llama oscura porque necesite oscuridad, sino porque no requiere luz directa." },
-        { "texto": "El ciclo de Calvin ocurre en el «estroma» del cloroplasto.", "explicacion": "Usa el ATP y el NADPH producidos en la fase lumínica." }
+        {
+          "texto": "El ciclo de Calvin es la fase oscura de la fotosíntesis",
+          "explicacion": "Ocurre en el estroma del cloroplasto y usa los productos de la fase luminosa para fijar el carbono."
+        },
+        {
+          "texto": "El ciclo de Calvin convierte el dióxido de carbono en azúcares",
+          "explicacion": "Los azúcares producidos son la base para la síntesis de glucosa, sacarosa y almidón."
+        },
+        {
+          "texto": "El ciclo de Calvin se llama también ciclo de Calvin-Benson",
+          "explicacion": "Lleva el nombre de Melvin Calvin y de Andrew Benson, quienes describieron las reacciones."
+        },
+        {
+          "texto": "El ciclo de Calvin no requiere luz de forma directa",
+          "explicacion": "Depende de ATP y NADPH, que sí necesitan luz, pero sus reacciones pueden ocurrir en la oscuridad mientras haya estos productos."
+        }
       ]
     },
     {
-      "titulo": "Fijación del carbono",
+      "titulo": "Etapas del ciclo de Calvin",
       "puntos": [
-        { "texto": "La «Rubisco» une el CO2 a la «Ribulosa bisfosfato (RuBP)».", "explicacion": "La molécula resultante se divide en dos compuestos de tres carbonos." },
-        { "texto": "Cada CO2 fijado produce dos moléculas de «Ácido 3-fosfoglicérico (3-PGA)».", "explicacion": "Por eso el primer producto estable del ciclo tiene tres carbonos, lo que da el nombre ciclo C3." }
+        {
+          "texto": "El ciclo de Calvin tiene tres etapas: fijación, reducción y regeneración",
+          "explicacion": "La fijación incorpora el carbono, la reducción forma azúcares y la regeneración recupera la molécula inicial."
+        },
+        {
+          "texto": "En la fijación el dióxido de carbono se une a la ribulosa 1,5-bisfosfato",
+          "explicacion": "Esta reacción es catalizada por la RuBisCO, la enzima más abundante de la hoja."
+        },
+        {
+          "texto": "La fijación produce dos moléculas de 3-fosfoglicerato por cada CO₂",
+          "explicacion": "El compuesto de seis carbonos inestable se divide en dos moléculas de tres carbonos."
+        },
+        {
+          "texto": "En la reducción el 3-fosfoglicerato se convierte en gliceraldehído 3-fosfato",
+          "explicacion": "Esta etapa consume ATP y NADPH, que aportan energía y electrones."
+        },
+        {
+          "texto": "Por cada tres CO₂ fijados el ciclo produce seis gliceraldehído 3-fosfato",
+          "explicacion": "Dato por confirmar: de estas seis moléculas, cinco se usan para regenerar la ribulosa y solo una sale del ciclo."
+        },
+        {
+          "texto": "En la regeneración se forma de nuevo la ribulosa 1,5-bisfosfato",
+          "explicacion": "Esta etapa también consume ATP, y permite que el ciclo siga fijando carbono."
+        }
       ]
     },
     {
-      "titulo": "Reducción",
+      "titulo": "Función de la RuBisCO",
       "puntos": [
-        { "texto": "El ATP y el NADPH reducen el 3-PGA a «Gliceraldehído-3-fosfato (G3P)».", "explicacion": "El G3P es el producto que sale del ciclo para formar glucosa y otros compuestos." }
+        {
+          "texto": "La RuBisCO es la enzima que fija el dióxido de carbono en el ciclo",
+          "explicacion": "Dato por confirmar: se considera la proteína más abundante de la Tierra por su presencia en las hojas."
+        },
+        {
+          "texto": "La RuBisCO se activa en presencia de luz",
+          "explicacion": "Dato por confirmar: en la oscuridad se inhibe, para evitar gastar energía en reacciones que no pueden continuar."
+        },
+        {
+          "texto": "La RuBisCO también puede fijar oxígeno en lugar de dióxido de carbono",
+          "explicacion": "Esta actividad oxigenasa produce fotorrespiración y reduce la eficiencia de la fotosíntesis."
+        }
       ]
     },
     {
-      "titulo": "Regeneración",
+      "titulo": "Balance energético del ciclo",
       "puntos": [
-        { "texto": "Parte del G3P regenera la RuBP para continuar el ciclo.", "explicacion": "Por eso el ciclo necesita ATP adicional para su reorganización." }
+        {
+          "texto": "Para fijar una molécula de CO₂ el ciclo necesita tres ATP y dos NADPH",
+          "explicacion": "Dato por confirmar: el ATP se usa en la reducción y en la regeneración, y el NADPH solo en la reducción."
+        },
+        {
+          "texto": "El ciclo de Calvin depende de los productos de la fase luminosa",
+          "explicacion": "Sin ATP y NADPH, el ciclo se detiene y no se produce glucosa."
+        }
       ]
     },
     {
-      "titulo": "Balance del ciclo",
+      "titulo": "Productos del ciclo",
       "puntos": [
-        { "texto": "Para producir una glucosa se necesitan seis CO2, 18 ATP y 12 NADPH.", "explicacion": "Son seis vueltas del ciclo, cada una con un CO2 fijado." }
+        {
+          "texto": "El producto principal del ciclo es el gliceraldehído 3-fosfato",
+          "explicacion": "Es el azúcar de tres carbonos que puede convertirse en glucosa, sacarosa o almidón."
+        },
+        {
+          "texto": "El gliceraldehído 3-fosfato puede formar glucosa-6-fosfato",
+          "explicacion": "Dato por confirmar: la glucosa se forma al unir dos moléculas de gliceraldehído 3-fosfato y transformarlas en hexosa."
+        },
+        {
+          "texto": "Parte del gliceraldehído 3-fosfato se usa para formar almidón en el cloroplasto",
+          "explicacion": "Dato por confirmar: el almidón se almacena temporalmente en el cloroplasto durante el día."
+        },
+        {
+          "texto": "Parte del gliceraldehído 3-fosfato se exporta al citoplasma para formar sacarosa",
+          "explicacion": "Dato por confirmar: la sacarosa es la forma en que la planta transporta azúcares por el floema."
+        }
       ]
     },
     {
       "titulo": "Fotorrespiración",
       "puntos": [
-        { "texto": "La «fotorrespiración» ocurre cuando la Rubisco fija oxígeno en lugar de CO2.", "explicacion": "Se libera CO2 sin producir energía, lo que reduce la eficiencia de la fotosíntesis." }
+        {
+          "texto": "La fotorrespiración ocurre cuando la RuBisCO fija oxígeno",
+          "explicacion": "Se produce con más frecuencia cuando hay poco dióxido de carbono y mucho oxígeno en las hojas."
+        },
+        {
+          "texto": "La fotorrespiración libera dióxido de carbono sin producir azúcar",
+          "explicacion": "Este proceso consume energía y reduce el rendimiento de la fotosíntesis."
+        },
+        {
+          "texto": "Las plantas C3 son más afectadas por la fotorrespiración",
+          "explicacion": "Dato por confirmar: en climas cálidos y secos, cierran los estomas y el oxígeno se acumula en la hoja."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de plantas según la fijación de carbono",
+      "puntos": [
+        {
+          "texto": "Las plantas C3 fijan el carbono directamente en el ciclo de Calvin",
+          "explicacion": "Su primer producto estable es el 3-fosfoglicerato, de tres carbonos. Son la mayoría de las plantas, como el trigo y el arroz."
+        },
+        {
+          "texto": "Las plantas C4 fijan primero el carbono en un compuesto de cuatro carbonos",
+          "explicacion": "Dato por confirmar: el oxalacetato se forma en las células del mesófilo y luego el CO₂ se libera en las células de la vaina."
+        },
+        {
+          "texto": "Las plantas C4 reducen la fotorrespiración",
+          "explicacion": "Dato por confirmar: al concentrar el CO₂ alrededor de la RuBisCO, esta fija el carbono en lugar de oxígeno."
+        },
+        {
+          "texto": "Las plantas CAM abren sus estomas de noche",
+          "explicacion": "Dato por confirmar: fijan el CO₂ como ácido málico y lo usan de día en el ciclo de Calvin con los estomas cerrados."
+        },
+        {
+          "texto": "El maíz y la caña de azúcar son ejemplos de plantas C4",
+          "explicacion": "Dato por confirmar: son plantas adaptadas a climas cálidos con alta intensidad de luz."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia ecológica",
+      "puntos": [
+        {
+          "texto": "El ciclo de Calvin fija el carbono atmosférico en materia orgánica",
+          "explicacion": "Sin este proceso, el carbono no ingresaría a las cadenas alimentarias."
+        },
+        {
+          "texto": "El ciclo de Calvin es la base de la producción primaria de los ecosistemas",
+          "explicacion": "Las plantas y otros autótrofos generan la materia orgánica que sostiene a los heterótrofos."
+        }
       ]
     }
   ]

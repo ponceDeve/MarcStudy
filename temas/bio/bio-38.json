@@ -2,47 +2,191 @@
   "curso": "Biología",
   "tema": "Fosforilación oxidativa",
   "glosario": {
-    "Fosforilación oxidativa": "Producción de ATP a partir de la cadena de transporte de electrones.",
-    "Cadena de transporte de electrones": "Serie de transportadores que pasan electrones y bombean protones.",
-    "Membrana mitocondrial interna": "Membrana que contiene la cadena respiratoria y la ATP sintasa.",
-    "Espacio intermembrana": "Compartimento entre las dos membranas mitocondriales.",
-    "Gradiente de protones": "Diferencia de concentración de protones entre dos compartimentos.",
-    "ATP sintasa": "Enzima que produce ATP usando el gradiente de protones.",
-    "Quimiosmosis": "Producción de ATP por el flujo de protones a favor de su gradiente."
+    "Fosforilación oxidativa": "Proceso que produce ATP a partir de la energía liberada por la cadena de transporte de electrones.",
+    "Cadena de transporte de electrones": "Conjunto de complejos y transportadores de la membrana mitocondrial interna que transfieren electrones hasta el oxígeno.",
+    "Complejo I": "Complejo NADH deshidrogenasa que recibe electrones del NADH y bombea protones.",
+    "Complejo II": "Complejo succinato deshidrogenasa que recibe electrones del FADH₂ y no bombea protones.",
+    "Complejo III": "Complejo citocromo bc₁ que transfiere electrones al citocromo c y bombea protones.",
+    "Complejo IV": "Complejo citocromo c oxidasa que transfiere electrones al oxígeno y bombea protones.",
+    "Coenzima Q": "Transportador lipídico móvil que lleva electrones desde los complejos I y II hasta el complejo III.",
+    "Citocromo c": "Proteína móvil que lleva electrones desde el complejo III hasta el complejo IV.",
+    "Quimiosmosis": "Síntesis de ATP impulsada por el flujo de protones a favor de su gradiente a través de una membrana.",
+    "Teoría quimiosmótica": "Teoría de Peter Mitchell que explica la síntesis de ATP mediante un gradiente de protones.",
+    "Fuerza protonmotriz": "Energía almacenada en el gradiente de protones y en el potencial eléctrico a través de la membrana.",
+    "ATP sintasa": "Complejo enzimático que sintetiza ATP cuando los protones fluyen a favor de su gradiente.",
+    "Espacio intermembrana": "Región entre la membrana mitocondrial interna y la externa, donde se acumulan los protones.",
+    "Desacoplante": "Sustancia que separa la cadena de transporte de la síntesis de ATP, liberando energía como calor.",
+    "Inhibidor": "Sustancia que bloquea una etapa de la cadena o de la síntesis de ATP.",
+    "Termogenina": "Proteína que permite que los protones regresen a la matriz sin pasar por la ATP sintasa, generando calor."
   },
   "theory": [
     {
-      "titulo": "Concepto y lugar",
+      "titulo": "Concepto de fosforilación oxidativa",
       "puntos": [
-        { "texto": "La fosforilación oxidativa produce la mayor parte del ATP celular.", "explicacion": "Se realiza en la membrana mitocondrial interna, en las crestas." },
-        { "texto": "La fosforilación oxidativa se divide en cadena de transporte y quimiosmosis.", "explicacion": "Ambos procesos ocurren acoplados en la misma membrana." }
+        {
+          "texto": "La fosforilación oxidativa es el proceso que produce la mayor parte del ATP celular",
+          "explicacion": "Ocurre en la membrana mitocondrial interna y usa la energía liberada por la oxidación de NADH y FADH₂."
+        },
+        {
+          "texto": "La fosforilación oxidativa acopla la cadena de transporte con la síntesis de ATP",
+          "explicacion": "La energía de los electrones se convierte en un gradiente de protones, y este gradiente impulsa la síntesis de ATP."
+        },
+        {
+          "texto": "La fosforilación oxidativa necesita oxígeno como aceptor final de electrones",
+          "explicacion": "Sin oxígeno, la cadena se detiene y la síntesis de ATP también se interrumpe."
+        }
       ]
     },
     {
       "titulo": "Cadena de transporte de electrones",
       "puntos": [
-        { "texto": "Los electrones del NADH y del FADH2 pasan por la cadena de transporte.", "explicacion": "A medida que avanzan, liberan energía en pasos graduales." },
-        { "texto": "La cadena de transporte bombea protones al «espacio intermembrana».", "explicacion": "Así se acumula una concentración alta de protones en ese compartimento." }
+        {
+          "texto": "La cadena de transporte está formada por cuatro complejos proteicos",
+          "explicacion": "Los complejos I, II, III y IV se encuentran incrustados en la membrana mitocondrial interna."
+        },
+        {
+          "texto": "Los electrones del NADH entran por el complejo I",
+          "explicacion": "El complejo I recibe electrones del NADH y los transfiere a la coenzima Q."
+        },
+        {
+          "texto": "Los electrones del FADH₂ entran por el complejo II",
+          "explicacion": "El complejo II transfiere los electrones del FADH₂ a la coenzima Q sin bombear protones."
+        },
+        {
+          "texto": "La coenzima Q lleva electrones al complejo III",
+          "explicacion": "Es un transportador móvil que se desplaza dentro de la membrana."
+        },
+        {
+          "texto": "El citocromo c lleva electrones del complejo III al complejo IV",
+          "explicacion": "Es una proteína pequeña que se desplaza por el espacio intermembrana."
+        },
+        {
+          "texto": "El complejo IV transfiere los electrones al oxígeno",
+          "explicacion": "El oxígeno recibe los electrones y se une a protones para formar agua."
+        }
       ]
     },
     {
-      "titulo": "Gradiente y síntesis de ATP",
+      "titulo": "Bombeo de protones",
       "puntos": [
-        { "texto": "El «gradiente de protones» tiene energía almacenada.", "explicacion": "Los protones regresan a la matriz a favor de su gradiente, pasando por la ATP sintasa." },
-        { "texto": "La «ATP sintasa» produce ATP al dejar pasar protones.", "explicacion": "Este proceso se llama «quimiosmosis» y es el mismo principio de la fase lumínica." }
+        {
+          "texto": "Los complejos I, III y IV bombean protones desde la matriz al espacio intermembrana",
+          "explicacion": "Dato por confirmar: el complejo I bombea cuatro protones, el III cuatro y el IV dos por cada par de electrones."
+        },
+        {
+          "texto": "El complejo II no bombea protones",
+          "explicacion": "Dato por confirmar: su energía no es suficiente para generar el gradiente, por eso el FADH₂ genera menos ATP que el NADH."
+        },
+        {
+          "texto": "El bombeo de protones crea un gradiente electroquímico",
+          "explicacion": "Se acumulan protones en el espacio intermembrana, lo que genera diferencia de concentración y de carga eléctrica."
+        }
       ]
     },
     {
-      "titulo": "Aceptor final de electrones",
+      "titulo": "Teoría quimiosmótica",
       "puntos": [
-        { "texto": "El oxígeno es el aceptor final de electrones en la cadena.", "explicacion": "Se combina con electrones y protones para formar agua." },
-        { "texto": "Sin oxígeno, la cadena se detiene y no se produce ATP por esta vía.", "explicacion": "Por eso la respiración anaeróbica produce mucho menos ATP." }
+        {
+          "texto": "La teoría quimiosmótica fue propuesta por Peter Mitchell en 1961",
+          "explicacion": "Dato por confirmar: Mitchell propuso que la energía de la cadena se almacena como gradiente de protones, y no como un compuesto intermedio."
+        },
+        {
+          "texto": "En la teoría quimiosmótica la mitocondria funciona como una batería",
+          "explicacion": "La cadena de transporte carga la membrana como si fuera un condensador, y la energía se libera al regresar los protones."
+        },
+        {
+          "texto": "La teoría quimiosmótica fue aceptada tras una larga discusión",
+          "explicacion": "Dato por confirmar: la teoría se debatió durante años hasta que se comprobó con experimentos en vesículas y con la ATP sintasa."
+        }
       ]
     },
     {
-      "titulo": "Balance",
+      "titulo": "ATP sintasa",
       "puntos": [
-        { "texto": "La fosforilación oxidativa produce alrededor de 32 a 34 ATP por glucosa.", "explicacion": "Es el mayor aporte de ATP en la respiración aeróbica." }
+        {
+          "texto": "La ATP sintasa es un complejo enzimático que sintetiza ATP",
+          "explicacion": "Se llama también complejo V y tiene una parte que atraviesa la membrana y otra que sobresale hacia la matriz."
+        },
+        {
+          "texto": "Los protones regresan a la matriz a través de la ATP sintasa",
+          "explicacion": "Al fluir a favor de su gradiente, los protones hacen girar la parte rotatoria de la enzima."
+        },
+        {
+          "texto": "El giro de la ATP sintasa cambia la conformación del sitio activo",
+          "explicacion": "Esto permite unir ADP y fosfato inorgánico para formar ATP."
+        },
+        {
+          "texto": "Por cada tres protones que pasan se sintetiza un ATP",
+          "explicacion": "Dato por confirmar: la cifra exacta depende del número de subunidades de la enzima en cada organismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Rendimiento de ATP",
+      "puntos": [
+        {
+          "texto": "Un NADH produce aproximadamente tres ATP en la fosforilación oxidativa",
+          "explicacion": "Dato por confirmar: algunas estimaciones usan 2,5 ATP por NADH, y otras cifras más antiguas hablan de 3."
+        },
+        {
+          "texto": "Un FADH₂ produce aproximadamente dos ATP en la fosforilación oxidativa",
+          "explicacion": "Dato por confirmar: al entrar por el complejo II, genera menos protones que el NADH."
+        },
+        {
+          "texto": "El rendimiento total por glucosa depende de la lanzadera del NADH citosólico",
+          "explicacion": "Dato por confirmar: las lanzaderas malato-aspartato y glicerol-3-fosfato transportan el NADH citosólico a la mitocondria con costos distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Inhibidores de la cadena",
+      "puntos": [
+        {
+          "texto": "La rotenona inhibe el complejo I",
+          "explicacion": "Dato por confirmar: al bloquearlo, el NADH no puede entregar sus electrones y la cadena se detiene."
+        },
+        {
+          "texto": "La antimicina A inhibe el complejo III",
+          "explicacion": "Dato por confirmar: impide la transferencia de electrones desde la coenzima Q hacia el citocromo c."
+        },
+        {
+          "texto": "El cianuro inhibe el complejo IV",
+          "explicacion": "Dato por confirmar: se une al hierro del citocromo y bloquea el paso de los electrones al oxígeno."
+        },
+        {
+          "texto": "La oligomicina inhibe la ATP sintasa",
+          "explicacion": "Dato por confirmar: al bloquear el paso de protones, detiene la síntesis de ATP y también la cadena, porque el gradiente se acumula."
+        }
+      ]
+    },
+    {
+      "titulo": "Desacoplantes",
+      "puntos": [
+        {
+          "texto": "Los desacoplantes separan la cadena de transporte de la síntesis de ATP",
+          "explicacion": "Dato por confirmar: como el 2,4-dinitrofenol, dejan que los protones regresen a la matriz sin pasar por la ATP sintasa."
+        },
+        {
+          "texto": "Los desacoplantes liberan la energía como calor",
+          "explicacion": "La cadena sigue funcionando y consumiendo oxígeno, pero no se produce ATP."
+        },
+        {
+          "texto": "La termogenina del tejido adiposo pardo actúa como desacoplante natural",
+          "explicacion": "Dato por confirmar: permite que el gradiente se disipe y genere calor para mantener la temperatura corporal."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia de la fosforilación oxidativa",
+      "puntos": [
+        {
+          "texto": "La fosforilación oxidativa es la principal fuente de ATP en las células aeróbicas",
+          "explicacion": "Permite a las células mantener la energía necesaria para sus funciones vitales."
+        },
+        {
+          "texto": "La fosforilación oxidativa depende del suministro de NADH y FADH₂",
+          "explicacion": "Cuando estos transportadores son escasos, la cadena trabaja más lentamente y se produce menos ATP."
+        }
       ]
     }
   ]

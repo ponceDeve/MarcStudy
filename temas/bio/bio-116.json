@@ -2,40 +2,227 @@
   "curso": "Biología",
   "tema": "Dinámica de poblaciones",
   "glosario": {
-    "Dinámica de poblaciones": "Estudio de los cambios en el tamaño y composición de una población.",
-    "Natalidad": "Número de nacimientos por unidad de tiempo en una población.",
-    "Mortalidad": "Número de muertes por unidad de tiempo en una población.",
-    "Crecimiento exponencial": "Crecimiento en el que la tasa de aumento es constante y sin límite.",
-    "Crecimiento logístico": "Crecimiento que se desacelera al acercarse a la capacidad de carga.",
-    "Capacidad de carga": "Máximo número de individuos que el ambiente puede sostener.",
-    "Factor limitante": "Factor que restringe el crecimiento de una población."
+    "Densidad poblacional": "Número de individuos por unidad de superficie o de volumen",
+    "Natalidad": "Número de nacimientos en una población durante un periodo",
+    "Mortalidad": "Número de muertes en una población durante un periodo",
+    "Tasa de crecimiento": "Cambio por unidad de tiempo en el número de individuos",
+    "Capacidad de carga": "Máximo número de individuos que el ambiente puede sostener",
+    "Curva de supervivencia": "Gráfico que muestra la proporción de individuos vivos por edad",
+    "Factor denso-dependiente": "Factor cuyo efecto aumenta con la densidad de la población",
+    "Pirámide de edades": "Gráfico que muestra la distribución de individuos por grupos de edad",
+    "Estrategia r": "Estrategia de muchas crías y poco cuidado parental",
+    "Estrategia K": "Estrategia de pocas crías y gran cuidado parental"
   },
   "theory": [
     {
-      "titulo": "Parámetros de la población",
+      "titulo": "Concepto de población",
       "puntos": [
-        { "texto": "El crecimiento de una población depende de natalidad, mortalidad, inmigración y emigración.", "explicacion": "Si los nacimientos y las inmigraciones superan a las muertes y emigraciones, la población aumenta." }
+        {
+          "texto": "Población: individuos de una misma especie en un lugar",
+          "explicacion": "Sus miembros pueden reproducirse entre sí y comparten un mismo espacio. Su estudio permite entender cómo cambia el número de individuos a lo largo del tiempo."
+        },
+        {
+          "texto": "Densidad poblacional ⇒ individuos por unidad de área",
+          "explicacion": "Se calcula dividiendo el número de individuos entre la superficie ocupada. Una densidad alta puede aumentar la competencia por recursos."
+        },
+        {
+          "texto": "Densidad = número de individuos ÷ superficie",
+          "explicacion": "Si una población de 360 plantas ocupa 60 metros cuadrados, la densidad es 360 ÷ 60 = 6 plantas por metro cuadrado. Este valor sirve para comparar poblaciones de distintos lugares."
+        }
+      ]
+    },
+    {
+      "titulo": "Distribución espacial",
+      "puntos": [
+        {
+          "texto": "Distribución agrupada ⇒ individuos en grupos",
+          "explicacion": "Es la más frecuente en la naturaleza, por ejemplo en manadas o en árboles que crecen cerca de una fuente de agua. Se favorece por recursos concentrados y por la reproducción."
+        },
+        {
+          "texto": "Distribución uniforme ⇒ individuos separados por igual",
+          "explicacion": "Se observa cuando la competencia es intensa, como en plantas que liberan sustancias que impiden el crecimiento de otras cercanas. Es menos frecuente que la agrupada."
+        },
+        {
+          "texto": "Distribución aleatoria ⇒ ubicación sin patrón",
+          "explicacion": "Ocurre cuando los recursos están distribuidos de forma homogénea y no hay interacción fuerte entre los individuos. Es poco común en poblaciones naturales."
+        }
+      ]
+    },
+    {
+      "titulo": "Parámetros demográficos",
+      "puntos": [
+        {
+          "texto": "Natalidad y mortalidad ⇒ cambios internos de la población",
+          "explicacion": "La natalidad aumenta el número de individuos y la mortalidad lo reduce. Su diferencia determina si la población crece, se mantiene o disminuye."
+        },
+        {
+          "texto": "Inmigración y emigración ⇒ cambios por movimiento",
+          "explicacion": "La inmigración es la entrada de individuos desde otra población, mientras que la emigración es su salida. Ambos procesos pueden ser significativos en especies migratorias."
+        },
+        {
+          "texto": "Cambio poblacional = (natalidad − mortalidad) + (inmigración − emigración)",
+          "explicacion": "Este balance permite calcular cuánto varía la población en un periodo. Si el resultado es positivo, la población aumenta; si es negativo, disminuye."
+        },
+        {
+          "texto": "Ejemplo: 100 individuos con 30 nacimientos y 10 muertes",
+          "explicacion": "El cambio es 30 − 10 = 20, por lo que la población pasa de 100 a 120 individuos en el periodo considerado. Este cálculo supone que no hay migraciones."
+        }
       ]
     },
     {
       "titulo": "Crecimiento exponencial",
       "puntos": [
-        { "texto": "En el crecimiento exponencial la población aumenta a una tasa constante.", "explicacion": "Ocurre cuando hay recursos ilimitados, como al inicio de una colonización." },
-        { "texto": "La curva de crecimiento exponencial tiene forma de J.", "explicacion": "El número de individuos crece cada vez más rápido en cada periodo." }
+        {
+          "texto": "Crecimiento exponencial ⇒ tasa constante sin límites",
+          "explicacion": "Ocurre cuando la población tiene recursos abundantes y ningún factor la limita. El número de individuos aumenta cada vez más rápido."
+        },
+        {
+          "texto": "Curva en forma de J ⇒ aumento acelerado",
+          "explicacion": "La gráfica de número de individuos frente al tiempo muestra un ascenso cada vez más pronunciado. Este crecimiento no puede mantenerse por tiempo indefinido en la naturaleza."
+        },
+        {
+          "texto": "Ecuación: ΔN = r × N",
+          "explicacion": "ΔN es el cambio en el número de individuos, N es el tamaño de la población y r es la tasa de crecimiento por individuo. Si r es 0,2 y N es 100, el cambio es 0,2 × 100 = 20 individuos."
+        },
+        {
+          "texto": "Conejos en Australia ⇒ ejemplo de crecimiento exponencial",
+          "explicacion": "En 1859, Thomas Austin liberó 24 conejos en Australia. En pocas décadas la población se extendió por gran parte del continente, con pocos depredadores que la limitaran."
+        }
       ]
     },
     {
       "titulo": "Crecimiento logístico",
       "puntos": [
-        { "texto": "En el crecimiento logístico la tasa de aumento disminuye al acercarse a la capacidad de carga.", "explicacion": "La competencia por alimento, espacio y refugio limita el crecimiento." },
-        { "texto": "La curva logística tiene forma de S y se estabiliza en la capacidad de carga.", "explicacion": "Las poblaciones fluctúan alrededor de ese valor en la mayoría de los casos." }
+        {
+          "texto": "Crecimiento logístico ⇒ crecimiento que se frena",
+          "explicacion": "La tasa de crecimiento disminuye al aumentar la población, por la competencia y la falta de recursos. La población tiende a estabilizarse."
+        },
+        {
+          "texto": "Capacidad de carga K ⇒ tamaño máximo sostenible",
+          "explicacion": "Es el número de individuos que el ambiente puede mantener durante largo tiempo. Depende de la disponibilidad de alimento, agua, refugio y espacio."
+        },
+        {
+          "texto": "Ecuación: ΔN = r × N × (1 − N ÷ K)",
+          "explicacion": "El término (1 − N ÷ K) reduce la tasa de crecimiento a medida que N se acerca a K. Cuando N es igual a K, el crecimiento se detiene."
+        },
+        {
+          "texto": "Ejemplo: N = 200, r = 0,5 y K = 1000",
+          "explicacion": "El cálculo es 0,5 × 200 × (1 − 200 ÷ 1000) = 0,5 × 200 × 0,8 = 80 individuos. El crecimiento es todavía rápido, porque la población está lejos de la capacidad de carga."
+        },
+        {
+          "texto": "Curva en forma de S ⇒ estabilización cerca de K",
+          "explicacion": "La población aumenta con rapidez al inicio y se nivela al acercarse a la capacidad de carga. Georgy Frantsevich Gause observó este patrón en cultivos de protozoos en 1934."
+        }
       ]
     },
     {
-      "titulo": "Factores limitantes",
+      "titulo": "Factores que regulan la población",
       "puntos": [
-        { "texto": "Los factores dependientes de la densidad aumentan su efecto al crecer la población.", "explicacion": "Son ejemplos la competencia, las enfermedades y la depredación." },
-        { "texto": "Los factores independientes de la densidad actúan igual sin importar el tamaño de la población.", "explicacion": "Son ejemplos los incendios, las inundaciones y las sequías." }
+        {
+          "texto": "Factores denso-dependientes ⇒ aumentan su efecto con la densidad",
+          "explicacion": "Incluyen la competencia, la depredación y las enfermedades. Mientras más individuos hay, mayor es su impacto sobre la población."
+        },
+        {
+          "texto": "Factores denso-independientes ⇒ efecto sin relación con la densidad",
+          "explicacion": "Incluyen incendios, inundaciones, sequías y heladas. Afectan a la población de forma similar sin importar cuántos individuos haya."
+        },
+        {
+          "texto": "Competencia intraespecífica ⇒ individuos de la misma especie compiten",
+          "explicacion": "Ocurre cuando los recursos son insuficientes para todos. Es uno de los factores denso-dependientes más importantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Curvas de supervivencia",
+      "puntos": [
+        {
+          "texto": "Curva tipo I ⇒ alta supervivencia en edades avanzadas",
+          "explicacion": "La mayoría de los individuos sobreviven hasta edades cercanas a la máxima esperada. Es característica de los seres humanos y de algunos mamíferos grandes."
+        },
+        {
+          "texto": "Curva tipo II ⇒ mortalidad constante a lo largo de la vida",
+          "explicacion": "La proporción de individuos que mueren es similar en todas las edades. Se observa en algunas aves y en lagartijas."
+        },
+        {
+          "texto": "Curva tipo III ⇒ alta mortalidad en las primeras etapas",
+          "explicacion": "Muy pocos individuos llegan a la adultez, pero los que sobreviven tienen mayor probabilidad de vivir. Es común en peces, plantas y muchos invertebrados."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias reproductivas r y K",
+      "puntos": [
+        {
+          "texto": "Estrategia r ⇒ muchas crías con poco cuidado",
+          "explicacion": "Las especies r producen gran número de descendientes y dedican poca energía a cada uno. Suelen habitar ambientes inestables y colonizar espacios nuevos."
+        },
+        {
+          "texto": "Estrategia K ⇒ pocas crías con gran inversión parental",
+          "explicacion": "Las especies K tienen pocas crías, que crecen lentamente y reciben cuidado prolongado. Viven cerca de la capacidad de carga de su ambiente."
+        },
+        {
+          "texto": "Estrategias r y K ⇒ propuestas por MacArthur y Wilson en 1967",
+          "explicacion": "Robert MacArthur y Edward Wilson describieron estas estrategias como extremos de un continuo. La mayoría de las especies se ubican en posiciones intermedias."
+        }
+      ]
+    },
+    {
+      "titulo": "Pirámides de edades",
+      "puntos": [
+        {
+          "texto": "Pirámide de edades ⇒ distribución por grupos de edad",
+          "explicacion": "La base representa a los individuos jóvenes y la cima a los de mayor edad. Su forma anticipa el crecimiento o disminución futuros de la población."
+        },
+        {
+          "texto": "Pirámide expansiva ⇒ base ancha y población en crecimiento",
+          "explicacion": "Indica alta natalidad y un gran número de individuos jóvenes. Predice un aumento de la población en las próximas décadas."
+        },
+        {
+          "texto": "Pirámide regresiva ⇒ base angosta y población envejecida",
+          "explicacion": "Indica baja natalidad y una proporción alta de adultos mayores. Anticipa una disminución de la población si se mantiene la tendencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Ecosistemas (tema 115)",
+          "explicacion": "Las poblaciones se estudian dentro del ecosistema, desarrollado en el tema 115."
+        },
+        {
+          "texto": "Flujo de energía y cadenas tróficas (temas 117 y 118)",
+          "explicacion": "El número de individuos de cada nivel trófico depende de la energía disponible, estudiada en los temas 117 y 118."
+        },
+        {
+          "texto": "Relaciones interespecíficas (tema 120)",
+          "explicacion": "La competencia y la depredación entre especies se desarrollan en el tema 120."
+        },
+        {
+          "texto": "Mutaciones y evolución (temas 88 y 90)",
+          "explicacion": "Las poblaciones cambian genéticamente con el tiempo, como se estudió en los temas 88 y 90."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre poblaciones",
+      "puntos": [
+        {
+          "texto": "El crecimiento exponencial puede mantenerse indefinidamente ✗",
+          "explicacion": "Los recursos son finitos, por lo que ningún crecimiento exponencial continúa para siempre en la naturaleza. Tarde o temprano aparecen factores limitantes."
+        },
+        {
+          "texto": "La capacidad de carga es un valor fijo para siempre ✗",
+          "explicacion": "Puede cambiar con el clima, la disponibilidad de alimento o la actividad humana. Por eso se estima de forma aproximada y varía en el tiempo."
+        },
+        {
+          "texto": "Una población grande siempre es una población sana",
+          "explicacion": "Una población puede ser numerosa pero tener poca variabilidad genética o estar expuesta a enfermedades. El tamaño no basta para evaluar su estado."
+        },
+        {
+          "texto": "La densidad y el tamaño poblacional son lo mismo ✗",
+          "explicacion": "El tamaño es el número total de individuos, mientras que la densidad relaciona ese número con la superficie. Dos poblaciones del mismo tamaño pueden tener densidades distintas."
+        }
       ]
     }
   ]

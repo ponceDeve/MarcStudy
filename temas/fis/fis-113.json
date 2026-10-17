@@ -1,0 +1,35 @@
+{
+  "curso": "Física",
+  "tema": "Leyes de Kirchhoff",
+  "glosario": {
+    "Ley de nodos": "En un nodo, la suma de corrientes entrantes es igual a las salientes",
+    "Ley de mallas": "En una malla cerrada, la suma de fem es igual a la suma de caídas",
+    "Nodo": "Punto donde se unen tres o más ramas de un circuito",
+    "Malla": "Camino cerrado dentro de un circuito",
+    "Fuerza electromotriz": "Energía que una fuente entrega por unidad de carga"
+  },
+  "theory": [
+    {
+      "titulo": "Primera ley de Kirchhoff",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: Σ I entrantes = Σ I salientes en cada nodo.",
+          "explicacion": "Expresa la conservación de la carga: lo que entra en un nodo debe salir."
+        }
+      ]
+    },
+    {
+      "titulo": "Segunda ley de Kirchhoff",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: Σ ε = Σ (I × R) en cada malla cerrada.",
+          "explicacion": "Expresa la conservación de la energía: la suma de fem es igual a la suma de caídas de voltaje."
+        },
+        {
+          "texto": "Ejemplo: fuente de 12 V, R1 = 2 Ω y R2 = 4 Ω en serie.",
+          "explicacion": "12 = I × 2 + I × 4, así I = 2 A; caídas de 4 V y 8 V, que suman 12 V."
+        }
+      ]
+    }
+  ]
+}

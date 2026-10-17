@@ -1,0 +1,51 @@
+{
+  "curso": "Química",
+  "tema": "Leyes de velocidad",
+  "glosario": {
+    "ley de velocidad": "Ecuación que relaciona la velocidad con las concentraciones.",
+    "constante de velocidad": "Valor k que depende de la reacción.",
+    "orden de reacción": "Exponente de concentración en la ley.",
+    "orden global": "Suma de los órdenes parciales de la reacción."
+  },
+  "theory": [
+    {
+      "titulo": "Forma general",
+      "puntos": [
+        {
+          "texto": "Fórmula: v = k [A]ᵐ [B]ⁿ",
+          "explicacion": "k es la constante de velocidad; m y n son los órdenes parciales, que se determinan experimentalmente."
+        },
+        {
+          "texto": "Los órdenes no siempre coinciden con los coeficientes",
+          "explicacion": "Los exponentes se obtienen de los datos experimentales; no se deducen directamente de la ecuación balanceada."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinación del orden",
+      "puntos": [
+        {
+          "texto": "Si al duplicar [A] la velocidad se cuadruplica, m = 2",
+          "explicacion": "Porque 2ᵐ = 4 implica m = 2; se compara siempre un experimento con otro manteniendo fijas las demás concentraciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo resuelto",
+      "puntos": [
+        {
+          "texto": "Datos: [A] = 0.10 M y luego 0.20 M",
+          "explicacion": "Velocidades: 2.0 × 10⁻³ M/s y 8.0 × 10⁻³ M/s. Relación: v₂ / v₁ = 4 mientras [A] se duplica."
+        },
+        {
+          "texto": "Orden: 2ᵐ = 4, así que m = 2",
+          "explicacion": "La ley es v = k[A]²; el orden global de esta reacción, respecto de A, es 2."
+        },
+        {
+          "texto": "Constante: k = v / [A]² = 0.20 M⁻¹·s⁻¹",
+          "explicacion": "Cálculo: 2.0 × 10⁻³ / (0.10)² = 2.0 × 10⁻³ / 0.010 = 0.20 M⁻¹·s⁻¹."
+        }
+      ]
+    }
+  ]
+}

@@ -2,64 +2,247 @@
   "curso": "Biología",
   "tema": "Lípidos",
   "glosario": {
-    "Lípido": "Biomolécula orgánica insoluble en agua.",
-    "Ácido graso": "Cadena de carbono con grupo carboxilo terminal.",
-    "Saponificación": "Reacción de un lípido con una base que forma jabón.",
-    "Enlace éster": "Unión entre un grupo alcohol y un grupo ácido.",
-    "Anfipático": "Molécula con una parte polar y otra apolar.",
-    "Fosfolípido": "Lípido de membrana formado por glicerol, ácidos grasos y fosfato.",
-    "Isopreno": "Molécula de cinco carbonos base de los terpenos.",
-    "Vitamina liposoluble": "Vitamina que se disuelve en grasas y se absorbe con ellas.",
-    "Esteroide": "Lípido con núcleo de cuatro anillos fusionados."
+    "Lípido": "Biomolécula orgánica, apolar e hidrofóbica, que es insoluble en agua.",
+    "Lípido saponificable": "Lípido que contiene ácidos grasos y puede formar jabones al reaccionar con álcalis.",
+    "Lípido insaponificable": "Lípido que no contiene ácidos grasos y no forma jabones.",
+    "Ácido graso": "Cadena de carbonos con un grupo carboxilo al final.",
+    "Ácido graso saturado": "Ácido graso sin dobles enlaces entre sus carbonos.",
+    "Ácido graso insaturado": "Ácido graso con uno o más dobles enlaces entre sus carbonos.",
+    "Esterificación": "Unión de un alcohol con un ácido, formando un enlace éster y agua.",
+    "Enlace éster": "Enlace que une un grupo ácido con un grupo alcohol.",
+    "Glicerol": "Alcohol de tres carbonos que forma parte de muchos lípidos.",
+    "Triglicérido": "Lípido formado por un glicerol unido a tres ácidos grasos.",
+    "Fosfolípido": "Lípido formado por glicerol, dos ácidos grasos y un grupo fosfato.",
+    "Cera": "Lípido formado por un alcohol de cadena larga unido a un ácido graso.",
+    "Esteroide": "Lípido con núcleo formado por cuatro anillos de carbono.",
+    "Colesterol": "Esteroide que es precursor de las hormonas esteroides y de las sales biliares.",
+    "Anfipático": "Molécula que tiene una región polar y otra apolar.",
+    "Bicapa lipídica": "Doble capa de fosfolípidos que forma la base de las membranas celulares.",
+    "Lipólisis": "Descomposición de los triglicéridos en glicerol y ácidos grasos.",
+    "Prostaglandina": "Lípido derivado de ácidos grasos de veinte carbonos que actúa como mensajero.",
+    "Terpeno": "Lípido insaponificable formado por unidades de isopreno.",
+    "Hormona esteroide": "Hormona derivada del colesterol que regula diversas funciones del organismo."
   },
   "theory": [
     {
       "titulo": "Concepto de lípidos",
       "puntos": [
-        { "texto": "Los lípidos son biomoléculas orgánicas insolubles en agua.", "explicacion": "Son hidrofóbicos y se disuelven en disolventes orgánicos como el éter." },
-        { "texto": "Los lípidos están formados principalmente por C, H y O.", "explicacion": "Algunos también contienen nitrógeno, fósforo o azufre." }
+        {
+          "texto": "Los lípidos son biomoléculas orgánicas apolares e hidrofóbicas",
+          "explicacion": "No se disuelven en agua porque no tienen cargas que interactúen con sus moléculas, y se disuelven en solventes orgánicos."
+        },
+        {
+          "texto": "Los lípidos no son polímeros y no tienen monómeros definidos",
+          "explicacion": "Son un grupo muy heterogéneo de compuestos; por eso no se describen como cadenas repetidas de una misma unidad."
+        },
+        {
+          "texto": "Los lípidos cumplen funciones de reserva, estructura y regulación",
+          "explicacion": "Los triglicéridos almacenan energía, los fosfolípidos forman membranas y las hormonas esteroides regulan procesos del organismo."
+        }
       ]
     },
     {
-      "titulo": "Clasificación de lípidos",
+      "titulo": "Clasificación de los lípidos",
       "puntos": [
-        { "texto": "Los lípidos se clasifican en saponificables e insaponificables.", "explicacion": "La diferencia depende de si contienen o no ácidos grasos en su estructura." },
-        { "texto": "Los lípidos saponificables contienen «ácidos grasos».", "explicacion": "Pueden hidrolizarse con una base para formar jabón mediante saponificación." },
-        { "texto": "Los lípidos insaponificables no contienen ácidos grasos.", "explicacion": "Por eso no pueden formar jabón mediante la reacción de saponificación." }
+        {
+          "texto": "Los lípidos se clasifican en saponificables e insaponificables",
+          "explicacion": "El criterio es la presencia o ausencia de ácidos grasos en su estructura."
+        },
+        {
+          "texto": "Los lípidos saponificables contienen ácidos grasos",
+          "explicacion": "Al reaccionar con álcalis, sus enlaces éster se hidrolizan y forman jabones."
+        },
+        {
+          "texto": "Los lípidos insaponificables no contienen ácidos grasos",
+          "explicacion": "No tienen enlaces éster y, por lo tanto, no pueden hidrolizarse para formar jabones."
+        },
+        {
+          "texto": "Los lípidos saponificables se dividen en simples y complejos",
+          "explicacion": "Los simples están formados por ácidos grasos y un alcohol; los complejos añaden otros grupos, como un fosfato."
+        },
+        {
+          "texto": "Los lípidos insaponificables incluyen terpenos, esteroides y prostaglandinas",
+          "explicacion": "Aunque no tienen ácidos grasos, algunos de ellos derivan de hidrocarburos o cumplen roles hormonales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ácidos grasos",
+      "puntos": [
+        {
+          "texto": "Los ácidos grasos son cadenas de carbonos con un grupo carboxilo",
+          "explicacion": "Son ácidos orgánicos de cadena larga; el grupo carboxilo está en un extremo de la cadena."
+        },
+        {
+          "texto": "Los ácidos grasos rara vez aparecen libres en los seres vivos",
+          "explicacion": "Suelen estar unidos a otras moléculas mediante enlaces éster, formando lípidos saponificables."
+        },
+        {
+          "texto": "Los ácidos grasos pueden ser saturados o insaturados",
+          "explicacion": "La diferencia está en la presencia o ausencia de dobles enlaces en su cadena de carbonos."
+        },
+        {
+          "texto": "Los ácidos grasos saturados no tienen dobles enlaces",
+          "explicacion": "Sus cadenas son rectas y se empaquetan de forma compacta, por lo que suelen ser sólidos a temperatura ambiente."
+        },
+        {
+          "texto": "Los ácidos grasos insaturados tienen uno o más dobles enlaces",
+          "explicacion": "Los dobles enlaces generan curvas en la cadena, lo que impide el empaquetamiento compacto y los mantiene líquidos."
+        },
+        {
+          "texto": "Los ácidos grasos poliinsaturados son esenciales para el ser humano",
+          "explicacion": "Dato por confirmar: el organismo no puede sintetizarlos y deben obtenerse de la dieta, como los omega 3 y omega 6."
+        },
+        {
+          "texto": "Los ácidos grasos monoinsaturados no son esenciales",
+          "explicacion": "Dato por confirmar: el organismo puede sintetizarlos a partir de otros ácidos grasos."
+        },
+        {
+          "texto": "Los ácidos grasos son sustancias anfipáticas",
+          "explicacion": "Su cadena de carbonos es apolar, pero su grupo carboxilo es polar, lo que les permite interactuar con el agua y con los lípidos."
+        }
       ]
     },
     {
       "titulo": "Triglicéridos",
       "puntos": [
-        { "texto": "Los triglicéridos tienen glicerol unido a tres ácidos grasos.", "explicacion": "Sus enlaces éster se rompen al liberar energía cuando el cuerpo la necesita." },
-        { "texto": "Los triglicéridos son la principal reserva energética animal.", "explicacion": "Almacenan mucha más energía por gramo que los carbohidratos." }
-      ]
-    },
-    {
-      "titulo": "Ceras",
-      "puntos": [
-        { "texto": "Las ceras están formadas por alcohol de cadena larga y ácido graso.", "explicacion": "Recubren hojas, frutos y pieles, reduciendo la pérdida de agua." },
-        { "texto": "Las ceras protegen frente a parásitos y microorganismos.", "explicacion": "Actúan como barrera superficial en plantas y animales." }
+        {
+          "texto": "Los triglicéridos están formados por glicerol y tres ácidos grasos",
+          "explicacion": "Los tres ácidos grasos se unen al glicerol mediante enlaces éster por un proceso de esterificación."
+        },
+        {
+          "texto": "Los acilglicéridos pueden tener uno, dos o tres ácidos grasos",
+          "explicacion": "Según su número de ácidos grasos se llaman monoglicéridos, diglicéridos o triglicéridos."
+        },
+        {
+          "texto": "Los triglicéridos son la principal reserva energética de los seres vivos",
+          "explicacion": "Almacenan mucha energía en poco volumen porque son apolares y se almacenan sin agua."
+        },
+        {
+          "texto": "Los triglicéridos se llaman grasas neutras",
+          "explicacion": "Carecen de polaridad, por lo que no se disuelven en agua y forman depósitos en el tejido adiposo."
+        },
+        {
+          "texto": "Los aceites son triglicéridos líquidos a temperatura ambiente",
+          "explicacion": "Tienen ácidos grasos insaturados, lo que les impide solidificarse a temperatura ambiente."
+        },
+        {
+          "texto": "Las mantecas son triglicéridos semisólidos a temperatura ambiente",
+          "explicacion": "Tienen ácidos grasos saturados de cadena corta, que les dan una consistencia intermedia."
+        },
+        {
+          "texto": "Los sólidos son triglicéridos con ácidos grasos saturados",
+          "explicacion": "Como la grasa animal, sus cadenas rectas se empaquetan y forman sólidos a temperatura ambiente."
+        },
+        {
+          "texto": "Los triglicéridos se descomponen por lipólisis cuando se necesita energía",
+          "explicacion": "La lipólisis libera glicerol y ácidos grasos, que pueden usarse para producir ATP en las células."
+        },
+        {
+          "texto": "Los triglicéridos de la dieta deben degradarse antes de ser absorbidos",
+          "explicacion": "Se descomponen en ácidos grasos y glicerol para poder atravesar la pared intestinal."
+        },
+        {
+          "texto": "Los triglicéridos en exceso se relacionan con enfermedades cardiovasculares",
+          "explicacion": "Dato por confirmar: niveles elevados de triglicéridos en sangre se asocian con mayor riesgo cardiovascular."
+        }
       ]
     },
     {
       "titulo": "Fosfolípidos",
       "puntos": [
-        { "texto": "Los «fosfolípidos» tienen glicerol, dos ácidos grasos y fosfato.", "explicacion": "Forman la bicapa lipídica de las membranas celulares." },
-        { "texto": "Los fosfolípidos son anfipáticos.", "explicacion": "La cabeza polar atrae al agua y las colas apolares la repelen." }
+        {
+          "texto": "Los fosfolípidos están formados por glicerol, dos ácidos grasos y un fosfato",
+          "explicacion": "El grupo fosfato forma la región polar y las dos cadenas de ácidos grasos forman la región apolar."
+        },
+        {
+          "texto": "Los fosfolípidos son moléculas anfipáticas",
+          "explicacion": "Su cabeza con fosfato es hidrofílica y sus colas de ácidos grasos son hidrofóbicas."
+        },
+        {
+          "texto": "Los fosfolípidos forman la bicapa lipídica de las membranas celulares",
+          "explicacion": "En agua se organizan con las cabezas hacia el agua y las colas hacia el interior, formando una doble capa."
+        },
+        {
+          "texto": "Los fosfolípidos cumplen una función estructural en las membranas",
+          "explicacion": "Dan la base que permite la separación entre el interior y el exterior de la célula."
+        }
       ]
     },
     {
-      "titulo": "Esteroides y terpenos",
+      "titulo": "Ceras",
       "puntos": [
-        { "texto": "Los «esteroides» tienen núcleo de cuatro anillos fusionados.", "explicacion": "El colesterol es su precursor y de él derivan hormonas y sales biliares." },
-        { "texto": "Los terpenos derivan de unidades de isopreno.", "explicacion": "Forman pigmentos fotosintéticos y algunas vitaminas liposolubles." }
+        {
+          "texto": "Las ceras son ésteres formados por un alcohol de cadena larga y un ácido graso",
+          "explicacion": "Se forman por esterificación; los ácidos grasos de cadena larga tienen entre catorce y treinta y seis carbonos."
+        },
+        {
+          "texto": "Las ceras son sólidas a temperatura ambiente",
+          "explicacion": "Sus dos extremos son apolares, lo que les da una consistencia firme e impermeable."
+        },
+        {
+          "texto": "Las ceras cumplen una función protectora en plantas y animales",
+          "explicacion": "Recubren las hojas y la piel de algunos seres vivos, evitando la pérdida de agua y protegiendo frente a patógenos."
+        }
       ]
     },
     {
-      "titulo": "Vitaminas liposolubles",
+      "titulo": "Esteroides",
       "puntos": [
-        { "texto": "Las vitaminas A, D, E y K son «liposolubles».", "explicacion": "Su absorción en el intestino requiere grasa en la dieta." }
+        {
+          "texto": "Los esteroides tienen un núcleo formado por cuatro anillos de carbono",
+          "explicacion": "Derivan del esterano y no contienen ácidos grasos en su estructura."
+        },
+        {
+          "texto": "El colesterol es el esteroide precursor de muchas hormonas",
+          "explicacion": "A partir del colesterol se sintetizan hormonas como las sexuales y las suprarrenales."
+        },
+        {
+          "texto": "Los esteroides regulan funciones como la presión sanguínea",
+          "explicacion": "Las hormonas esteroides actúan en procesos fisiológicos como la presión arterial, la inflamación y el metabolismo."
+        },
+        {
+          "texto": "El colesterol forma parte de las membranas celulares",
+          "explicacion": "Dato por confirmar: se inserta entre los fosfolípidos y regula la fluidez de la membrana."
+        },
+        {
+          "texto": "Las sales biliares se derivan del colesterol",
+          "explicacion": "Dato por confirmar: ayudan a emulsionar las grasas de la dieta para que puedan ser digeridas."
+        }
+      ]
+    },
+    {
+      "titulo": "Otros lípidos insaponificables",
+      "puntos": [
+        {
+          "texto": "Las prostaglandinas son derivadas de ácidos grasos de veinte carbonos",
+          "explicacion": "Actúan como mensajeros químicos locales y participan en procesos como la inflamación y la coagulación."
+        },
+        {
+          "texto": "Los terpenos derivan de hidrocarburos lineales o cíclicos",
+          "explicacion": "Dato por confirmar: tienen como unidad básica el isopreno, y son componentes de aromas y pigmentos."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones de los lípidos",
+      "puntos": [
+        {
+          "texto": "Los lípidos son reserva energética a largo plazo",
+          "explicacion": "Un gramo de grasa libera más energía que un gramo de carbohidrato, por eso se almacenan como reserva prolongada."
+        },
+        {
+          "texto": "Los lípidos forman el tejido adiposo que aísla el cuerpo",
+          "explicacion": "Dato por confirmar: el tejido adiposo protege órganos y ayuda a conservar la temperatura corporal."
+        },
+        {
+          "texto": "Los lípidos forman estructuras como membranas y capas protectoras",
+          "explicacion": "Los fosfolípidos construyen las membranas y las ceras recubren superficies para proteger del agua y los microorganismos."
+        },
+        {
+          "texto": "Los lípidos regulan procesos mediante hormonas y mensajeros",
+          "explicacion": "Las hormonas esteroides y las prostaglandinas actúan como señales que coordinan funciones del organismo."
+        }
       ]
     }
   ]

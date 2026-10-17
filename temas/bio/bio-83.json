@@ -2,38 +2,505 @@
   "curso": "Biología",
   "tema": "Genética del sexo",
   "glosario": {
-    "Cromosoma sexual": "Cromosoma que participa en la determinación del sexo.",
-    "Autosoma": "Cromosoma que no participa en la determinación del sexo.",
-    "Cromosoma X": "Cromosoma sexual presente en ambos sexos de los mamíferos.",
-    "Cromosoma Y": "Cromosoma sexual presente solo en los machos de los mamíferos.",
-    "Gen SRY": "Gen del cromosoma Y que determina el desarrollo masculino.",
-    "Heterogamético": "Sexo que produce dos tipos de gametos respecto al cromosoma sexual.",
-    "Homogamético": "Sexo que produce un solo tipo de gameto respecto al cromosoma sexual."
+    "cromosoma": "Estructura que contiene los genes",
+    "autosoma": "Cromosoma que no determina el sexo",
+    "cromosoma sexual": "Cromosoma que determina el sexo",
+    "cariotipo": "Conjunto de cromosomas de una especie",
+    "diploide": "Con dos juegos de cromosomas",
+    "haploide": "Con un solo juego de cromosomas",
+    "gameto": "Célula sexual con un solo juego",
+    "homogamético": "Sexo con dos cromosomas sexuales iguales",
+    "heterogamético": "Sexo con dos cromosomas sexuales distintos",
+    "gónada": "Órgano que produce los gametos",
+    "partenogénesis": "Desarrollo de un óvulo sin fecundar",
+    "meiosis": "División que forma células haploides",
+    "mitosis": "División que forma células idénticas",
+    "hermafrodita": "Con órganos reproductores de ambos sexos",
+    "dioica": "Con sexos en individuos distintos",
+    "monoica": "Con ambos sexos en el mismo individuo",
+    "protandria": "Cambio de macho a hembra",
+    "protoginia": "Cambio de hembra a macho",
+    "intersexo": "Con caracteres de ambos sexos",
+    "compensación de dosis": "Igualación de la actividad génica del X",
+    "corpúsculo de Barr": "Cromosoma X inactivo condensado",
+    "lyonización": "Inactivación al azar de un cromosoma X",
+    "nematodo": "Gusano cilíndrico no segmentado",
+    "jalea real": "Alimento que convierte una larva en reina",
+    "temperatura pivote": "Temperatura que da proporciones parecidas de sexos",
+    "fenotipo": "Rasgos observables de un individuo",
+    "genotipo": "Conjunto de alelos de un individuo"
   },
   "theory": [
     {
+      "titulo": "Conceptos previos",
+      "puntos": [
+        {
+          "texto": "«Cromosoma» = estructura que contiene los genes",
+          "explicacion": "Está formado por ácido desoxirribonucleico y proteínas. Los organismos diploides tienen los cromosomas en pares, uno heredado de cada progenitor."
+        },
+        {
+          "texto": "«Diploide» = con dos juegos de cromosomas",
+          "explicacion": "Se representa como 2n. Las células del cuerpo de la mayoría de los animales son diploides."
+        },
+        {
+          "texto": "«Haploide» = con un solo juego de cromosomas",
+          "explicacion": "Se representa como n. Los gametos de los organismos diploides son haploides."
+        },
+        {
+          "texto": "«Autosomas» = cromosomas que no determinan el sexo",
+          "explicacion": "Llevan los genes de la mayor parte de los caracteres del organismo. Son iguales en machos y en hembras."
+        },
+        {
+          "texto": "«Cromosomas sexuales» = pareja que determina el sexo",
+          "explicacion": "También se llaman heterocromosomas o gonosomas. Su forma y tamaño pueden ser distintos en los dos sexos."
+        },
+        {
+          "texto": "«Cariotipo» = conjunto de cromosomas de una especie",
+          "explicacion": "Se ordena por tamaño y forma, y permite reconocer los autosomas y los cromosomas sexuales."
+        },
+        {
+          "texto": "Sexo «homogamético» = forma un solo tipo de gameto",
+          "explicacion": "Sus dos cromosomas sexuales son iguales, así que todos sus gametos llevan el mismo cromosoma sexual."
+        },
+        {
+          "texto": "Sexo «heterogamético» = forma dos tipos de gameto",
+          "explicacion": "Sus dos cromosomas sexuales son distintos, así que produce dos clases de gametos en igual proporción. Este sexo determina el sexo de la descendencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición básica",
+      "puntos": [
+        {
+          "texto": "«Determinación del sexo» = mecanismo que define el sexo del individuo",
+          "explicacion": "El sexo puede quedar definido por cromosomas, por el número de juegos de cromosomas o por el ambiente. El mecanismo depende de la especie."
+        },
+        {
+          "texto": "Genética del sexo ⊃ herencia y determinación del sexo",
+          "explicacion": "Abarca los sistemas cromosómicos, la haplodiploidía, la determinación ambiental y la compensación de dosis génica."
+        },
+        {
+          "texto": "Sexo cromosómico = combinación de cromosomas sexuales",
+          "explicacion": "Se fija en la fecundación, cuando se unen los cromosomas sexuales del óvulo y del espermatozoide."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de mecanismos",
+      "puntos": [
+        {
+          "texto": "Determinación cromosómica ⇒ depende de los cromosomas sexuales",
+          "explicacion": "Incluye los sistemas XX-XY, XX-XO y ZZ-ZW. Es el mecanismo más frecuente en animales."
+        },
+        {
+          "texto": "Determinación por haplodiploidía ⇒ depende del número de juegos de cromosomas",
+          "explicacion": "Las hembras son diploides y los machos son haploides. Es propia de abejas, avispas y hormigas."
+        },
+        {
+          "texto": "Determinación ambiental ⇒ depende de factores externos",
+          "explicacion": "La temperatura o el contacto con otros individuos definen el sexo. Ocurre en varios reptiles y en algunos invertebrados."
+        }
+      ]
+    },
+    {
       "titulo": "Cromosomas sexuales",
       "puntos": [
-        { "texto": "Los cromosomas sexuales determinan el sexo del individuo.", "explicacion": "El resto de los cromosomas, llamados autosomas, no participa en esta determinación." },
-        { "texto": "En los mamíferos, las hembras son XX y los machos son XY.", "explicacion": "Cada gameto femenino lleva un X; el gameto masculino lleva X o Y, lo que define el sexo de la descendencia." }
+        {
+          "texto": "X = cromosoma sexual presente en ambos sexos de mamíferos",
+          "explicacion": "Es un cromosoma grande que lleva muchos genes que no tienen relación con el sexo. Las hembras de mamíferos tienen dos."
+        },
+        {
+          "texto": "Y = cromosoma sexual exclusivo del macho en mamíferos",
+          "explicacion": "Es más pequeño que el X y lleva pocos genes, entre ellos el que desencadena el desarrollo masculino."
+        },
+        {
+          "texto": "Z = cromosoma sexual presente en ambos sexos de las aves",
+          "explicacion": "Los machos de las aves tienen dos. La letra Z distingue este sistema del sistema X-Y."
+        },
+        {
+          "texto": "W = cromosoma sexual exclusivo de la hembra en las aves",
+          "explicacion": "Es más pequeño que el Z y solo existe en las hembras de las aves."
+        },
+        {
+          "texto": "O = ausencia del segundo cromosoma sexual",
+          "explicacion": "En el sistema XO el macho tiene un solo cromosoma sexual. Algunos textos escriben el símbolo como el número 0."
+        }
       ]
     },
     {
-      "titulo": "Determinación masculina",
+      "titulo": "Descubrimiento de cromosomas sexuales",
       "puntos": [
-        { "texto": "El gen SRY, ubicado en el cromosoma Y, determina el desarrollo masculino.", "explicacion": "Sin este gen, el embrión desarrolla órganos reproductores femeninos por defecto." }
+        {
+          "texto": "Hermann Henking ⇒ observó un cuerpo particular en 1891",
+          "explicacion": "Vio en los espermatozoides del insecto Pyrrhocoris un elemento que llamó X, sin comprender su función."
+        },
+        {
+          "texto": "Clarence McClung ⇒ propuso hacia 1902 que determinan el sexo",
+          "explicacion": "Estudió saltamontes y sostuvo que el cromosoma accesorio definía el sexo masculino."
+        },
+        {
+          "texto": "Nettie Stevens y Edmund Beecher Wilson ⇒ lo demostraron en 1905",
+          "explicacion": "Trabajando de forma independiente, observaron que los machos tienen un par de cromosomas desigual. Stevens estudió el gusano de la harina, Tenebrio molitor."
+        }
       ]
     },
     {
-      "titulo": "Otros sistemas",
+      "titulo": "Sistema XX-XY",
       "puntos": [
-        { "texto": "En aves y algunos reptiles, el sistema es ZW en hembras y ZZ en machos.", "explicacion": "Aquí el sexo heterogamético es el femenino, al revés que en los mamíferos." }
+        {
+          "texto": "Hembra XX = sexo homogamético",
+          "explicacion": "Tiene dos cromosomas X, así que todos sus óvulos llevan un cromosoma X."
+        },
+        {
+          "texto": "Macho XY = sexo heterogamético",
+          "explicacion": "Tiene un cromosoma X y uno Y, así que forma dos tipos de espermatozoides."
+        },
+        {
+          "texto": "Macho ⇒ 50 % espermatozoides X + 50 % espermatozoides Y",
+          "explicacion": "Los cromosomas del par sexual se separan en la meiosis y cada gameto recibe uno solo."
+        },
+        {
+          "texto": "Sexo de la descendencia ⇒ lo determina el espermatozoide",
+          "explicacion": "Si el espermatozoide lleva X, el hijo es XX, una hembra. Si lleva Y, el hijo es XY, un macho."
+        },
+        {
+          "texto": "XX × XY → 50 % XX + 50 % XY",
+          "explicacion": "Los cuatro cruces posibles entre gametos se reducen a dos genotipos con la misma probabilidad, de modo que la razón de sexos esperada es 1 : 1."
+        },
+        {
+          "texto": "Sistema XX-XY ∈ mamíferos + algunos insectos + algunos anfibios y peces",
+          "explicacion": "Es el sistema de la especie humana, de los perros y de los gatos, entre otros."
+        },
+        {
+          "texto": "Ser humano ⇒ 46 cromosomas = 44 autosomas + 2 sexuales",
+          "explicacion": "Hay 22 pares de autosomas y un par sexual. La mujer tiene XX y el varón XY."
+        },
+        {
+          "texto": "Óvulo humano ⇒ 22 autosomas + X",
+          "explicacion": "Todos los óvulos llevan X, porque la mujer solo tiene cromosomas X."
+        },
+        {
+          "texto": "Espermatozoide humano ⇒ 22 autosomas + X o 22 autosomas + Y",
+          "explicacion": "Se forman en igual proporción, porque el varón tiene X e Y que se separan en la meiosis."
+        }
       ]
     },
     {
-      "titulo": "Conexión",
+      "titulo": "Gen SRY",
       "puntos": [
-        { "texto": "La herencia de genes ubicados en los cromosomas sexuales se estudia en los temas siguientes.", "explicacion": "Incluye la herencia ligada al X y la herencia holándrica." }
+        {
+          "texto": "«SRY» = región determinante del sexo del cromosoma Y",
+          "explicacion": "Es la sigla de Sex-determining Region Y, su nombre en inglés. Es un gen del brazo corto del cromosoma Y."
+        },
+        {
+          "texto": "SRY ⇒ desencadena el desarrollo de testículos",
+          "explicacion": "Codifica una proteína que activa a otros genes e induce el desarrollo de las gónadas indiferenciadas hacia testículos. Su acción empieza hacia la séptima semana del desarrollo."
+        },
+        {
+          "texto": "Ausencia de SRY ⇒ gónadas se desarrollan como ovarios",
+          "explicacion": "Sin el gen del cromosoma Y, el desarrollo sigue la vía femenina."
+        },
+        {
+          "texto": "Cromosoma Y ⇒ define varón en humanos",
+          "explicacion": "Una persona con XXY es varón y una persona con X sola es mujer, porque el gen SRY decide el sexo. Estas alteraciones se desarrollan en el tema de genética humana."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinación en Drosophila",
+      "puntos": [
+        {
+          "texto": "Drosophila melanogaster ⇒ XX-XY pero el sexo no depende del Y",
+          "explicacion": "La mosca de la fruta tiene el mismo sistema que los mamíferos, pero el cromosoma Y no determina el sexo. Lo que importa es la proporción entre cromosomas X y autosomas."
+        },
+        {
+          "texto": "Proporción X : autosomas = 1 ⇒ hembra",
+          "explicacion": "Una mosca XX con dos juegos de autosomas tiene proporción 2 : 2 = 1 y es hembra."
+        },
+        {
+          "texto": "Proporción X : autosomas = 0,5 ⇒ macho",
+          "explicacion": "Una mosca XY con dos juegos de autosomas tiene proporción 1 : 2 = 0,5 y es macho."
+        },
+        {
+          "texto": "Proporción X : autosomas entre 0,5 y 1 ⇒ intersexo",
+          "explicacion": "Los individuos con proporciones intermedias, como 0,67, muestran caracteres de ambos sexos."
+        },
+        {
+          "texto": "XXY en Drosophila ⇒ hembra fértil",
+          "explicacion": "Su proporción es 2 : 2 = 1, igual que la de XX, aunque tenga cromosoma Y."
+        },
+        {
+          "texto": "XO en Drosophila ⇒ macho estéril",
+          "explicacion": "Su proporción es 1 : 2 = 0,5 y es macho, pero sin cromosoma Y no produce espermatozoides funcionales."
+        },
+        {
+          "texto": "Calvin Bridges ⇒ descubrió esta relación en 1921",
+          "explicacion": "Estudió moscas con números alterados de cromosomas y mostró que el equilibrio entre X y autosomas define el sexo."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema XX-XO",
+      "puntos": [
+        {
+          "texto": "Hembra XX = sexo homogamético",
+          "explicacion": "Tiene dos cromosomas X y todos sus óvulos llevan uno."
+        },
+        {
+          "texto": "Macho XO = sexo heterogamético con un solo cromosoma sexual",
+          "explicacion": "No tiene segundo cromosoma sexual. Por eso su número total de cromosomas es impar."
+        },
+        {
+          "texto": "Macho ⇒ 50 % gametos con X + 50 % gametos sin cromosoma sexual",
+          "explicacion": "Los gametos sin cromosoma sexual dan hijos XO si se unen a un óvulo X, y hembras XX si el espermatozoide lleva X."
+        },
+        {
+          "texto": "Sistema XX-XO ∈ saltamontes, grillos y cucarachas",
+          "explicacion": "Es frecuente en insectos ortópteros. Ejemplos son el saltamontes Locusta migratoria y la cucaracha."
+        },
+        {
+          "texto": "Caenorhabditis elegans ⇒ hermafrodita XX + macho XO",
+          "explicacion": "Este nematodo se usa como organismo modelo. El hermafrodita produce óvulos y espermatozoides, y el macho solo espermatozoides."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema ZZ-ZW",
+      "puntos": [
+        {
+          "texto": "Macho ZZ = sexo homogamético",
+          "explicacion": "Tiene dos cromosomas Z, así que todos sus gametos llevan Z. Es lo contrario de lo que ocurre en los mamíferos."
+        },
+        {
+          "texto": "Hembra ZW = sexo heterogamético",
+          "explicacion": "Tiene un Z y un W, así que forma dos tipos de óvulo."
+        },
+        {
+          "texto": "Hembra ⇒ 50 % óvulos Z + 50 % óvulos W",
+          "explicacion": "Los cromosomas del par sexual se separan en la meiosis."
+        },
+        {
+          "texto": "Sexo de la descendencia ⇒ lo determina el óvulo",
+          "explicacion": "Si el óvulo lleva Z, el hijo es ZZ, un macho. Si lleva W, el hijo es ZW, una hembra."
+        },
+        {
+          "texto": "ZZ × ZW → 50 % ZZ + 50 % ZW",
+          "explicacion": "La razón de sexos esperada es 1 : 1, igual que en el sistema XX-XY."
+        },
+        {
+          "texto": "Sistema ZZ-ZW ∈ aves + mariposas + algunos reptiles y peces",
+          "explicacion": "Es el sistema de las gallinas, los patos y las mariposas, entre otros."
+        },
+        {
+          "texto": "Ornitorrinco ⇒ 10 cromosomas sexuales",
+          "explicacion": "Es un caso especial entre los mamíferos: tiene cinco cromosomas X y cinco cromosomas Y, que se heredan juntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Haplodiploidía",
+      "puntos": [
+        {
+          "texto": "Hembra ⇒ diploide, nace de óvulo fecundado",
+          "explicacion": "Recibe un juego de cromosomas de la madre y uno del padre. Son hembras la reina y las obreras."
+        },
+        {
+          "texto": "Macho ⇒ haploide, nace de óvulo no fecundado",
+          "explicacion": "Se desarrolla por partenogénesis y no tiene padre. Es el caso del zángano de las abejas."
+        },
+        {
+          "texto": "Abeja melífera ⇒ hembras 2n = 32 + machos n = 16",
+          "explicacion": "Apis mellifera tiene 32 cromosomas en las hembras y 16 en los machos. Aquí n es el número de cromosomas de un juego y 2n el número de la célula diploide."
+        },
+        {
+          "texto": "Zángano ⇒ forma espermatozoides por mitosis",
+          "explicacion": "Como ya es haploide, no puede hacer meiosis. Todos sus espermatozoides son genéticamente idénticos."
+        },
+        {
+          "texto": "Reina ⇒ controla el sexo de su descendencia",
+          "explicacion": "Guarda espermatozoides tras el vuelo nupcial y decide si fecunda o no cada óvulo."
+        },
+        {
+          "texto": "Obrera ≠ reina ⇒ diferencia por alimentación",
+          "explicacion": "Ambas son diploides y hembras. La larva alimentada con jalea real se convierte en reina, y la que recibe otra dieta se convierte en obrera."
+        },
+        {
+          "texto": "Haplodiploidía ∈ abejas + avispas + hormigas",
+          "explicacion": "Son insectos del orden Hymenoptera, que significa alas con membrana."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinación ambiental",
+      "puntos": [
+        {
+          "texto": "Tortugas marinas ⇒ temperatura de incubación define el sexo",
+          "explicacion": "Los huevos no tienen cromosomas sexuales diferenciados. La temperatura durante cierto periodo del desarrollo decide si los embriones serán machos o hembras."
+        },
+        {
+          "texto": "Tortuga boba ⇒ temperatura pivote ≈ 29 °C",
+          "explicacion": "A la temperatura pivote nacen machos y hembras en proporciones parecidas. Por debajo nacen sobre todo machos, y por encima, sobre todo hembras. Su nombre científico es Caretta caretta."
+        },
+        {
+          "texto": "Calentamiento global ⇒ feminización de las crías de tortugas",
+          "explicacion": "Si las playas de anidación se calientan, nacen muy pocos machos y la población puede reducirse."
+        },
+        {
+          "texto": "Bonellia viridis ⇒ sexo definido por contacto con la hembra",
+          "explicacion": "La larva que vive aislada se desarrolla como hembra. La larva que se posa sobre una hembra adulta se desarrolla como macho de tamaño diminuto."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de sexo",
+      "puntos": [
+        {
+          "texto": "«Hermafroditismo secuencial» = cambio de sexo en la vida del individuo",
+          "explicacion": "El individuo nace con un sexo y cambia a otro. El cambio suele depender de señales sociales o del tamaño."
+        },
+        {
+          "texto": "«Protandria» = primero macho, después hembra",
+          "explicacion": "Ocurre en el pez payaso, del género Amphiprion. En el grupo, la hembra es el individuo dominante, y si muere el macho de mayor tamaño la reemplaza."
+        },
+        {
+          "texto": "«Protoginia» = primero hembra, después macho",
+          "explicacion": "Ocurre en el pez limpiador Labroides dimidiatus. El macho dominante controla a un grupo de hembras, y si falta, la hembra de mayor tamaño cambia a macho."
+        }
+      ]
+    },
+    {
+      "titulo": "Compensación de dosis",
+      "puntos": [
+        {
+          "texto": "«Compensación de dosis» = igualar la actividad de los genes del X",
+          "explicacion": "En el sistema XX-XY las hembras tienen dos copias de los genes del cromosoma X y los machos solo una. Los organismos evitan este desequilibrio con distintos mecanismos."
+        },
+        {
+          "texto": "Mamíferos hembra ⇒ un cromosoma X se inactiva",
+          "explicacion": "En cada célula de la hembra uno de los dos cromosomas X se condensa y casi no se expresa. La elección ocurre al azar en cada célula."
+        },
+        {
+          "texto": "Mary Lyon ⇒ propuso la inactivación del X en 1961",
+          "explicacion": "La hipótesis recibe el nombre de lyonización. Explica por qué el pelaje de las gatas calicó tiene manchas de dos colores."
+        },
+        {
+          "texto": "«Corpúsculo de Barr» = cromosoma X inactivo condensado",
+          "explicacion": "Murray Barr y Ewart Bertram lo observaron en 1949 en el núcleo de células femeninas. Es una mancha oscura junto a la membrana nuclear."
+        },
+        {
+          "texto": "Drosophila macho ⇒ su único X se hiperactiva",
+          "explicacion": "El macho duplica la actividad de los genes de su único X para igualar a la hembra."
+        },
+        {
+          "texto": "Caenorhabditis elegans hermafrodita ⇒ reduce la actividad de los dos X",
+          "explicacion": "Cada X baja su actividad a la mitad, y el total iguala el de un macho XO."
+        }
+      ]
+    },
+    {
+      "titulo": "Niveles del sexo",
+      "puntos": [
+        {
+          "texto": "Sexo genético = cromosomas sexuales del individuo",
+          "explicacion": "Se fija en la fecundación y se expresa como XX o XY en los mamíferos."
+        },
+        {
+          "texto": "Sexo gonadal = tipo de gónada del individuo",
+          "explicacion": "Son los ovarios en las hembras y los testículos en los machos. Depende del sexo genético."
+        },
+        {
+          "texto": "Sexo fenotípico = caracteres sexuales externos e internos",
+          "explicacion": "Depende de las hormonas que producen las gónadas. Los tres niveles suelen coincidir, pero pueden no hacerlo."
+        }
+      ]
+    },
+    {
+      "titulo": "Proporción sexual",
+      "puntos": [
+        {
+          "texto": "Razón de sexos esperada = 1 : 1",
+          "explicacion": "Es la que predice la segregación de los cromosomas sexuales del sexo heterogamético, con dos tipos de gameto en igual proporción."
+        },
+        {
+          "texto": "Razón de sexos humana al nacer ≈ 105 varones : 100 mujeres",
+          "explicacion": "Nacen algo más de varones que de mujeres. Con los años la mortalidad masculina es mayor y la proporción se iguala en la edad adulta."
+        }
+      ]
+    },
+    {
+      "titulo": "Sexo en plantas",
+      "puntos": [
+        {
+          "texto": "Planta «monoica» = flores de ambos sexos en el mismo individuo",
+          "explicacion": "Cada planta tiene flores masculinas y femeninas separadas. El maíz es un ejemplo."
+        },
+        {
+          "texto": "Planta «dioica» = sexos en individuos distintos",
+          "explicacion": "Hay plantas con flores masculinas y plantas con flores femeninas. Ejemplos son Ginkgo biloba y la palma datilera, Phoenix dactylifera."
+        },
+        {
+          "texto": "Silene latifolia ⇒ planta dioica con cromosomas X e Y",
+          "explicacion": "Es un ejemplo de planta con sistema cromosómico de tipo XX-XY, en la que la hembra es XX y el macho es XY."
+        }
+      ]
+    },
+    {
+      "titulo": "Hermafroditismo",
+      "puntos": [
+        {
+          "texto": "«Hermafrodita» = individuo con órganos reproductores de ambos sexos",
+          "explicacion": "Produce gametos masculinos y femeninos. Pueden fecundarse entre sí o fecundar a otro individuo."
+        },
+        {
+          "texto": "Lombriz de tierra ⇒ hermafrodita con fecundación cruzada",
+          "explicacion": "Cada lombriz intercambia espermatozoides con otra, y ambas quedan fecundadas."
+        },
+        {
+          "texto": "Caracol ⇒ hermafrodita",
+          "explicacion": "Tiene ovarios y testículos, y casi siempre se aparea con otro caracol para fecundarse mutuamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Temas relacionados",
+      "puntos": [
+        {
+          "texto": "Herencia ligada al sexo (tema 84) ⇒ genes en los cromosomas sexuales",
+          "explicacion": "Se desarrolla en su propio tema. Se relaciona porque estos genes siguen el reparto de los cromosomas sexuales."
+        },
+        {
+          "texto": "Herencia restringida al sexo (tema 85) ⇒ genes de un solo sexo",
+          "explicacion": "Se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Herencia influenciada por el sexo (tema 86) ⇒ expresión según el sexo",
+          "explicacion": "Se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Genética humana (tema 87) ⊃ alteraciones de cromosomas sexuales",
+          "explicacion": "Se desarrolla en su propio tema. Incluye los casos con número alterado de cromosomas sexuales."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Sexo del hijo humano ≠ lo determina la madre",
+          "explicacion": "La madre solo aporta X. El sexo lo decide el espermatozoide del padre, que puede llevar X o Y."
+        },
+        {
+          "texto": "Macho ≠ siempre sexo heterogamético",
+          "explicacion": "En las aves y las mariposas el macho es ZZ, homogamético, y la hembra es ZW, heterogamética."
+        },
+        {
+          "texto": "Y ≠ determina el sexo en todas las especies",
+          "explicacion": "En Drosophila el sexo lo define la proporción entre X y autosomas. En humanos sí lo define el gen del cromosoma Y."
+        },
+        {
+          "texto": "Cromosomas sexuales ≠ únicos con genes",
+          "explicacion": "Los autosomas llevan la mayor parte de los genes. Los cromosomas sexuales también llevan genes que no se relacionan con el sexo."
+        }
       ]
     }
   ]

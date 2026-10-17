@@ -2,35 +2,371 @@
   "curso": "Biología",
   "tema": "Codominancia",
   "glosario": {
-    "Codominancia": "Herencia en la que ambos alelos se expresan por igual en el heterocigoto.",
-    "Alelos codominantes": "Alelos que se expresan simultáneamente sin mezclarse.",
-    "Grupo sanguíneo ABO": "Sistema de grupos sanguíneos que incluye los alelos IA, IB e i.",
-    "Antígeno": "Molécula que el sistema inmunológico reconoce como propia o extraña."
+    "alelo": "Forma alternativa de un mismo gen",
+    "gen": "Unidad hereditaria que determina un carácter",
+    "diploide": "Con dos juegos de cromosomas",
+    "heterocigoto": "Individuo con dos alelos distintos",
+    "homocigoto": "Individuo con dos alelos iguales",
+    "genotipo": "Conjunto de alelos de un individuo",
+    "fenotipo": "Rasgos observables de un individuo",
+    "dominante": "Alelo que se expresa en heterocigotos",
+    "recesivo": "Alelo oculto ante el dominante",
+    "gameto": "Célula sexual con un solo alelo",
+    "codominancia": "Ambos alelos se expresan a la vez",
+    "antígeno": "Molécula que el sistema inmunitario reconoce",
+    "enzima": "Proteína que acelera reacciones químicas",
+    "ruano": "Pelaje con pelos de dos colores",
+    "hemoglobina": "Proteína que transporta oxígeno en sangre",
+    "aminoácido": "Unidad que forma las proteínas",
+    "transcripción": "Copia de un gen en ácido ribonucleico",
+    "traducción": "Síntesis de proteína desde ácido ribonucleico",
+    "generación filial": "Descendencia de la generación parental",
+    "generación parental": "Progenitores que inician el cruzamiento",
+    "cuadro de Punnett": "Tabla que combina gametos de progenitores",
+    "cruce de prueba": "Cruce para descubrir un genotipo",
+    "glóbulo rojo": "Célula sanguínea que transporta oxígeno",
+    "trasplante": "Paso de un órgano de donante a receptor"
   },
   "theory": [
     {
-      "titulo": "Concepto de codominancia",
+      "titulo": "Conceptos previos",
       "puntos": [
-        { "texto": "En la codominancia, ambos alelos se expresan por igual en el heterocigoto.", "explicacion": "A diferencia de la dominancia incompleta, el fenotipo no es intermedio, sino que muestra ambos caracteres." }
+        {
+          "texto": "«Alelo» = forma alternativa de un mismo gen",
+          "explicacion": "Un gen puede tener versiones distintas, como las que producen pelo rojo y pelo blanco. Cada individuo diploide tiene dos alelos por gen, uno recibido de cada progenitor."
+        },
+        {
+          "texto": "«Heterocigoto» = dos alelos distintos para un gen",
+          "explicacion": "Es la condición en la que se pone a prueba la relación entre los alelos, porque en el homocigoto ambos son iguales y no hay nada que comparar."
+        },
+        {
+          "texto": "Dominancia completa ⇒ heterocigoto = fenotipo del homocigoto dominante",
+          "explicacion": "Un alelo oculta por completo al otro, como la flor púrpura del guisante sobre la blanca. Es el caso del que se aparta la codominancia."
+        },
+        {
+          "texto": "Dominancia incompleta (tema 79) ⇒ heterocigoto con fenotipo intermedio",
+          "explicacion": "Se desarrolla en su propio tema. Se menciona aquí porque la codominancia se confunde con ella con frecuencia."
+        }
       ]
     },
     {
-      "titulo": "Grupo sanguíneo ABO",
+      "titulo": "Definición básica",
       "puntos": [
-        { "texto": "El alelo IA produce el antígeno A y el alelo IB produce el antígeno B.", "explicacion": "El alelo i no produce antígeno en la superficie de los glóbulos rojos." },
-        { "texto": "El genotipo IA IB produce el grupo sanguíneo AB.", "explicacion": "Los dos antígenos se expresan al mismo tiempo en los glóbulos rojos." }
+        {
+          "texto": "«Codominancia» ⇒ ambos alelos se expresan por completo en el heterocigoto",
+          "explicacion": "Ninguno de los dos alelos oculta al otro ni se queda a medias: cada uno produce su efecto completo al mismo tiempo. Por eso el heterocigoto muestra a la vez los dos rasgos de los homocigotos."
+        },
+        {
+          "texto": "Heterocigoto = fenotipo de un homocigoto + fenotipo del otro",
+          "explicacion": "El individuo no tiene un aspecto intermedio, sino la suma visible de ambos rasgos. Es como tener los dos fenotipos extremos presentes en un mismo organismo."
+        },
+        {
+          "texto": "Codominancia ✗ enmascaramiento de un alelo",
+          "explicacion": "Como los dos alelos se expresan, no hay alelo que quede oculto. En esta herencia no se habla de alelo dominante ni recesivo entre ellos."
+        },
+        {
+          "texto": "Cada alelo forma su propio producto detectable",
+          "explicacion": "En el heterocigoto se pueden encontrar a la vez las dos proteínas o los dos antígenos distintos, cada uno codificado por su alelo."
+        },
+        {
+          "texto": "Codominancia ⇒ tres fenotipos para dos alelos",
+          "explicacion": "Los dos homocigotos y el heterocigoto se distinguen entre sí, igual que en la dominancia incompleta."
+        }
       ]
     },
     {
-      "titulo": "Otro ejemplo",
+      "titulo": "Notación genética",
       "puntos": [
-        { "texto": "En algunos bovinos, el pelaje roano presenta pelos rojos y blancos mezclados.", "explicacion": "Ambos alelos se expresan en el mismo individuo, cada uno en distintas células del pelaje." }
+        {
+          "texto": "P = generación parental",
+          "explicacion": "Son los progenitores con los que se inicia el cruzamiento."
+        },
+        {
+          "texto": "F1 = primera generación filial",
+          "explicacion": "Son los hijos directos de la generación parental. La letra F viene del latín filius, que significa hijo."
+        },
+        {
+          "texto": "F2 = segunda generación filial",
+          "explicacion": "Son los nietos de la generación parental, que resultan de cruzar entre sí a los individuos de la primera generación filial."
+        },
+        {
+          "texto": "Cᴿ = alelo de pelaje rojo en el ganado",
+          "explicacion": "La C es la letra de color y el superíndice R indica rojo. Se usa superíndice y no mayúscula y minúscula porque ningún alelo es dominante."
+        },
+        {
+          "texto": "Cᵂ = alelo de pelaje blanco en el ganado",
+          "explicacion": "La C es la letra de color y el superíndice W viene de white, blanco en inglés. Tiene el mismo rango que el alelo rojo."
+        }
       ]
     },
     {
-      "titulo": "Diferencia con dominancia incompleta",
+      "titulo": "Ganado Shorthorn",
       "puntos": [
-        { "texto": "En la codominancia, el heterocigoto muestra los dos fenotipos parentales.", "explicacion": "En la dominancia incompleta, en cambio, el heterocigoto muestra un fenotipo intermedio." }
+        {
+          "texto": "«Shorthorn» = raza bovina con pelaje ruano por codominancia",
+          "explicacion": "Es el ejemplo clásico de codominancia en animales. El ruano es el pelaje en el que hay pelos rojos y pelos blancos mezclados sobre el cuerpo."
+        },
+        {
+          "texto": "CᴿCᴿ ⇒ pelaje rojo",
+          "explicacion": "Las dos copias del alelo rojo hacen que todos los pelos sean rojos."
+        },
+        {
+          "texto": "CᵂCᵂ ⇒ pelaje blanco",
+          "explicacion": "Las dos copias del alelo blanco hacen que todos los pelos sean blancos."
+        },
+        {
+          "texto": "CᴿCᵂ ⇒ pelaje ruano",
+          "explicacion": "Cada alelo actúa en su propio grupo de pelos: algunos son rojos y otros son blancos, y el conjunto se ve moteado."
+        },
+        {
+          "texto": "Ruano ≠ pelo rosado uniforme",
+          "explicacion": "Cada pelo individual es rojo o blanco, no de un color intermedio. Los dos fenotipos aparecen lado a lado, no se mezclan en cada pelo."
+        },
+        {
+          "texto": "Cruce P = CᴿCᴿ × CᵂCᵂ → F1 100 % ruano",
+          "explicacion": "Cada progenitor aporta un alelo distinto, así que toda la descendencia es heterocigota y uniforme."
+        },
+        {
+          "texto": "Cruce F1 × F1 → F2 = 1 rojo : 2 ruano : 1 blanco",
+          "explicacion": "El heterocigoto forma un 50 % de gametos con cada alelo, y los alelos se recombinan al azar en cuatro combinaciones con la misma probabilidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Grupos sanguíneos ABO",
+      "puntos": [
+        {
+          "texto": "Sistema «ABO» = grupos sanguíneos A, B, AB y O",
+          "explicacion": "Karl Landsteiner lo descubrió en 1901 al notar que la sangre de unas personas aglutinaba la de otras. El nombre viene de los antígenos A y B y del grupo O, que no tiene ninguno."
+        },
+        {
+          "texto": "«Antígeno» = molécula de la superficie del glóbulo rojo",
+          "explicacion": "Los antígenos A y B son azúcares unidos a la membrana de los glóbulos rojos. El sistema inmunitario de cada persona reconoce como propios los suyos."
+        },
+        {
+          "texto": "Iᴬ = alelo que forma el antígeno A",
+          "explicacion": "Codifica una enzima que agrega N-acetilgalactosamina a la sustancia base de la membrana, y así se forma el antígeno A."
+        },
+        {
+          "texto": "Iᴮ = alelo que forma el antígeno B",
+          "explicacion": "Codifica una enzima que agrega galactosa a la misma sustancia base, y así se forma el antígeno B."
+        },
+        {
+          "texto": "i = alelo que no forma antígeno",
+          "explicacion": "Codifica una enzima no funcional, así que la sustancia base queda sin modificar. Es recesivo frente a los otros dos."
+        },
+        {
+          "texto": "Iᴬ y Iᴮ ⇒ dominantes sobre i",
+          "explicacion": "Una sola copia de cualquiera basta para que su antígeno aparezca, aunque el otro alelo sea i."
+        },
+        {
+          "texto": "Iᴬ × Iᴮ ⇒ codominancia",
+          "explicacion": "Cuando un individuo tiene ambos alelos, expresa los dos antígenos al mismo tiempo, cada uno completo."
+        },
+        {
+          "texto": "IᴬIᴮ ⇒ grupo AB",
+          "explicacion": "El glóbulo rojo tiene ambos antígenos en su membrana. Es la expresión directa de la codominancia."
+        },
+        {
+          "texto": "Grupo A ⇒ IᴬIᴬ + Iᴬi",
+          "explicacion": "Tiene solo el antígeno A, y puede ser homocigoto o heterocigoto con i."
+        },
+        {
+          "texto": "Grupo B ⇒ IᴮIᴮ + Iᴮi",
+          "explicacion": "Tiene solo el antígeno B, y puede ser homocigoto o heterocigoto con i."
+        },
+        {
+          "texto": "Grupo O ⇒ ii",
+          "explicacion": "No tiene ni antígeno A ni antígeno B, porque ninguno de sus alelos forma esas moléculas."
+        },
+        {
+          "texto": "IᴬIᴮ × IᴬIᴮ → 25 % A + 50 % AB + 25 % B",
+          "explicacion": "Los gametos son Iᴬ o Iᴮ con igual probabilidad. En la descendencia no puede aparecer el grupo O, porque ninguno aporta i."
+        },
+        {
+          "texto": "IᴬIᴮ × ii → 50 % A + 50 % B",
+          "explicacion": "El progenitor ii solo aporta i, así que la descendencia es Iᴬi o Iᴮi según el gameto del otro progenitor, y ninguno resulta AB."
+        },
+        {
+          "texto": "Alelos múltiples (tema 82) ⊃ sistema ABO",
+          "explicacion": "El sistema ABO tiene tres alelos y por eso se desarrolla también en su propio tema, junto con otros casos con más de dos alelos."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema MN",
+      "puntos": [
+        {
+          "texto": "Sistema «MN» = grupos sanguíneos M, N y MN",
+          "explicacion": "Karl Landsteiner y Philip Levine lo describieron en 1927. Depende de dos antígenos distintos en la membrana del glóbulo rojo."
+        },
+        {
+          "texto": "Lᴹ = alelo que forma el antígeno M",
+          "explicacion": "La L recuerda a Landsteiner, y el superíndice indica el antígeno que se forma."
+        },
+        {
+          "texto": "Lᴺ = alelo que forma el antígeno N",
+          "explicacion": "Tiene el mismo rango que Lᴹ: ninguno es dominante sobre el otro."
+        },
+        {
+          "texto": "LᴹLᴹ ⇒ grupo M; LᴺLᴺ ⇒ grupo N",
+          "explicacion": "Cada homocigoto tiene solo uno de los antígenos."
+        },
+        {
+          "texto": "LᴹLᴺ ⇒ grupo MN",
+          "explicacion": "El heterocigoto presenta ambos antígenos a la vez, lo que lo convierte en un caso claro de codominancia con solo dos alelos."
+        },
+        {
+          "texto": "LᴹLᴺ × LᴹLᴺ → 25 % M + 50 % MN + 25 % N",
+          "explicacion": "Es la razón 1 : 2 : 1 típica de un cruce entre heterocigotos codominantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Hemoglobina falciforme",
+      "puntos": [
+        {
+          "texto": "Hbᴬ = alelo de la hemoglobina normal del adulto",
+          "explicacion": "Hb es la abreviatura de hemoglobina, la proteína de los glóbulos rojos que transporta oxígeno. El superíndice A indica la forma normal de la cadena beta."
+        },
+        {
+          "texto": "Hbˢ = alelo de la hemoglobina falciforme",
+          "explicacion": "La S es de sickle, hoz en inglés. Resulta de un cambio de un solo aminoácido: ácido glutámico por valina en la posición 6 de la cadena beta."
+        },
+        {
+          "texto": "HbᴬHbˢ ⇒ produce hemoglobina normal + hemoglobina falciforme",
+          "explicacion": "El heterocigoto fabrica las dos formas y ambas se pueden detectar en sus glóbulos rojos, lo que es codominancia a nivel molecular."
+        },
+        {
+          "texto": "HbᴬHbˢ ⇒ rasgo falciforme sin anemia",
+          "explicacion": "La hemoglobina normal compensa a la falciforme, así que la persona suele estar sana. Solo con oxígeno muy bajo algunos de sus glóbulos pueden deformarse."
+        },
+        {
+          "texto": "HbˢHbˢ ⇒ anemia falciforme",
+          "explicacion": "Sin hemoglobina normal, los glóbulos rojos se deforman en hoz y obstruyen los capilares, lo que causa dolor y anemia."
+        },
+        {
+          "texto": "Heterocigoto ⇒ mayor resistencia a la malaria",
+          "explicacion": "Los glóbulos rojos de los portadores del rasgo falciforme son un medio menos favorable para el parásito Plasmodium falciparum, el agente de la malaria grave. Por eso el alelo falciforme es frecuente en regiones donde esta enfermedad es común."
+        },
+        {
+          "texto": "Anemia falciforme ⇒ recesiva en el organismo, codominante en la molécula",
+          "explicacion": "Depende del nivel de análisis: el portador es sano a nivel del organismo, pero expresa las dos hemoglobinas a nivel molecular."
+        }
+      ]
+    },
+    {
+      "titulo": "Complejo HLA",
+      "puntos": [
+        {
+          "texto": "«HLA» = antígenos leucocitarios humanos",
+          "explicacion": "Son proteínas de la superficie de las células que ayudan al sistema inmunitario a distinguir lo propio de lo ajeno."
+        },
+        {
+          "texto": "Genes HLA ⇒ se expresan ambos alelos heredados",
+          "explicacion": "Cada persona hereda un conjunto de alelos del padre y otro de la madre, y todos se expresan a la vez. Esta codominancia amplía la variedad de proteínas que reconocen agentes extraños."
+        },
+        {
+          "texto": "HLA ⇒ importante en trasplantes",
+          "explicacion": "Cuanto más parecidos son los HLA del donante y del receptor, menor es el riesgo de rechazo del órgano."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones características",
+      "puntos": [
+        {
+          "texto": "Razón genotípica F2 = 1 : 2 : 1",
+          "explicacion": "Sale de las cuatro combinaciones iguales de un cruce entre heterocigotos: dos homocigotos distintos y dos casillas heterocigotas."
+        },
+        {
+          "texto": "Razón fenotípica F2 = 1 : 2 : 1",
+          "explicacion": "Coincide con la razón genotípica porque cada genotipo tiene un fenotipo propio."
+        },
+        {
+          "texto": "Razón fenotípica codominante = razón fenotípica incompleta",
+          "explicacion": "No se puede distinguir una de otra solo con la proporción de descendientes. La diferencia está en cómo se ve el heterocigoto."
+        }
+      ]
+    },
+    {
+      "titulo": "Codominancia comparada",
+      "puntos": [
+        {
+          "texto": "Codominancia ≠ dominancia incompleta",
+          "explicacion": "En la codominancia el heterocigoto muestra los dos rasgos completos a la vez; en la incompleta muestra un único rasgo intermedio."
+        },
+        {
+          "texto": "Ruano ≈ moteado; rosado ≈ aclarado",
+          "explicacion": "El pelaje ruano tiene pelos rojos y blancos separados, mientras que la flor rosada es un solo color diluido. Esta diferencia visible ayuda a reconocer cada herencia."
+        },
+        {
+          "texto": "Producto del alelo: codominancia = dos completos; incompleta = cantidad reducida",
+          "explicacion": "En la codominancia se encuentran dos productos distintos al mismo nivel; en la incompleta la cantidad del producto del alelo funcional queda por debajo de la de un homocigoto."
+        },
+        {
+          "texto": "Codominancia ≠ dominancia completa",
+          "explicacion": "En la dominancia completa el heterocigoto se parece a uno de los dos homocigotos y un alelo queda oculto. Aquí se ven ambos rasgos."
+        },
+        {
+          "texto": "Razón fenotípica F2: completa = 3 : 1 ≠ codominancia = 1 : 2 : 1",
+          "explicacion": "En la dominancia completa el fenotipo dominante agrupa a dos genotipos. En la codominancia cada genotipo se distingue."
+        }
+      ]
+    },
+    {
+      "titulo": "Base molecular",
+      "puntos": [
+        {
+          "texto": "Ambos alelos ⇒ se transcriben y se traducen",
+          "explicacion": "Cada uno produce su proteína, y las dos están presentes en la célula. No hay interferencia que anule a una de ellas."
+        },
+        {
+          "texto": "Cada proteína ⇒ efecto propio y completo",
+          "explicacion": "Por eso el fenotipo del heterocigoto reúne los efectos de las dos proteínas, como los antígenos A y B en el mismo glóbulo rojo."
+        },
+        {
+          "texto": "Alelos ✗ mezcla entre sí",
+          "explicacion": "Los alelos siguen separados y pasan sin cambio a los gametos, de modo que los homocigotos reaparecen en las generaciones siguientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Genotipo según fenotipo",
+      "puntos": [
+        {
+          "texto": "Heterocigoto ⇒ reconocible a simple vista",
+          "explicacion": "Si se ven los dos rasgos a la vez, el genotipo es heterocigoto sin duda."
+        },
+        {
+          "texto": "Homocigoto ⇒ fenotipo extremo",
+          "explicacion": "Si solo se ve uno de los rasgos, el individuo es homocigoto para ese alelo."
+        },
+        {
+          "texto": "«Cruce de prueba» (tema 81) ✗ necesario aquí",
+          "explicacion": "El cruce de prueba sirve para descubrir el genotipo de un individuo con fenotipo dominante, algo que en esta herencia se ve directamente. Se desarrolla en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Codominancia ≠ mezcla de colores",
+          "explicacion": "En el ruano no hay un color nuevo en cada pelo: hay pelos de los dos colores originales."
+        },
+        {
+          "texto": "Grupo AB ≠ fenotipo intermedio entre A y B",
+          "explicacion": "La persona tiene los dos antígenos completos, no un antígeno intermedio."
+        },
+        {
+          "texto": "Iᴬ y Iᴮ ≠ recesivos entre sí",
+          "explicacion": "Los dos son dominantes frente a i, pero entre ellos son codominantes y se expresan juntos."
+        },
+        {
+          "texto": "Mayúscula y minúscula ≠ notación habitual de codominancia",
+          "explicacion": "Esas letras suelen indicar dominancia completa. En la codominancia se usan letras con superíndice para mostrar que los alelos tienen igual rango."
+        }
       ]
     }
   ]

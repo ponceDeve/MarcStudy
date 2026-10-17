@@ -2,35 +2,182 @@
   "curso": "Biología",
   "tema": "Respiración anaeróbica",
   "glosario": {
-    "Respiración anaeróbica": "Degradación de glucosa sin oxígeno como aceptor final de electrones.",
-    "Fermentación": "Respiración anaeróbica que usa un compuesto orgánico como aceptor de electrones.",
-    "Fermentación láctica": "Fermentación que convierte el piruvato en ácido láctico.",
-    "Fermentación alcohólica": "Fermentación que convierte el piruvato en etanol y dióxido de carbono.",
-    "Glucólisis": "Ruta citoplasmática que degrada glucosa en dos moléculas de piruvato.",
-    "Piruvato": "Compuesto de tres carbonos que resulta de la glucólisis.",
-    "Dinucleótido de nicotinamida y adenina (NAD+)": "Coenzima que acepta electrones en la glucólisis y se regenera en la fermentación."
+    "Respiración anaeróbica": "Respiración celular que ocurre sin oxígeno y usa como aceptor final de electrones una molécula inorgánica distinta del oxígeno.",
+    "Respiración aeróbica": "Respiración celular que usa oxígeno como aceptor final de electrones.",
+    "Fermentación": "Vía anaeróbica que usa una molécula orgánica como aceptor final de electrones y no tiene cadena de transporte de electrones.",
+    "Aceptor final de electrones": "Molécula que recibe los electrones al final de la cadena de transporte.",
+    "Glucólisis": "Ruta que degrada la glucosa a piruvato y produce ATP y NADH.",
+    "Piruvato": "Molécula de tres carbonos que resulta de la glucólisis.",
+    "NADH": "Coenzima transportadora de electrones que se oxida en la cadena de transporte.",
+    "NAD⁺": "Forma oxidada de la coenzima que recibe electrones durante la glucólisis y el ciclo de Krebs.",
+    "Fermentación láctica": "Fermentación en la que el piruvato se reduce a ácido láctico.",
+    "Fermentación alcohólica": "Fermentación en la que el piruvato se convierte en etanol y dióxido de carbono.",
+    "Reductor de sulfato": "Bacteria que usa sulfato como aceptor final de electrones y lo reduce a sulfuro de hidrógeno.",
+    "Reductor de nitrato": "Bacteria que usa nitrato como aceptor final de electrones y lo reduce a nitrito.",
+    "Fosforilación a nivel de sustrato": "Formación de ATP por la transferencia directa de un grupo fosfato desde un compuesto a ADP.",
+    "Anaerobio facultativo": "Organismo que puede usar respiración aeróbica o anaeróbica según haya o no oxígeno.",
+    "Anaerobio estricto": "Organismo que no puede vivir en presencia de oxígeno."
   },
   "theory": [
     {
       "titulo": "Concepto de respiración anaeróbica",
       "puntos": [
-        { "texto": "La respiración anaeróbica ocurre en ausencia de oxígeno.", "explicacion": "Un compuesto distinto del oxígeno actúa como aceptor final de electrones." },
-        { "texto": "La respiración anaeróbica produce menos ATP que la aeróbica.", "explicacion": "Solo la glucólisis genera ATP, con una ganancia neta de dos moléculas por glucosa." },
-        { "texto": "La respiración anaeróbica ocurre en el citoplasma.", "explicacion": "No necesita mitocondrias, ya que la glucólisis y la fermentación ocurren fuera de ellas." }
+        {
+          "texto": "La respiración anaeróbica ocurre en ausencia de oxígeno",
+          "explicacion": "Es una forma de respiración celular que obtiene energía de la glucosa sin usar el oxígeno como aceptor final de electrones."
+        },
+        {
+          "texto": "La respiración anaeróbica usa una molécula inorgánica distinta del oxígeno",
+          "explicacion": "Los aceptores más comunes son el nitrato, el sulfato y el carbonato, que se reducen al recibir los electrones."
+        },
+        {
+          "texto": "La respiración anaeróbica tiene cadena de transporte de electrones",
+          "explicacion": "Como en la respiración aeróbica, los electrones pasan por una cadena que genera un gradiente de protones para producir ATP."
+        },
+        {
+          "texto": "La respiración anaeróbica es realizada principalmente por procariotas",
+          "explicacion": "Muchas bacterias y arqueas pueden usar aceptores inorgánicos cuando el oxígeno no está disponible."
+        }
       ]
     },
     {
-      "titulo": "Fermentaciones",
+      "titulo": "Etapas comunes con la respiración aeróbica",
       "puntos": [
-        { "texto": "La «fermentación» es la forma más común de respiración anaeróbica.", "explicacion": "Sigue a la glucólisis y no utiliza la cadena de transporte de electrones." },
-        { "texto": "La «fermentación láctica» convierte el piruvato en ácido láctico.", "explicacion": "Ocurre en células musculares durante esfuerzos intensos y en algunas bacterias." },
-        { "texto": "La «fermentación alcohólica» convierte el piruvato en etanol y dióxido de carbono.", "explicacion": "Ocurre en levaduras y es utilizada en la elaboración de bebidas y pan." }
+        {
+          "texto": "La respiración anaeróbica incluye glucólisis",
+          "explicacion": "La glucosa se degrada a piruvato, produciendo una pequeña cantidad de ATP y NADH."
+        },
+        {
+          "texto": "La respiración anaeróbica incluye la reacción de transición y el ciclo de Krebs",
+          "explicacion": "El piruvato se oxida a acetil coenzima A, que entra al ciclo de Krebs y produce NADH y FADH₂."
+        },
+        {
+          "texto": "La respiración anaeróbica incluye una cadena de transporte de electrones",
+          "explicacion": "El NADH y el FADH₂ entregan electrones a la cadena, que los pasa a un aceptor inorgánico distinto del oxígeno."
+        }
       ]
     },
     {
-      "titulo": "Función de la fermentación",
+      "titulo": "Aceptores inorgánicos",
       "puntos": [
-        { "texto": "La fermentación regenera el «Dinucleótido de nicotinamida y adenina (NAD+)».", "explicacion": "Sin NAD+ libre, la glucólisis se detendría y no se produciría ATP." }
+        {
+          "texto": "Los reductores de sulfato usan sulfato como aceptor final de electrones",
+          "explicacion": "El sulfato se reduce a sulfuro de hidrógeno, un gas con olor característico."
+        },
+        {
+          "texto": "Los reductores de nitrato usan nitrato como aceptor final de electrones",
+          "explicacion": "El nitrato se reduce a nitrito, y en algunos casos hasta nitrógeno gaseoso."
+        },
+        {
+          "texto": "Algunas bacterias usan carbonato como aceptor final de electrones",
+          "explicacion": "Dato por confirmar: el carbonato se reduce a metano en un grupo de arqueas metanógenas."
+        },
+        {
+          "texto": "Los aceptores inorgánicos rinden más ATP que la fermentación",
+          "explicacion": "Como usan cadena de transporte de electrones, pueden generar un gradiente de protones que sintetiza más ATP."
+        }
+      ]
+    },
+    {
+      "titulo": "Rendimiento energético",
+      "puntos": [
+        {
+          "texto": "La respiración aeróbica produce el mayor rendimiento de ATP",
+          "explicacion": "Dato por confirmar: el máximo teórico por glucosa está alrededor de 36 a 38 ATP, según la eficiencia de la cadena."
+        },
+        {
+          "texto": "La respiración anaeróbica produce menos ATP que la aeróbica",
+          "explicacion": "Como el aceptor inorgánico tiene menor potencial de reducción que el oxígeno, se libera menos energía en la cadena."
+        },
+        {
+          "texto": "La respiración anaeróbica produce entre 2 y 36 ATP por glucosa según el aceptor",
+          "explicacion": "Dato por confirmar: el rendimiento depende del organismo y del aceptor final utilizado."
+        },
+        {
+          "texto": "La respiración con nitrato rinde más ATP que con sulfato",
+          "explicacion": "Dato por confirmar: el nitrato tiene mayor potencial de reducción, por lo que su cadena genera más energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Fermentación",
+      "puntos": [
+        {
+          "texto": "La fermentación usa una molécula orgánica como aceptor final de electrones",
+          "explicacion": "Generalmente el piruvato o uno de sus derivados recibe los electrones del NADH."
+        },
+        {
+          "texto": "La fermentación no tiene cadena de transporte de electrones",
+          "explicacion": "Su única fuente de ATP es la glucólisis, por lo que el rendimiento es bajo."
+        },
+        {
+          "texto": "La fermentación produce solo 2 ATP por glucosa",
+          "explicacion": "Estos ATP provienen de la fosforilación a nivel de sustrato durante la glucólisis."
+        },
+        {
+          "texto": "La fermentación regenera NAD⁺ para que la glucólisis continúe",
+          "explicacion": "Sin NAD⁺ disponible la glucólisis se detiene, por eso la fermentación recicla la coenzima."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de fermentación",
+      "puntos": [
+        {
+          "texto": "La fermentación láctica convierte el piruvato en ácido láctico",
+          "explicacion": "Ocurre en las células musculares durante un esfuerzo intenso y en bacterias usadas en la industria láctea."
+        },
+        {
+          "texto": "La fermentación alcohólica convierte el piruvato en etanol y dióxido de carbono",
+          "explicacion": "Es realizada por levaduras y se usa en la producción de pan, cerveza y vino."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de procesos",
+      "puntos": [
+        {
+          "texto": "La respiración anaeróbica tiene cadena de transporte; la fermentación no",
+          "explicacion": "Esta es la diferencia principal entre ambos procesos anaeróbicos."
+        },
+        {
+          "texto": "La respiración anaeróbica usa aceptor inorgánico; la fermentación usa orgánico",
+          "explicacion": "En la fermentación el aceptor es una molécula producida dentro de la misma célula."
+        },
+        {
+          "texto": "La respiración anaeróbica genera más ATP que la fermentación",
+          "explicacion": "La cadena de transporte permite obtener más energía de cada molécula de glucosa."
+        }
+      ]
+    },
+    {
+      "titulo": "Organismos anaerobios",
+      "puntos": [
+        {
+          "texto": "Los anaerobios estrictos mueren en presencia de oxígeno",
+          "explicacion": "Dato por confirmar: el oxígeno es tóxico para ellos porque no tienen las enzimas que lo neutralizan."
+        },
+        {
+          "texto": "Los anaerobios facultativos cambian entre respiración aeróbica y anaeróbica",
+          "explicacion": "Usan oxígeno cuando está disponible y recurren a otras vías cuando no lo está."
+        },
+        {
+          "texto": "Algunas bacterias del intestino humano son anaerobios estrictos",
+          "explicacion": "Dato por confirmar: contribuyen a la digestión y a la producción de vitaminas en el colon."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia ecológica",
+      "puntos": [
+        {
+          "texto": "La respiración anaeróbica recicla elementos en sedimentos y suelos sin oxígeno",
+          "explicacion": "Las bacterias reductoras de sulfato y de nitrato participan en el ciclo del azufre y del nitrógeno."
+        },
+        {
+          "texto": "Las bacterias sulfato reductoras pueden causar problemas en tuberías y pozos",
+          "explicacion": "Dato por confirmar: el sulfuro de hidrógeno que producen es corrosivo y tóxico."
+        }
       ]
     }
   ]

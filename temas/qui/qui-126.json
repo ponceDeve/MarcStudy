@@ -1,0 +1,55 @@
+{
+  "curso": "Química",
+  "tema": "Reacciones de primer y segundo orden",
+  "glosario": {
+    "primer orden": "Velocidad proporcional a una concentración.",
+    "segundo orden": "Velocidad proporcional al cuadrado de [A].",
+    "ley integrada": "Ecuación que relaciona concentración y tiempo.",
+    "vida media": "Tiempo para reducir la concentración a la mitad."
+  },
+  "theory": [
+    {
+      "titulo": "Primer orden",
+      "puntos": [
+        {
+          "texto": "Ley de velocidad: v = k[A]",
+          "explicacion": "La velocidad es proporcional a la concentración de un solo reactivo."
+        },
+        {
+          "texto": "Ley integrada: ln[A] = ln[A]₀ − k·t",
+          "explicacion": "Permite calcular la concentración en cualquier tiempo; [A]₀ es la concentración inicial."
+        }
+      ]
+    },
+    {
+      "titulo": "Segundo orden",
+      "puntos": [
+        {
+          "texto": "Ley de velocidad: v = k[A]²",
+          "explicacion": "La velocidad depende del cuadrado de la concentración; duplicar [A] cuadruplica la velocidad."
+        },
+        {
+          "texto": "Ley integrada: 1/[A] = 1/[A]₀ + k·t",
+          "explicacion": "Al graficar 1/[A] frente al tiempo se obtiene una recta de pendiente k."
+        },
+        {
+          "texto": "Vida media: t½ = 1 / (k·[A]₀)",
+          "explicacion": "A diferencia del primer orden, en segundo orden la vida media depende de la concentración inicial."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo resuelto",
+      "puntos": [
+        {
+          "texto": "Datos: [A]₀ = 0.5 M, k = 0.2, t = 10 s",
+          "explicacion": "Las unidades de k son M⁻¹·s⁻¹. Cálculo: 1/[A] = 1/0.5 + 0.2 × 10 = 2 + 2 = 4."
+        },
+        {
+          "texto": "Concentración final: [A] = 1 / 4 = 0.25 M",
+          "explicacion": "La concentración se redujo a la mitad en 10 s; con t½ = 1 / (0.2 × 0.5) = 10 s se confirma el resultado."
+        }
+      ]
+    }
+  ]
+}

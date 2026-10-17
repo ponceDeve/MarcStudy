@@ -2,39 +2,232 @@
   "curso": "Biología",
   "tema": "Contaminación",
   "glosario": {
-    "Contaminación": "Introducción de sustancias o energía que daña el ambiente.",
-    "Contaminante": "Sustancia o agente que causa contaminación.",
-    "Biomagnificación": "Aumento de la concentración de un contaminante en los niveles tróficos superiores.",
-    "Eutrofización": "Enriquecimiento excesivo de nutrientes en el agua que reduce el oxígeno.",
-    "Lluvia ácida": "Precipitación con alto contenido de ácidos formada por contaminantes del aire.",
-    "Smog": "Contaminación del aire con partículas y gases en zonas urbanas."
+    "Contaminante": "Sustancia o forma de energía que altera negativamente un ambiente",
+    "Contaminante primario": "Contaminante emitido directamente desde su fuente",
+    "Contaminante secundario": "Contaminante que se forma en el ambiente por reacciones químicas",
+    "Material particulado": "Conjunto de partículas sólidas o líquidas suspendidas en el aire",
+    "Smog": "Niebla contaminada formada por humo, ozono y otros contaminantes",
+    "Metal pesado": "Metal tóxico y persistente, como el plomo, el mercurio o el cadmio",
+    "Aguas residuales": "Aguas usadas en hogares, industrias o actividades que contienen contaminantes",
+    "Microplástico": "Fragmento de plástico menor de cinco milímetros",
+    "Biorremediación": "Uso de microorganismos para degradar contaminantes",
+    "Fitorremediación": "Uso de plantas para absorber o degradar contaminantes",
+    "Pasivo ambiental": "Daño ambiental dejado por una actividad que no fue remediado"
   },
   "theory": [
     {
-      "titulo": "Tipos de contaminación",
+      "titulo": "Concepto de contaminación",
       "puntos": [
-        { "texto": "La contaminación puede afectar al aire, al agua o al suelo.", "explicacion": "Cada tipo tiene fuentes y efectos distintos sobre los seres vivos." },
-        { "texto": "La contaminación también puede ser sonora, lumínica o térmica.", "explicacion": "Estas formas alteran el comportamiento y la reproducción de muchos animales." }
+        {
+          "texto": "Contaminación: introducción de sustancias o energía dañinas",
+          "explicacion": "Altera las características naturales de un ambiente y afecta a los seres vivos que lo habitan. Puede ser causada por actividades humanas o por procesos naturales, aunque la mayor parte es de origen humano."
+        },
+        {
+          "texto": "Contaminante ⇒ agente que altera el equilibrio del ecosistema",
+          "explicacion": "Puede ser una sustancia química, un organismo o una forma de energía. Su efecto depende de su concentración, su persistencia y su toxicidad."
+        },
+        {
+          "texto": "Contaminantes primarios ⇒ emitidos directamente desde su fuente",
+          "explicacion": "Por ejemplo, el dióxido de azufre que sale de una chimenea o el monóxido de carbono de un motor. Actúan en el ambiente tal como fueron emitidos."
+        },
+        {
+          "texto": "Contaminantes secundarios ⇒ formados por reacciones en el ambiente",
+          "explicacion": "El ozono troposférico se forma cuando los óxidos de nitrógeno y los compuestos orgánicos reaccionan con la luz solar. Su presencia aumenta en días soleados y calurosos."
+        }
       ]
     },
     {
-      "titulo": "Contaminación del aire",
+      "titulo": "Contaminación atmosférica",
       "puntos": [
-        { "texto": "Los óxidos de azufre y de nitrógeno forman lluvia ácida.", "explicacion": "Estos gases provienen de la quema de combustibles y dañan bosques y lagos." },
-        { "texto": "El smog urbano irrita las vías respiratorias y reduce la visibilidad.", "explicacion": "Se forma por la acción de la luz solar sobre los contaminantes de los vehículos." }
+        {
+          "texto": "Material particulado ⇒ partículas finas en el aire",
+          "explicacion": "Las partículas PM2,5 tienen un diámetro menor de 2,5 micrómetros y penetran hasta los alvéolos pulmonares. Se asocian con enfermedades respiratorias y cardiovasculares."
+        },
+        {
+          "texto": "Dióxido de azufre ⇒ origen de la lluvia ácida",
+          "explicacion": "Se libera al quemar carbón y petróleo con azufre. Al combinarse con el agua atmosférica forma ácido sulfúrico, que cae con la lluvia."
+        },
+        {
+          "texto": "Óxidos de nitrógeno ⇒ precursores del smog fotoquímico",
+          "explicacion": "Se producen en motores de combustión y en procesos industriales a alta temperatura. Junto con los compuestos orgánicos volátiles forman el smog bajo la acción de la luz solar."
+        },
+        {
+          "texto": "Monóxido de carbono ⇒ gas tóxico de combustión incompleta",
+          "explicacion": "Se une a la hemoglobina con mayor afinidad que el oxígeno y reduce el transporte de este gas a los tejidos. Su exposición elevada puede ser mortal."
+        }
+      ]
+    },
+    {
+      "titulo": "Agotamiento del ozono",
+      "puntos": [
+        {
+          "texto": "Ozono estratosférico ⇒ filtro de la radiación ultravioleta",
+          "explicacion": "Esta capa absorbe gran parte de la radiación ultravioleta B, dañina para el ADN de los seres vivos. Su disminución aumenta el riesgo de cáncer de piel y de daño en los ojos."
+        },
+        {
+          "texto": "CFC ⇒ clorofluorocarbonos que destruyen el ozono",
+          "explicacion": "Son compuestos usados en refrigerantes, aerosoles y espumas. Los átomos de cloro liberados en la estratosfera destruyen moléculas de ozono."
+        },
+        {
+          "texto": "Protocolo de Montreal de 1987 ⇒ reducción de los CFC",
+          "explicacion": "Es un acuerdo internacional que regula la producción y el consumo de sustancias que agotan el ozono. Su aplicación ha permitido una recuperación progresiva de la capa de ozono."
+        },
+        {
+          "texto": "Agujero de ozono ⇒ disminución estacional sobre la Antártida",
+          "explicacion": "Fue descubierto en 1985 durante la primavera austral. Se forma por reacciones químicas que se aceleran en las bajas temperaturas polares."
+        }
       ]
     },
     {
       "titulo": "Contaminación del agua",
       "puntos": [
-        { "texto": "La eutrofización es el exceso de nutrientes que provoca crecimiento masivo de algas.", "explicacion": "Al descomponerse las algas, el oxígeno del agua disminuye y mueren peces." },
-        { "texto": "Los metales pesados se acumulan en los organismos y pasan por la cadena trófica.", "explicacion": "La biomagnificación hace que los depredadores superiores tengan las concentraciones más altas." }
+        {
+          "texto": "Aguas residuales sin tratar ⇒ materia orgánica y microorganismos",
+          "explicacion": "Consumen el oxígeno de los ríos y transmiten enfermedades. Su tratamiento reduce la carga de contaminantes antes de devolverlas al ambiente."
+        },
+        {
+          "texto": "Metales pesados ⇒ plomo, mercurio y cadmio",
+          "explicacion": "Provienen de la minería, la industria y las baterías desechadas. Son tóxicos, no se degradan y se acumulan en los organismos, como se estudió en el tema 118."
+        },
+        {
+          "texto": "Hidrocarburos ⇒ derrames de petróleo en el mar",
+          "explicacion": "Cubren la superficie del agua y dañan las plumas de las aves y las branquias de los peces. Los derrames también afectan a las playas durante años."
+        },
+        {
+          "texto": "Nutrientes en exceso ⇒ eutrofización",
+          "explicacion": "Los fertilizantes y las aguas residuales aportan nitrógeno y fósforo que estimulan el crecimiento de algas. Su descomposición consume el oxígeno disponible, como se explicó en el tema 119."
+        }
       ]
     },
     {
       "titulo": "Contaminación del suelo",
       "puntos": [
-        { "texto": "Los plaguicidas y los residuos sólidos contaminan el suelo.", "explicacion": "Pueden llegar a las aguas subterráneas y a los alimentos." }
+        {
+          "texto": "Pesticidas ⇒ sustancias tóxicas para organismos no objetivo",
+          "explicacion": "Pueden persistir en el suelo durante años y llegar a las aguas subterráneas. Afectan a insectos benéficos, microorganismos y aves."
+        },
+        {
+          "texto": "Residuos sólidos ⇒ acumulación en botaderos",
+          "explicacion": "Los basurales liberan lixiviados que contaminan el suelo y el agua subterránea. Su manejo adecuado incluye relleno sanitario, reciclaje y compostaje."
+        },
+        {
+          "texto": "Suelos contaminados por metales ⇒ pérdida de fertilidad",
+          "explicacion": "Los metales pesados reducen la actividad de los microorganismos del suelo y pasan a las plantas cultivadas. Su presencia limita el uso agrícola del terreno."
+        }
+      ]
+    },
+    {
+      "titulo": "Plásticos y microplásticos",
+      "puntos": [
+        {
+          "texto": "Plásticos ⇒ residuos de degradación muy lenta",
+          "explicacion": "Pueden permanecer en el ambiente durante décadas o siglos. Se fragmentan en partes cada vez más pequeñas sin desaparecer por completo."
+        },
+        {
+          "texto": "Microplásticos ⇒ fragmentos menores de cinco milímetros",
+          "explicacion": "Se encuentran en océanos, ríos y suelos, y son ingeridos por organismos de distintos niveles tróficos. Pueden transportar contaminantes adheridos a su superficie."
+        }
+      ]
+    },
+    {
+      "titulo": "Otros tipos de contaminación",
+      "puntos": [
+        {
+          "texto": "Contaminación acústica ⇒ ruido que altera a los seres vivos",
+          "explicacion": "El ruido de tráfico o de maquinaria causa estrés en las personas y altera la comunicación de muchas especies de aves y mamíferos."
+        },
+        {
+          "texto": "Contaminación lumínica ⇒ exceso de luz artificial",
+          "explicacion": "Afecta los ritmos de actividad de insectos, aves y tortugas marinas. Las tortugas recién nacidas pueden desorientarse y dirigirse hacia la ciudad."
+        },
+        {
+          "texto": "Contaminación térmica ⇒ aumento de temperatura del agua",
+          "explicacion": "El agua de refrigeración de industrias y centrales eleva la temperatura de los ríos. Esto reduce el oxígeno disponible y afecta a las especies sensibles."
+        }
+      ]
+    },
+    {
+      "titulo": "Contaminación en el Perú",
+      "puntos": [
+        {
+          "texto": "La Oroya ⇒ contaminación por metales de la fundición",
+          "explicacion": "En el departamento de Junín, la fundición de minerales emitió durante décadas plomo, arsénico y otros metales. Esto afectó la salud de los pobladores y el suelo de la zona."
+        },
+        {
+          "texto": "Relaves mineros ⇒ residuos de la extracción de minerales",
+          "explicacion": "Son los restos sólidos y líquidos que quedan después de separar el mineral. Si se almacenan mal, pueden filtrarse y contaminar ríos y lagos."
+        },
+        {
+          "texto": "Minería ilegal ⇒ contaminación por mercurio",
+          "explicacion": "El uso de mercurio para extraer oro afecta ríos amazónicos y la salud de las comunidades que consumen pescado. Este tema se relaciona con la explotación de recursos del tema 122."
+        },
+        {
+          "texto": "Pasivos ambientales ⇒ daños heredados de actividades pasadas",
+          "explicacion": "Son áreas contaminadas por operaciones que cesaron sin remediarse. Su recuperación requiere inversión y tiempo prolongado."
+        }
+      ]
+    },
+    {
+      "titulo": "Control y remediación",
+      "puntos": [
+        {
+          "texto": "Tratamiento de aguas residuales ⇒ eliminación de contaminantes",
+          "explicacion": "Incluye procesos físicos para retener sólidos, biológicos para degradar materia orgánica y químicos para desinfectar. Su aplicación reduce la carga contaminante de los cuerpos de agua."
+        },
+        {
+          "texto": "Biorremediación ⇒ microorganismos que degradan contaminantes",
+          "explicacion": "Algunas bacterias y hongos descomponen hidrocarburos y otros compuestos tóxicos. Se usa en suelos y aguas contaminados por derrames."
+        },
+        {
+          "texto": "Fitorremediación ⇒ plantas que absorben contaminantes",
+          "explicacion": "Ciertas especies acumulan metales pesados en sus tejidos. Después se cosechan y se eliminan de forma adecuada."
+        },
+        {
+          "texto": "Normas ambientales ⇒ límites a las emisiones y vertidos",
+          "explicacion": "Establecen concentraciones máximas permitidas en el aire, el agua y el suelo. Su cumplimiento se verifica mediante monitoreo periódico."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Cadenas tróficas y biomagnificación (tema 118)",
+          "explicacion": "La acumulación de toxinas a lo largo de la cadena alimentaria se estudió en el tema 118."
+        },
+        {
+          "texto": "Ciclos biogeoquímicos y lluvia ácida (tema 119)",
+          "explicacion": "Las alteraciones de los ciclos de nitrógeno, fósforo y carbono se desarrollaron en el tema 119."
+        },
+        {
+          "texto": "Recursos naturales (tema 122) y cambio climático (tema 124)",
+          "explicacion": "La contaminación afecta los recursos naturales y contribuye al cambio climático, desarrollados en los temas 122 y 124."
+        },
+        {
+          "texto": "Salud ambiental (temas 107 y 108)",
+          "explicacion": "Los efectos de la contaminación sobre la salud se relacionan con los factores ambientales estudiados en el tema 107 y con los hábitos del tema 108."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre contaminación",
+      "puntos": [
+        {
+          "texto": "La contaminación afecta solo a las zonas cercanas a la fuente ✗",
+          "explicacion": "Muchos contaminantes son transportados por el aire y el agua a grandes distancias. Algunos llegan incluso a regiones polares donde no se utilizan."
+        },
+        {
+          "texto": "La dilución en el agua elimina la contaminación ✗",
+          "explicacion": "Diluir no destruye los contaminantes. Los metales pesados y los compuestos persistentes siguen presentes y pueden acumularse en los organismos."
+        },
+        {
+          "texto": "El reciclaje elimina por completo el impacto de los plásticos ✗",
+          "explicacion": "El reciclaje reduce el problema, pero una parte importante del plástico se pierde o se fragmenta. Disminuir el consumo también es necesario."
+        },
+        {
+          "texto": "El ozono es siempre dañino",
+          "explicacion": "El ozono estratosférico protege de la radiación ultravioleta, mientras que el ozono troposférico es un contaminante que daña las vías respiratorias. La ubicación determina su efecto."
+        }
       ]
     }
   ]

@@ -1,0 +1,39 @@
+{
+  "curso": "Física",
+  "tema": "Nivel de intensidad sonora",
+  "glosario": {
+    "Nivel de intensidad sonora": "Escala logarítmica que compara la intensidad con el umbral",
+    "Decibelio": "Unidad del nivel de intensidad sonora, abreviada dB",
+    "Logaritmo decimal": "Exponente al que se eleva 10 para obtener un número",
+    "Umbral de audición": "Intensidad mínima perceptible, de 10⁻¹² W/m²",
+    "Intensidad sonora": "Potencia sonora que atraviesa una unidad de área"
+  },
+  "theory": [
+    {
+      "titulo": "Definición del nivel",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: β = 10 × log(I / I0), con I0 = 10⁻¹² W/m².",
+          "explicacion": "β se mide en decibelios (dB); la escala es logarítmica, no lineal."
+        },
+        {
+          "texto": "Ejemplo: I = 10⁻⁶ W/m².",
+          "explicacion": "β = 10 × log(10⁻⁶ / 10⁻¹²) = 10 × 6 = 60 dB, el nivel de una conversación normal."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambios en dB",
+      "puntos": [
+        {
+          "texto": "Duplicar la intensidad aumenta el nivel en unos 3 dB.",
+          "explicacion": "Porque 10 × log 2 ≈ 3 dB, no en el doble de decibelios."
+        },
+        {
+          "texto": "Duplicar la distancia reduce la intensidad a un cuarto y el nivel en unos 6 dB.",
+          "explicacion": "Por la dependencia con el cuadrado de la distancia."
+        }
+      ]
+    }
+  ]
+}
