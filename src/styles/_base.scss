@@ -4,14 +4,17 @@
   margin: 0;
   user-select: none;
 }
+
 /* Ocultar scrollbar */
 * {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 *::-webkit-scrollbar {
   display: none;
 }
+
 html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
@@ -20,6 +23,7 @@ html {
   width: 100%;
   cursor: url("/cursor_auto.webp"), auto;
 }
+
 button,
 a,
 label,
@@ -32,6 +36,7 @@ input[type="button"],
 [role="button"] {
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -40,19 +45,23 @@ body {
   min-height: 100vh;
   width: 100%;
 }
+
 button,
 input {
   font-family: inherit;
 }
+
 input[type="search"] {
   -webkit-appearance: none;
   appearance: none;
 }
+
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
 }
+
 button {
   background: none;
   border: none;
@@ -62,48 +71,60 @@ button {
   color: inherit;
   font-size: inherit;
 }
+
 :focus {
   outline: none;
 }
+
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
+
 /* ============================================================
    FUENTE ESPECIAL DEL CRONÓMETRO
    ============================================================ */
+
 /* ============================================================
    ANIMACIONES
    ============================================================ */
+
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes bounce {
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
+
 .animate-fade-in {
   animation: fade-in 0.25s linear;
 }
+
 .animate-bounce {
   animation: bounce 1s infinite;
 }
+
 /* ============================================================
    CONTENEDOR ARCADE
    ============================================================ */
+
 .arcade-game-container {
   position: relative;
   background: var(--surface);
@@ -112,6 +133,7 @@ button {
   width: 100%;
   box-shadow: var(--shadow-md);
 }
+
 .arcade-grid {
   position: absolute;
   inset: 0;
@@ -121,18 +143,19 @@ button {
     linear-gradient(to bottom, rgba(61, 107, 140, 0.05) 1px, transparent 1px);
   z-index: 0;
 }
+
 .arcade-big-btn {
   transition: filter 0.15s, transform 0.1s;
 }
-.arcade-big-btn:hover {
-  filter: brightness(1.08);
-}
+
 .arcade-big-btn:active {
   transform: translateY(1px);
 }
+
 /* ============================================================
    LAYOUT BASE
    ============================================================ */
+
 .app-shell {
   min-height: 100vh;
   background: var(--bg);
@@ -140,6 +163,7 @@ button {
   flex-direction: column;
   position: relative;
 }
+
 .icon-btn {
   color: var(--ink-soft);
   background: none;
@@ -147,12 +171,11 @@ button {
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: color 0.15s;
 }
-.icon-btn:hover {
-  color: var(--primary);
-}
+
 /* ============================================================
    BOTÓN PRIMARIO
    ============================================================ */
+
 .btn-primary {
   border: none;
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -161,12 +184,11 @@ button {
   transition: background 0.15s;
   background: var(--primary);
 }
-.btn-primary:hover {
-  background: var(--primary-dark);
-}
+
 /* ============================================================
    FOOTER
    ============================================================ */
+
 .app-footer {
   padding: 18px 16px;
   text-align: center;
@@ -177,15 +199,33 @@ button {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   box-sizing: border-box;
+
   p {
     margin: 0;
   }
+
   strong {
     color: var(--bg);
     font-weight: var(--fw-semibold);
   }
 }
+
 a,
 button {
   user-select: none;
+}
+
+/* Hover solo en dispositivos con cursor preciso */
+@media (hover: hover) and (pointer: fine) {
+  .arcade-big-btn:hover {
+    filter: brightness(1.08);
+  }
+
+  .icon-btn:hover {
+    color: var(--primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-dark);
+  }
 }

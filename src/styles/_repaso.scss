@@ -1247,3 +1247,343 @@
     justify-content: flex-end;
   }
 }
+
+/* ============================================================
+   PESTAÑA TEMARIO
+   ============================================================ */
+.repaso__temario-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.repaso__temario-buscar {
+  flex: 1 1 200px;
+  min-width: 160px;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+  outline: none;
+}
+.repaso__temario-buscar:focus {
+  border-color: var(--primary);
+}
+.repaso__temario-hint {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.repaso__temario-titulo {
+  margin: 0;
+  font-size: 20px;
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+.repaso__temario-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.repaso__temario-semana {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.repaso__temario-semana-titulo {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.repaso__temario-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.repaso__temario-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.repaso__temario-tema {
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.repaso__temario-curso-tag {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.repaso__temario-acciones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.repaso__temario-btn {
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.2s linear, border-color 0.2s linear;
+}
+.repaso__temario-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.repaso__temario-btn--primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.repaso__temario-recomendados {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.repaso__temario-recomendado {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.repaso__temario-recomendado:hover {
+  border-color: var(--primary);
+}
+.repaso__temario-recomendado-curso {
+  font-weight: 700;
+}
+.repaso__temario-recomendado-temas {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+/* Select propio (no nativo) */
+.selp {
+  position: relative;
+  min-width: 170px;
+}
+.selp__disparador {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+  cursor: pointer;
+  text-align: left;
+}
+.selp__disparador:hover,
+.selp__disparador[aria-expanded="true"] {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.selp__placeholder {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.selp__flecha {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.selp__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.selp__opcion {
+  padding: 8px 10px;
+  font-size: 13.5px;
+  color: var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.selp__opcion:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.selp__opcion--activa {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Select deshabilitado (Curso sin categoría, Semana sin curso) */
+.selp__disparador:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: var(--border);
+  color: var(--ink-soft);
+}
+
+/* Búsqueda con cajita de sugerencias */
+.repaso__temario-buscar-wrap {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 200px;
+  display: flex;
+  gap: 6px;
+}
+.repaso__temario-buscar-wrap .repaso__temario-buscar {
+  flex: 1;
+  min-width: 0;
+}
+.repaso__temario-sugerencias {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.repaso__temario-sugerencia {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+.repaso__temario-sugerencia:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.repaso__temario-sugerencias--vacia {
+  padding: 10px 12px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+/* Barra del temario: selects juntos en una fila y buscador abajo a todo el ancho */
+.repaso__temario-toolbar {
+  flex-direction: column;
+  align-items: stretch;
+}
+.repaso__temario-selects {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.repaso__temario-selects .selp {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 240px;
+}
+.repaso__temario-selects .selp__disparador > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.repaso__temario-buscar-wrap {
+  flex: none;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Caja del temario: menos padding y separación */
+.repaso__temario-seccion {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.repaso__temario-seccion .repaso__temario-toolbar {
+  gap: 6px;
+}
+
+/* Barra del temario: en pantallas grandes el buscador va a la derecha;
+   en pantallas pequeñas baja a su propia fila y los selects se quedan juntos */
+.repaso__temario-toolbar {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.repaso__temario-selects {
+  flex: none;
+}
+.repaso__temario-selects .selp {
+  flex: 0 0 180px;
+  max-width: 200px;
+}
+.repaso__temario-buscar-wrap {
+  flex: 1 1 220px;
+  width: auto;
+  min-width: 200px;
+}
+@media (max-width: 600px) {
+  .repaso__temario-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .repaso__temario-selects .selp {
+    flex: 1 1 0;
+    max-width: none;
+  }
+  .repaso__temario-buscar-wrap {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Pasos copiados (verde) y temas con algún paso copiado (van al final de la lista) */
+.selp__opcion--copiado {
+  color: #2e7d32;
+  font-weight: 700;
+}
+.repaso__temario-item--hecho {
+  border-color: #2e7d32;
+  background: rgba(46, 125, 50, 0.06);
+}
+.repaso__temario-item--hecho .repaso__temario-tema {
+  color: #2e7d32;
+}

@@ -68,11 +68,6 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-.horario__btn-volver-tema:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
-  border-color: var(--border-strong);
-}
 .horario__timer-center {
   flex: 1;
   min-width: 0;
@@ -208,9 +203,6 @@
   border-color: var(--primary-dark);
   box-shadow: var(--shadow-sm);
 }
-.horario__btn.is-start:hover {
-  background: var(--primary-dark);
-}
 .horario__btn.is-start:disabled {
   opacity: 0.45;
   cursor: not-allowed !important;
@@ -219,10 +211,6 @@
   background: var(--surface-alt);
   color: var(--ink);
   border-color: var(--border);
-}
-.horario__btn.is-pause:hover {
-  background: var(--surface-hover);
-  border-color: var(--border-strong);
 }
 .horario__btn.is-pause:disabled {
   opacity: 0.45;
@@ -242,11 +230,6 @@
     color 0.2s linear,
     border-color 0.2s linear,
     opacity 0.2s linear;
-}
-.horario__btn-reset:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
-  border-color: var(--border-strong);
 }
 .horario__btn-reset:disabled {
   opacity: 0.45;
@@ -289,10 +272,6 @@
     background 0.2s linear,
     color 0.2s linear,
     border-color 0.2s linear;
-}
-.horario__day-btn:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
 }
 .horario__day-btn.is-active,
 .horario__day-btn.is-active:hover {
@@ -338,11 +317,6 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-.horario__back-course:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
-  border-color: var(--border-strong);
-}
 .horario__day-title {
   margin: 0;
   color: var(--ink);
@@ -363,11 +337,6 @@
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.3s linear;
-}
-.horario__course-item:hover {
-  box-shadow: var(--shadow-sm);
-  background-color: var(--surface-hover);
-  border-color: var(--ink);
 }
 .horario__course-item.is-complete {
   opacity: 0.65;
@@ -457,17 +426,9 @@
     border-color 0.2s linear,
     color 0.2s linear;
 }
-.horario__add-pomodoro-btn:hover {
-  background: var(--surface-hover);
-  border-color: var(--ink);
-}
 .horario__add-pomodoro-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed !important;
-}
-.horario__add-pomodoro-btn:disabled:hover {
-  background: var(--surface-alt);
-  border-color: var(--border);
 }
 .horario__reset-pomodoros-btn {
   display: flex;
@@ -487,17 +448,9 @@
     background 0.2s linear,
     border-color 0.2s linear;
 }
-.horario__reset-pomodoros-btn:hover {
-  background: var(--danger-bg);
-  border-color: var(--danger);
-}
 .horario__reset-pomodoros-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed !important;
-}
-.horario__reset-pomodoros-btn:disabled:hover {
-  background: var(--surface-alt);
-  border-color: var(--border);
 }
 .horario__course-complete-btn {
   display: flex;
@@ -517,17 +470,9 @@
     background 0.2s linear,
     border-color 0.2s linear;
 }
-.horario__course-complete-btn:hover {
-  background: var(--success-dark);
-  border-color: var(--success-dark);
-}
 .horario__course-complete-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed !important;
-}
-.horario__course-complete-btn:disabled:hover {
-  background: var(--success);
-  border-color: var(--success);
 }
 /* ============================================================
    DESCANSO MANUAL
@@ -596,11 +541,6 @@
     color 0.2s linear,
     border-color 0.2s linear,
     box-shadow 0.2s linear;
-}
-.horario__rest-select select:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
-  border-color: var(--primary);
 }
 .horario__rest-select select:focus {
   background: var(--surface-hover);
@@ -1044,11 +984,6 @@
     border-color 0.2s linear,
     color 0.2s linear;
 }
-.curso-rapido__tema-btn:hover {
-  background: var(--surface-hover);
-  border-color: var(--border);
-  color: var(--ink);
-}
 /* ============================================================
    TEMA MODAL
    ============================================================ */
@@ -1097,11 +1032,6 @@
     background 0.2s linear,
     border-color 0.2s linear,
     color 0.2s linear;
-}
-.tema-modal__item:hover {
-  background: var(--surface-hover);
-  border-bottom-color: var(--border-strong);
-  color: var(--ink);
 }
 .tema-modal__item:active {
   background: var(--surface-hover);
@@ -1152,9 +1082,6 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-.tema-selector__origen-tab:hover {
-  color: var(--ink);
-}
 .tema-selector__origen-tab.is-active {
   color: var(--primary);
   border-bottom-color: var(--primary);
@@ -1191,10 +1118,6 @@
     background 0.2s linear,
     color 0.2s linear;
 }
-.tema-selector__semana-tab:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
-}
 .tema-selector__semana-tab.is-active {
   background: var(--secondary-bg);
   color: var(--secondary-dark);
@@ -1216,10 +1139,6 @@
     background 0.2s linear,
     color 0.2s linear,
     transform 0.15s linear;
-}
-.tema-selector__semana-arrow:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
 }
 .tema-selector__semana-arrow:active {
   transform: scale(0.94);
@@ -1265,11 +1184,6 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-.tema-selector__boton:hover {
-  background: var(--surface-hover);
-  border-color: var(--border);
-  color: var(--ink);
-}
 .tema-selector__boton:active {
   background: var(--surface-hover);
 }
@@ -1305,20 +1219,11 @@
   background: transparent;
   color: var(--ink-soft);
 }
-.tema-selector__confirm-btn.is-cancelar:hover {
-  background: var(--surface-hover);
-  border-color: var(--border-strong);
-  color: var(--ink);
-}
 .tema-selector__confirm-btn.is-aceptar {
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--ink-on-primary);
   box-shadow: var(--shadow-sm);
-}
-.tema-selector__confirm-btn.is-aceptar:hover {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
 }
 .tema-selector__confirm-btn.is-aceptar:disabled {
   opacity: 0.4;
@@ -1340,10 +1245,6 @@
   transition:
     background 0.2s linear,
     color 0.2s linear;
-}
-.tema-selector__omitir:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
 }
 .tema-selector__acciones {
   display: flex;
@@ -1367,7 +1268,6 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-.tema-selector__iniciar:hover,
 .tema-selector__iniciar:active {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
@@ -1404,10 +1304,6 @@
     background 0.2s linear,
     border-color 0.2s linear,
     box-shadow 0.2s linear;
-}
-.horario__quick-course-select:hover {
-  background: var(--surface-hover);
-  border-color: var(--primary);
 }
 .horario__quick-course-select:focus {
   border-color: var(--primary);
@@ -1559,9 +1455,6 @@
   outline: none;
   transition: all 0.2s linear;
 }
-.setup-input:hover {
-  background: var(--primary-bg);
-}
 .setup-input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
@@ -1611,7 +1504,6 @@
   color: var(--ink);
   font-size: 0.9rem;
 }
-.setup-sugerencia-item:hover,
 .setup-sugerencia-item.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
@@ -1653,10 +1545,6 @@
   color: var(--ink);
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-}
-.setup-pomo-btn:hover {
-  background: var(--primary-bg);
-  border-color: var(--primary);
 }
 .setup-pomo-btn.is-on {
   border-color: var(--secondary-dark);
@@ -1794,4 +1682,147 @@
   justify-content: flex-end;
   margin-top: var(--space-5);
   gap: var(--space-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .horario__btn-volver-tema:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+    border-color: var(--border-strong);
+  }
+
+  .horario__btn.is-start:hover {
+    background: var(--primary-dark);
+  }
+
+  .horario__btn.is-pause:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+  }
+
+  .horario__btn-reset:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+    border-color: var(--border-strong);
+  }
+
+  .horario__day-btn:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+  }
+
+  .horario__back-course:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+    border-color: var(--border-strong);
+  }
+
+  .horario__course-item:hover {
+    box-shadow: var(--shadow-sm);
+    background-color: var(--surface-hover);
+    border-color: var(--ink);
+  }
+
+  .horario__add-pomodoro-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--ink);
+  }
+
+  .horario__add-pomodoro-btn:disabled:hover {
+    background: var(--surface-alt);
+    border-color: var(--border);
+  }
+
+  .horario__reset-pomodoros-btn:hover {
+    background: var(--danger-bg);
+    border-color: var(--danger);
+  }
+
+  .horario__reset-pomodoros-btn:disabled:hover {
+    background: var(--surface-alt);
+    border-color: var(--border);
+  }
+
+  .horario__course-complete-btn:hover {
+    background: var(--success-dark);
+    border-color: var(--success-dark);
+  }
+
+  .horario__course-complete-btn:disabled:hover {
+    background: var(--success);
+    border-color: var(--success);
+  }
+
+  .horario__rest-select select:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+    border-color: var(--primary);
+  }
+
+  .curso-rapido__tema-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--border);
+    color: var(--ink);
+  }
+
+  .tema-modal__item:hover {
+    background: var(--surface-hover);
+    border-bottom-color: var(--border-strong);
+    color: var(--ink);
+  }
+
+  .tema-selector__origen-tab:hover {
+    color: var(--ink);
+  }
+
+  .tema-selector__semana-tab:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+  }
+
+  .tema-selector__semana-arrow:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+  }
+
+  .tema-selector__boton:hover {
+    background: var(--surface-hover);
+    border-color: var(--border);
+    color: var(--ink);
+  }
+
+  .tema-selector__confirm-btn.is-cancelar:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+    color: var(--ink);
+  }
+
+  .tema-selector__confirm-btn.is-aceptar:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+
+  .tema-selector__omitir:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+  }
+
+  .horario__quick-course-select:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+  }
+
+  .setup-input:hover {
+    background: var(--primary-bg);
+  }
+
+  .setup-sugerencia-item:hover {
+    background: var(--primary-bg);
+    border-color: var(--primary);
+  }
+
+  .setup-pomo-btn:hover {
+    background: var(--primary-bg);
+    border-color: var(--primary);
+  }
 }

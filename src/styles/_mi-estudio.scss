@@ -2210,6 +2210,8 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-md);
   transition: background-color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
+  border-bottom: 0.25rem solid var(--success-dark);
+
 
   &:hover {
     background: var(--primary-dark);
@@ -2232,7 +2234,6 @@
 
 .teoria-boton-completar {
   background: var(--success);
-  border-bottom: 0.25rem solid var(--success-dark);
 
   &:hover {
     background: var(--success);

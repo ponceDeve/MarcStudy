@@ -13,12 +13,12 @@ import {
   teoriaLetras,
   teoriaMate,
   teoriaCiencia
-} from "./promptsJsonTeoria";
+} from "./Promptsjsonteoria";
 import {
   examenLetras,
   examenMate,
   examenCiencia
-} from "./promptsExamenTeoria";
+} from "./Promptsexamenteoria";
 const NOTA_FORMULAS =
   "Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.";
 // arquetipo: "practico" (tipos de problema/pregunta, sin procedimientos de
@@ -320,11 +320,11 @@ ${bloqueLimite(c, total)}
 ${bloqueAutorrevision(c, u, up)}
 ${bloqueIncluir(c, u, up)}
 BREVEDAD (regla principal)
-- Una idea por viñeta, en fragmentos cortos: máximo 12 palabras. Sin oraciones largas ni explicaciones.
+- Cada viñeta es breve: una idea, máximo 12 palabras. Sin oraciones largas.
+- Un mismo concepto puede tener varias viñetas si cada una aporta algo distinto: definición, ejemplo, diferencia o consecuencia. No repitas la misma frase.
 - Máximo dos niveles de viñeta por ${u}.
-- Cada dato aparece una sola vez en todo el apunte.
 - Negrita solo en el término clave.
-- Si hay duda entre incluir o quitar algo, quítalo.
+- No omitas lo que el examen pueda pedir sobre el subtema, aunque sea otra viñeta.
 ${notaFormulas}
 ${bloqueEjemplo}FORMATO
 - Un solo título, con el nombre del tema. No lo repitas.
@@ -336,7 +336,7 @@ ${bloqueEjemplo}FORMATO
 }
 // ─────────────────────────────────────────────────────────────────────────
 // PASO 2: convertir en JSON los apuntes del paso 1 (mensaje aparte).
-// Usa los mismos prompts de tarjetas de la carpeta promt/ (copiados en promptsJsonTeoria.js),
+// Usa los mismos prompts de tarjetas de la carpeta promt/ (copiados en Promptsjsonteoria.js),
 // elegidos según el curso.
 // ─────────────────────────────────────────────────────────────────────────
 const CURSOS_JSON_MATE = [
