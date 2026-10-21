@@ -19,6 +19,8 @@ import {
   examenMate,
   examenCiencia
 } from "./Promptsexamenteoria";
+import temarioSesiones from "../data/coursesSemanas.json";
+import manifest from "../data/manifest.json";
 const NOTA_FORMULAS =
   "Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.";
 // arquetipo: "practico" (tipos de problema/pregunta, sin procedimientos de
@@ -352,7 +354,35 @@ function promptJsonBase(curso) {
   if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
+function numeroSemana(clave) {
+  return parseInt(String(clave).replace("semana_", ""), 10);
+}
+
+// Nombre del archivo JSON del tema: prefijo de los archivos del curso en el
+// manifest + posición del tema en el curso, por ejemplo "len-01.json".
+export function prefijoDeCurso(curso) {
+  const cursoManifest = manifest.cursos.find((c) => c.nombre === curso);
+  const archivo = cursoManifest?.temas?.[0]?.archivo || "";
+  return archivo.split("/").pop().replace(/-\d+\.json$/, "") || "tema";
+}
+
+export function nombreArchivoJson(curso, tema) {
+  const prefijo = prefijoDeCurso(curso);
+  const semanas = temarioSesiones[curso] || {};
+  const temas = Object.keys(semanas)
+    .sort((a, b) => numeroSemana(a) - numeroSemana(b))
+    .flatMap((k) => semanas[k].flat())
+    .filter(Boolean);
+  const posicion = temas.indexOf(tema) + 1;
+  if (posicion === 0) return `${prefijo}.json`;
+  return `${prefijo}-${String(posicion).padStart(2, "0")}.json`;
+}
+
 export function construirPromptJson({ curso, tema, temarioCurso }) {
+  const archivoJson = nombreArchivoJson(curso, tema);
+  const listaCodigos = Object.keys(temarioSesiones)
+    .map((c) => `- ${c}: ${prefijoDeCurso(c)}`)
+    .join("\n");
   const conCalculo =
     CURSOS_JSON_MATE.includes(curso) || CURSOS_JSON_CIENCIA.includes(curso);
   const { total, lista } = temarioNumerado(temarioCurso, tema);
@@ -365,9 +395,16 @@ export function construirPromptJson({ curso, tema, temarioCurso }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
-Devuelve únicamente el JSON, siguiendo todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+Entrega el JSON como archivo adjunto descargable llamado «${archivoJson}». No lo pegues en el chat ni en bloque de código: el archivo es la única salida. Sigue todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+CÓDIGOS DE CURSO (el archivo empieza con el código de su curso):
+${listaCodigos}
+Si en este mensaje no aparecen los apuntes del paso 1, pídelos antes de escribir el JSON; no inventes el material.
 PRIORIDAD EN ESTE FLUJO (prevalece sobre las reglas de abajo)
 - Los apuntes ya fueron investigados y verificados. La ampliación (regla 1.5) se limita a explicar el porqué, el contexto y los errores frecuentes de las mismas ideas: no agregues subtemas, fechas, nombres ni cifras que no estén en los apuntes y no puedas confirmar con certeza.
+- La entrega es el archivo .json adjunto: la regla 7.1 se cumple así, sin texto ni bloque de código en el chat.
+- Cada «texto» tiene máximo 12 palabras y una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
+- Las definiciones y equivalencias van con símbolos dentro de «texto», no como oraciones. Símbolos permitidos, con estos significados exactos: «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye; «≠» diferente; «≈» similar.
+- Ejemplo correcto de «texto»: «Comunicación» = transmisión de mensajes. Ejemplo incorrecto: «Comunicación» es un proceso de transmisión e intercambio de mensajes.
 - El material es texto: ignora lo que dicen las reglas sobre imágenes y sobre JSON antiguo.${bloqueEjemplos}${bloqueTemario}
 ${promptJsonBase(curso)}`;
 }

@@ -97,7 +97,8 @@ function SelectPersonalizado({
   onCambiar,
   etiqueta,
   disabled = false,
-  mostrarValor = true
+  mostrarValor = true,
+  copiadoAhora = false
 }) {
   const [abierto, setAbierto] = useState(false);
   const ref = useRef(null);
@@ -129,7 +130,9 @@ function SelectPersonalizado({
     <div className="selp" ref={ref}>
       <button
         type="button"
-        className="selp__disparador"
+        className={`selp__disparador${
+          copiadoAhora ? " selp__disparador--ok" : ""
+        }`}
         aria-label={etiqueta || placeholder}
         aria-haspopup="listbox"
         aria-expanded={abierto}
@@ -229,6 +232,9 @@ export default function RepasoPage() {
   const [busquedaAplicada, setBusquedaAplicada] = useState("");
   const [sugerenciasAbiertas, setSugerenciasAbiertas] = useState(false);
   const [pasosCopiados, setPasosCopiados] = useState({});
+  // Aviso temporal "✓ Paso N copiado" en el select del tema recién copiado.
+  const [avisoPaso, setAvisoPaso] = useState(null);
+  const avisoTimer = useRef(null);
   const [avisoCopiado, setAvisoCopiado] = useState(null);
   const recomendados = useMemo(() => obtenerRecomendacionesHoy(), []);
 
@@ -292,39 +298,31 @@ export default function RepasoPage() {
       texto = construirPromptExamen({ curso: c, tema });
     }
     copiar(`paso${paso}|${clave}`, texto, paso === "1").then((ok) => {
-      if (ok) {
-        setPasosCopiados((prev) => ({
-          ...prev,
-          [clave]: { ...(prev[clave] || {}), [paso]: true }
-        }));
-      }
+      if (!ok) return;
+      setPasosCopiados((prev) => ({
+        ...prev,
+        [clave]: { ...(prev[clave] || {}), [paso]: true }
+      }));
+      setAvisoPaso({ clave, paso });
+      clearTimeout(avisoTimer.current);
+      avisoTimer.current = setTimeout(() => setAvisoPaso(null), 2000);
     });
-  }
-
-  function temaHecho(c, tema) {
-    return Object.keys(pasosCopiados[`${c}|${tema}`] || {}).length > 0;
-  }
-
-  // Los temas con algún paso copiado van al final de su lista.
-  function ordenarFilas(filas) {
-    return [
-      ...filas.filter((f) => !temaHecho(f.c, f.tema)),
-      ...filas.filter((f) => temaHecho(f.c, f.tema))
-    ];
   }
 
   function filaTema({ c, tema }) {
     const clave = `${c}|${tema}`;
     const copiados = pasosCopiados[clave] || {};
-    const opciones = PASOS_TEMARIO.map((p) => ({
-      ...p,
-      copiado: !!copiados[p.value]
-    }));
+    // Los pasos ya copiados van al final del menú, en verde.
+    const opciones = [
+      ...PASOS_TEMARIO.filter((p) => !copiados[p.value]),
+      ...PASOS_TEMARIO.filter((p) => copiados[p.value])
+    ].map((p) => ({ ...p, copiado: !!copiados[p.value] }));
+    const avisando = avisoPaso && avisoPaso.clave === clave;
     return (
       <div
         key={clave}
         className={`repaso__temario-item${
-          temaHecho(c, tema) ? " repaso__temario-item--hecho" : ""
+          copiados["1"] ? " repaso__temario-item--success" : ""
         }`}
       >
         <div className="repaso__temario-info">
@@ -333,7 +331,10 @@ export default function RepasoPage() {
         <div className="repaso__temario-acciones">
           <SelectPersonalizado
             etiqueta={`Pasos de ${tema}`}
-            placeholder="Elegir paso"
+            placeholder={
+              avisando ? `✓ Paso ${avisoPaso.paso} copiado` : "Elegir paso"
+            }
+            copiadoAhora={!!avisando}
             valor={null}
             opciones={opciones}
             onCambiar={(paso) => copiarPaso(c, tema, paso)}
@@ -352,7 +353,7 @@ export default function RepasoPage() {
           Ningún tema coincide con la búsqueda.
         </p>
       ) : (
-        ordenarFilas(coincidencias).map(({ c, tema }) => filaTema({ c, tema }))
+        coincidencias.map(({ c, tema }) => filaTema({ c, tema }))
       );
   } else if (curso) {
     const bloques = semanasDelCurso(curso)
@@ -370,9 +371,7 @@ export default function RepasoPage() {
       ) : (
         bloques.map((b) => (
           <div key={b.semana} className="repaso__temario-semana">
-            {ordenarFilas(b.temas.map((t) => ({ c: curso, tema: t }))).map(
-              ({ c, tema }) => filaTema({ c, tema })
-            )}
+            {b.temas.map((t) => filaTema({ c: curso, tema: t }))}
           </div>
         ))
       );
@@ -387,9 +386,7 @@ export default function RepasoPage() {
           {recomendados.map((r) => (
             <div key={r.curso} className="repaso__temario-semana">
               <h3 className="repaso__temario-semana-titulo">{r.curso}</h3>
-              {ordenarFilas(r.temas.map((t) => ({ c: r.curso, tema: t }))).map(
-                ({ c, tema }) => filaTema({ c, tema })
-              )}
+              {r.temas.map((t) => filaTema({ c: r.curso, tema: t }))}
             </div>
           ))}
         </div>
@@ -500,7 +497,6 @@ export default function RepasoPage() {
           opciones={OPCIONES_SEMANA}
           onCambiar={setSemana}
           disabled={!curso}
-          mostrarValor={false}
         />
         </div>
         <div className="repaso__temario-buscar-wrap">

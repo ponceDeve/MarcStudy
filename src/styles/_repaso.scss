@@ -1423,7 +1423,7 @@
   margin: 0;
   padding: 6px;
   list-style: none;
-  background: var(--surface, #fff);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -1432,11 +1432,11 @@
   padding: 8px 10px;
   font-size: 13.5px;
   color: var(--ink);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 .selp__opcion:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--surface-alt);
 }
 .selp__opcion--activa {
   color: var(--primary);
@@ -1446,7 +1446,7 @@
 /* Select deshabilitado (Curso sin categoría, Semana sin curso) */
 .selp__disparador:disabled {
   opacity: 0.45;
-  cursor: not-allowed;
+  cursor: not-allowed!important;
   border-color: var(--border);
   color: var(--ink-soft);
 }
@@ -1474,7 +1474,7 @@
   margin: 0;
   padding: 6px;
   list-style: none;
-  background: var(--surface, #fff);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -1491,12 +1491,12 @@
   color: var(--ink);
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   text-align: left;
 }
 .repaso__temario-sugerencia:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--surface-alt);
 }
 .repaso__temario-sugerencias--vacia {
   padding: 10px 12px;
@@ -1577,13 +1577,57 @@
 
 /* Pasos copiados (verde) y temas con algún paso copiado (van al final de la lista) */
 .selp__opcion--copiado {
-  color: #2e7d32;
+  color: var(--success-dark);
   font-weight: 700;
 }
-.repaso__temario-item--hecho {
-  border-color: #2e7d32;
-  background: rgba(46, 125, 50, 0.06);
+
+/* Tema con paso 1 copiado (success) y aviso temporal de copiado */
+.repaso__temario-item--success {
+  border-color: var(--success);
+  background: var(--success-bg);
 }
-.repaso__temario-item--hecho .repaso__temario-tema {
-  color: #2e7d32;
+.selp__disparador--ok {
+  border-color: var(--success);
+  color: var(--success-dark);
+  font-weight: 700;
+}
+.selp__disparador--ok .selp__placeholder {
+  color: var(--success-dark);
+  font-weight: 700;
+}
+
+/* Contraste entre cajas (tokens): fondo de página, sección, filas y controles */
+.repaso__temario-seccion {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+}
+.repaso__temario-item {
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+}
+.repaso__temario-item--success {
+  background: var(--success-bg);
+  border-color: var(--success);
+}
+.repaso__temario-buscar {
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+}
+.selp__disparador {
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+}
+.selp__disparador:hover,
+.selp__disparador[aria-expanded="true"] {
+  background: var(--surface);
+}
+.selp__menu,
+.repaso__temario-sugerencias {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+.selp__opcion:hover,
+.repaso__temario-sugerencia:hover {
+  background: var(--surface-hover);
 }
