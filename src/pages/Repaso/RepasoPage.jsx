@@ -68,6 +68,27 @@ function semanasDelCurso(curso) {
     }));
 }
 
+// Cuántos temas hay antes de una semana (para no reiniciar la numeración).
+function inicioSemana(curso, semana) {
+  let acumulado = 0;
+  for (const s of semanasDelCurso(curso)) {
+    if (s.semana === semana) return acumulado;
+    acumulado += s.temas.length;
+  }
+  return acumulado;
+}
+
+// Número de un tema dentro de su curso (para búsqueda y recomendados).
+function numeroDeTema(curso, tema) {
+  let acumulado = 0;
+  for (const s of semanasDelCurso(curso)) {
+    const i = s.temas.indexOf(tema);
+    if (i !== -1) return acumulado + i + 1;
+    acumulado += s.temas.length;
+  }
+  return null;
+}
+
 // Texto "Semana N: tema | tema" que esperan construirPromptRepaso y construirPromptJson.
 function temarioTexto(curso) {
   return semanasDelCurso(curso)
@@ -309,8 +330,11 @@ export default function RepasoPage() {
     });
   }
 
-  function filaTema({ c, tema }) {
+  // `numero` es el número del tema dentro del curso (continuo entre semanas).
+  // Si no se pasa (búsqueda y recomendados), se calcula con numeroDeTema.
+  function filaTema({ c, tema, numero }) {
     const clave = `${c}|${tema}`;
+    const n = numero ?? numeroDeTema(c, tema);
     const copiados = pasosCopiados[clave] || {};
     // Los pasos ya copiados van al final del menú, en verde.
     const opciones = [
@@ -326,7 +350,12 @@ export default function RepasoPage() {
         }`}
       >
         <div className="repaso__temario-info">
-          <span className="repaso__temario-tema">{tema}</span>
+          <span className="repaso__temario-tema">
+            {n != null && (
+              <span className="repaso__temario-numero">{n}.</span>
+            )}{" "}
+            {tema}
+          </span>
         </div>
         <div className="repaso__temario-acciones">
           <SelectPersonalizado
@@ -360,6 +389,7 @@ export default function RepasoPage() {
       .filter((s) => String(s.semana) === semana)
       .map((s) => ({
         semana: s.semana,
+        inicio: inicioSemana(curso, s.semana),
         temas: s.temas.filter(
           (t) => !busquedaNorm || sinAcentos(t).includes(busquedaNorm)
         )
@@ -371,7 +401,9 @@ export default function RepasoPage() {
       ) : (
         bloques.map((b) => (
           <div key={b.semana} className="repaso__temario-semana">
-            {b.temas.map((t) => filaTema({ c: curso, tema: t }))}
+            {b.temas.map((t, i) =>
+              filaTema({ c: curso, tema: t, numero: b.inicio + i + 1 })
+            )}
           </div>
         ))
       );
