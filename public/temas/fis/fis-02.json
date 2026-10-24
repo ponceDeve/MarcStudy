@@ -1,350 +1,268 @@
 {
   "curso": "Física",
-  "tema": "Análisis dimensional",
+  "tema": "Vectores (Sistema de referencia, Vector de posición y desplazamiento)",
   "glosario": {
-    "Análisis dimensional": "Estudio de las dimensiones de las cantidades físicas.",
-    "Dimensión": "Naturaleza de una cantidad física.",
-    "Ecuación dimensional": "Expresión de una cantidad con dimensiones fundamentales.",
-    "Cantidad adimensional": "Cantidad cuya dimensión es uno.",
-    "Principio de homogeneidad": "Todos los términos tienen la misma dimensión.",
-    "Fórmula empírica": "Relación hallada con dimensiones y experimentos.",
-    "Constante adimensional": "Número sin dimensiones en una fórmula.",
-    "Peso específico": "Peso por unidad de volumen.",
-    "Caudal": "Volumen que circula por unidad de tiempo.",
-    "Frecuencia": "Número de ciclos por unidad de tiempo.",
-    "Período": "Tiempo de un ciclo completo."
+    "Vector": "Ente con módulo, dirección y sentido",
+    "Módulo": "Valor numérico no negativo de un vector",
+    "Dirección": "Recta sobre la que actúa el vector",
+    "Sentido": "Orientación del vector sobre su dirección",
+    "Magnitud escalar": "Magnitud con solo número y unidad",
+    "Magnitud vectorial": "Magnitud con módulo, dirección y sentido",
+    "Sistema de referencia": "Cuerpo o punto con ejes para observar",
+    "Origen": "Punto donde se cruzan los ejes",
+    "Ejes cartesianos": "Rectas perpendiculares que ubican posiciones",
+    "Criterio de signos": "Sentidos positivo y negativo de cada eje",
+    "Vector unitario": "Vector de módulo uno",
+    "Coordenadas de posición": "Valores que ubican un punto sobre los ejes",
+    "Vector de posición": "Vector del origen al cuerpo",
+    "Vector desplazamiento": "Vector de la posición inicial a la final",
+    "Trayectoria": "Línea que describe el cuerpo al moverse",
+    "Distancia recorrida": "Longitud de la trayectoria",
+    "Metro": "Unidad de longitud",
+    "Sistema Internacional": "Sistema oficial de unidades de medida",
+    "Reposo": "Sin cambio de posición respecto al sistema"
   },
   "theory": [
     {
-      "titulo": "Análisis dimensional",
+      "titulo": "Concepto de vector",
       "puntos": [
         {
-          "texto": "«Análisis dimensional» = estudia las dimensiones de las cantidades físicas",
-          "explicacion": "Relaciona las cantidades derivadas con las fundamentales y permite verificar fórmulas, deducir unidades y hallar relaciones entre cantidades. Es una herramienta de comprobación, no de cálculo numérico."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión",
-      "puntos": [
-        {
-          "texto": "«Dimensión» = naturaleza de una cantidad física",
-          "explicacion": "Indica si una cantidad es una longitud, una masa o un tiempo, sin importar la unidad. Un metro y un pie tienen la misma dimensión: longitud."
+          "texto": "«Vector» = módulo + dirección + sentido",
+          "explicacion": "Con esos tres datos queda determinado. Decir solo 5 m no basta para llegar a un lugar: falta saber hacia dónde ir."
         },
         {
-          "texto": "Dimensión ≠ unidad",
-          "explicacion": "La dimensión es la naturaleza; la unidad es el patrón. Una distancia siempre tiene dimensión de longitud, pero puede medirse en metros, pies o kilómetros."
-        }
-      ]
-    },
-    {
-      "titulo": "Ecuación dimensional",
-      "puntos": [
-        {
-          "texto": "«Ecuación dimensional» ⇒ se escribe con corchetes, como $[A]$",
-          "explicacion": "El símbolo $[A]$ se lee dimensión de $A$. Expresa $A$ en función de las dimensiones fundamentales. Ejemplo: $[\\text{velocidad}]=\\mathrm{L}\\,\\mathrm{T}^{-1}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensiones fundamentales",
-      "puntos": [
-        {
-          "texto": "Longitud ⇒ dimensión $\\mathrm{L}$",
-          "explicacion": "Es la dimensión de toda distancia, ancho o altura."
+          "texto": "«Módulo» = valor numérico del vector, siempre ≥ 0",
+          "explicacion": "Se representa con la longitud de la flecha. Un vector de 5 m tiene módulo 5 m, sin importar hacia dónde apunte."
         },
         {
-          "texto": "Masa ⇒ dimensión $\\mathrm{M}$",
-          "explicacion": "Es la dimensión de la cantidad de materia."
+          "texto": "«Dirección» = recta sobre la que actúa el vector",
+          "explicacion": "Puede ser horizontal, vertical o inclinada con cierto ángulo. Dos vectores paralelos comparten la misma dirección."
         },
         {
-          "texto": "Tiempo ⇒ dimensión $\\mathrm{T}$",
-          "explicacion": "Es la dimensión de toda duración."
+          "texto": "«Sentido» = hacia dónde apunta sobre su dirección",
+          "explicacion": "Sobre una misma recta hay dos sentidos opuestos. El criterio de signos (+ o −) permite distinguirlos."
         },
         {
-          "texto": "Temperatura termodinámica ⇒ dimensión $\\Theta$",
-          "explicacion": "Se representa con la letra griega theta mayúscula."
+          "texto": "Vector se dibuja como flecha: origen → extremo",
+          "explicacion": "El origen de la flecha es el punto de partida del vector y el extremo es la punta. La longitud de la flecha representa el módulo."
         },
         {
-          "texto": "Intensidad de corriente ⇒ dimensión $\\mathrm{I}$",
-          "explicacion": "Es la dimensión de la corriente eléctrica."
+          "texto": "«Magnitud vectorial» ✓ módulo + dirección + sentido",
+          "explicacion": "Posición y desplazamiento son magnitudes vectoriales: para describirlas se necesita saber cuánto, en qué dirección y hacia dónde."
         },
         {
-          "texto": "Cantidad de sustancia ⇒ dimensión $\\mathrm{N}$",
-          "explicacion": "Es la dimensión del número de entidades elementales, medido en moles."
+          "texto": "«Magnitud escalar» = número + unidad ✗ dirección ✗ sentido",
+          "explicacion": "Tiempo, masa y distancia son escalares: un solo número con su unidad las describe completamente, como los 10 kg de una bolsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema de referencia",
+      "puntos": [
+        {
+          "texto": "«Sistema de referencia» = cuerpo o punto con ejes para observar",
+          "explicacion": "Es el lugar desde donde el observador estudia el movimiento. Sin él no tiene sentido decir dónde está un cuerpo."
         },
         {
-          "texto": "Intensidad luminosa ⇒ dimensión $\\mathrm{J}$",
-          "explicacion": "Es la dimensión de la luz emitida en una dirección."
-        }
-      ]
-    },
-    {
-      "titulo": "Cantidades adimensionales",
-      "puntos": [
-        {
-          "texto": "Adimensional ⇒ su dimensión es $1$",
-          "explicacion": "Se cumple $[k]=1$ para números, ángulos, funciones trigonométricas, logaritmos y exponentes. También las constantes $\\pi$ y $e$ son adimensionales."
+          "texto": "«Sistema de referencia» ⇒ ubica posiciones + describe movimientos",
+          "explicacion": "La posición de un móvil solo se expresa respecto a algo elegido como referencia, como la esquina de una calle o el piso de un salón."
         },
         {
-          "texto": "Ejemplo ⇒ $[\\pi]=1$ y $[\\text{ángulo}]=1$",
-          "explicacion": "Un ángulo es el cociente entre dos longitudes, la del arco y la del radio: las dimensiones se cancelan."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión del área",
-      "puntos": [
-        {
-          "texto": "Área ⇒ $[A]=\\mathrm{L}^2$",
-          "explicacion": "Se obtiene multiplicando dos longitudes: $[A]=\\mathrm{L}\\cdot\\mathrm{L}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión del volumen",
-      "puntos": [
-        {
-          "texto": "Volumen ⇒ $[V]=\\mathrm{L}^3$",
-          "explicacion": "Resulta de multiplicar tres longitudes: $[V]=\\mathrm{L}\\cdot\\mathrm{L}\\cdot\\mathrm{L}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la velocidad",
-      "puntos": [
-        {
-          "texto": "Velocidad ⇒ $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$",
-          "explicacion": "La velocidad es longitud entre tiempo: $[v]=\\frac{\\mathrm{L}}{\\mathrm{T}}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la aceleración",
-      "puntos": [
-        {
-          "texto": "Aceleración ⇒ $[a]=\\mathrm{L}\\,\\mathrm{T}^{-2}$",
-          "explicacion": "La aceleración es velocidad entre tiempo: $[a]=\\frac{\\mathrm{L}\\,\\mathrm{T}^{-1}}{\\mathrm{T}}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la fuerza",
-      "puntos": [
-        {
-          "texto": "Fuerza ⇒ $[F]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Por $F=m\\,a$, se tiene $[F]=[m][a]=\\mathrm{M}\\cdot\\mathrm{L}\\,\\mathrm{T}^{-2}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión del trabajo",
-      "puntos": [
-        {
-          "texto": "Trabajo y energía ⇒ $\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Por $W=F\\,d$, se tiene $[W]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$. La energía tiene la misma dimensión que el trabajo."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la potencia",
-      "puntos": [
-        {
-          "texto": "Potencia ⇒ $[P]=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-3}$",
-          "explicacion": "La potencia es trabajo entre tiempo: $[P]=\\frac{\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}}{\\mathrm{T}}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la presión",
-      "puntos": [
-        {
-          "texto": "Presión ⇒ $[p]=\\mathrm{M}\\,\\mathrm{L}^{-1}\\,\\mathrm{T}^{-2}$",
-          "explicacion": "La presión es fuerza entre área: $[p]=\\frac{\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}}{\\mathrm{L}^2}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la densidad",
-      "puntos": [
-        {
-          "texto": "Densidad ⇒ $[\\rho]=\\mathrm{M}\\,\\mathrm{L}^{-3}$",
-          "explicacion": "La densidad es masa entre volumen: $[\\rho]=\\frac{\\mathrm{M}}{\\mathrm{L}^3}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la frecuencia",
-      "puntos": [
-        {
-          "texto": "Frecuencia ⇒ $[f]=\\mathrm{T}^{-1}$",
-          "explicacion": "La frecuencia es el número de ciclos por unidad de tiempo, por lo que $[f]=\\frac{1}{\\mathrm{T}}$. El período, en cambio, tiene dimensión $\\mathrm{T}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión del caudal",
-      "puntos": [
-        {
-          "texto": "Caudal ⇒ $[Q]=\\mathrm{L}^3\\,\\mathrm{T}^{-1}$",
-          "explicacion": "El caudal es volumen entre tiempo: $[Q]=\\frac{\\mathrm{L}^3}{\\mathrm{T}}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de la carga eléctrica",
-      "puntos": [
-        {
-          "texto": "Carga eléctrica ⇒ $[q]=\\mathrm{I}\\,\\mathrm{T}$",
-          "explicacion": "Por $q=I\\,t$, se tiene $[q]=\\mathrm{I}\\cdot\\mathrm{T}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión del peso específico",
-      "puntos": [
-        {
-          "texto": "Peso específico ⇒ $[\\gamma]=\\mathrm{M}\\,\\mathrm{L}^{-2}\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Es el peso por unidad de volumen: $\\gamma=\\rho\\,g$, luego $[\\gamma]=\\mathrm{M}\\,\\mathrm{L}^{-3}\\cdot\\mathrm{L}\\,\\mathrm{T}^{-2}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Propiedades de las dimensiones",
-      "puntos": [
-        {
-          "texto": "Dimensiones ⇒ se operan como potencias",
-          "explicacion": "Siguen las reglas de los exponentes. Se desarrollan en las siguientes cartas, con un ejemplo cada una."
-        }
-      ]
-    },
-    {
-      "titulo": "Producto de dimensiones",
-      "puntos": [
-        {
-          "texto": "Producto ⇒ $[A\\cdot B]=[A]\\,[B]$",
-          "explicacion": "La dimensión de un producto es el producto de las dimensiones."
+          "texto": "«Sistema de referencia» ⊃ origen + ejes coordenados + criterio de signos",
+          "explicacion": "Esos tres elementos los elige el observador. Cambiar cualquiera de ellos cambia la forma de expresar la posición."
         },
         {
-          "texto": "Ejemplo ⇒ $[F\\,d]=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Con $[F]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}$ y $[d]=\\mathrm{L}$, el producto $F\\,d$ tiene dimensión $\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$."
+          "texto": "«Origen» (O) = punto de cruce de los ejes",
+          "explicacion": "Desde el origen O se mide la posición de todo cuerpo. Se puede colocar donde resulte más cómodo, no necesariamente en un extremo del dibujo."
+        },
+        {
+          "texto": "«Ejes cartesianos» = x, y, z perpendiculares entre sí",
+          "explicacion": "El eje x, el eje y y el eje z forman ángulos de 90° entre sí. En el plano bastan x e y."
+        },
+        {
+          "texto": "«Criterio de signos» = sentido + o − en cada eje",
+          "explicacion": "Hay que dibujarlo claramente. Sin él, una posición negativa o positiva puede interpretarse al revés."
+        },
+        {
+          "texto": "«Vector unitario» = módulo 1 ✗ unidades",
+          "explicacion": "Solo indica una dirección y un sentido. Se usa para escribir un vector por componentes sin cambiar su valor numérico."
+        },
+        {
+          "texto": "Vector unitario i → eje x",
+          "explicacion": "La letra i (en negrita en los textos impresos) señala el sentido positivo del eje x, con módulo 1."
+        },
+        {
+          "texto": "Vector unitario j → eje y",
+          "explicacion": "La letra j señala el sentido positivo del eje y, con módulo 1."
+        },
+        {
+          "texto": "Vector unitario k → eje z",
+          "explicacion": "La letra k señala el sentido positivo del eje z, con módulo 1. Solo se usa cuando el movimiento es en el espacio."
+        },
+        {
+          "texto": "«Reposo» y movimiento ⇒ relativos al sistema elegido",
+          "explicacion": "Un pasajero sentado en un bus está en reposo respecto al bus, pero en movimiento respecto al suelo. Ambas descripciones son correctas."
+        },
+        {
+          "texto": "Trayectoria ⇒ depende del sistema de referencia",
+          "explicacion": "El mismo movimiento puede verse recto desde un sistema y curvo desde otro, porque la forma depende de dónde está el observador."
+        },
+        {
+          "texto": "Sistema de referencia puede estar en movimiento",
+          "explicacion": "No tiene que estar fijo: un bus o un vagón también sirve como sistema de referencia, y entonces los cuerpos se describen respecto a él."
+        },
+        {
+          "texto": "Cambiar de sistema ⇒ cambian las coordenadas de posición",
+          "explicacion": "El cuerpo es el mismo, pero sus valores de x, y, z cambian porque el origen o los ejes ya no son los mismos."
         }
       ]
     },
     {
-      "titulo": "Cociente de dimensiones",
+      "titulo": "Vector de posición",
       "puntos": [
         {
-          "texto": "Cociente ⇒ $\\left[\\frac{A}{B}\\right]=\\frac{[A]}{[B]}$",
-          "explicacion": "La dimensión de un cociente es el cociente de las dimensiones."
+          "texto": "«Vector de posición» (r) = origen O → cuerpo",
+          "explicacion": "Es la flecha que parte del origen O y llega hasta donde está el cuerpo. La letra r nombra a este vector."
         },
         {
-          "texto": "Ejemplo ⇒ $\\left[\\frac{d}{t}\\right]=\\mathrm{L}\\,\\mathrm{T}^{-1}$",
-          "explicacion": "Con $[d]=\\mathrm{L}$ y $[t]=\\mathrm{T}$, el cociente $\\frac{d}{t}$ tiene dimensión $\\frac{\\mathrm{L}}{\\mathrm{T}}=\\mathrm{L}\\,\\mathrm{T}^{-1}$."
+          "texto": "Vector de posición ⇒ dónde está el cuerpo respecto al sistema",
+          "explicacion": "Es la forma de ubicar un cuerpo con un vector: como decir a qué distancia y en qué dirección está respecto al origen elegido."
+        },
+        {
+          "texto": "En el espacio: r = x i + y j + z k",
+          "explicacion": "x, y, z son las coordenadas del cuerpo sobre cada eje, e i, j, k son los vectores unitarios. Ejemplo: r = 2 i + 3 j + 6 k m significa 2 m en x, 3 m en y, 6 m en z."
+        },
+        {
+          "texto": "En el plano: r = x i + y j",
+          "explicacion": "Se omite la componente z porque el cuerpo se mueve en un plano. Ejemplo: r = 3 i + 4 j m ubica el cuerpo 3 m en x y 4 m en y."
+        },
+        {
+          "texto": "«Coordenadas de posición» x, y, z pueden ser negativas",
+          "explicacion": "El signo depende del criterio de signos. Un valor x = −2 m indica que el cuerpo está 2 m del origen en sentido contrario al eje x positivo."
+        },
+        {
+          "texto": "r se mide en metro (m), unidad del Sistema Internacional (SI)",
+          "explicacion": "El Sistema Internacional (SI) usa el metro (m) para longitudes. Un vector de posición mide una longitud, así que su unidad es el metro."
+        },
+        {
+          "texto": "Módulo: |r| = √(x² + y² + z²)",
+          "explicacion": "El módulo es la distancia del cuerpo al origen O. Ejemplo con r = 2 i + 3 j + 6 k m: |r| = √(2² + 3² + 6²) = √(4 + 9 + 36) = √49 = 7 m. Es decir, el cuerpo está a 7 m del origen."
+        },
+        {
+          "texto": "Vector de posición ⇒ depende del sistema de referencia",
+          "explicacion": "Si cambia el origen o los ejes, cambia el vector r aunque el cuerpo siga en el mismo lugar."
+        },
+        {
+          "texto": "Cuerpo en movimiento ⇒ r cambia con el tiempo: r(t)",
+          "explicacion": "A cada instante t le corresponde una posición distinta. La notación r(t) significa vector de posición en función del tiempo."
+        },
+        {
+          "texto": "Extremo de r → describe la trayectoria",
+          "explicacion": "Si se dibuja r en muchos instantes, la punta de la flecha va marcando la línea que sigue el cuerpo."
         }
       ]
     },
     {
-      "titulo": "Potencia de una dimensión",
+      "titulo": "Vector desplazamiento",
       "puntos": [
         {
-          "texto": "Potencia ⇒ $[A^n]=[A]^n$",
-          "explicacion": "El exponente se aplica a la dimensión de la base."
+          "texto": "«Vector desplazamiento» (Δr) = cambio de posición",
+          "explicacion": "La letra griega Δ (delta) significa cambio. Mide cuánto y hacia dónde cambió de lugar el cuerpo, no el camino que siguió."
         },
         {
-          "texto": "Ejemplo ⇒ $[v^2]=\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Con $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$, se tiene $[v^2]=(\\mathrm{L}\\,\\mathrm{T}^{-1})^2=\\mathrm{L}^2\\,\\mathrm{T}^{-2}$."
+          "texto": "Vector desplazamiento: posición inicial → posición final",
+          "explicacion": "Su origen está en el punto de partida y su extremo en el punto de llegada, sin importar la ruta intermedia."
+        },
+        {
+          "texto": "«Δr» = r_f − r_i",
+          "explicacion": "r_f es el vector de posición final y r_i el vector de posición inicial. Ejemplo con r_i = 2 i + 1 j m y r_f = 5 i + 5 j m: Δr = (5 − 2) i + (5 − 1) j = 3 i + 4 j m. El cuerpo se movió 3 m en x y 4 m en y."
+        },
+        {
+          "texto": "Por componentes: Δr = Δx i + Δy j + Δz k",
+          "explicacion": "Cada componente se obtiene restando la coordenada final menos la inicial: Δx = x_f − x_i, y igual para y y z. Ejemplo con r_i = 1 i + 2 j + 0 k m y r_f = 4 i + 6 j + 12 k m: Δx = 4 − 1 = 3 m, Δy = 6 − 2 = 4 m, Δz = 12 − 0 = 12 m, así Δr = 3 i + 4 j + 12 k m."
+        },
+        {
+          "texto": "Δr se mide en metro (m)",
+          "explicacion": "Como resulta de restar dos posiciones, conserva la unidad de longitud del vector de posición."
+        },
+        {
+          "texto": "Módulo: |Δr| = √(Δx² + Δy² + Δz²)",
+          "explicacion": "Es la longitud en línea recta entre el punto inicial y el final. Ejemplo con Δr = 3 i + 4 j + 12 k m: |Δr| = √(3² + 4² + 12²) = √(9 + 16 + 144) = √169 = 13 m."
+        },
+        {
+          "texto": "Δr ✓ solo posición inicial + posición final",
+          "explicacion": "Lo que ocurrió en el camino no cuenta. Dos rutas distintas entre los mismos puntos dan el mismo desplazamiento."
+        },
+        {
+          "texto": "Δr ≠ depende de la trayectoria",
+          "explicacion": "Ir de la casa al colegio por una calle recta o dando una vuelta larga produce el mismo desplazamiento, aunque el recorrido sea distinto."
+        },
+        {
+          "texto": "Δr = camino más corto entre dos puntos",
+          "explicacion": "Cualquier trayectoria entre los dos puntos es igual o más larga que el segmento recto que une inicio y final, y ese segmento es el módulo de Δr."
+        },
+        {
+          "texto": "Regresa al punto de partida ⇒ Δr = 0",
+          "explicacion": "Si r_f = r_i, la resta es cero. Ejemplo: r_i = 3 i + 2 j m y r_f = 3 i + 2 j m ⇒ Δr = (3 − 3) i + (2 − 2) j = 0. Un corredor que da una vuelta completa a una pista termina con desplazamiento cero."
+        },
+        {
+          "texto": "Cambiar el origen ⇒ r cambia, Δr no cambia",
+          "explicacion": "En una recta, con origen O: r_i = 2 m y r_f = 7 m, Δr = 7 − 2 = 5 m. Con otro origen O' ubicado 1 m a la derecha de O: r_i = 1 m y r_f = 6 m, Δr = 6 − 1 = 5 m. El resultado es igual porque la resta elimina el desplazamiento del origen."
+        },
+        {
+          "texto": "Girar los ejes ⇒ cambian las componentes de Δr",
+          "explicacion": "El vector desplazamiento es el mismo, pero sus componentes x, y, z dependen de cómo se orienten los ejes."
         }
       ]
     },
     {
-      "titulo": "Suma y resta de dimensiones",
+      "titulo": "Trayectoria",
       "puntos": [
         {
-          "texto": "Suma ⇒ $[A\\pm B]=[A]=[B]$",
-          "explicacion": "Solo se pueden sumar o restar cantidades de la misma dimensión, y el resultado conserva esa dimensión."
+          "texto": "«Trayectoria» = línea que describe el cuerpo al moverse",
+          "explicacion": "Es el camino realmente seguido, como la marca que deja un auto en un mapa. No se mide desde el origen ni une solo inicio y final."
         },
         {
-          "texto": "Ejemplo ⇒ $[x_0+v\\,t]=\\mathrm{L}$",
-          "explicacion": "Con $[x_0]=\\mathrm{L}$ y $[v\\,t]=\\mathrm{L}\\,\\mathrm{T}^{-1}\\cdot\\mathrm{T}=\\mathrm{L}$, ambos sumandos son longitudes y su suma también."
+          "texto": "Trayectoria = curva ≠ vector",
+          "explicacion": "Puede ser recta o curva. No tiene módulo, dirección y sentido propios, así que no se confunde con el desplazamiento."
         }
       ]
     },
     {
-      "titulo": "Homogeneidad dimensional",
+      "titulo": "Distancia recorrida",
       "puntos": [
         {
-          "texto": "Principio ⇒ en una ecuación correcta todos los términos tienen la misma dimensión",
-          "explicacion": "Si una ecuación suma o iguala términos con dimensiones distintas, es incorrecta. Es la base de las aplicaciones del análisis dimensional."
+          "texto": "«Distancia recorrida» = longitud de la trayectoria",
+          "explicacion": "Se mide a lo largo del camino seguido, vuelta por vuelta, como lo marca el cuentakilómetros de un auto."
         },
         {
-          "texto": "Ejemplo ⇒ $d=v\\,t$ es homogénea",
-          "explicacion": "Se tiene $[d]=\\mathrm{L}$ y $[v\\,t]=\\mathrm{L}\\,\\mathrm{T}^{-1}\\cdot\\mathrm{T}=\\mathrm{L}$. Ambos miembros coinciden, de modo que la fórmula puede ser correcta."
+          "texto": "Distancia recorrida = escalar ≥ 0",
+          "explicacion": "Solo tiene valor y unidad, nunca es negativa y nunca disminuye mientras el cuerpo se mueve."
+        },
+        {
+          "texto": "Desplazamiento = vectorial ≠ distancia recorrida = escalar",
+          "explicacion": "El desplazamiento tiene dirección y sentido; la distancia solo valor. Son dos magnitudes distintas aunque a veces coincidan en número."
+        },
+        {
+          "texto": "|Δr| ≤ distancia recorrida",
+          "explicacion": "Son iguales solo si el movimiento es en línea recta sin retroceso. Ejemplo: avanzar 4 m y retroceder 1 m ⇒ distancia = 4 + 1 = 5 m, pero |Δr| = 4 − 1 = 3 m."
+        },
+        {
+          "texto": "Distancia, velocidad media, rapidez media → tema de velocidad y rapidez",
+          "explicacion": "Aquí solo se diferencia la distancia del desplazamiento; su uso en cálculos de velocidad se estudia aparte."
         }
       ]
     },
     {
-      "titulo": "Fórmula incorrecta",
+      "titulo": "Posición frente a desplazamiento",
       "puntos": [
         {
-          "texto": "Ejemplo ⇒ $v=a\\,t^2$ es incorrecta",
-          "explicacion": "Se tiene $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$ y $[a\\,t^2]=\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{T}^2=\\mathrm{L}$. Las dimensiones no coinciden: la fórmula no puede ser cierta."
-        }
-      ]
-    },
-    {
-      "titulo": "Exponentes y funciones",
-      "puntos": [
-        {
-          "texto": "Exponente ⇒ debe ser adimensional",
-          "explicacion": "En $e^{kt}$, el producto $kt$ debe ser adimensional. Lo mismo ocurre con el argumento de las funciones trigonométricas y de los logaritmos."
+          "texto": "r ≠ Δr: r parte del origen O, Δr de la posición inicial",
+          "explicacion": "El vector de posición siempre arranca en O. El desplazamiento arranca donde estaba el cuerpo al inicio y termina donde quedó."
         },
         {
-          "texto": "Ejemplo ⇒ si $e^{kt}$, entonces $[k]=\\mathrm{T}^{-1}$",
-          "explicacion": "Como $[kt]=1$ y $[t]=\\mathrm{T}$, se obtiene $[k]=\\frac{1}{\\mathrm{T}}=\\mathrm{T}^{-1}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Dimensión de una constante",
-      "puntos": [
-        {
-          "texto": "Aplicación ⇒ hallar la dimensión de una constante",
-          "explicacion": "Se despeja la constante de la fórmula y se aplican las dimensiones de las demás cantidades."
-        },
-        {
-          "texto": "Ejemplo ⇒ en $F=\\frac{G\\,m_1\\,m_2}{r^2}$, $[G]=\\mathrm{M}^{-1}\\,\\mathrm{L}^3\\,\\mathrm{T}^{-2}$",
-          "explicacion": "Se despeja $G=\\frac{F\\,r^2}{m_1\\,m_2}$. Entonces $[G]=\\frac{\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}^2}{\\mathrm{M}^2}=\\mathrm{M}^{-1}\\,\\mathrm{L}^3\\,\\mathrm{T}^{-2}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Fórmulas empíricas",
-      "puntos": [
-        {
-          "texto": "Aplicación ⇒ deducir cómo depende una cantidad de otras",
-          "explicacion": "Se supone una relación de potencias con exponentes desconocidos y se igualan las dimensiones. Sirve cuando no se conoce la fórmula exacta."
-        },
-        {
-          "texto": "Ejemplo ⇒ período de un péndulo $T=k\\,l^a g^b$",
-          "explicacion": "Se tiene $[T]=\\mathrm{T}$, $[l]=\\mathrm{L}$ y $[g]=\\mathrm{L}\\,\\mathrm{T}^{-2}$. Entonces $\\mathrm{T}=\\mathrm{L}^a(\\mathrm{L}\\,\\mathrm{T}^{-2})^b=\\mathrm{L}^{a+b}\\,\\mathrm{T}^{-2b}$."
-        },
-        {
-          "texto": "Resolución ⇒ $a=\\frac{1}{2}$ y $b=-\\frac{1}{2}$",
-          "explicacion": "Para que las dimensiones coincidan, $a+b=0$ y $-2b=1$. De la segunda, $b=-\\frac{1}{2}$ y de la primera, $a=\\frac{1}{2}$. Resulta $T=k\\sqrt{\\frac{l}{g}}$."
-        }
-      ]
-    },
-    {
-      "titulo": "Limitaciones",
-      "puntos": [
-        {
-          "texto": "Análisis dimensional ✗ determina constantes numéricas",
-          "explicacion": "Solo da la forma de la relación. El valor de la constante adimensional, como $k$, debe hallarse con experimentos o con otra teoría."
-        },
-        {
-          "texto": "Misma dimensión ≠ misma cantidad",
-          "explicacion": "El trabajo y el momento de una fuerza tienen la misma dimensión, aunque son cantidades distintas. Error frecuente: creer que una fórmula homogénea es siempre correcta."
+          "texto": "Parte del origen ⇒ Δr = r_f",
+          "explicacion": "Si r_i = 0, entonces Δr = r_f − 0 = r_f. Ejemplo: r_i = 0 y r_f = 4 i + 3 j m ⇒ Δr = 4 i + 3 j m, que coincide con r_f."
         }
       ]
     }

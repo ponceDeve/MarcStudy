@@ -1,59 +1,509 @@
 {
-  "curso": "Física",
-  "tema": "Rapidez media",
+  "curso": "fis",
+  "tema": "Leyes de Newton (Fuerza de rozamiento, Dinámica del movimiento rectilíneo, Dinámica del movimiento circular)",
   "glosario": {
-    "Rapidez media": "Distancia total dividida entre tiempo total",
-    "Magnitud escalar": "Magnitud que solo tiene valor y unidad",
-    "Rapidez instantánea": "Rapidez en un instante determinado",
-    "Velocidad media": "Desplazamiento dividido entre tiempo transcurrido",
-    "Trayectoria": "Línea que describe un cuerpo al moverse"
+    "Fuerza resultante": "Suma vectorial de todas las fuerzas",
+    "Inercia": "Tendencia a conservar el estado de movimiento",
+    "Aceleración": "Cambio de velocidad por unidad de tiempo",
+    "Newton": "Unidad de fuerza del Sistema Internacional",
+    "Acción y reacción": "Par de fuerzas entre dos cuerpos que interactúan",
+    "Rozamiento": "Fuerza que se opone al deslizamiento",
+    "Fuerza normal": "Fuerza perpendicular que ejerce una superficie",
+    "Coeficiente de rozamiento": "Número que mide la aspereza entre superficies",
+    "Rozamiento estático": "Rozamiento entre superficies en reposo relativo",
+    "Rozamiento cinético": "Rozamiento entre superficies que deslizan",
+    "Tensión": "Fuerza que ejerce una cuerda",
+    "Polea ideal": "Polea sin masa ni rozamiento",
+    "Cuerda ideal": "Cuerda sin masa y sin estirarse",
+    "Plano inclinado": "Superficie que forma un ángulo con la horizontal",
+    "Peso aparente": "Fuerza normal que siente el cuerpo en aceleración",
+    "Fuerza centrípeta": "Resultante de fuerzas hacia el centro",
+    "Aceleración centrípeta": "Aceleración hacia el centro de la circunferencia",
+    "Aceleración tangencial": "Aceleración que cambia el módulo de la velocidad",
+    "Radio de giro": "Distancia del móvil al centro",
+    "Curva peraltada": "Curva con la pista inclinada hacia el centro",
+    "Péndulo cónico": "Masa que gira en círculo, colgada de hilo",
+    "Fuerza centrífuga": "Efecto aparente en un sistema que gira",
+    "Sistema Internacional": "Sistema de unidades con metro, kilogramo y segundo",
+    "Caída libre": "Movimiento solo bajo la acción del peso"
   },
   "theory": [
     {
-      "titulo": "Definición de rapidez media",
+      "titulo": "Primera ley",
       "puntos": [
         {
-          "texto": "Rapidez media es la distancia total entre el tiempo total.",
-          "explicacion": "Describe qué tan rápido se recorre la trayectoria, sin importar la dirección del movimiento."
+          "texto": "«Primera ley» de Newton: $\\sum F = 0$ ⇒ el estado de movimiento se conserva",
+          "explicacion": "También se llama ley de la inercia. Si las fuerzas sobre un cuerpo se compensan, su velocidad no cambia: la inercia hace que el cuerpo siga como estaba."
         },
         {
-          "texto": "«Fórmula»: rapidez media = distancia / tiempo.",
-          "explicacion": "Ejemplo: 120 m recorridos en 10 s dan 120 m / 10 s = 12 m/s, es decir, 12 metros por segundo en promedio."
+          "texto": "Se conserva el reposo o la «velocidad constante» en línea recta",
+          "explicacion": "Un cuerpo quieto sigue quieto y uno en movimiento sigue con la misma rapidez y la misma dirección, mientras la resultante sea nula."
         },
         {
-          "texto": "Rapidez media es una magnitud escalar.",
-          "explicacion": "No tiene dirección ni sentido; es siempre positiva o nula, y es cero solo si el cuerpo no se mueve."
+          "texto": "Reposo y velocidad constante = mismo estado ante la ley",
+          "explicacion": "En ambos casos la aceleración es nula. Un pasajero en un tren que va a velocidad constante no nota diferencia con estar quieto."
+        },
+        {
+          "texto": "Mantener la velocidad ✗ requiere fuerza resultante",
+          "explicacion": "La fuerza resultante solo hace falta para cambiar la velocidad, es decir, para acelerar, frenar o desviar el cuerpo."
+        },
+        {
+          "texto": "Un cuerpo se detiene por «rozamiento», no por sí solo",
+          "explicacion": "En la vida diaria los objetos frenan porque el rozamiento los frena. Sin él, un objeto empujado seguiría moviéndose con velocidad constante."
+        },
+        {
+          "texto": "Conexión: $\\sum F = 0$ en reposo es la base del equilibrio",
+          "explicacion": "Este tema solo enuncia la ley. Su aplicación a cuerpos en equilibrio se estudia aparte."
         }
       ]
     },
     {
-      "titulo": "Rapidez frente a velocidad media",
+      "titulo": "Segunda ley",
       "puntos": [
         {
-          "texto": "Rapidez media ≥ módulo de la velocidad media.",
-          "explicacion": "La distancia es mayor o igual que el módulo del desplazamiento; la igualdad ocurre solo en línea recta sin retrocesos."
+          "texto": "«Segunda ley» de Newton: la resultante produce aceleración",
+          "explicacion": "Es la ley fundamental de la dinámica. Si la resultante no es nula, la velocidad cambia, y lo hace más rápido cuanto mayor es la resultante."
         },
         {
-          "texto": "Velocidad media usa desplazamiento, no distancia.",
-          "explicacion": "Por eso puede ser cero en un recorrido de ida y vuelta, mientras la rapidez media no lo es."
+          "texto": "Fórmula de la segunda ley: $F_R = m a$",
+          "explicacion": "$F_R$ es la fuerza resultante en newtons (N), m la masa en kilogramos (kg) y a la aceleración en m/s². Ejemplo: m = 5 kg y a = 4 m/s² → $F_{R}$ = 5 × 4 = 20 N."
+        },
+        {
+          "texto": "a tiene la dirección y el sentido de $F_R$",
+          "explicacion": "Como la masa es positiva, la aceleración apunta hacia donde apunta la resultante, no hacia donde va el cuerpo necesariamente."
+        },
+        {
+          "texto": "a es «directamente proporcional» a $F_R$",
+          "explicacion": "Con masa fija, duplicar la resultante duplica la aceleración. Ejemplo con m = 5 kg: $F_{R}$ = 20 N → a = 20 ÷ 5 = 4 m/s²; $F_{R}$ = 40 N → a = 40 ÷ 5 = 8 m/s²."
+        },
+        {
+          "texto": "a es «inversamente proporcional» a la masa m",
+          "explicacion": "Con fuerza fija, duplicar la masa reduce a la mitad la aceleración. Ejemplo con $F_{R}$ = 20 N: m = 5 kg → a = 4 m/s²; m = 10 kg → a = 20 ÷ 10 = 2 m/s²."
+        },
+        {
+          "texto": "A igual fuerza, mayor masa ⇒ menor aceleración",
+          "explicacion": "Un cuerpo más masivo se resiste más a cambiar su velocidad: el mismo empujón acelera menos a un carrito lleno que a uno vacío."
+        },
+        {
+          "texto": "Unidad de fuerza: 1 «newton» = 1 kg × m/s²",
+          "explicacion": "Sale de $F_{R}$ = m × a: un newton es la fuerza que da 1 m/s² a un cuerpo de 1 kg. Ejemplo: 2 kg con a = 3 m/s² → $F_{R}$ = 2 × 3 = 6 kg × m/s² = 6 N."
+        },
+        {
+          "texto": "Segunda ley por ejes: $\\sum F_x = m a_x$ y $\\sum F_y = m a_y$",
+          "explicacion": "Se aplica por separado en cada eje, con su propia componente de aceleración. Ejemplo: m = 4 kg y $a_{x}$ = 3 m/s² → ΣF_x = 4 × 3 = 12 N; si $a_{y}$ = 0 → ΣF_y = 0."
         }
       ]
     },
     {
-      "titulo": "Rapidez instantánea",
+      "titulo": "Tercera ley",
       "puntos": [
         {
-          "texto": "Rapidez instantánea es la rapidez en un instante.",
-          "explicacion": "Es lo que marca el velocímetro; la rapidez media no muestra los cambios dentro del intervalo."
+          "texto": "«Tercera ley»: si A actúa sobre B, B actúa sobre A",
+          "explicacion": "Las fuerzas siempre aparecen de a pares porque una fuerza es una interacción entre dos cuerpos. Una de ellas se llama acción y la otra reacción."
+        },
+        {
+          "texto": "Acción y reacción: igual módulo, igual dirección, sentidos opuestos",
+          "explicacion": "Ambas valen lo mismo y están en la misma recta, pero apuntan en sentidos contrarios. Ejemplo: si A empuja a B con 30 N, B empuja a A con 30 N."
+        },
+        {
+          "texto": "Acción y reacción actúan sobre cuerpos «distintos»",
+          "explicacion": "Una actúa sobre A y la otra sobre B. Por eso no pertenecen al mismo diagrama de fuerzas de un solo cuerpo."
+        },
+        {
+          "texto": "Acción y reacción ⇒ no se anulan entre sí",
+          "explicacion": "Solo se pueden anular fuerzas que actúan sobre el mismo cuerpo. Como estas actúan sobre cuerpos diferentes, cada una produce su propio efecto."
+        },
+        {
+          "texto": "Acción y reacción surgen y desaparecen al mismo tiempo",
+          "explicacion": "No hay una que aparezca primero. Si la interacción termina, ambas dejan de existir a la vez."
+        },
+        {
+          "texto": "Acción y reacción son del mismo tipo de fuerza",
+          "explicacion": "Si la acción es gravitatoria, la reacción también lo es; si es de contacto, la reacción también. Nunca una es de un tipo y la otra de otro."
+        },
+        {
+          "texto": "Ejemplo: la Tierra atrae al cuerpo; el cuerpo atrae a la Tierra",
+          "explicacion": "El peso del cuerpo es la acción y la atracción del cuerpo sobre la Tierra es la reacción, con igual módulo. La Tierra casi no se mueve porque su masa es enorme."
+        },
+        {
+          "texto": "Ejemplo: al caminar, empujas el piso y el piso te empuja",
+          "explicacion": "Tu pie empuja el piso hacia atrás y el piso empuja tu pie hacia adelante con igual módulo. Esa segunda fuerza es la que te permite avanzar."
+        },
+        {
+          "texto": "Peso y normal ≠ par acción-reacción",
+          "explicacion": "Ambas actúan sobre el mismo cuerpo y son de distinto tipo (gravitatoria y de contacto). La reacción del peso es la atracción del cuerpo sobre la Tierra."
         }
       ]
     },
     {
-      "titulo": "Ejemplo numérico resuelto",
+      "titulo": "Fuerza de rozamiento",
       "puntos": [
         {
-          "texto": "Un bus recorre 90 km en 1,5 h.",
-          "explicacion": "Rapidez media = 90 km / 1,5 h = 60 km/h, es decir, 60 km por cada hora en promedio; en m/s, 60 / 3,6 ≈ 16,7 m/s."
+          "texto": "«Rozamiento» = fuerza entre superficies en contacto que se opone al deslizamiento",
+          "explicacion": "Se debe a las irregularidades de las superficies que se tocan. Aparece cuando un cuerpo desliza o intenta deslizar sobre otro."
+        },
+        {
+          "texto": "Dirección del rozamiento: paralela a las superficies en contacto",
+          "explicacion": "Actúa a lo largo de la superficie, a diferencia de la fuerza normal, que es perpendicular a ella."
+        },
+        {
+          "texto": "Sentido del rozamiento: opuesto al movimiento o a su tendencia",
+          "explicacion": "Si el cuerpo desliza, el rozamiento apunta contra su velocidad; si solo intenta deslizar, apunta contra esa tendencia."
+        },
+        {
+          "texto": "El rozamiento depende de la naturaleza de las superficies",
+          "explicacion": "Hielo sobre hielo y madera sobre concreto no rozan igual: cada par de materiales tiene su propio valor de coeficiente de rozamiento."
+        },
+        {
+          "texto": "El rozamiento depende de la «fuerza normal»",
+          "explicacion": "La fuerza normal ($F_N$, en newtons) es la que ejerce la superficie perpendicular a ella. A mayor $F_N$, las superficies se aprietan más y el rozamiento crece."
+        },
+        {
+          "texto": "El rozamiento no depende del área de contacto",
+          "explicacion": "Apoyar un bloque sobre su cara grande o sobre su cara pequeña no cambia el rozamiento, porque la fuerza normal total es la misma."
+        },
+        {
+          "texto": "«Coeficiente de rozamiento» (μ) = depende de las superficies",
+          "explicacion": "Es el número que resume qué tan ásperas son las dos superficies en contacto. Un μ mayor significa más rozamiento para la misma fuerza normal."
+        },
+        {
+          "texto": "μ no tiene unidades",
+          "explicacion": "Es el cociente entre dos fuerzas (rozamiento ÷ normal), así que sus unidades se cancelan. Es un número puro."
+        }
+      ]
+    },
+    {
+      "titulo": "Rozamiento estático",
+      "puntos": [
+        {
+          "texto": "«Rozamiento estático» = superficies en reposo relativo",
+          "explicacion": "Actúa mientras las superficies no deslizan una sobre otra, aunque haya una fuerza que intente moverlas. Es el que mantiene un mueble quieto cuando lo empujas poco."
+        },
+        {
+          "texto": "Fórmula: $f_{est} \\leq \\mu_{est} F_N$",
+          "explicacion": "$f_{est}$ es el rozamiento estático, $\\mu_{est}$ su coeficiente y $F_N$ la normal. Ejemplo: m = 5 kg → $F_{N}$ = 5 × 9,8 = 49 N; con $\\mu_{est}$ = 0,4 → $f_{est}$ ≤ 0,4 × 49 = 19,6 N."
+        },
+        {
+          "texto": "Su valor se ajusta a la fuerza aplicada hasta un máximo",
+          "explicacion": "El rozamiento estático iguala la fuerza que intenta mover al cuerpo mientras no supere su límite. Ejemplo: si se empuja con 10 N y el cuerpo no se mueve, $f_{est}$ = 10 N."
+        },
+        {
+          "texto": "Valor máximo: $f_{est\\,max} = \\mu_{est} F_N$",
+          "explicacion": "Es el rozamiento justo antes de que el cuerpo empiece a deslizar. Ejemplo con los datos anteriores: $f_{est}$ máx = 0,4 × 49 = 19,6 N."
+        },
+        {
+          "texto": "El cuerpo empieza a moverse si la fuerza aplicada > $f_{est\\,max}$",
+          "explicacion": "Mientras la fuerza aplicada no supere el máximo, el cuerpo sigue quieto. Ejemplo: F = 25 N > 19,6 N → el cuerpo se mueve; F = 15 N < 19,6 N → no se mueve."
+        }
+      ]
+    },
+    {
+      "titulo": "Rozamiento cinético",
+      "puntos": [
+        {
+          "texto": "«Rozamiento cinético» (dinámico) = superficies deslizando",
+          "explicacion": "Actúa cuando una superficie ya se desliza sobre otra. Es el que frena a un bloque que se arrastra por el piso."
+        },
+        {
+          "texto": "Fórmula: $f_{cin} = \\mu_{cin} F_N$",
+          "explicacion": "$f_{cin}$ es el rozamiento cinético y $\\mu_{cin}$ su coeficiente. Ejemplo: $\\mu_{cin}$ = 0,3 y $F_{N}$ = 49 N → $f_{cin}$ = 0,3 × 49 = 14,7 N."
+        },
+        {
+          "texto": "El rozamiento cinético es «constante»",
+          "explicacion": "Su valor no cambia con la rapidez del deslizamiento: mientras desliza, vale siempre $\\mu_{cin}$ × $F_{N}$. En el ejemplo anterior es 14,7 N a cualquier rapidez."
+        },
+        {
+          "texto": "Rozamiento cinético: sentido opuesto a la velocidad relativa",
+          "explicacion": "Siempre se opone al deslizamiento entre las superficies, por lo que realiza trabajo negativo sobre el cuerpo que desliza."
+        },
+        {
+          "texto": "$\\mu_{est} > \\mu_{cin}$ ⇒ iniciar el movimiento cuesta más que mantenerlo",
+          "explicacion": "Para las mismas superficies el coeficiente estático es mayor que el cinético. Ejemplo con $F_{N}$ = 49 N: máximo estático 0,4 × 49 = 19,6 N frente a cinético 0,3 × 49 = 14,7 N."
+        }
+      ]
+    },
+    {
+      "titulo": "Dinámica rectilínea",
+      "puntos": [
+        {
+          "texto": "«Dinámica rectilínea» = aplica $F_R = m a$ al movimiento en línea recta",
+          "explicacion": "Se elige un eje a lo largo del movimiento y otro perpendicular, y se plantea la segunda ley en cada uno."
+        },
+        {
+          "texto": "Eje del movimiento: $F_R = F_{favor} - F_{contra} = m a$",
+          "explicacion": "Las fuerzas que van en el sentido del movimiento suman y las que se oponen restan. Ejemplo: F a favor = 30 N, F en contra = 10 N, m = 4 kg → $F_{R}$ = 30 − 10 = 20 N y a = 20 ÷ 4 = 5 m/s²."
+        },
+        {
+          "texto": "Eje perpendicular al movimiento: $\\sum F = 0$",
+          "explicacion": "El cuerpo no se acelera en esa dirección, así que las fuerzas se compensan. Ejemplo: sobre un piso horizontal, para m = 5 kg la normal vale 5 × 9,8 = 49 N, igual al peso."
+        }
+      ]
+    },
+    {
+      "titulo": "Plano horizontal",
+      "puntos": [
+        {
+          "texto": "Plano horizontal liso, F horizontal: $a = \\frac{F}{m}$",
+          "explicacion": "Sin rozamiento, la única fuerza en el eje del movimiento es F. Ejemplo: F = 24 N y m = 6 kg → a = 24 ÷ 6 = 4 m/s²."
+        },
+        {
+          "texto": "Con rozamiento cinético: $a = \\frac{F - \\mu_{cin} m g}{m}$",
+          "explicacion": "El rozamiento resta a la fuerza aplicada, con $f_{cin}$ = $\\mu_{cin}$ × m × g. Ejemplo: F = 30 N, m = 5 kg, $\\mu_{cin}$ = 0,2 → $f_{cin}$ = 0,2 × 5 × 9,8 = 9,8 N; a = (30 − 9,8) ÷ 5 = 4,04 m/s²."
+        },
+        {
+          "texto": "Plano horizontal: $F_N = m g$ sin otras fuerzas verticales",
+          "explicacion": "Si no hay más fuerzas verticales, la normal equilibra al peso. Ejemplo: m = 5 kg → $F_{N}$ = 5 × 9,8 = 49 N."
+        }
+      ]
+    },
+    {
+      "titulo": "Plano inclinado",
+      "puntos": [
+        {
+          "texto": "Plano inclinado de ángulo θ: peso paralelo = $m g \\sin\\theta$",
+          "explicacion": "El peso se descompone en una parte a lo largo del plano y otra perpendicular a él. Ejemplo: m = 5 kg y θ = 30° → 5 × 9,8 × 0,5 = 24,5 N."
+        },
+        {
+          "texto": "Peso perpendicular al plano = $m g \\cos\\theta = F_N$",
+          "explicacion": "Es la parte del peso que aprieta el cuerpo contra el plano y que equilibra la normal. Ejemplo: m = 5 kg y θ = 30° → 5 × 9,8 × 0,866 ≈ 42,4 N."
+        },
+        {
+          "texto": "Plano inclinado liso: $a = g \\sin\\theta$",
+          "explicacion": "Sin rozamiento, la masa se cancela: todos los cuerpos aceleran igual. Ejemplo: θ = 30° → a = 9,8 × 0,5 = 4,9 m/s²."
+        },
+        {
+          "texto": "Con rozamiento, bajando: $a = g(\\sin\\theta - \\mu_{cin}\\cos\\theta)$",
+          "explicacion": "El rozamiento cinético resta a la componente del peso paralela al plano. Ejemplo: θ = 30° y $\\mu_{cin}$ = 0,2 → a = 9,8 × (0,5 − 0,2 × 0,866) = 9,8 × 0,3268 ≈ 3,20 m/s²."
+        },
+        {
+          "texto": "Inicio del deslizamiento: $\\mu_{est} = \\tan\\theta$",
+          "explicacion": "Al inclinar el plano, el cuerpo empieza a deslizar cuando la componente paralela del peso iguala al rozamiento estático máximo. Ejemplo: θ = 37° → $\\mu_{est}$ = tan 37° ≈ 0,75."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuerpos conectados",
+      "puntos": [
+        {
+          "texto": "Cuerpos unidos por cuerda tensa ⇒ igual aceleración",
+          "explicacion": "Una cuerda tensa e inextensible obliga a los cuerpos a avanzar la misma distancia en el mismo tiempo, por lo que comparten el valor de a."
+        },
+        {
+          "texto": "«Tensión» = fuerza de la cuerda; igual en toda cuerda ideal",
+          "explicacion": "Una cuerda ideal tiene masa despreciable, por eso transmite la misma fuerza en todos sus puntos. Tira de cada cuerpo hacia la cuerda."
+        },
+        {
+          "texto": "Cuerpos en contacto ⇒ igual aceleración",
+          "explicacion": "Si uno empuja al otro y permanecen juntos, se mueven con la misma a. Esto permite tratarlos como un solo sistema para hallar a."
+        },
+        {
+          "texto": "Fuerzas de contacto entre dos cuerpos = acción-reacción",
+          "explicacion": "Cada cuerpo empuja al otro con igual módulo y sentido opuesto, por la tercera ley. Se aplican a cuerpos distintos, así que no se cancelan al analizar uno solo."
+        },
+        {
+          "texto": "Dos masas colgantes, polea ideal: $a = \\frac{(m_1 - m_2)g}{m_1 + m_2}$",
+          "explicacion": "m₁ es la masa mayor y m₂ la menor; la mayor baja y la menor sube con la misma a. Ejemplo: m₁ = 6 kg y m₂ = 2 kg → a = (6 − 2) × 9,8 ÷ (6 + 2) = 39,2 ÷ 8 = 4,9 m/s²."
+        },
+        {
+          "texto": "Bloque en mesa lisa jalado por masa colgante: $a = \\frac{m_2 g}{m_1 + m_2}$",
+          "explicacion": "m₁ es el bloque sobre la mesa y m₂ la masa que cuelga; solo el peso de m₂ mueve a ambos. Ejemplo: m₁ = 3 kg y m₂ = 2 kg → a = 2 × 9,8 ÷ (3 + 2) = 19,6 ÷ 5 = 3,92 m/s²."
+        }
+      ]
+    },
+    {
+      "titulo": "Peso aparente",
+      "puntos": [
+        {
+          "texto": "«Peso aparente» = fuerza normal del piso del ascensor sobre la persona",
+          "explicacion": "Es lo que marcaría una balanza dentro del ascensor. Coincide con el peso real solo cuando no hay aceleración vertical."
+        },
+        {
+          "texto": "Aceleración hacia arriba = sube acelerando o baja frenando",
+          "explicacion": "Lo que importa es el sentido de la aceleración, no el del movimiento: si la velocidad hacia abajo disminuye, la aceleración apunta hacia arriba."
+        },
+        {
+          "texto": "Aceleración hacia abajo = baja acelerando o sube frenando",
+          "explicacion": "Si la velocidad hacia arriba disminuye, la aceleración apunta hacia abajo, igual que cuando el ascensor baja cada vez más rápido."
+        },
+        {
+          "texto": "Aceleración hacia arriba: $F_N = m(g + a)$",
+          "explicacion": "La normal debe equilibrar al peso y además dar la aceleración. Ejemplo: m = 70 kg y a = 2 m/s² → $F_{N}$ = 70 × (9,8 + 2) = 70 × 11,8 = 826 N."
+        },
+        {
+          "texto": "Reposo o velocidad constante: $F_N = m g$",
+          "explicacion": "Sin aceleración, la normal solo equilibra al peso. Ejemplo: m = 70 kg → $F_{N}$ = 70 × 9,8 = 686 N."
+        },
+        {
+          "texto": "Aceleración hacia abajo: $F_N = m(g - a)$",
+          "explicacion": "La normal es menor que el peso, y la persona se siente más liviana. Ejemplo: m = 70 kg y a = 2 m/s² → $F_{N}$ = 70 × (9,8 − 2) = 70 × 7,8 = 546 N."
+        },
+        {
+          "texto": "Caída libre ⇒ peso aparente = 0",
+          "explicacion": "Con a = g, $F_{N}$ = m × (g − g) = 0. Ejemplo: m = 70 kg → $F_{N}$ = 70 × (9,8 − 9,8) = 0 N; la persona flota respecto del ascensor."
+        }
+      ]
+    },
+    {
+      "titulo": "Dinámica circular",
+      "puntos": [
+        {
+          "texto": "«Dinámica circular» = aplica $F_R = m a$ al movimiento en circunferencia",
+          "explicacion": "Se plantea la segunda ley en dos direcciones: la radial, hacia el centro, y la tangencial, a lo largo de la trayectoria."
+        },
+        {
+          "texto": "«Fuerza centrípeta» ($F_c$) = resultante de fuerzas radiales hacia el centro",
+          "explicacion": "Es la fuerza resultante que produce la aceleración centrípeta. Puede ser una tensión, un rozamiento, una normal o una combinación de fuerzas."
+        },
+        {
+          "texto": "$F_c$ apunta siempre al centro y produce $a_c$",
+          "explicacion": "Su sentido coincide con el de la aceleración centrípeta, por la segunda ley. Cambia de dirección junto con el móvil."
+        },
+        {
+          "texto": "$F_c$ es perpendicular a v",
+          "explicacion": "Como forma 90° con la velocidad, cambia su dirección sin cambiar su módulo: no acelera ni frena al móvil."
+        },
+        {
+          "texto": "$F_c$ ≠ fuerza nueva: es la resultante de fuerzas reales",
+          "explicacion": "No se agrega al diagrama de fuerzas como una más. Es el nombre de la resultante radial, formada por fuerzas como tensión, normal, rozamiento o peso."
+        },
+        {
+          "texto": "Fórmula: $F_c = m a_c = m\\frac{v^2}{R}$",
+          "explicacion": "m es la masa, v la rapidez y R el radio de giro. Ejemplo: m = 2 kg, v = 3 m/s y R = 1,5 m → $F_{c}$ = 2 × 9 ÷ 1,5 = 18 ÷ 1,5 = 12 N."
+        },
+        {
+          "texto": "Con velocidad angular: $F_c = m\\omega^2 R$",
+          "explicacion": "Se obtiene al reemplazar v = ω × R. Ejemplo con los datos anteriores: ω = v ÷ R = 3 ÷ 1,5 = 2 rad/s → $F_{c}$ = 2 × 2² × 1,5 = 12 N, el mismo resultado."
+        },
+        {
+          "texto": "$F_c$ en N, m en kg, v en m/s, R en m",
+          "explicacion": "Se usan las unidades del Sistema Internacional de forma consistente; ω se expresa en rad/s. Ejemplo: kg × (m/s)² ÷ m = kg × m/s² = N."
+        },
+        {
+          "texto": "$F_c$ es proporcional a v²",
+          "explicacion": "Con m y R fijos, duplicar v cuadruplica $F_{c}$. Ejemplo: de v = 3 m/s a v = 6 m/s → $F_{c}$ = 2 × 36 ÷ 1,5 = 48 N = 4 × 12 N."
+        },
+        {
+          "texto": "$F_c$ es proporcional a la masa m",
+          "explicacion": "Con v y R fijos, duplicar m duplica $F_{c}$. Ejemplo: m = 4 kg → $F_{c}$ = 4 × 9 ÷ 1,5 = 24 N = 2 × 12 N."
+        },
+        {
+          "texto": "Con v constante, $F_c$ es inversamente proporcional a R",
+          "explicacion": "Una curva más cerrada exige mayor $F_{c}$. Ejemplo: al duplicar R de 1,5 m a 3 m → $F_{c}$ = 2 × 9 ÷ 3 = 6 N, la mitad de 12 N."
+        },
+        {
+          "texto": "Con ω constante, $F_c$ es directamente proporcional a R",
+          "explicacion": "Al alejarse del eje se necesita más fuerza para el mismo ω. Ejemplo: ω = 2 rad/s y R = 3 m → $F_{c}$ = 2 × 4 × 3 = 24 N = 2 × 12 N."
+        },
+        {
+          "texto": "Ecuación radial: $F_{centro} - F_{afuera} = m\\frac{v^2}{R}$",
+          "explicacion": "Las fuerzas hacia el centro suman y las que apuntan hacia afuera restan; la diferencia es $F_{c}$. Ejemplo: 15 N hacia el centro y 3 N hacia afuera → $F_{c}$ = 15 − 3 = 12 N."
+        },
+        {
+          "texto": "Eje tangencial: $\\sum F_{tang} = m a_t$; en MCU vale 0",
+          "explicacion": "En el movimiento circular uniforme no hay aceleración tangencial. Ejemplo: m = 2 kg y $a_{t}$ = 1,5 m/s² (MCUV) → ΣF_tang = 2 × 1,5 = 3 N."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones circulares",
+      "puntos": [
+        {
+          "texto": "Piedra en cuerda, plano horizontal liso: $T = F_c$",
+          "explicacion": "T es la tensión de la cuerda, la única fuerza horizontal. Ejemplo con m = 2 kg, v = 3 m/s y R = 1,5 m → T = $F_{c}$ = 12 N."
+        },
+        {
+          "texto": "Curva plana: el rozamiento estático hace de $F_c$",
+          "explicacion": "En una carretera plana, la única fuerza horizontal sobre el auto es el rozamiento estático de las llantas, que apunta al centro de la curva."
+        },
+        {
+          "texto": "Rapidez máxima en curva plana: $v_{max} = \\sqrt{\\mu_{est} g R}$",
+          "explicacion": "Sale de $\\mu_{est}$ × m × g = m × v² ÷ R, y la masa se cancela. Ejemplo: $\\mu_{est}$ = 0,5 y R = 20 m → v máx = √(0,5 × 9,8 × 20) = √98 ≈ 9,9 m/s."
+        },
+        {
+          "texto": "Curva peraltada sin rozamiento, ángulo θ: $\\tan\\theta = \\frac{v^2}{g R}$",
+          "explicacion": "θ es el ángulo de inclinación de la pista. Ejemplo: v = 14 m/s y R = 20 m → tan θ = 196 ÷ (9,8 × 20) = 196 ÷ 196 = 1 → θ = 45°."
+        },
+        {
+          "texto": "Péndulo cónico, θ desde la vertical: $\\tan\\theta = \\frac{v^2}{g R}$",
+          "explicacion": "Aquí R es el radio de la circunferencia que describe la masa. Ejemplo: v = 3,5 m/s y R = 2,5 m → tan θ = 12,25 ÷ 24,5 = 0,5 → θ ≈ 26,6°."
+        }
+      ]
+    },
+    {
+      "titulo": "Círculo vertical",
+      "puntos": [
+        {
+          "texto": "Círculo vertical con cuerda, punto más alto: $T + m g = m\\frac{v^2}{R}$",
+          "explicacion": "Arriba, la tensión y el peso apuntan al centro. Ejemplo: m = 1 kg, v = 5 m/s y R = 2 m → m × v² ÷ R = 12,5 N; T = 12,5 − 9,8 = 2,7 N."
+        },
+        {
+          "texto": "Círculo vertical con cuerda, punto más bajo: $T - m g = m\\frac{v^2}{R}$",
+          "explicacion": "Abajo, la tensión apunta al centro y el peso se aleja de él. Ejemplo con los mismos datos: T = 12,5 + 9,8 = 22,3 N."
+        },
+        {
+          "texto": "La tensión es máxima abajo y mínima arriba",
+          "explicacion": "Abajo la cuerda debe sostener el peso y dar la $F_{c}$; arriba el peso ayuda a la $F_{c}$. Con los datos anteriores: 22,3 N abajo y 2,7 N arriba."
+        },
+        {
+          "texto": "Rapidez mínima arriba (T = 0): $v_{min} = \\sqrt{g R}$",
+          "explicacion": "Si T = 0, solo el peso hace de $F_{c}$: m × g = m × v² ÷ R. Ejemplo: R = 2 m → v mín = √(9,8 × 2) = √19,6 ≈ 4,43 m/s."
+        },
+        {
+          "texto": "Pista circular vertical: la normal $F_N$ reemplaza a T",
+          "explicacion": "En una pista, la fuerza de contacto de la superficie cumple el papel de la tensión. Las ecuaciones son las mismas con $F_{N}$ en lugar de T."
+        },
+        {
+          "texto": "Arriba, el peso no desaparece: ayuda a la fuerza centrípeta",
+          "explicacion": "La fuerza centrípeta es la suma de las fuerzas que apuntan al centro. Arriba, tanto la tensión como el peso apuntan hacia el centro."
+        }
+      ]
+    },
+    {
+      "titulo": "Conceptos que se confunden",
+      "puntos": [
+        {
+          "texto": "Acción y reacción no se anulan",
+          "explicacion": "Actúan en cuerpos distintos, así que cada una produce su propio efecto."
+        },
+        {
+          "texto": "Peso y normal ≠ acción-reacción",
+          "explicacion": "Actúan sobre el mismo cuerpo; la reacción del peso es la atracción del cuerpo sobre la Tierra."
+        },
+        {
+          "texto": "Velocidad constante ⇒ resultante nula",
+          "explicacion": "No hace falta fuerza resultante para mantener la velocidad, solo para cambiarla."
+        },
+        {
+          "texto": "En MCU, $F_R \\neq 0$",
+          "explicacion": "Aunque la rapidez es constante, la dirección cambia, así que existe la fuerza centrípeta."
+        },
+        {
+          "texto": "Fuerza centrípeta ≠ fuerza adicional",
+          "explicacion": "Es la resultante radial de las fuerzas reales que actúan sobre el cuerpo."
+        },
+        {
+          "texto": "«Fuerza centrífuga» = efecto aparente en un sistema que gira",
+          "explicacion": "Se siente desde un sistema que gira, pero no es una fuerza real sobre el cuerpo que gira."
+        },
+        {
+          "texto": "Fuerza centrífuga ≠ reacción de la fuerza centrípeta",
+          "explicacion": "La reacción de una fuerza actúa sobre otro cuerpo, mientras que la sensación centrífuga ocurre en el cuerpo que gira."
+        },
+        {
+          "texto": "μ ≠ fuerza",
+          "explicacion": "El coeficiente de rozamiento es un número sin unidades; la fuerza de rozamiento se obtiene multiplicándolo por la normal."
+        },
+        {
+          "texto": "$f_{est}$ no siempre vale $\\mu_{est} F_N$",
+          "explicacion": "Ese valor es solo su máximo; en general el rozamiento estático iguala la fuerza aplicada."
+        },
+        {
+          "texto": "El rozamiento no depende del área de contacto",
+          "explicacion": "Depende de la normal y del coeficiente, no de qué cara del bloque se apoya."
+        },
+        {
+          "texto": "Conexión: a se calcula con la cinemática",
+          "explicacion": "El valor de la aceleración se relaciona con los movimientos MRUV y circular, estudiados en sus propios temas."
         }
       ]
     }

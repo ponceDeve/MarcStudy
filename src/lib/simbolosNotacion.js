@@ -16,6 +16,7 @@ export const SIMBOLOS_NOTACION = {
   "✓": "necesita",
   "✗": "no tiene",
   "+": "más",
+  "-": "menos",
   "↑": "aumenta",
   "↓": "disminuye",
   "≠": "se diferencia de",

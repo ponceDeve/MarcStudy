@@ -1,184 +1,280 @@
 {
   "curso": "Física",
-  "tema": "Adición de vectores",
+  "tema": "MRU",
   "glosario": {
-    "Resultante": "Vector equivalente a la suma de varios.",
-    "Método del triángulo": "Suma de dos vectores en cadena.",
-    "Método del polígono": "Suma de varios vectores en cadena.",
-    "Método del paralelogramo": "Suma de dos vectores con origen común.",
-    "Polígono cerrado": "Polígono cuya resultante es cero.",
-    "Ley de cosenos": "Relaciona lados y un ángulo de un triángulo.",
-    "Ángulo entre vectores": "Ángulo al trazarlos con origen común.",
-    "Resta de vectores": "Suma del opuesto del segundo vector.",
-    "Equilibrio": "Estado con resultante de fuerzas nula."
+    "Movimiento rectilíneo uniforme": "Movimiento en recta con velocidad constante",
+    "Trayectoria": "Línea que describe el cuerpo al moverse",
+    "Velocidad constante": "Velocidad sin cambio de módulo ni dirección",
+    "Sistema de referencia": "Cuerpo o punto con ejes para observar",
+    "Posición": "Lugar del cuerpo respecto al origen",
+    "Posición inicial": "Posición del cuerpo en el instante inicial",
+    "Desplazamiento": "Cambio de posición entre inicio y final",
+    "Aceleración": "Cambio de la velocidad en el tiempo",
+    "Ecuación horaria": "Fórmula que da la posición según el tiempo",
+    "Pendiente": "Inclinación de una recta en una gráfica",
+    "Encuentro": "Dos móviles en la misma posición al mismo tiempo",
+    "Alcance": "Un móvil llega al que va delante",
+    "Velocidad relativa": "Velocidad de un móvil respecto a otro",
+    "Rapidez": "Valor de la velocidad sin dirección",
+    "Distancia": "Longitud total recorrida",
+    "Metro por segundo": "Unidad de velocidad del sistema oficial",
+    "Kilómetro por hora": "Unidad de velocidad de uso cotidiano"
   },
   "theory": [
     {
-      "titulo": "Adición de vectores",
+      "titulo": "Concepto de MRU",
       "puntos": [
         {
-          "texto": "«Resultante» = vector único equivalente a la suma de varios",
-          "explicacion": "La suma de dos o más vectores se llama vector resultante, $\\vec{R}$. Produce el mismo efecto que todos juntos. Los métodos geométricos lo obtienen dibujando los vectores."
+          "texto": "«Movimiento Rectilíneo Uniforme» (MRU) = recta + velocidad constante",
+          "explicacion": "Es el movimiento más simple: el cuerpo no se desvía ni cambia su rapidez. Un auto en una autopista recta a rapidez fija es un buen modelo."
         },
         {
-          "texto": "Suma de vectores ≠ suma de módulos",
-          "explicacion": "Solo coinciden cuando los vectores están en la misma dirección y sentido. En los demás casos la resultante es menor que la suma de los módulos. Error frecuente: sumar los módulos sin considerar el ángulo."
+          "texto": "MRU ⇒ trayectoria = línea recta",
+          "explicacion": "Rectilíneo significa que el cuerpo sigue una recta, por lo que basta un solo eje para ubicar su posición."
+        },
+        {
+          "texto": "MRU ⇒ velocidad constante: módulo + dirección sin cambio",
+          "explicacion": "Uniforme significa que la velocidad no varía. Si el módulo o la dirección cambian, el movimiento deja de ser MRU."
+        },
+        {
+          "texto": "MRU ⇒ distancias iguales en tiempos iguales",
+          "explicacion": "Ejemplo: con v = 4 m/s, en cada 2 s el cuerpo recorre 4 × 2 = 8 m, sin importar en qué momento se mida."
+        },
+        {
+          "texto": "MRU ✓ sistema de referencia + origen de tiempo",
+          "explicacion": "Para dar posiciones hace falta un punto de referencia en el eje y un instante desde el cual contar el tiempo."
         }
       ]
     },
     {
-      "titulo": "Método del triángulo",
+      "titulo": "Características del MRU",
       "puntos": [
         {
-          "texto": "«Método del triángulo» = sumar dos vectores colocándolos uno tras otro",
-          "explicacion": "Se traslada el segundo vector hasta que su origen coincida con el extremo del primero. La resultante une el origen del primero con el extremo del segundo."
+          "texto": "MRU ⇒ aceleración = 0",
+          "explicacion": "La aceleración mide el cambio de la velocidad en el tiempo. Si la velocidad es 5 m/s a los 0 s y 5 m/s a los 10 s, no cambió y la aceleración es cero."
         },
         {
-          "texto": "Resultante ⇒ $\\vec{R}=\\vec{A}+\\vec{B}$ cierra el triángulo",
-          "explicacion": "Los vectores $\\vec{A}$ y $\\vec{B}$ van en cadena, uno tras otro. La resultante va desde el origen del primero hasta el final del último."
+          "texto": "Velocidad instantánea = velocidad media en todo instante",
+          "explicacion": "Como la velocidad no cambia, medirla en un instante o en todo el recorrido da lo mismo. Ejemplo: de 0 a 40 m en 10 s da v media = 40 ÷ 10 = 4 m/s, y a los 3 s marca 4 m/s."
+        },
+        {
+          "texto": "Rapidez media = módulo de la velocidad",
+          "explicacion": "Como no hay retroceso ni cambio de sentido, distancia y desplazamiento coinciden. Ejemplo: v = −3 m/s ⇒ rapidez = 3 m/s."
+        },
+        {
+          "texto": "Posición = función lineal del tiempo",
+          "explicacion": "La posición crece o decrece a ritmo fijo, y por eso la gráfica posición-tiempo es una recta."
+        },
+        {
+          "texto": "Si x0 = 0 ⇒ posición directamente proporcional al tiempo",
+          "explicacion": "x0 es la posición inicial. Ejemplo: con v = 5 m/s, a 2 s está en 10 m y a 4 s en 20 m: al duplicar el tiempo se duplica la posición."
+        },
+        {
+          "texto": "Velocidad positiva ⇒ avanza en el sentido positivo del eje",
+          "explicacion": "El signo de la velocidad indica hacia dónde se mueve el cuerpo. Con v = +4 m/s la posición aumenta cada segundo."
+        },
+        {
+          "texto": "Velocidad negativa ⇒ avanza en sentido contrario al eje",
+          "explicacion": "Ejemplo: x0 = 80 m y v = −10 m/s ⇒ x = 80 − 10 × t; a los 3 s, x = 80 − 30 = 50 m: la posición disminuye."
         }
       ]
     },
     {
-      "titulo": "Método del polígono",
+      "titulo": "Ecuación de la posición",
       "puntos": [
         {
-          "texto": "«Método del polígono» = sumar varios vectores en cadena",
-          "explicacion": "Se dibujan uno tras otro, con el origen de cada uno en el extremo del anterior. La resultante une el primer origen con el último extremo."
+          "texto": "«Ecuación horaria» = x = x0 + v × t",
+          "explicacion": "Permite hallar la posición del cuerpo en cualquier instante. Ejemplo: x0 = 10 m, v = 4 m/s, t = 5 s ⇒ x = 10 + 4 × 5 = 10 + 20 = 30 m."
         },
         {
-          "texto": "Polígono cerrado ⇒ la resultante es cero",
-          "explicacion": "Si el último extremo coincide con el primer origen, el polígono queda cerrado y la suma de los vectores es nula. Es la condición de equilibrio de fuerzas concurrentes."
+          "texto": "x = posición en el instante t, en metros (m)",
+          "explicacion": "Es el lugar donde está el cuerpo cuando ha transcurrido el tiempo t, medido desde el origen del eje."
+        },
+        {
+          "texto": "x0 = posición inicial, en metros (m)",
+          "explicacion": "Es el punto de partida del cuerpo. Si parte del origen, x0 = 0 y la ecuación se reduce a x = v × t."
+        },
+        {
+          "texto": "v = velocidad constante, en metros por segundo (m/s)",
+          "explicacion": "Lleva signo: positivo si el cuerpo avanza en el sentido positivo del eje, negativo si va en sentido contrario."
+        },
+        {
+          "texto": "t = tiempo transcurrido, en segundos (s)",
+          "explicacion": "Se cuenta desde el instante en que el cuerpo está en x0. Debe estar en las mismas unidades de tiempo que la velocidad."
+        },
+        {
+          "texto": "Tiempo inicial ≠ 0 ⇒ x = x0 + v × (t − t0)",
+          "explicacion": "t0 es el instante inicial, en segundos. Ejemplo: x0 = 2 m, v = 3 m/s, t0 = 2 s, t = 6 s ⇒ x = 2 + 3 × (6 − 2) = 2 + 12 = 14 m."
+        },
+        {
+          "texto": "Desplazamiento: Δx = x − x0 = v × t",
+          "explicacion": "Δ significa cambio; Δx es el cambio de posición. Ejemplo: v = −3 m/s durante t = 4 s ⇒ Δx = −3 × 4 = −12 m, es decir, 12 m en sentido contrario al eje."
         }
       ]
     },
     {
-      "titulo": "Método del paralelogramo",
+      "titulo": "Fórmulas con distancia",
       "puntos": [
         {
-          "texto": "«Método del paralelogramo» = sumar dos vectores con el mismo origen",
-          "explicacion": "Se dibujan con origen común y se completa el paralelogramo. La resultante es la diagonal que parte del origen común."
+          "texto": "Distancia: d = v × t",
+          "explicacion": "d es la distancia recorrida, v la rapidez y t el tiempo. Ejemplo: v = 20 m/s y t = 15 s ⇒ d = 20 × 15 = 300 m."
+        },
+        {
+          "texto": "Velocidad: v = d ÷ t",
+          "explicacion": "Se despeja de la fórmula anterior. Ejemplo: d = 300 m en t = 15 s ⇒ v = 300 ÷ 15 = 20 m/s."
+        },
+        {
+          "texto": "Tiempo: t = d ÷ v",
+          "explicacion": "Es otro despeje de la misma fórmula. Ejemplo: d = 300 m con v = 20 m/s ⇒ t = 300 ÷ 20 = 15 s."
+        },
+        {
+          "texto": "Unidades coherentes: metros con segundos, kilómetros con horas",
+          "explicacion": "No se mezclan unidades distintas dentro de una fórmula. Ejemplo: v = 90 km/h durante t = 2 h ⇒ d = 90 × 2 = 180 km."
         }
       ]
     },
     {
-      "titulo": "Módulo de la resultante",
+      "titulo": "Gráfica posición-tiempo",
       "puntos": [
         {
-          "texto": "Fórmula ⇒ $R=\\sqrt{A^2+B^2+2AB\\cos\\theta}$",
-          "explicacion": "Es el módulo de la resultante de dos vectores de módulos $A$ y $B$, donde $\\theta$ es el ángulo entre ellos. Se obtiene aplicando la ley de cosenos al paralelogramo."
+          "texto": "Gráfica x-t = recta inclinada",
+          "explicacion": "Como la posición es lineal con el tiempo, los puntos forman una recta. x es la posición y t el tiempo."
         },
         {
-          "texto": "Ejemplo ⇒ $A=8$, $B=6$ y $\\theta=60^\\circ$ dan $R\\approx12.2$",
-          "explicacion": "Se calcula $R=\\sqrt{64+36+2\\cdot8\\cdot6\\cdot\\cos60^\\circ}=\\sqrt{100+48}=\\sqrt{148}\\approx12.2$."
+          "texto": "Pendiente de x-t = velocidad",
+          "explicacion": "La pendiente es la inclinación de la recta. Ejemplo: puntos (0 s, 0 m) y (4 s, 20 m) ⇒ pendiente = (20 − 0) ÷ (4 − 0) = 5 m/s."
+        },
+        {
+          "texto": "Corte de x-t con el eje vertical = x0",
+          "explicacion": "En t = 0 la recta marca la posición inicial. Ejemplo: x = 80 − 10 × t corta el eje vertical en 80 m."
+        },
+        {
+          "texto": "Mayor pendiente ⇒ mayor velocidad",
+          "explicacion": "Ejemplo: el móvil A con pendiente 6 m/s es más veloz que el móvil B con pendiente 3 m/s, pues su posición cambia más rápido."
+        },
+        {
+          "texto": "Pendiente negativa ⇒ velocidad negativa",
+          "explicacion": "La recta baja: el cuerpo se acerca al origen o se aleja hacia el lado negativo. Ejemplo: puntos (0 s, 80 m) y (8 s, 0 m) ⇒ pendiente = (0 − 80) ÷ 8 = −10 m/s."
         }
       ]
     },
     {
-      "titulo": "Vectores en el mismo sentido",
+      "titulo": "Gráfica velocidad-tiempo",
       "puntos": [
         {
-          "texto": "Mismo sentido ($\\theta=0^\\circ$) ⇒ $R=A+B$",
-          "explicacion": "Es la resultante máxima. Los módulos se suman directamente."
+          "texto": "Gráfica v-t = recta paralela al eje del tiempo",
+          "explicacion": "La velocidad no cambia, así que su valor es el mismo en todo instante y la recta es horizontal."
         },
         {
-          "texto": "Ejemplo ⇒ $A=5$ y $B=3$ en el mismo sentido dan $R=8$",
-          "explicacion": "Como $\\theta=0^\\circ$, $\\cos0^\\circ=1$ y $R=\\sqrt{25+9+30}=\\sqrt{64}=8$."
+          "texto": "Área bajo la recta de v-t = desplazamiento",
+          "explicacion": "El área del rectángulo entre la recta y el eje del tiempo es base × altura = t × v. Ejemplo: v = 6 m/s durante 5 s ⇒ área = 6 × 5 = 30 m."
+        },
+        {
+          "texto": "Recta sobre el eje del tiempo ⇒ v > 0",
+          "explicacion": "El cuerpo se mueve en el sentido positivo y el área da un desplazamiento positivo."
+        },
+        {
+          "texto": "Recta bajo el eje del tiempo ⇒ v < 0",
+          "explicacion": "El cuerpo se mueve en sentido contrario. Ejemplo: v = −4 m/s durante 5 s ⇒ área = −4 × 5 = −20 m."
         }
       ]
     },
     {
-      "titulo": "Vectores en sentidos opuestos",
+      "titulo": "Gráfica aceleración-tiempo",
       "puntos": [
         {
-          "texto": "Sentidos opuestos ($\\theta=180^\\circ$) ⇒ $R=|A-B|$",
-          "explicacion": "Es la resultante mínima. Los módulos se restan y el sentido es el del vector mayor."
-        },
-        {
-          "texto": "Ejemplo ⇒ $A=5$ y $B=3$ en sentidos opuestos dan $R=2$",
-          "explicacion": "Como $\\theta=180^\\circ$, $\\cos180^\\circ=-1$ y $R=\\sqrt{25+9-30}=\\sqrt{4}=2$."
+          "texto": "Gráfica a-t = recta sobre el eje del tiempo",
+          "explicacion": "La aceleración vale cero en todo instante, así que la recta coincide con el eje horizontal."
         }
       ]
     },
     {
-      "titulo": "Vectores perpendiculares",
+      "titulo": "Encuentro de dos móviles",
       "puntos": [
         {
-          "texto": "Perpendiculares ($\\theta=90^\\circ$) ⇒ $R=\\sqrt{A^2+B^2}$",
-          "explicacion": "Como $\\cos90^\\circ=0$, desaparece el último término y se obtiene el teorema de Pitágoras."
+          "texto": "«Encuentro» = dos móviles en la misma posición al mismo tiempo",
+          "explicacion": "Es el instante en que dos cuerpos se cruzan. Se estudia con las ecuaciones horarias de cada móvil."
         },
         {
-          "texto": "Ejemplo ⇒ $A=3$ y $B=4$ perpendiculares dan $R=5$",
-          "explicacion": "Se calcula $R=\\sqrt{9+16}=\\sqrt{25}=5$."
+          "texto": "Condición de encuentro: x del móvil A = x del móvil B",
+          "explicacion": "Se igualan las dos ecuaciones horarias y se despeja t. Ejemplo: A: x = 4 × t; B: x = 120 − 2 × t ⇒ 4 × t = 120 − 2 × t ⇒ 6 × t = 120 ⇒ t = 20 s y x = 4 × 20 = 80 m."
+        },
+        {
+          "texto": "Sentidos opuestos ⇒ velocidad relativa = v1 + v2",
+          "explicacion": "v1 y v2 son las rapideces de cada móvil. Al acercarse, la separación disminuye con la suma de ambas rapideces."
+        },
+        {
+          "texto": "Tiempo de encuentro: t = d ÷ (v1 + v2)",
+          "explicacion": "d es la distancia que los separa al inicio. Ejemplo: d = 120 m, v1 = 4 m/s y v2 = 2 m/s ⇒ t = 120 ÷ (4 + 2) = 20 s. Comprobación: 4 × 20 + 2 × 20 = 80 + 40 = 120 m."
+        },
+        {
+          "texto": "Cruce de rectas en x-t = tiempo y posición de encuentro",
+          "explicacion": "El tiempo se lee en el eje horizontal y la posición en el eje vertical del punto donde se cortan las dos rectas."
         }
       ]
     },
     {
-      "titulo": "Vectores iguales a 120 grados",
+      "titulo": "Alcance de dos móviles",
       "puntos": [
         {
-          "texto": "Dos vectores de igual módulo $A$ con $\\theta=120^\\circ$ ⇒ $R=A$",
-          "explicacion": "Como $\\cos120^\\circ=-\\frac{1}{2}$, se tiene $R=\\sqrt{A^2+A^2-A^2}=A$."
+          "texto": "«Alcance» = un móvil llega al que va delante",
+          "explicacion": "Ocurre cuando ambos van en el mismo sentido y el de atrás es más veloz."
         },
         {
-          "texto": "Ejemplo ⇒ $A=B=10$ con $120^\\circ$ dan $R=10$",
-          "explicacion": "Se calcula $R=\\sqrt{100+100+2\\cdot100\\cdot(-0.5)}=\\sqrt{100}=10$."
+          "texto": "Mismo sentido ⇒ velocidad relativa = v1 − v2",
+          "explicacion": "v1 es la rapidez del móvil más veloz y v2 la del más lento. La separación disminuye con la diferencia de ambas rapideces."
+        },
+        {
+          "texto": "Tiempo de alcance: t = d ÷ (v1 − v2)",
+          "explicacion": "d es la distancia inicial entre ambos. Ejemplo: d = 60 m, v1 = 10 m/s y v2 = 5 m/s ⇒ t = 60 ÷ (10 − 5) = 12 s. Comprobación: 10 × 12 − 5 × 12 = 120 − 60 = 60 m."
+        },
+        {
+          "texto": "Uno sale después ⇒ tiempo del primero = tiempo del segundo + retraso",
+          "explicacion": "Ejemplo: A va a 5 m/s y B sale del mismo punto 4 s después a 10 m/s. Ventaja de A = 5 × 4 = 20 m; B alcanza en t = 20 ÷ (10 − 5) = 4 s; A lleva en total 4 + 4 = 8 s. Comprobación: 5 × 8 = 40 m y 10 × 4 = 40 m."
         }
       ]
     },
     {
-      "titulo": "Vectores iguales a 60 grados",
+      "titulo": "Velocidad constante",
       "puntos": [
         {
-          "texto": "Dos vectores de igual módulo $A$ con $\\theta=60^\\circ$ ⇒ $R=A\\sqrt{3}$",
-          "explicacion": "Como $\\cos60^\\circ=\\frac{1}{2}$, se tiene $R=\\sqrt{A^2+A^2+A^2}=A\\sqrt{3}$."
+          "texto": "Velocidad constante ✓ módulo + dirección + sentido fijos",
+          "explicacion": "Constante se refiere al vector completo, no solo al número. Un auto que gira a rapidez fija cambia de dirección y no tiene velocidad constante."
         },
         {
-          "texto": "Ejemplo ⇒ $A=B=4$ con $60^\\circ$ dan $R=4\\sqrt{3}$",
-          "explicacion": "Se calcula $R=\\sqrt{16+16+2\\cdot16\\cdot0.5}=\\sqrt{48}=4\\sqrt{3}\\approx6.93$."
+          "texto": "Cambia el módulo ⇒ no es MRU",
+          "explicacion": "Si el cuerpo acelera o frena, la velocidad cambia y el movimiento es de otro tipo."
+        },
+        {
+          "texto": "Cambia la dirección ⇒ no es MRU",
+          "explicacion": "Aunque la rapidez no cambie, una curva modifica la dirección de la velocidad."
         }
       ]
     },
     {
-      "titulo": "Rango de la resultante",
+      "titulo": "Gráfica y trayectoria",
       "puntos": [
         {
-          "texto": "Rango ⇒ $|A-B|\\le R\\le A+B$",
-          "explicacion": "La resultante de dos vectores nunca es menor que la diferencia de módulos ni mayor que su suma. El mínimo ocurre a $180^\\circ$ y el máximo, a $0^\\circ$."
-        },
-        {
-          "texto": "Ejemplo ⇒ con $A=7$ y $B=4$, $R$ puede valer entre $3$ y $11$",
-          "explicacion": "El mínimo es $7-4=3$ y el máximo es $7+4=11$. Cualquier ángulo intermedio da un valor dentro de ese rango."
+          "texto": "Gráfica x-t ≠ trayectoria del móvil",
+          "explicacion": "La gráfica x-t muestra cómo cambia la posición con el tiempo. La trayectoria de un MRU es siempre una recta, aunque la gráfica x-t se vea inclinada."
         }
       ]
     },
     {
-      "titulo": "Dirección de la resultante",
+      "titulo": "Pendiente y área",
       "puntos": [
         {
-          "texto": "Dirección ⇒ $\\tan\\alpha=\\frac{B\\sin\\theta}{A+B\\cos\\theta}$",
-          "explicacion": "El ángulo $\\alpha$ se mide desde el vector $\\vec{A}$ hasta la resultante. Permite hallar hacia dónde apunta."
-        },
-        {
-          "texto": "Ejemplo ⇒ $A=3$ y $B=4$ perpendiculares dan $\\alpha\\approx53^\\circ$",
-          "explicacion": "Con $\\theta=90^\\circ$: $\\tan\\alpha=\\frac{4\\cdot1}{3+0}=\\frac{4}{3}$, de donde $\\alpha\\approx53^\\circ$ respecto de $\\vec{A}$."
+          "texto": "Pendiente de x-t = velocidad; área de v-t = desplazamiento",
+          "explicacion": "No se confunden: en x-t la velocidad se lee con la pendiente; en v-t el desplazamiento se lee con el área."
         }
       ]
     },
     {
-      "titulo": "Resta de vectores",
+      "titulo": "Conexión con MRUV",
       "puntos": [
         {
-          "texto": "Resta ⇒ $\\vec{D}=\\vec{A}-\\vec{B}=\\vec{A}+(-\\vec{B})$",
-          "explicacion": "Restar un vector es sumar su opuesto. Se invierte el sentido de $\\vec{B}$ y se aplica cualquier método de suma."
-        },
-        {
-          "texto": "Módulo de la diferencia ⇒ $D=\\sqrt{A^2+B^2-2AB\\cos\\theta}$",
-          "explicacion": "Aquí $\\theta$ es el ángulo entre $\\vec{A}$ y $\\vec{B}$ cuando se dibujan con el mismo origen."
-        },
-        {
-          "texto": "Ejemplo ⇒ $A=B=6$ con $\\theta=60^\\circ$ dan $D=6$",
-          "explicacion": "Se calcula $D=\\sqrt{36+36-2\\cdot36\\cdot0.5}=\\sqrt{36}=6$."
+          "texto": "Velocidad que cambia → Movimiento Rectilíneo Uniformemente Variado (MRUV)",
+          "explicacion": "Aquí solo se estudia la velocidad constante; el movimiento con aceleración constante se desarrolla en su propio tema."
         }
       ]
     }

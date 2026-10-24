@@ -1,155 +1,278 @@
 {
   "curso": "Física",
-  "tema": "Métodos analíticos",
+  "tema": "MRUV",
   "glosario": {
-    "Método analítico": "Suma de vectores con sus componentes.",
-    "Componente rectangular": "Proyección de un vector sobre un eje.",
-    "Vector unitario": "Vector de módulo uno.",
-    "Resultante": "Vector equivalente a la suma.",
-    "Cuadrante": "Una de las cuatro regiones del plano.",
-    "Teorema de Pitágoras": "Relación entre los lados de un triángulo rectángulo."
+    "Movimiento rectilíneo uniformemente variado": "Movimiento en recta con aceleración constante",
+    "Aceleración": "Cambio de velocidad en cada unidad de tiempo",
+    "Aceleración constante": "Aceleración que no cambia con el tiempo",
+    "Movimiento acelerado": "Movimiento cuya rapidez aumenta",
+    "Movimiento desacelerado": "Movimiento cuya rapidez disminuye",
+    "Velocidad inicial": "Velocidad al comenzar el intervalo",
+    "Velocidad final": "Velocidad al terminar el intervalo",
+    "Reposo": "Sin movimiento respecto al sistema",
+    "Velocidad media": "Desplazamiento dividido entre el tiempo empleado",
+    "Pendiente": "Inclinación de una recta en una gráfica",
+    "Parábola": "Curva de una gráfica con tiempo al cuadrado",
+    "Desplazamiento": "Cambio de posición entre inicio y final",
+    "Distancia": "Longitud total recorrida",
+    "Metro por segundo al cuadrado": "Unidad de aceleración del sistema oficial",
+    "Metro por segundo": "Unidad de velocidad del sistema oficial"
   },
   "theory": [
     {
-      "titulo": "Métodos analíticos",
+      "titulo": "Concepto de MRUV",
       "puntos": [
         {
-          "texto": "«Método analítico» = suma de vectores con sus componentes numéricas",
-          "explicacion": "Se descomponen los vectores en direcciones perpendiculares y se suman las componentes. Es más preciso que los métodos geométricos, porque se calcula con números."
+          "texto": "«Movimiento Rectilíneo Uniformemente Variado» (MRUV) = recta + aceleración constante",
+          "explicacion": "Es el movimiento de un cuerpo que se desplaza en línea recta y cuya velocidad cambia de manera regular, como un auto que acelera de forma pareja."
         },
         {
-          "texto": "Vector en el plano ⇒ $\\vec{A}=A_x\\,\\hat{i}+A_y\\,\\hat{j}$",
-          "explicacion": "Aquí $A_x$ y $A_y$ son las componentes rectangulares, y $\\hat{i}$ y $\\hat{j}$ son los vectores unitarios de los ejes $x$ e $y$."
+          "texto": "MRUV ⇒ trayectoria = línea recta",
+          "explicacion": "Rectilíneo indica que el cuerpo sigue una recta, así que basta un solo eje para describir su posición."
+        },
+        {
+          "texto": "MRUV ⇒ aceleración constante ≠ 0",
+          "explicacion": "Si la aceleración fuera cero sería MRU; si cambiara con el tiempo, no sería uniformemente variado."
+        },
+        {
+          "texto": "MRUV ⇒ velocidad varía uniformemente con el tiempo",
+          "explicacion": "Uniformemente variado significa que la velocidad cambia siempre la misma cantidad en intervalos iguales."
+        },
+        {
+          "texto": "Tiempos iguales ⇒ cambios iguales de velocidad",
+          "explicacion": "Ejemplo: con a = 4 m/s² y v0 = 0, la velocidad es 4 m/s a 1 s, 8 m/s a 2 s y 12 m/s a 3 s: sube 4 m/s en cada segundo."
+        },
+        {
+          "texto": "Tiempos iguales ⇒ distancias distintas",
+          "explicacion": "A diferencia del MRU, la velocidad cambia, así que cada segundo se recorre un tramo distinto. Ejemplo: con v0 = 0 y a = 2 m/s², en el primer segundo recorre 1 m y en el segundo segundo 3 m."
+        },
+        {
+          "texto": "MRUV = «MRUA»: Movimiento Rectilíneo Uniformemente Acelerado (MRUA)",
+          "explicacion": "Son dos nombres del mismo movimiento, con aceleración constante distinta de cero."
         }
       ]
     },
     {
-      "titulo": "Componentes rectangulares",
+      "titulo": "Aceleración",
       "puntos": [
         {
-          "texto": "Componente en $x$ ⇒ $A_x=A\\cos\\theta$",
-          "explicacion": "Aquí $A$ es el módulo y $\\theta$ el ángulo medido desde el eje $x$ positivo. Es la proyección del vector sobre el eje horizontal."
+          "texto": "«Aceleración» (a) = cambio de velocidad por unidad de tiempo",
+          "explicacion": "Mide qué tan rápido cambia la velocidad. La letra a representa la aceleración."
         },
         {
-          "texto": "Componente en $y$ ⇒ $A_y=A\\sin\\theta$",
-          "explicacion": "Es la proyección del vector sobre el eje vertical."
+          "texto": "a = (vf − v0) ÷ t",
+          "explicacion": "vf es la velocidad final, v0 la velocidad inicial y t el tiempo. Ejemplo: v0 = 5 m/s, vf = 25 m/s, t = 4 s ⇒ a = (25 − 5) ÷ 4 = 20 ÷ 4 = 5 m/s²."
         },
         {
-          "texto": "Ejemplo ⇒ $A=10$ y $\\theta=30^\\circ$ dan $A_x\\approx8.66$ y $A_y=5$",
-          "explicacion": "Se calcula $A_x=10\\cos30^\\circ=10\\cdot0.866=8.66$ y $A_y=10\\sin30^\\circ=10\\cdot0.5=5$."
+          "texto": "Aceleración = magnitud vectorial ✓ módulo + dirección + sentido",
+          "explicacion": "Además de cuánto cambia la velocidad, indica hacia dónde apunta ese cambio."
+        },
+        {
+          "texto": "Unidad de aceleración = metro por segundo al cuadrado (m/s²)",
+          "explicacion": "Es la velocidad en m/s que cambia en cada segundo. Ejemplo: a = 5 m/s² significa que la velocidad cambia 5 m/s cada segundo."
+        },
+        {
+          "texto": "Aceleración constante ⇒ misma variación de velocidad cada segundo",
+          "explicacion": "Ejemplo: con a = 3 m/s² y v0 = 2 m/s, la velocidad es 5, 8 y 11 m/s en los segundos 1, 2 y 3."
         }
       ]
     },
     {
-      "titulo": "Módulo",
+      "titulo": "Tipos de MRUV",
       "puntos": [
         {
-          "texto": "Módulo ⇒ $A=\\sqrt{A_x^2+A_y^2}$",
-          "explicacion": "Se obtiene con el teorema de Pitágoras sobre las componentes."
+          "texto": "«Acelerado» ⇒ módulo de la velocidad ↑",
+          "explicacion": "La rapidez aumenta con el tiempo, como un auto que arranca y va cada vez más rápido."
         },
         {
-          "texto": "Ejemplo ⇒ $A_x=3$ y $A_y=4$ dan $A=5$",
-          "explicacion": "Se calcula $A=\\sqrt{9+16}=\\sqrt{25}=5$."
+          "texto": "Acelerado ⇒ velocidad y aceleración con el mismo sentido",
+          "explicacion": "Ambos vectores apuntan hacia el mismo lado, por eso la rapidez crece."
+        },
+        {
+          "texto": "«Desacelerado» (retardado) ⇒ módulo de la velocidad ↓",
+          "explicacion": "La rapidez disminuye con el tiempo, como un auto que frena."
+        },
+        {
+          "texto": "Desacelerado ⇒ velocidad y aceleración con sentidos opuestos",
+          "explicacion": "La aceleración apunta contra el movimiento y por eso va quitando rapidez."
+        },
+        {
+          "texto": "Signo en las ecuaciones: + si acelera, − si desacelera",
+          "explicacion": "Ejemplo: v0 = 20 m/s y a = 5 m/s² desacelerando, vf = 20 − 5 × 2 = 10 m/s a los 2 s."
+        },
+        {
+          "texto": "Signo de la velocidad ⇒ solo indica hacia dónde se mueve",
+          "explicacion": "Que la velocidad sea positiva o negativa no dice si acelera o frena; eso depende de la relación entre velocidad y aceleración."
         }
       ]
     },
     {
-      "titulo": "Dirección",
+      "titulo": "Ecuaciones del MRUV",
       "puntos": [
         {
-          "texto": "Dirección ⇒ $\\tan\\theta=\\frac{A_y}{A_x}$",
-          "explicacion": "El ángulo $\\theta$ se mide desde el eje $x$ positivo. Hay que revisar los signos de las componentes para saber en qué cuadrante está."
+          "texto": "Velocidad final: vf = v0 ± a × t",
+          "explicacion": "Ejemplo: v0 = 5 m/s, a = 4 m/s², t = 5 s, acelerando ⇒ vf = 5 + 4 × 5 = 5 + 20 = 25 m/s."
         },
         {
-          "texto": "Ejemplo ⇒ $A_x=3$ y $A_y=4$ dan $\\theta\\approx53^\\circ$",
-          "explicacion": "Se calcula $\\tan\\theta=\\frac{4}{3}$, de donde $\\theta\\approx53^\\circ$."
+          "texto": "Distancia: d = v0 × t ± a × t² ÷ 2",
+          "explicacion": "Ejemplo: v0 = 5 m/s, a = 4 m/s², t = 5 s, acelerando ⇒ d = 5 × 5 + 4 × 5² ÷ 2 = 25 + 4 × 25 ÷ 2 = 25 + 50 = 75 m."
+        },
+        {
+          "texto": "Sin tiempo: vf² = v0² ± 2 × a × d",
+          "explicacion": "Sirve cuando el tiempo no se conoce. Ejemplo: v0 = 5 m/s, a = 4 m/s², d = 75 m ⇒ vf² = 25 + 2 × 4 × 75 = 25 + 600 = 625 ⇒ vf = 25 m/s."
+        },
+        {
+          "texto": "Con velocidad media: d = [(v0 + vf) ÷ 2] × t",
+          "explicacion": "Ejemplo: v0 = 5 m/s, vf = 25 m/s, t = 5 s ⇒ d = [(5 + 25) ÷ 2] × 5 = 15 × 5 = 75 m, igual al resultado anterior."
+        },
+        {
+          "texto": "Variables ⇒ velocidades en m/s, aceleración en m/s², tiempo en s",
+          "explicacion": "vf es la velocidad final, v0 la velocidad inicial, a la aceleración, t el tiempo y d la distancia recorrida en línea recta."
+        },
+        {
+          "texto": "Parte del reposo ⇒ v0 = 0",
+          "explicacion": "Las ecuaciones se simplifican. Ejemplo: a = 3 m/s² y t = 4 s ⇒ vf = 3 × 4 = 12 m/s y d = 3 × 4² ÷ 2 = 3 × 16 ÷ 2 = 24 m."
+        },
+        {
+          "texto": "Se detiene ⇒ vf = 0",
+          "explicacion": "Ejemplo: un auto con v0 = 20 m/s desacelera a 5 m/s². De 0 = 20 − 5 × t ⇒ t = 4 s; d = 20 × 4 − 5 × 4² ÷ 2 = 80 − 40 = 40 m."
+        },
+        {
+          "texto": "Velocidad media en MRUV = (v0 + vf) ÷ 2",
+          "explicacion": "Como la velocidad cambia de forma pareja, la media es el promedio de la inicial y la final. Ejemplo: (5 + 25) ÷ 2 = 15 m/s."
+        },
+        {
+          "texto": "Unidades coherentes: metros, segundos, m/s, m/s²",
+          "explicacion": "Si la velocidad viene en km/h hay que convertirla antes. Ejemplo: 72 km/h × 5/18 = 20 m/s."
         }
       ]
     },
     {
-      "titulo": "Cuadrantes",
+      "titulo": "Distancia n-ésimo segundo",
       "puntos": [
         {
-          "texto": "Signos de las componentes ⇒ determinan el cuadrante del vector",
-          "explicacion": "En el primer cuadrante $A_x$ y $A_y$ son positivas. En el segundo, $A_x<0$ y $A_y>0$. En el tercero, ambas son negativas. En el cuarto, $A_x>0$ y $A_y<0$."
+          "texto": "«d_n» = distancia recorrida solo durante el segundo n",
+          "explicacion": "Es el tramo que se avanza entre el instante n − 1 y el instante n. La letra n indica el número del segundo, contado desde el inicio."
+        },
+        {
+          "texto": "d_n = v0 ± a × (2n − 1) ÷ 2",
+          "explicacion": "Ejemplo: v0 = 2 m/s, a = 2 m/s², n = 5 ⇒ d_5 = 2 + 2 × (2 × 5 − 1) ÷ 2 = 2 + 2 × 9 ÷ 2 = 2 + 9 = 11 m."
+        },
+        {
+          "texto": "d_n ≠ distancia total hasta el segundo n",
+          "explicacion": "Ejemplo: desde el reposo con a = 3 m/s², hasta los 3 s recorre 3 × 3² ÷ 2 = 13,5 m, pero solo en el tercer segundo recorre 3 × (2 × 3 − 1) ÷ 2 = 7,5 m."
+        },
+        {
+          "texto": "Desde el reposo: d_n = a × (2n − 1) ÷ 2",
+          "explicacion": "Como v0 = 0 desaparece el primer término. Ejemplo: a = 2 m/s², n = 4 ⇒ d_4 = 2 × (2 × 4 − 1) ÷ 2 = 2 × 7 ÷ 2 = 7 m."
         }
       ]
     },
     {
-      "titulo": "Vectores unitarios",
+      "titulo": "Números de Galileo",
       "puntos": [
         {
-          "texto": "Vector unitario ⇒ $\\hat{u}=\\frac{\\vec{A}}{|\\vec{A}|}$",
-          "explicacion": "Tiene módulo $1$ y la misma dirección y sentido que $\\vec{A}$."
+          "texto": "Desde el reposo: distancias en segundos sucesivos = 1, 3, 5, 7…",
+          "explicacion": "Ejemplo: con a = 2 m/s², las distancias en los segundos 1, 2, 3 y 4 son 1 m, 3 m, 5 m y 7 m."
         },
         {
-          "texto": "Ejemplo ⇒ $\\vec{A}=3\\hat{i}+4\\hat{j}$ da $\\hat{u}=0.6\\hat{i}+0.8\\hat{j}$",
-          "explicacion": "Como $|\\vec{A}|=5$, se divide cada componente entre $5$: $\\frac{3}{5}=0.6$ y $\\frac{4}{5}=0.8$."
+          "texto": "Distancias por segundo = proporcionales a números impares",
+          "explicacion": "Cada segundo se recorre una cantidad proporcional al siguiente número impar, por eso crece de forma pareja."
+        },
+        {
+          "texto": "Distancia total desde el reposo = proporcional a t²",
+          "explicacion": "Ejemplo: con a = 2 m/s², la distancia total a 1, 2, 3 y 4 s es 1, 4, 9 y 16 m: al duplicar el tiempo, la distancia se multiplica por 4."
+        },
+        {
+          "texto": "Tras n segundos desde el reposo: distancia = n² × distancia del primer segundo",
+          "explicacion": "Ejemplo: si en el primer segundo recorre 1 m, tras 5 s habrá recorrido 5² × 1 = 25 m."
         }
       ]
     },
     {
-      "titulo": "Suma por componentes",
+      "titulo": "Gráfica posición-tiempo",
       "puntos": [
         {
-          "texto": "Suma ⇒ $R_x=\\sum A_x$ y $R_y=\\sum A_y$",
-          "explicacion": "Se suman por separado las componentes en $x$ y en $y$ de todos los vectores. Con ellas se obtiene la resultante $\\vec{R}=R_x\\hat{i}+R_y\\hat{j}$."
-        },
-        {
-          "texto": "Ejemplo ⇒ $(3\\hat{i}+4\\hat{j})+(-\\hat{i}+2\\hat{j})=2\\hat{i}+6\\hat{j}$",
-          "explicacion": "Se suman las componentes en $x$: $3+(-1)=2$. Y las componentes en $y$: $4+2=6$."
-        },
-        {
-          "texto": "Módulo de la resultante ⇒ $R=\\sqrt{40}\\approx6.32$",
-          "explicacion": "Con $R_x=2$ y $R_y=6$, se calcula $R=\\sqrt{4+36}=\\sqrt{40}\\approx6.32$."
+          "texto": "Gráfica x-t = parábola",
+          "explicacion": "x es la posición y t el tiempo. La posición depende de t², así que los puntos forman una curva y no una recta."
         }
       ]
     },
     {
-      "titulo": "Resta por componentes",
+      "titulo": "Gráfica velocidad-tiempo",
       "puntos": [
         {
-          "texto": "Resta ⇒ $\\vec{A}-\\vec{B}=(A_x-B_x)\\hat{i}+(A_y-B_y)\\hat{j}$",
-          "explicacion": "Se restan componente a componente."
+          "texto": "Gráfica v-t = recta inclinada",
+          "explicacion": "v es la velocidad. Como la velocidad cambia de forma pareja, los puntos forman una recta no horizontal."
         },
         {
-          "texto": "Ejemplo ⇒ $(3\\hat{i}+4\\hat{j})-(-\\hat{i}+2\\hat{j})=4\\hat{i}+2\\hat{j}$",
-          "explicacion": "Se calcula $3-(-1)=4$ y $4-2=2$."
+          "texto": "Pendiente de v-t = aceleración",
+          "explicacion": "Ejemplo: puntos (0 s, 5 m/s) y (4 s, 25 m/s) ⇒ pendiente = (25 − 5) ÷ (4 − 0) = 5 m/s²."
+        },
+        {
+          "texto": "Área bajo v-t = desplazamiento",
+          "explicacion": "El área entre la recta y el eje del tiempo es un trapecio. Ejemplo: v0 = 5 m/s, vf = 25 m/s, t = 4 s ⇒ área = [(5 + 25) ÷ 2] × 4 = 60 m."
+        },
+        {
+          "texto": "Pendiente positiva ⇒ a > 0; pendiente negativa ⇒ a < 0",
+          "explicacion": "Ejemplo: puntos (0 s, 20 m/s) y (4 s, 0 m/s) ⇒ pendiente = (0 − 20) ÷ 4 = −5 m/s²."
+        },
+        {
+          "texto": "Recta v-t que cruza el eje del tiempo ⇒ cambia el sentido",
+          "explicacion": "Ejemplo: v = 10 − 5 × t vale 0 a los 2 s; antes es positiva y después negativa, así que el cuerpo se detiene un instante y regresa."
         }
       ]
     },
     {
-      "titulo": "Producto por un escalar",
+      "titulo": "Gráfica aceleración-tiempo",
       "puntos": [
         {
-          "texto": "Producto ⇒ $k\\vec{A}=kA_x\\hat{i}+kA_y\\hat{j}$",
-          "explicacion": "Se multiplican ambas componentes por el número $k$."
-        },
-        {
-          "texto": "Ejemplo ⇒ $2(3\\hat{i}+4\\hat{j})=6\\hat{i}+8\\hat{j}$",
-          "explicacion": "Se multiplica cada componente por $2$. El módulo se duplica: pasa de $5$ a $10$."
+          "texto": "Gráfica a-t = recta paralela al eje del tiempo",
+          "explicacion": "a es la aceleración. Al ser constante, su valor no cambia con el tiempo y la recta es horizontal."
         }
       ]
     },
     {
-      "titulo": "Ejemplo con ángulos",
+      "titulo": "MRU frente a MRUV",
       "puntos": [
         {
-          "texto": "Ejemplo ⇒ $20$ al este y $10$ al norte dan $R\\approx22.4$",
-          "explicacion": "Se tiene $R_x=20$ y $R_y=10$. El módulo es $R=\\sqrt{400+100}=\\sqrt{500}\\approx22.4$."
-        },
-        {
-          "texto": "Dirección ⇒ $\\tan\\theta=\\frac{10}{20}$ da $\\theta\\approx26.6^\\circ$",
-          "explicacion": "El ángulo se mide desde el este hacia el norte. Resulta $\\theta=\\arctan0.5\\approx26.6^\\circ$."
+          "texto": "MRU: a = 0; MRUV: a constante ≠ 0",
+          "explicacion": "En el MRU la velocidad no cambia; en el MRUV cambia de forma pareja. Esa es la diferencia central entre ambos."
         }
       ]
     },
     {
-      "titulo": "Ventajas del método",
+      "titulo": "Aceleración frente a velocidad",
       "puntos": [
         {
-          "texto": "Método analítico ⇒ sirve para sumar muchos vectores con cualquier ángulo",
-          "explicacion": "No requiere dibujar a escala. El resultado es exacto y se obtiene con cálculos sencillos. Es el método que se usa para resolver problemas de varias fuerzas."
+          "texto": "Aceleración ≠ velocidad",
+          "explicacion": "La velocidad dice qué tan rápido y hacia dónde se mueve el cuerpo; la aceleración dice cómo cambia esa velocidad. Un cuerpo puede tener velocidad grande y aceleración cero."
+        },
+        {
+          "texto": "Velocidad instantánea en MRUV ⇒ cambia en cada instante",
+          "explicacion": "Por eso no se usa un único valor de velocidad para todo el recorrido, sino la ecuación vf = v0 ± a × t."
+        }
+      ]
+    },
+    {
+      "titulo": "Aceleración negativa",
+      "puntos": [
+        {
+          "texto": "Aceleración negativa ≠ siempre desacelera",
+          "explicacion": "Ejemplo: v = −4 m/s y a = −2 m/s². Ambas tienen el mismo sentido, así que la rapidez aumenta: a los 2 s, v = −4 − 2 × 2 = −8 m/s."
+        },
+        {
+          "texto": "Desacelera ⇒ velocidad y aceleración con signos opuestos",
+          "explicacion": "Esa es la condición correcta para que la rapidez disminuya, sin importar si cada signo es positivo o negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con caída libre",
+      "puntos": [
+        {
+          "texto": "Caída libre = caso de MRUV",
+          "explicacion": "Aquí solo se estudia el MRUV general; el movimiento vertical con la aceleración de la gravedad se desarrolla en su propio tema."
         }
       ]
     }

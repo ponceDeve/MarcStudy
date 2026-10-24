@@ -1,59 +1,329 @@
 {
   "curso": "Física",
-  "tema": "Gráficas del MRUV",
+  "tema": "Gravitación universal (Campo gravitatorio, Leyes de Kepler)",
   "glosario": {
-    "Gráfica velocidad-tiempo": "Gráfica de la velocidad en función del tiempo",
-    "Gráfica posición-tiempo": "Gráfica de la posición en función del tiempo",
-    "Gráfica aceleración-tiempo": "Gráfica de la aceleración en función del tiempo",
-    "Pendiente": "Cociente entre variación vertical y horizontal",
-    "Parábola": "Curva simétrica con un vértice",
-    "Vértice": "Punto más alto o más bajo de una parábola"
+    "Gravitación": "Atracción mutua entre cuerpos con masa",
+    "Campo gravitatorio": "Región donde una masa atrae a otras",
+    "Intensidad del campo": "Fuerza gravitatoria por unidad de masa",
+    "Constante de gravitación universal": "Valor fijo que mide la atracción gravitatoria",
+    "Masas puntuales": "Cuerpos cuyo tamaño se desprecia",
+    "Esfera homogénea": "Esfera con la misma densidad en todo punto",
+    "Modelo homogéneo": "Tierra supuesta con densidad uniforme",
+    "Peso": "Fuerza con que un astro atrae un cuerpo",
+    "Masa": "Propiedad del cuerpo medida en kilogramos",
+    "newton": "Unidad de fuerza del Sistema Internacional",
+    "Astro": "Cuerpo celeste como planeta o estrella",
+    "Satélite": "Cuerpo que orbita alrededor de un astro",
+    "Órbita": "Trayectoria de un cuerpo alrededor de otro",
+    "Elipse": "Curva cerrada con dos focos",
+    "Foco": "Punto fijo que define una elipse",
+    "Semieje mayor": "Mitad del diámetro mayor de la elipse",
+    "Período": "Tiempo de una vuelta completa",
+    "Radio vector": "Línea que une el Sol con el planeta",
+    "Perihelio": "Punto de la órbita más cercano al Sol",
+    "Afelio": "Punto de la órbita más lejano al Sol",
+    "Momento angular": "Magnitud de giro alrededor de un punto",
+    "Velocidad orbital": "Rapidez con que un cuerpo recorre su órbita",
+    "Mareas": "Subida y bajada periódica del nivel del mar"
   },
   "theory": [
     {
-      "titulo": "Gráfica velocidad-tiempo",
+      "titulo": "Ley de gravitación universal",
       "puntos": [
         {
-          "texto": "En v-t, el Movimiento Rectilíneo Uniformemente Variado (MRUV) es una recta inclinada.",
-          "explicacion": "La recta indica que la velocidad cambia de manera uniforme con el tiempo."
+          "texto": "«Gravitación» = atracción mutua entre masas",
+          "explicacion": "Cualquier cuerpo con masa atrae a todos los demás, sin importar su tamaño. Por eso la interacción es mutua: si la Tierra atrae a una piedra, la piedra también atrae a la Tierra. Esa misma atracción mantiene a la Luna cerca de la Tierra y a los planetas cerca del Sol."
         },
         {
-          "texto": "La pendiente de v-t es la aceleración.",
-          "explicacion": "a = Δv / Δt. Ejemplo: de (0 s, 2 m/s) a (4 s, 14 m/s), a = 12 m/s / 4 s = 3 m/s²."
+          "texto": "Producto de masas ↑ ⇒ «fuerza gravitatoria» ↑",
+          "explicacion": "La fuerza crece en la misma proporción que el producto m₁ × m₂, donde m₁ y m₂ son las masas de los dos cuerpos. Si una masa se duplica, el producto se duplica y la fuerza también; si ambas se duplican, la fuerza se cuadruplica. Por eso la atracción entre dos astros enormes es mucho mayor que entre dos objetos cotidianos."
         },
         {
-          "texto": "El área bajo v-t es el desplazamiento.",
-          "explicacion": "Área de trapecio = (v0 + v) / 2 × t. Con el ejemplo anterior, (2 + 14) / 2 × 4 = 32 m."
+          "texto": "Distancia entre centros ↑ ⇒ «fuerza gravitatoria» ↓",
+          "explicacion": "La fuerza disminuye con el cuadrado de la distancia d: la relación es inversa y no lineal. Al alejarse, la atracción cae más rápido de lo que crece la separación, por eso dos cuerpos lejanos se atraen muy poco aunque sean masivos."
+        },
+        {
+          "texto": "«Ley de gravitación universal»: $F = G\\frac{m_1 m_2}{d^2}$",
+          "explicacion": "En la fórmula, F es la fuerza gravitatoria, G la constante de gravitación universal, m₁ y m₂ las masas de los cuerpos y d la distancia entre sus centros. Ejemplo: dos cuerpos de 1000 kg y 2000 kg separados 10 m. Paso 1: m₁ × m₂ = 1000 × 2000 = 2 × 10⁶ kg². Paso 2: d² = 10² = 100 m². Paso 3: F = 6,67 × 10⁻¹¹ × 2 × 10⁶ ÷ 100 = 6,67 × 10⁻¹¹ × 2 × 10⁴ = 1,334 × 10⁻⁶ N. Resultado: una fuerza de 0,000001334 N, tan pequeña que no se nota entre objetos cotidianos; solo es apreciable cuando al menos una masa es astronómica."
+        },
+        {
+          "texto": "«F» = fuerza gravitatoria, en newton (N)",
+          "explicacion": "Es la fuerza de atracción entre los dos cuerpos. El newton equivale a kg × m/s². Como la fuerza es mutua, el mismo valor de F actúa sobre cada cuerpo."
+        },
+        {
+          "texto": "m₁, m₂ = masas de los cuerpos, en kilogramo (kg)",
+          "explicacion": "Son masas, no pesos: no cambian de un astro a otro. Se usa el kilogramo del Sistema Internacional, así que si los datos vienen en otras unidades hay que convertirlos antes de calcular."
+        },
+        {
+          "texto": "«d» = distancia entre centros, en metro (m)",
+          "explicacion": "Se mide de centro a centro, no entre superficies, porque un cuerpo esférico atrae como si toda su masa estuviera en su centro. Si el dato es la altura sobre la superficie, hay que sumar el radio del astro."
+        },
+        {
+          "texto": "«Constante de gravitación universal» = G",
+          "explicacion": "Es el factor que convierte la proporcionalidad en una igualdad y permite obtener la fuerza en newton. Su valor es el mismo para cualquier par de cuerpos."
+        },
+        {
+          "texto": "«G» = 6,67 × 10⁻¹¹ N·m²/kg²",
+          "explicacion": "Al despejar G de la fórmula queda F × d² ÷ (m₁ × m₂), cuyas unidades son N × m² ÷ kg², de ahí N·m²/kg². Es un valor muy pequeño, lo que explica por qué la gravedad entre objetos comunes pasa inadvertida."
+        },
+        {
+          "texto": "«G» = igual valor en todo el universo",
+          "explicacion": "Por eso se llama universal: no depende del astro, del lugar ni de los cuerpos que se atraen. Es distinta de la intensidad del campo g, que sí cambia según el astro."
+        },
+        {
+          "texto": "«Fuerza gravitatoria» = magnitud vectorial",
+          "explicacion": "Además del módulo que da la fórmula, tiene dirección y sentido. Por eso se representa con una flecha sobre la línea que une los cuerpos."
+        },
+        {
+          "texto": "Fuerza gravitatoria = siempre de atracción",
+          "explicacion": "No existe repulsión gravitatoria: la fuerza sobre cada cuerpo apunta hacia el otro. El peso de un objeto es un ejemplo cotidiano, pues siempre lo jala hacia la Tierra."
+        },
+        {
+          "texto": "Dirección de la fuerza = línea que une los centros",
+          "explicacion": "Por eso la distancia d de la fórmula también se toma de centro a centro: ambas ideas parten del mismo eje que une los dos cuerpos."
+        },
+        {
+          "texto": "«Acción y reacción»: igual módulo + sentidos opuestos",
+          "explicacion": "El Sol atrae a la Tierra con la misma fuerza con que la Tierra atrae al Sol, pero en sentido contrario. Que sea la Tierra la que orbita se debe a la diferencia de masas, no a que la fuerza sea distinta."
+        },
+        {
+          "texto": "Fórmula ✓ masas puntuales o esferas homogéneas",
+          "explicacion": "Una esfera homogénea atrae como si toda su masa estuviera concentrada en su centro, por eso planetas y estrellas se tratan como puntos al medir d entre centros. Con otras formas, la fórmula simple deja de aplicarse directamente."
+        },
+        {
+          "texto": "Distancia × 2 ⇒ «fuerza gravitatoria» ↓ a la cuarta parte",
+          "explicacion": "Como F depende de 1 ÷ d², al duplicar d el denominador se multiplica por 2² = 4. Ejemplo con el caso anterior: con d = 20 m, F = 6,67 × 10⁻¹¹ × 2 × 10⁶ ÷ 400 = 3,335 × 10⁻⁷ N, que es 1,334 × 10⁻⁶ ÷ 4."
+        },
+        {
+          "texto": "Una masa × 2 ⇒ «fuerza gravitatoria» × 2",
+          "explicacion": "F es proporcional a cada masa por separado. Ejemplo: con m₁ = 2000 kg, m₂ = 2000 kg y d = 10 m, F = 6,67 × 10⁻¹¹ × 4 × 10⁶ ÷ 100 = 2,668 × 10⁻⁶ N, el doble de 1,334 × 10⁻⁶ N."
         }
       ]
     },
     {
-      "titulo": "Gráfica posición-tiempo",
+      "titulo": "Campo gravitatorio",
       "puntos": [
         {
-          "texto": "En x-t, el MRUV se representa con una parábola.",
-          "explicacion": "La posición crece con el cuadrado del tiempo, por el término ½ × a × t²."
+          "texto": "«Campo gravitatorio» = región donde una masa ejerce fuerza sobre otras",
+          "explicacion": "Toda masa modifica el espacio a su alrededor: cualquier otra masa colocada allí siente una fuerza de atracción hacia ella. La idea permite describir la influencia de un astro sin hablar de un segundo cuerpo concreto."
         },
         {
-          "texto": "Concavidad hacia arriba si la aceleración es positiva.",
-          "explicacion": "Si la aceleración es negativa, la concavidad es hacia abajo."
+          "texto": "«Intensidad del campo» (g) = fuerza gravitatoria por unidad de masa",
+          "explicacion": "Indica cuánta fuerza gravitatoria siente cada kilogramo colocado en un punto del campo. Sirve para comparar el campo de distintos astros o de distintos puntos de un mismo astro."
         },
         {
-          "texto": "El vértice de x-t marca la velocidad nula.",
-          "explicacion": "En ese punto la pendiente es cero, lo que indica que el cuerpo cambia de sentido."
+          "texto": "«Intensidad»: $g = \\frac{F}{m}$",
+          "explicacion": "Aquí g es la intensidad del campo, F la fuerza gravitatoria sobre el cuerpo y m su masa. Ejemplo: un cuerpo de 5 kg sufre una fuerza gravitatoria de 50 N. Paso: g = 50 N ÷ 5 kg = 10 N/kg. Resultado: cada kilogramo recibe 10 N de fuerza, es decir, el campo en ese punto vale 10 N/kg."
+        },
+        {
+          "texto": "Unidad de g = N/kg = m/s²",
+          "explicacion": "Como un newton es kg × m/s², al dividir entre kg queda m/s². Por eso la intensidad del campo coincide numéricamente con una aceleración, la de la gravedad."
+        },
+        {
+          "texto": "«Intensidad»: $g = G\\frac{M}{d^2}$",
+          "explicacion": "M es la masa del astro que crea el campo, d la distancia desde su centro al punto y G la constante de gravitación universal. Resulta de reemplazar F = G × M × m ÷ d² en g = F ÷ m, donde m se cancela. Ejemplo con un planeta hipotético de M = 1 × 10²⁴ kg y d = 1 × 10⁷ m. Paso 1: G × M = 6,67 × 10⁻¹¹ × 10²⁴ = 6,67 × 10¹³. Paso 2: d² = (10⁷)² = 10¹⁴. Paso 3: g = 6,67 × 10¹³ ÷ 10¹⁴ = 0,667 N/kg. Resultado: cada kilogramo en ese punto es atraído con 0,667 N."
+        },
+        {
+          "texto": "«Intensidad del campo» = magnitud vectorial",
+          "explicacion": "Tiene módulo, dirección y sentido, igual que la fuerza gravitatoria de la que proviene. La fórmula del módulo no muestra el sentido, que se indica aparte."
+        },
+        {
+          "texto": "g apunta hacia la masa que crea el campo",
+          "explicacion": "La atracción gravitatoria jala siempre hacia el astro, así que en la superficie de un planeta g apunta hacia su centro. Es el sentido en el que cae un objeto soltado."
+        },
+        {
+          "texto": "g no depende de la masa colocada en el punto",
+          "explicacion": "En g = F ÷ m la fuerza F es proporcional a m, y la masa se cancela. Solo importan la masa del astro y la distancia, por eso el campo es una propiedad del astro y del punto."
+        },
+        {
+          "texto": "En la superficie: $g = G\\frac{M}{R^2}$",
+          "explicacion": "R es el radio del astro, o sea la distancia de su centro a su superficie, y M su masa. Ejemplo con un planeta hipotético de M = 4 × 10²³ kg y R = 2 × 10⁶ m. Paso 1: R² = (2 × 10⁶)² = 4 × 10¹² m². Paso 2: G × M = 6,67 × 10⁻¹¹ × 4 × 10²³ = 2,668 × 10¹³. Paso 3: g = 2,668 × 10¹³ ÷ (4 × 10¹²) = 6,67 m/s². Resultado: en la superficie de ese planeta, cada kilogramo es atraído con 6,67 N."
+        },
+        {
+          "texto": "Cerca de la superficie terrestre, g ≈ 9,8 m/s²",
+          "explicacion": "En alturas pequeñas comparadas con el radio terrestre el valor casi no cambia, por eso se toma como constante en problemas cercanos al suelo. En ese rango la intensidad del campo se interpreta como la aceleración con que cae un objeto."
+        },
+        {
+          "texto": "A una altura h: $g = G\\frac{M}{(R+h)^2}$",
+          "explicacion": "h es la altura sobre la superficie del astro, así que la distancia al centro es R + h. Ejemplo con el planeta anterior (M = 4 × 10²³ kg, R = 2 × 10⁶ m) y h = 2 × 10⁶ m. Paso 1: R + h = 4 × 10⁶ m. Paso 2: (R + h)² = 1,6 × 10¹³ m². Paso 3: g = 2,668 × 10¹³ ÷ (1,6 × 10¹³) = 1,6675 ≈ 1,67 m/s². Resultado: a esa altura g es la cuarta parte de 6,67 m/s²."
+        },
+        {
+          "texto": "Fuera del astro: distancia al centro ↑ ⇒ g ↓",
+          "explicacion": "g es inversamente proporcional a d², el mismo comportamiento que la fuerza gravitatoria, porque solo cambia la distancia. Por eso un satélite lejano siente un campo débil y uno cercano, un campo más fuerte."
+        },
+        {
+          "texto": "Distancia al centro × 2 ⇒ g ↓ a la cuarta parte",
+          "explicacion": "Es la consecuencia de tener d² en el denominador. Ejemplo: si en cierto punto g = 8 N/kg, a una distancia doble g = 8 ÷ 2² = 8 ÷ 4 = 2 N/kg."
+        },
+        {
+          "texto": "Dentro de la Tierra (modelo homogéneo): $g = \\frac{G M d}{R^3}$",
+          "explicacion": "Aquí d es la distancia al centro de la Tierra, menor que el radio R, y M la masa total. El modelo homogéneo supone la misma densidad en todo punto, y la fórmula solo es válida bajo ese modelo. Ejemplo con un planeta hipotético homogéneo de M = 4 × 10²³ kg y R = 2 × 10⁶ m, en d = 1 × 10⁶ m. Paso 1: G × M × d = 6,67 × 10⁻¹¹ × 4 × 10²³ × 10⁶ = 2,668 × 10¹⁹. Paso 2: R³ = (2 × 10⁶)³ = 8 × 10¹⁸. Paso 3: g = 2,668 × 10¹⁹ ÷ (8 × 10¹⁸) = 3,335 m/s². Resultado: a mitad de camino hacia el centro, g es la mitad de 6,67 m/s²."
+        },
+        {
+          "texto": "En el centro de la Tierra, g = 0",
+          "explicacion": "En la fórmula interior, d = 0 anula el numerador, y g se hace cero en el centro. Es válido en el modelo homogéneo."
+        },
+        {
+          "texto": "En la superficie, g es máximo (modelo homogéneo)",
+          "explicacion": "Dentro de la Tierra g crece con d hasta llegar a R; fuera, g disminuye con d. Los dos tramos coinciden en la superficie, donde el valor es el mayor."
+        },
+        {
+          "texto": "g en los polos > g en el ecuador",
+          "explicacion": "La rotación de la Tierra hace que el valor medido de g varíe con la latitud, y sea menor en el ecuador. Por eso un mismo cuerpo pesa un poco más en los polos."
+        },
+        {
+          "texto": "«Peso» = fuerza con que el astro atrae al cuerpo",
+          "explicacion": "Es la fuerza gravitatoria que el astro ejerce sobre el cuerpo que está en su campo. Cambia de un astro a otro porque cada uno crea un campo distinto."
+        },
+        {
+          "texto": "«Peso»: $P = m g$",
+          "explicacion": "P es el peso en newton, m la masa en kilogramo y g la intensidad del campo en N/kg. Ejemplo con un cuerpo de 60 kg. Paso 1: con g = 9,8 m/s², P = 60 × 9,8 = 588 N. Paso 2: en un astro con g = 6,67 m/s², P = 60 × 6,67 = 400,2 N. Resultado: la masa es la misma (60 kg), pero el peso cambia porque g cambia."
+        },
+        {
+          "texto": "Todos los cuerpos caen con igual g, sin importar su masa",
+          "explicacion": "Como g no depende de la masa colocada en el punto, un cuerpo pesado y uno ligero ganan velocidad al mismo ritmo si se desprecia el aire. El cuerpo pesado sufre una fuerza mayor, pero también tiene una masa mayor."
+        },
+        {
+          "texto": "Campo gravitatorio de la Luna ⇒ mareas",
+          "explicacion": "La Luna atrae los mares con su campo, lo que produce la subida y bajada periódica del nivel del agua. Es una prueba cotidiana de que la Luna, como cualquier otro cuerpo, crea su propio campo gravitatorio."
         }
       ]
     },
     {
-      "titulo": "Gráfica aceleración-tiempo",
+      "titulo": "Leyes de Kepler",
       "puntos": [
         {
-          "texto": "En a-t, el MRUV se representa con una recta horizontal.",
-          "explicacion": "La aceleración constante no cambia con el tiempo."
+          "texto": "«Leyes de Kepler» = tres leyes del movimiento planetario",
+          "explicacion": "Johannes Kepler las formuló para describir cómo se mueven los planetas alrededor del Sol. Describen el movimiento sin explicar su causa; esa explicación llegó con la gravitación universal."
         },
         {
-          "texto": "El área bajo a-t es la variación de velocidad.",
-          "explicacion": "Ejemplo: a = 3 m/s² durante 4 s; área = 3 × 4 = 12 m/s, igual a Δv."
+          "texto": "«Primera ley» = órbita elíptica con el Sol en un foco",
+          "explicacion": "Una elipse es una curva cerrada con dos focos. El Sol no ocupa el centro de la elipse sino uno de sus dos focos, lo que corrige la idea de órbitas circulares con el Sol en el centro."
+        },
+        {
+          "texto": "Órbita elíptica ⇒ distancia planeta-Sol varía",
+          "explicacion": "En una elipse los puntos están a distintas distancias del foco, así que la separación entre el planeta y el Sol cambia a lo largo de la órbita."
+        },
+        {
+          "texto": "«Perihelio» = punto más cercano al Sol",
+          "explicacion": "Es la posición donde el planeta pasa más cerca del Sol; allí la distancia es la mínima de toda la órbita."
+        },
+        {
+          "texto": "«Afelio» = punto más lejano al Sol",
+          "explicacion": "Es la posición donde el planeta pasa más lejos del Sol; allí la distancia es la máxima de toda la órbita."
+        },
+        {
+          "texto": "«Segunda ley» = radio vector barre áreas iguales en tiempos iguales",
+          "explicacion": "El radio vector es la línea imaginaria que une el Sol con el planeta. Si se mide el área que barre en intervalos iguales de tiempo, siempre resulta la misma, sin importar en qué parte de la órbita ocurra."
+        },
+        {
+          "texto": "Perihelio ⇒ velocidad del planeta ↑",
+          "explicacion": "Cerca del Sol el radio vector es corto; para barrer la misma área en el mismo tiempo, el planeta debe recorrer un arco mayor, es decir, moverse más rápido."
+        },
+        {
+          "texto": "Afelio ⇒ velocidad del planeta ↓",
+          "explicacion": "Lejos del Sol el radio vector es largo, y un arco menor basta para barrer la misma área; por eso el planeta avanza más lento."
+        },
+        {
+          "texto": "«Segunda ley» = conservación del momento angular",
+          "explicacion": "El momento angular es la magnitud que describe el giro del planeta alrededor del Sol. Que se conserve es la razón física de que el área barrida por unidad de tiempo sea constante."
+        },
+        {
+          "texto": "«Tercera ley»: $T^2 = k a^3$",
+          "explicacion": "T es el período orbital, a el semieje mayor de la elipse y k una constante. Ejemplo con k = 4 × 10⁻²⁰ s²/m³ y a = 1 × 10¹⁰ m. Paso 1: a³ = (10¹⁰)³ = 10³⁰ m³. Paso 2: T² = 4 × 10⁻²⁰ × 10³⁰ = 4 × 10¹⁰ s². Paso 3: T = √(4 × 10¹⁰) = 2 × 10⁵ s. Resultado: el cuerpo tarda 2 × 10⁵ s en dar una vuelta completa."
+        },
+        {
+          "texto": "«T» = período, en segundos (s)",
+          "explicacion": "Es el tiempo que el planeta tarda en dar una vuelta completa alrededor del Sol, por eso se mide en unidades de tiempo."
+        },
+        {
+          "texto": "«a» = semieje mayor, en metros (m)",
+          "explicacion": "Es la mitad del diámetro mayor de la elipse y mide el tamaño de la órbita."
+        },
+        {
+          "texto": "Unidad de k = s²/m³",
+          "explicacion": "Resulta de despejar k = T² ÷ a³: segundos al cuadrado entre metros al cubo. Si T y a se miden en otras unidades, k cambia de valor, pero sigue siendo constante."
+        },
+        {
+          "texto": "k = igual para todo cuerpo que orbita el mismo astro",
+          "explicacion": "Todos los planetas de un mismo Sol cumplen T² ÷ a³ con el mismo valor, así que k solo depende del astro central."
+        },
+        {
+          "texto": "Distancia al Sol ↑ ⇒ período ↑",
+          "explicacion": "Como T² crece con a³, los planetas más alejados tardan más en completar su vuelta. Es una consecuencia directa de la tercera ley."
+        },
+        {
+          "texto": "Constante: $k = \\frac{4\\pi^2}{G M}$",
+          "explicacion": "M es la masa del astro central, G la constante de gravitación universal y π ≈ 3,1416. Ejemplo con un astro hipotético de M = 2 × 10³⁰ kg. Paso 1: G × M = 6,67 × 10⁻¹¹ × 2 × 10³⁰ = 1,334 × 10²⁰. Paso 2: 4π² ≈ 4 × 9,8696 ≈ 39,48. Paso 3: k = 39,48 ÷ (1,334 × 10²⁰) ≈ 2,96 × 10⁻¹⁹ s²/m³. Resultado: k solo depende de la masa del astro central."
+        },
+        {
+          "texto": "Entre dos planetas: $\\frac{T_1^2}{a_1^3} = \\frac{T_2^2}{a_2^3}$",
+          "explicacion": "Sirve para comparar dos cuerpos del mismo astro sin conocer k: T₁ y T₂ son sus períodos, a₁ y a₂ sus semiejes mayores. Ejemplo: T₁ = 3 días y a₂ = 4 × a₁. Paso 1: T₂² = T₁² × (a₂ ÷ a₁)³ = 3² × 4³. Paso 2: 9 × 64 = 576. Paso 3: T₂ = √576 = 24 días. Resultado: con una órbita 4 veces mayor, el período es 8 veces mayor."
+        },
+        {
+          "texto": "En órbita circular, a = radio de la órbita",
+          "explicacion": "Una circunferencia es una elipse con ambos focos en el mismo punto, por eso su semieje mayor coincide con el radio y la tercera ley se usa igual."
+        },
+        {
+          "texto": "El período no depende de la masa del planeta",
+          "explicacion": "En la expresión de k solo aparece la masa del astro central. Así, un planeta liviano y uno pesado a la misma distancia tardan igual en dar la vuelta."
+        },
+        {
+          "texto": "Las leyes rigen también para satélites y lunas",
+          "explicacion": "No se limitan al Sol y los planetas: valen para cualquier cuerpo que orbite a otro bajo la gravedad."
+        },
+        {
+          "texto": "Satélites de otro astro ⇒ k distinto",
+          "explicacion": "k = 4π² ÷ (G × M) cambia si cambia M: la Luna alrededor de la Tierra y un planeta alrededor del Sol usan constantes diferentes."
+        },
+        {
+          "texto": "Velocidad orbital circular: $v = \\sqrt{\\frac{G M}{r}}$",
+          "explicacion": "v es la rapidez del cuerpo en su órbita, M la masa del astro central y r el radio de la órbita. Ejemplo con M = 1 × 10³⁰ kg y r = 6,67 × 10¹¹ m. Paso 1: G × M = 6,67 × 10⁻¹¹ × 10³⁰ = 6,67 × 10¹⁹. Paso 2: 6,67 × 10¹⁹ ÷ (6,67 × 10¹¹) = 10⁸. Paso 3: v = √(10⁸) = 10⁴ m/s. Resultado: el cuerpo se mueve a 10 000 m/s."
+        },
+        {
+          "texto": "Radio orbital ↑ ⇒ velocidad orbital ↓",
+          "explicacion": "El radio r está en el denominador bajo la raíz: al alejarse, v disminuye. Con r al cuádruple, v se reduce a la mitad, pues √4 = 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Confusiones frecuentes",
+      "puntos": [
+        {
+          "texto": "«G» = constante universal en todo lugar",
+          "explicacion": "Su valor no cambia de un astro a otro, y no debe confundirse con g, que sí cambia."
+        },
+        {
+          "texto": "«g» = depende del astro y de la distancia",
+          "explicacion": "g = G × M ÷ d² contiene la masa del astro y la distancia, así que varía. En la superficie terrestre vale cerca de 9,8 m/s²; en otro astro tendría otro valor."
+        },
+        {
+          "texto": "«Masa» = igual en todo lugar (kg)",
+          "explicacion": "Un cuerpo de 60 kg tiene 60 kg en cualquier astro: la masa no depende del campo gravitatorio."
+        },
+        {
+          "texto": "«Peso» ⇒ cambia con g (N)",
+          "explicacion": "Como P = m × g, si g varía por el astro, la altura o la latitud, el peso varía aunque la masa sea la misma."
+        },
+        {
+          "texto": "d entre centros ≠ d entre superficies",
+          "explicacion": "Usar la separación entre superficies da un valor erróneo de la fuerza; hay que sumar los radios para obtener la distancia entre centros."
+        },
+        {
+          "texto": "En órbita, g ≠ 0: la gravedad mantiene el movimiento",
+          "explicacion": "A cierta altura el campo es más débil, pero no desaparece; la fuerza gravitatoria es la que mantiene al cuerpo girando alrededor del astro."
+        },
+        {
+          "texto": "«Kepler» = describe el movimiento; Newton = explica la causa",
+          "explicacion": "Johannes Kepler obtuvo sus tres leyes describiendo las órbitas; Isaac Newton explicó por qué se cumplen mediante la gravitación universal."
+        },
+        {
+          "texto": "Órbitas planetarias = elipses poco alargadas ≠ círculos perfectos",
+          "explicacion": "Se ven casi circulares, pero siguen siendo elipses con el Sol en un foco, por eso el planeta cambia de velocidad a lo largo de la órbita."
+        },
+        {
+          "texto": "Sol = ocupa un foco ≠ centro de la elipse",
+          "explicacion": "El centro de la elipse queda a mitad de camino entre los dos focos; el Sol está en uno de ellos."
         }
       ]
     }
