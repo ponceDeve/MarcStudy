@@ -2,56 +2,224 @@
   "curso": "Biología",
   "tema": "Tejido nervioso",
   "glosario": {
-    "Neurona": "Célula excitable que recibe, procesa y transmite señales.",
-    "Dendrita": "Prolongación de la neurona que recibe señales.",
-    "Axón": "Prolongación de la neurona que transmite señales.",
-    "Neuroglía": "Células de soporte del tejido nervioso que no conducen impulsos.",
-    "Mielina": "Vaina lipídica que aísla el axón y acelera la transmisión.",
-    "Sinapsis": "Unión entre dos neuronas o entre una neurona y otra célula.",
-    "Astrocito": "Célula glial en forma de estrella que nutre y sostiene neuronas.",
-    "Oligodendrocito": "Célula glial del sistema nervioso central que forma mielina.",
-    "Célula de Schwann": "Célula glial del sistema nervioso periférico que forma mielina.",
-    "Microglía": "Célula glial pequeña que elimina restos y patógenos en el sistema nervioso central."
+    "Tejido nervioso": "Tejido formado por neuronas y células gliales que recibe, procesa y transmite información.",
+    "Neurona": "Célula nerviosa excitable, unidad estructural y funcional del tejido nervioso.",
+    "Soma": "Cuerpo celular de la neurona, donde se encuentra el núcleo.",
+    "Dendrita": "Prolongación de la neurona que recibe señales de otras células.",
+    "Axón": "Prolongación única de la neurona que conduce el impulso nervioso hacia otras células.",
+    "Terminal axónico": "Extremo del axón que libera neurotransmisores en la sinapsis.",
+    "Mielina": "Capa de membranas superpuestas que aísla el axón y acelera la conducción del impulso.",
+    "Nodo de Ranvier": "Espacio sin mielina entre segmentos mielinizados del axón.",
+    "Sinapsis": "Unión entre dos neuronas, o entre una neurona y otra célula, donde se transmite la señal.",
+    "Neurotransmisor": "Sustancia química que se libera en la sinapsis para transmitir la señal.",
+    "Célula glial": "Célula de soporte del tejido nervioso que no conduce impulsos eléctricos.",
+    "Astrocito": "Célula glial en forma de estrella que da soporte y participa en la barrera hematoencefálica.",
+    "Oligodendrocito": "Célula glial del sistema nervioso central que forma la mielina.",
+    "Célula de Schwann": "Célula glial del sistema nervioso periférico que forma la mielina de un solo axón.",
+    "Microglía": "Célula glial inmunitaria del sistema nervioso que realiza fagocitosis.",
+    "Célula ependimaria": "Célula glial que recubre los ventrículos cerebrales y el canal central de la médula.",
+    "Célula satélite": "Célula glial que rodea los somas de las neuronas en los ganglios del sistema nervioso periférico.",
+    "Ganglio": "Agrupación de somas neuronales fuera del sistema nervioso central.",
+    "Sustancia gris": "Región del sistema nervioso formada principalmente por somas neuronales y dendritas.",
+    "Sustancia blanca": "Región del sistema nervioso formada principalmente por axones mielinizados."
   },
   "theory": [
     {
-      "titulo": "Componentes del tejido nervioso",
+      "titulo": "Concepto de tejido nervioso",
       "puntos": [
-        { "texto": "El tejido nervioso está formado por neuronas y neuroglía.", "explicacion": "Las neuronas transmiten señales, mientras que la neuroglía las sostiene y protege." },
-        { "texto": "La neurona es la unidad funcional del sistema nervioso.", "explicacion": "Es excitable eléctricamente y se comunica con otras células mediante sinapsis." }
+        {
+          "texto": "El tejido nervioso está formado por neuronas y células gliales",
+          "explicacion": "Las neuronas transmiten señales y las células gliales dan soporte, protección y nutrición a las neuronas."
+        },
+        {
+          "texto": "El tejido nervioso tiene pocas células y escasa matriz extracelular",
+          "explicacion": "Sus células están muy comunicadas entre sí, lo que permite transmitir señales de forma rápida."
+        },
+        {
+          "texto": "El tejido nervioso forma el sistema nervioso central y el periférico",
+          "explicacion": "El sistema nervioso central incluye el encéfalo y la médula espinal, y el periférico incluye los nervios y los ganglios."
+        },
+        {
+          "texto": "El tejido nervioso deriva embriológicamente del ectodermo",
+          "explicacion": "Dato por confirmar: el tubo neural, origen del sistema nervioso central, se forma a partir de la capa ectodérmica del embrión."
+        }
       ]
     },
     {
-      "titulo": "Estructura de la neurona",
+      "titulo": "Neurona",
       "puntos": [
-        { "texto": "La neurona tiene cuerpo celular, dendritas y un axón.", "explicacion": "Las dendritas reciben señales y el axón las transmite hacia otras células." },
-        { "texto": "La «mielina» recubre algunos axones.", "explicacion": "Permite que el impulso se transmita con mayor rapidez." }
+        {
+          "texto": "La neurona es la unidad estructural y funcional del tejido nervioso",
+          "explicacion": "Recibe estímulos, los integra y transmite el impulso nervioso a otras células."
+        },
+        {
+          "texto": "La neurona tiene un cuerpo celular, dendritas y un axón",
+          "explicacion": "El soma contiene el núcleo, las dendritas reciben señales y el axón conduce el impulso."
+        },
+        {
+          "texto": "Cada neurona tiene un solo axón",
+          "explicacion": "El axón puede ramificarse muchas veces, pero siempre sale de un único punto del soma."
+        },
+        {
+          "texto": "Las neuronas tienen muchas mitocondrias por su alto consumo de energía",
+          "explicacion": "Dato por confirmar: necesitan energía constante para mantener el potencial eléctrico de la membrana."
+        }
       ]
     },
     {
-      "titulo": "Neuroglía del sistema nervioso central",
+      "titulo": "Dendritas y axón",
       "puntos": [
-        { "texto": "Los «astrocitos» son las células gliales más abundantes.", "explicacion": "Nutren a las neuronas y regulan el medio químico que las rodea." },
-        { "texto": "Los «oligodendrocitos» forman mielina en el sistema nervioso central.", "explicacion": "Cada uno puede mielinizar varios axones a la vez." },
-        { "texto": "La «microglía» elimina restos celulares y patógenos.", "explicacion": "Cumple una función defensiva dentro del sistema nervioso central." }
+        {
+          "texto": "Las dendritas reciben señales de otras neuronas o de estímulos sensitivos",
+          "explicacion": "Pueden ramificarse mucho, lo que aumenta el área de contacto para recibir señales."
+        },
+        {
+          "texto": "El axón conduce el impulso desde el soma hasta el terminal axónico",
+          "explicacion": "El impulso viaja en una sola dirección, desde el cuerpo celular hacia las células que recibirán la señal."
+        },
+        {
+          "texto": "El axón puede estar mielinizado o no",
+          "explicacion": "La mielinización aumenta la velocidad de conducción del impulso."
+        }
       ]
     },
     {
-      "titulo": "Neuroglía del sistema nervioso periférico",
+      "titulo": "Clasificación morfológica de neuronas",
       "puntos": [
-        { "texto": "Las «células de Schwann» forman mielina en el sistema nervioso periférico.", "explicacion": "Envuelven un único segmento de axón cada una." }
+        {
+          "texto": "Las neuronas multipolares tienen un axón y múltiples dendritas",
+          "explicacion": "Son las más comunes del sistema nervioso humano, y se encuentran en el cerebro y la médula espinal."
+        },
+        {
+          "texto": "Las neuronas bipolares tienen una dendrita y un axón",
+          "explicacion": "Dato por confirmar: se encuentran en algunos órganos de los sentidos, como la retina y el epitelio olfatorio."
+        },
+        {
+          "texto": "Las neuronas unipolares o pseudounipolares tienen un solo proceso que se divide",
+          "explicacion": "Dato por confirmar: su axón se divide a poca distancia del soma, y se encuentran en los ganglios sensitivos."
+        },
+        {
+          "texto": "Las neuronas anaxónicas no tienen axón distinguible",
+          "explicacion": "Dato por confirmar: son neuronas pequeñas cuyo axón no se puede diferenciar de sus dendritas."
+        }
       ]
     },
     {
-      "titulo": "Comunicación neuronal",
+      "titulo": "Mielina",
       "puntos": [
-        { "texto": "Las neuronas se comunican mediante «sinapsis».", "explicacion": "La mayoría de las sinapsis son químicas y transmiten el impulso en una sola dirección." }
+        {
+          "texto": "La mielina es una vaina de membranas superpuestas que aísla el axón",
+          "explicacion": "Su estructura es similar a la del aislante de un cable eléctrico, ya que evita que el impulso se disperse."
+        },
+        {
+          "texto": "La mielina acelera la conducción del impulso nervioso",
+          "explicacion": "El impulso salta de un nodo de Ranvier al siguiente, lo que es mucho más rápido que recorrer todo el axón."
+        },
+        {
+          "texto": "Los nodos de Ranvier son espacios sin mielina entre segmentos del axón",
+          "explicacion": "Allí se concentran los canales iónicos que regeneran el impulso en cada nodo."
+        },
+        {
+          "texto": "En el sistema nervioso central la mielina la forman los oligodendrocitos",
+          "explicacion": "Un oligodendrocito puede mielinizar varios axones a la vez, por sus múltiples prolongaciones."
+        },
+        {
+          "texto": "En el sistema nervioso periférico la mielina la forman las células de Schwann",
+          "explicacion": "Cada célula de Schwann mieliniza un solo segmento de un único axón."
+        }
       ]
     },
     {
-      "titulo": "Conexiones",
+      "titulo": "Sinapsis",
       "puntos": [
-        { "texto": "El impulso nervioso se genera por un potencial de acción.", "explicacion": "Su mecanismo y la organización del sistema nervioso corresponden a temas posteriores." }
+        {
+          "texto": "La sinapsis es la unión donde una neurona transmite la señal a otra célula",
+          "explicacion": "Puede ocurrir entre neuronas o entre una neurona y un músculo, lo que se llama unión neuromuscular."
+        },
+        {
+          "texto": "En la sinapsis química el impulso se transmite mediante neurotransmisores",
+          "explicacion": "Dato por confirmar: la neurona presináptica libera el neurotransmisor, que se une a receptores de la célula postsináptica."
+        },
+        {
+          "texto": "En la sinapsis eléctrica el impulso pasa directamente por uniones de membrana",
+          "explicacion": "Dato por confirmar: las células están conectadas por canales que permiten el paso directo de iones, más rápido que la química."
+        },
+        {
+          "texto": "El terminal axónico forma la zona de liberación del neurotransmisor",
+          "explicacion": "Dato por confirmar: los terminales contienen vesículas con neurotransmisores listos para ser liberados."
+        }
+      ]
+    },
+    {
+      "titulo": "Células gliales del sistema nervioso central",
+      "puntos": [
+        {
+          "texto": "El sistema nervioso central tiene astrocitos, oligodendrocitos, microglía y ependimarias",
+          "explicacion": "Cada tipo cumple funciones distintas de soporte, mielinización, defensa y revestimiento."
+        },
+        {
+          "texto": "Los astrocitos son células gliales con forma de estrella",
+          "explicacion": "Sus prolongaciones se relacionan con neuronas, vasos sanguíneos y nodos de Ranvier."
+        },
+        {
+          "texto": "Los astrocitos participan en la formación de la barrera hematoencefálica",
+          "explicacion": "Dato por confirmar: regulan el paso de sustancias desde la sangre hacia el tejido nervioso."
+        },
+        {
+          "texto": "La microglía es la célula inmunitaria del sistema nervioso",
+          "explicacion": "Dato por confirmar: fagocita restos celulares y microorganismos, y responde a la inflamación."
+        },
+        {
+          "texto": "Las células ependimarias recubren los ventrículos cerebrales",
+          "explicacion": "Dato por confirmar: su superficie tiene cilios que ayudan a mover el líquido cefalorraquídeo."
+        }
+      ]
+    },
+    {
+      "titulo": "Células gliales del sistema nervioso periférico",
+      "puntos": [
+        {
+          "texto": "Las células satélite rodean los somas de las neuronas en los ganglios",
+          "explicacion": "Dato por confirmar: regulan el ambiente químico alrededor de la neurona."
+        },
+        {
+          "texto": "Las células de Schwann forman la mielina de los axones periféricos",
+          "explicacion": "Además, facilitan la regeneración del axón tras una lesión en el sistema nervioso periférico."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustancia gris y sustancia blanca",
+      "puntos": [
+        {
+          "texto": "La sustancia gris está formada principalmente por somas y dendritas",
+          "explicacion": "Su color se debe a la menor cantidad de mielina en esa región del sistema nervioso."
+        },
+        {
+          "texto": "La sustancia blanca está formada principalmente por axones mielinizados",
+          "explicacion": "Su color claro se debe a la gran cantidad de mielina que recubre los axones."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones del tejido nervioso",
+      "puntos": [
+        {
+          "texto": "El tejido nervioso recibe información del ambiente y del organismo",
+          "explicacion": "Los receptores sensoriales captan estímulos físicos o químicos y los transforman en señales eléctricas."
+        },
+        {
+          "texto": "El tejido nervioso procesa e integra la información recibida",
+          "explicacion": "El encéfalo analiza las señales y decide qué respuesta se debe producir."
+        },
+        {
+          "texto": "El tejido nervioso transmite órdenes a músculos y glándulas",
+          "explicacion": "Las neuronas motoras transmiten el impulso hacia los músculos, que se contraen en respuesta."
+        },
+        {
+          "texto": "El tejido nervioso coordina las funciones de los demás sistemas del organismo",
+          "explicacion": "Regula funciones como la respiración, la circulación, la digestión y la temperatura corporal."
+        }
       ]
     }
   ]

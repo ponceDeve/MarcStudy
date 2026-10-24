@@ -2,49 +2,250 @@
   "curso": "Biología",
   "tema": "Componentes del sistema inmunológico",
   "glosario": {
-    "Linfocito B": "Linfocito que produce anticuerpos.",
-    "Linfocito T": "Linfocito que coordina la respuesta o destruye células infectadas.",
-    "Célula plasmática": "Linfocito B activado que secreta anticuerpos en gran cantidad.",
-    "Célula NK": "Célula que destruye células infectadas o tumorales.",
-    "Anticuerpo": "Proteína que se une a un antígeno específico y lo neutraliza.",
-    "Inmunoglobulina": "Nombre de los anticuerpos, proteínas de la familia de las globulinas.",
-    "Complemento": "Conjunto de proteínas del plasma que ayudan a destruir patógenos.",
-    "Interferón": "Proteína que protege a células vecinas frente a virus.",
-    "Médula ósea": "Tejido donde se producen las células sanguíneas e inmunitarias.",
-    "Timo": "Órgano donde maduran los linfocitos T.",
-    "Bazo": "Órgano que filtra la sangre y produce respuestas inmunitarias.",
-    "Tejido linfoide": "Acumulación de linfocitos en mucosas y órganos."
+    "Leucocito": "Glóbulo blanco que participa en la defensa del organismo.",
+    "Granulocito": "Leucocito con gránulos citoplasmáticos: neutrófilo, eosinófilo y basófilo.",
+    "Agranulocito": "Leucocito sin gránulos destacables: linfocito y monocito.",
+    "Neutrófilo": "Granulocito fagocítico, el más abundante de los leucocitos.",
+    "Eosinófilo": "Granulocito que combate parásitos grandes y participa en reacciones alérgicas.",
+    "Basófilo": "Granulocito que libera histamina y heparina en la sangre.",
+    "Mastocito": "Célula de los tejidos que libera histamina y otros mediadores inflamatorios.",
+    "Monocito": "Leucocito de la sangre que se transforma en macrófago al entrar en los tejidos.",
+    "Macrófago": "Fagocito tisular que digiere patógenos y presenta antígenos.",
+    "Célula dendrítica": "Célula presentadora de antígenos que activa a los linfocitos T.",
+    "Célula NK": "Linfocito citolítico natural que destruye células infectadas o tumorales.",
+    "Linfocito B": "Linfocito que madura en la médula ósea y produce anticuerpos.",
+    "Célula plasmática": "Linfocito B activado que secreta grandes cantidades de anticuerpos.",
+    "Linfocito T": "Linfocito que madura en el timo y reconoce antígenos presentados por otras células.",
+    "Linfocito T CD4": "Linfocito T colaborador que libera citocinas para activar otras células.",
+    "Linfocito T CD8": "Linfocito T citotóxico que destruye células infectadas o tumorales.",
+    "Complejo mayor de histocompatibilidad": "Conjunto de moléculas de la membrana que presentan antígenos a los linfocitos T.",
+    "Citocina": "Proteína señal que comunica células del sistema inmunológico entre sí.",
+    "Inmunoglobulina": "Nombre de los anticuerpos, que son proteínas en forma de Y.",
+    "Epítopo": "Región del antígeno que se une al anticuerpo o al receptor del linfocito."
   },
   "theory": [
     {
-      "titulo": "Células de defensa",
+      "titulo": "Visión general de los componentes",
       "puntos": [
-        { "texto": "Los «linfocitos B» producen anticuerpos.", "explicacion": "Al activarse se transforman en «células plasmáticas», que los secretan en gran cantidad." },
-        { "texto": "Los «linfocitos T» coordinan la respuesta inmunitaria.", "explicacion": "Algunos destruyen directamente células infectadas." },
-        { "texto": "Las «células NK» destruyen células infectadas o tumorales.", "explicacion": "Actúan sin necesidad de una activación previa específica." }
+        {
+          "texto": "El sistema inmunológico está formado por células, moléculas y órganos",
+          "explicacion": "Las células reconocen y destruyen, las moléculas comunican o destruyen, y los órganos producen y organizan a las células."
+        },
+        {
+          "texto": "Las células del sistema inmunológico se encuentran en la sangre, la linfa y los tejidos",
+          "explicacion": "Su distribución les permite llegar rápidamente al lugar donde aparece un patógeno."
+        },
+        {
+          "texto": "Muchas células se originan en la médula ósea a partir de células madre",
+          "explicacion": "Dato por confirmar: los linfocitos B y T derivan de un progenitor linfoide, y los granulocitos y monocitos de un progenitor mieloide."
+        }
       ]
     },
     {
-      "titulo": "Moléculas de defensa",
+      "titulo": "Granulocitos",
       "puntos": [
-        { "texto": "Los «anticuerpos» se unen a un antígeno específico.", "explicacion": "Esta unión marca al patógeno o impide que infecte células." },
-        { "texto": "El «complemento» ayuda a destruir patógenos.", "explicacion": "Sus proteínas se activan en cascada sobre la superficie del agente extraño." },
-        { "texto": "Los «interferones» protegen células vecinas frente a virus.", "explicacion": "Las células infectadas los liberan para alertar a las células cercanas." }
+        {
+          "texto": "Los granulocitos son neutrófilos, eosinófilos y basófilos",
+          "explicacion": "Se llaman así porque sus gránulos se tiñen de manera característica en el laboratorio."
+        },
+        {
+          "texto": "Los neutrófilos son el tipo de granulocito más abundante",
+          "explicacion": "Dato por confirmar: representan alrededor de la mitad de los leucocitos de la sangre y llegan primero a las infecciones bacterianas."
+        },
+        {
+          "texto": "Los eosinófilos combaten parásitos de gran tamaño",
+          "explicacion": "Dato por confirmar: también participan en reacciones alérgicas y en el asma."
+        },
+        {
+          "texto": "Los basófilos son el granulocito menos abundante",
+          "explicacion": "Dato por confirmar: liberan histamina y heparina, que contribuyen a la inflamación y a evitar la coagulación."
+        }
       ]
     },
     {
-      "titulo": "Órganos linfoides",
+      "titulo": "Mastocitos",
       "puntos": [
-        { "texto": "La «médula ósea» produce las células sanguíneas e inmunitarias.", "explicacion": "Allí se originan los linfocitos y los fagocitos." },
-        { "texto": "El «timo» es el órgano donde maduran los linfocitos T.", "explicacion": "Es más activo en la infancia y se reduce con la edad." },
-        { "texto": "El «bazo» filtra la sangre y produce respuestas inmunitarias.", "explicacion": "Retira sangre dañada y presenta antígenos a los linfocitos." },
-        { "texto": "Los «ganglios linfáticos» filtran la linfa y concentran linfocitos.", "explicacion": "Se encuentran a lo largo de los vasos linfáticos." }
+        {
+          "texto": "Los mastocitos viven en los tejidos, sobre todo en la piel y las mucosas",
+          "explicacion": "Tienen gránulos llenos de histamina, citocinas y otros mediadores inflamatorios."
+        },
+        {
+          "texto": "Los mastocitos tienen receptores para anticuerpos IgE",
+          "explicacion": "Dato por confirmar: al unirse un antígeno a la IgE, el mastocito libera su contenido y provoca una reacción alérgica."
+        }
       ]
     },
     {
-      "titulo": "Tejido linfoide de mucosas",
+      "titulo": "Monocitos, macrófagos y células dendríticas",
       "puntos": [
-        { "texto": "El «tejido linfoide» se acumula en mucosas del intestino y las vías respiratorias.", "explicacion": "Es la primera zona donde los patógenos encuentran linfocitos listos para actuar." }
+        {
+          "texto": "Los monocitos circulan en la sangre y se convierten en macrófagos al llegar a los tejidos",
+          "explicacion": "Dato por confirmar: los macrófagos reciben nombres distintos según el tejido, como las células de Kupffer del hígado."
+        },
+        {
+          "texto": "Los macrófagos fagocitan patógenos y restos celulares",
+          "explicacion": "Además, liberan citocinas que llaman a otras células de defensa."
+        },
+        {
+          "texto": "Las células dendríticas capturan antígenos y los llevan a los ganglios linfáticos",
+          "explicacion": "Allí los presentan a los linfocitos T para iniciar la respuesta adaptativa."
+        }
+      ]
+    },
+    {
+      "titulo": "Células NK",
+      "puntos": [
+        {
+          "texto": "Las células NK son linfocitos grandes con gránulos citotóxicos",
+          "explicacion": "Dato por confirmar: no necesitan activación previa y actúan rápidamente contra células infectadas o tumorales."
+        },
+        {
+          "texto": "Las células NK detectan células que han perdido moléculas del MHC de clase I",
+          "explicacion": "Dato por confirmar: los tumores y algunos virus reducen la expresión de MHC-I para escapar de los linfocitos T, y las NK las destruyen."
+        },
+        {
+          "texto": "Las células NK liberan perforinas y granzimas que inducen la muerte de la célula blanco",
+          "explicacion": "Dato por confirmar: la perforina forma poros en la membrana y las granzimas activan la apoptosis."
+        }
+      ]
+    },
+    {
+      "titulo": "Linfocitos B",
+      "puntos": [
+        {
+          "texto": "Los linfocitos B maduran en la médula ósea",
+          "explicacion": "Dato por confirmar: en la médula adquieren un receptor de antígeno propio que los diferencia de otros linfocitos."
+        },
+        {
+          "texto": "Al activarse, los linfocitos B se transforman en células plasmáticas",
+          "explicacion": "Las células plasmáticas secretan anticuerpos en grandes cantidades durante días o semanas."
+        },
+        {
+          "texto": "Algunos linfocitos B se convierten en células de memoria",
+          "explicacion": "Quedan en el organismo durante años y responden con rapidez si el antígeno vuelve a aparecer."
+        }
+      ]
+    },
+    {
+      "titulo": "Linfocitos T",
+      "puntos": [
+        {
+          "texto": "Los linfocitos T maduran en el timo",
+          "explicacion": "Dato por confirmar: en el timo aprenden a reconocer lo propio y a no atacar al propio organismo."
+        },
+        {
+          "texto": "El receptor de los linfocitos T reconoce antígenos presentados por el MHC",
+          "explicacion": "Dato por confirmar: a diferencia de los anticuerpos, los linfocitos T no reconocen antígenos libres en el plasma."
+        },
+        {
+          "texto": "Los linfocitos T se clasifican según la molécula CD4 o CD8 que expresan",
+          "explicacion": "Dato por confirmar: los CD4 suelen reconocer antígenos del MHC de clase II y los CD8 los del MHC de clase I."
+        },
+        {
+          "texto": "Los linfocitos T CD4 son colaboradores y coordinan la respuesta",
+          "explicacion": "Liberan citocinas que activan a los linfocitos B, a los macrófagos y a los linfocitos T CD8."
+        },
+        {
+          "texto": "Los linfocitos T CD8 son citotóxicos y destruyen células infectadas",
+          "explicacion": "Dato por confirmar: reconocen células con antígenos presentados por MHC de clase I y las eliminan por contacto directo."
+        }
+      ]
+    },
+    {
+      "titulo": "Moléculas del sistema inmunológico",
+      "puntos": [
+        {
+          "texto": "Los anticuerpos o inmunoglobulinas son proteínas que se unen a antígenos específicos",
+          "explicacion": "Cada anticuerpo tiene dos regiones de unión idénticas que reconocen un epítopo determinado."
+        },
+        {
+          "texto": "Existen cinco clases de inmunoglobulinas: IgG, IgA, IgM, IgE e IgD",
+          "explicacion": "Dato por confirmar: cada clase tiene funciones y localizaciones distintas en el organismo."
+        },
+        {
+          "texto": "La IgG es la inmunoglobulina más abundante en la sangre",
+          "explicacion": "Dato por confirmar: atraviesa la placenta y protege al feto y al recién nacido durante los primeros meses."
+        },
+        {
+          "texto": "La IgA se encuentra en las secreciones de mucosas, como la saliva y la leche",
+          "explicacion": "Dato por confirmar: protege las superficies donde entran los patógenos."
+        },
+        {
+          "texto": "La IgM es la primera inmunoglobulina que se produce en una infección",
+          "explicacion": "Dato por confirmar: es una molécula grande con cinco unidades y activa con eficacia el complemento."
+        },
+        {
+          "texto": "La IgE participa en las reacciones alérgicas y en la defensa contra parásitos",
+          "explicacion": "Dato por confirmar: se une a los mastocitos y a los basófilos."
+        },
+        {
+          "texto": "La IgD se encuentra sobre todo en la superficie de los linfocitos B",
+          "explicacion": "Dato por confirmar: actúa como receptor de antígeno y su función exacta aún se investiga."
+        }
+      ]
+    },
+    {
+      "titulo": "Complemento y citocinas",
+      "puntos": [
+        {
+          "texto": "El complemento es un conjunto de proteínas que se activan en cascada",
+          "explicacion": "Dato por confirmar: puede activarse por la vía clásica, con anticuerpos, o por la vía alternativa, sin anticuerpos."
+        },
+        {
+          "texto": "El complemento forma poros en la membrana de los patógenos",
+          "explicacion": "Dato por confirmar: al abrirse estos poros, el patógeno se lisa y muere."
+        },
+        {
+          "texto": "Las citocinas son proteínas señal que regulan la respuesta inmunitaria",
+          "explicacion": "Dato por confirmar: incluyen las interleucinas, los interferones y el factor de necrosis tumoral."
+        },
+        {
+          "texto": "Las citocinas actúan a corta distancia y de forma localizada",
+          "explicacion": "Dato por confirmar: su acción puede ser autocrina, paracrina o sistémica según la concentración."
+        }
+      ]
+    },
+    {
+      "titulo": "Complejo mayor de histocompatibilidad",
+      "puntos": [
+        {
+          "texto": "El complejo mayor de histocompatibilidad presenta antígenos a los linfocitos T",
+          "explicacion": "Dato por confirmar: en los humanos se llama HLA y es muy variable entre personas."
+        },
+        {
+          "texto": "El MHC de clase I está en casi todas las células con núcleo",
+          "explicacion": "Presenta antígenos del interior de la célula, como los de un virus, a los linfocitos T CD8."
+        },
+        {
+          "texto": "El MHC de clase II está en células presentadoras como macrófagos y linfocitos B",
+          "explicacion": "Presenta antígenos capturados desde el exterior a los linfocitos T CD4."
+        }
+      ]
+    },
+    {
+      "titulo": "Órganos y tejidos linfoides",
+      "puntos": [
+        {
+          "texto": "Los órganos linfoides primarios son la médula ósea y el timo",
+          "explicacion": "Allí se producen y maduran los linfocitos antes de salir a la circulación."
+        },
+        {
+          "texto": "Los órganos linfoides secundarios son los ganglios, el bazo y los tejidos asociados a mucosas",
+          "explicacion": "Son los lugares donde los linfocitos encuentran antígenos y se activan."
+        },
+        {
+          "texto": "Los vasos linfáticos transportan los linfocitos entre los tejidos y la sangre",
+          "explicacion": "La linfa lleva las células del sistema inmunológico desde los tejidos hasta los ganglios."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con los temas siguientes",
+      "puntos": [
+        {
+          "texto": "La inmunidad activa y pasiva se estudian en los temas 56 y 57",
+          "explicacion": "Allí se analiza cómo se adquiere la protección por infección, vacunas o transferencia de anticuerpos."
+        }
       ]
     }
   ]

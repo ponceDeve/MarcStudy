@@ -1,0 +1,32 @@
+{
+  "curso": "Geometría",
+  "tema": "Axioma LAL",
+  "glosario": {
+    "Ángulo comprendido": "Ángulo formado entre dos lados dados.",
+    "Superposición": "Colocar una figura sobre otra para compararlas.",
+    "Axioma": "Afirmación aceptada sin demostración como punto de partida."
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado LAL",
+      "puntos": [
+        { "texto": "Lado-Ángulo-Lado (LAL): dos lados y ángulo comprendido iguales", "explicacion": "Dos triángulos son congruentes si dos lados y el ángulo que forman entre ellos coinciden. Ejemplo: AB = 4 cm, AC = 6 cm y ángulo A = 50°; DE = 4 cm, DF = 6 cm y ángulo D = 50°, luego son congruentes." },
+        { "texto": "El ángulo debe estar entre los lados", "explicacion": "Es el ángulo que tiene su vértice en el punto común de los dos lados. Ejemplo: en ABC, el ángulo A está entre AB y AC, así que es el comprendido." },
+        { "texto": "Algunos textos lo aceptan como axioma", "explicacion": "Se toma como punto de partida sin demostración. Otros textos lo prueban por superposición, como se explica a continuación." }
+      ]
+    },
+    {
+      "titulo": "Demostración por superposición",
+      "puntos": [
+        { "texto": "Se coloca un triángulo sobre el otro", "explicacion": "Se hace coincidir el lado AB con DE y el ángulo A con el ángulo D. Como AC = DF, el punto C cae sobre F." },
+        { "texto": "Los lados restantes coinciden", "explicacion": "Como B cae sobre E y C cae sobre F, el lado BC coincide con EF. Así los dos triángulos ocupan exactamente el mismo lugar." }
+      ]
+    },
+    {
+      "titulo": "Error frecuente",
+      "puntos": [
+        { "texto": "Dos lados y un ángulo no comprendido no bastan", "explicacion": "Con el ángulo fuera de los lados, pueden existir dos triángulos distintos. Ejemplo: lados 4 cm y 6 cm con un ángulo de 30° frente al lado de 4 cm admiten dos triángulos diferentes." }
+      ]
+    }
+  ]
+}

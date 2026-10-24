@@ -2,38 +2,223 @@
   "curso": "Biología",
   "tema": "Circulación y transporte",
   "glosario": {
-    "Circulación": "Movimiento de sustancias por un sistema de transporte interno.",
-    "Difusión simple": "Paso de sustancias de mayor a menor concentración sin gasto energético.",
-    "Hemolinfa": "Líquido circulatorio de los invertebrados con sistema abierto.",
-    "Sistema circulatorio abierto": "Sistema donde el líquido sale de los vasos y baña los tejidos.",
-    "Sistema circulatorio cerrado": "Sistema donde el líquido circula siempre dentro de los vasos."
+    "Circulación": "Movimiento de fluidos que transporta nutrientes, gases, hormonas y desechos por el organismo.",
+    "Sistema circulatorio": "Conjunto de órganos y vasos que impulsan y conducen el fluido circulante.",
+    "Fluido circulante": "Líquido que transporta sustancias por el organismo, como la sangre o la hemolinfa.",
+    "Sangre": "Tejido conectivo líquido de los vertebrados que transporta gases, nutrientes y desechos por los vasos.",
+    "Hemolinfa": "Fluido circulante de los invertebrados con sistema circulatorio abierto, que se mezcla con el líquido intersticial.",
+    "Líquido intersticial": "Líquido que ocupa los espacios entre las células y permite el intercambio de sustancias.",
+    "Hemocele": "Cavidad corporal de los invertebrados con sistema abierto, por donde circula la hemolinfa.",
+    "Circulación abierta": "Sistema en el que el fluido sale de los vasos y baña directamente los tejidos.",
+    "Circulación cerrada": "Sistema en el que el fluido circula siempre dentro de vasos sanguíneos.",
+    "Circulación simple": "Circulación en la que la sangre pasa una sola vez por el corazón en cada recorrido completo.",
+    "Circulación doble": "Circulación en la que la sangre pasa dos veces por el corazón en cada recorrido completo.",
+    "Circulación pulmonar": "Trayecto de la sangre desde el corazón hasta los pulmones y de regreso.",
+    "Circulación sistémica": "Trayecto de la sangre desde el corazón hasta los tejidos del cuerpo y de regreso.",
+    "Arteria": "Vaso que conduce la sangre desde el corazón hacia los tejidos.",
+    "Vena": "Vaso que conduce la sangre desde los tejidos hacia el corazón.",
+    "Capilar": "Vaso de paredes muy delgadas donde ocurre el intercambio de sustancias con los tejidos.",
+    "Sistema ambulacral": "Sistema de canales de agua de los equinodermos que participa en la locomoción y el transporte.",
+    "Pigmento respiratorio": "Molécula que transporta oxígeno en la sangre o la hemolinfa, como la hemoglobina o la hemocianina."
   },
   "theory": [
     {
-      "titulo": "Necesidad de transporte",
+      "titulo": "Función del transporte",
       "puntos": [
-        { "texto": "Los organismos grandes necesitan un sistema de transporte interno.", "explicacion": "La difusión sola es muy lenta para distribuir sustancias a distancias grandes." },
-        { "texto": "Las células pequeñas pueden depender solo de la difusión.", "explicacion": "La distancia que deben recorrer los gases y nutrientes es corta." }
+        {
+          "texto": "El transporte distribuye nutrientes, gases y hormonas a todas las células",
+          "explicacion": "Cada célula necesita un suministro constante de sustancias que no puede obtener solo por difusión."
+        },
+        {
+          "texto": "El transporte retira los desechos metabólicos de las células",
+          "explicacion": "El dióxido de carbono y los compuestos nitrogenados se llevan a los órganos que los eliminan."
+        },
+        {
+          "texto": "En animales pequeños la difusión basta para el transporte",
+          "explicacion": "Dato por confirmar: a partir de cierto tamaño, la distancia de difusión es demasiado grande y se necesita un sistema de transporte especializado."
+        }
       ]
     },
     {
-      "titulo": "Tipos de sistemas de transporte",
+      "titulo": "Componentes de un sistema de transporte",
       "puntos": [
-        { "texto": "Los sistemas de transporte pueden ser abiertos o cerrados.", "explicacion": "La diferencia está en si el líquido circula siempre dentro de los vasos." },
-        { "texto": "El «sistema circulatorio abierto» baña directamente los tejidos.", "explicacion": "Es propio de artrópodos y de la mayoría de los moluscos." },
-        { "texto": "El «sistema circulatorio cerrado» mantiene la sangre dentro de los vasos.", "explicacion": "Permite mayor presión y mejor control de la distribución del flujo." }
+        {
+          "texto": "Un sistema de transporte tiene un fluido circulante, un sistema de vasos y una bomba",
+          "explicacion": "El fluido transporta las sustancias, los vasos lo conducen y la bomba, generalmente el corazón, lo impulsa."
+        },
+        {
+          "texto": "El fluido circulante intercambia sustancias con el líquido intersticial",
+          "explicacion": "Las células reciben nutrientes y gases del líquido intersticial, que a su vez se abastece del fluido circulante."
+        }
       ]
     },
     {
-      "titulo": "Transporte en plantas",
+      "titulo": "Transporte en invertebrados sin sistema circulatorio",
       "puntos": [
-        { "texto": "Las plantas transportan agua por el xilema y azúcares por el floema.", "explicacion": "Su estudio detallado corresponde al tema de transporte en plantas." }
+        {
+          "texto": "Algunos invertebrados simples carecen de sistema circulatorio",
+          "explicacion": "Es el caso de las esponjas y de muchos cnidarios, que dependen de la difusión y del movimiento del agua."
+        },
+        {
+          "texto": "Los nematodos transportan sustancias por el pseudoceloma",
+          "explicacion": "Dato por confirmar: el fluido de la cavidad corporal distribuye nutrientes y gases entre los tejidos."
+        },
+        {
+          "texto": "Los equinodermos usan el sistema ambulacral para transportar sustancias",
+          "explicacion": "Dato por confirmar: el agua que circula por los canales radiales lleva nutrientes y participa en la locomoción."
+        }
       ]
     },
     {
-      "titulo": "Conexiones",
+      "titulo": "Sistema circulatorio abierto",
       "puntos": [
-        { "texto": "El sistema circulatorio humano es un sistema cerrado.", "explicacion": "Su estudio corresponde al tema de sistema circulatorio humano." }
+        {
+          "texto": "En el sistema abierto la hemolinfa sale de los vasos y baña directamente los órganos",
+          "explicacion": "La hemolinfa se mezcla con el líquido intersticial y forma una especie de lagunas sanguíneas."
+        },
+        {
+          "texto": "El sistema abierto se encuentra en artrópodos y en la mayoría de los moluscos",
+          "explicacion": "Insectos, crustáceos y arañas son ejemplos de animales con circulación abierta."
+        },
+        {
+          "texto": "El fluido de un sistema abierto recibe el nombre de hemolinfa",
+          "explicacion": "Dato por confirmar: su contenido de pigmentos respiratorios varía según el grupo animal."
+        },
+        {
+          "texto": "La hemolinfa circula más lentamente que la sangre en un sistema cerrado",
+          "explicacion": "Al no estar confinada en vasos, su movimiento tiene menos presión y es menos rápido."
+        },
+        {
+          "texto": "El corazón de un sistema abierto bombea la hemolinfa hacia el hemocele",
+          "explicacion": "Dato por confirmar: en algunos insectos existen corazones accesorios en las patas o las antenas."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema circulatorio cerrado",
+      "puntos": [
+        {
+          "texto": "En el sistema cerrado la sangre circula siempre dentro de los vasos",
+          "explicacion": "La sangre no entra en contacto directo con los tejidos, y el intercambio ocurre a través de las paredes de los capilares."
+        },
+        {
+          "texto": "El sistema cerrado se encuentra en los anélidos y en los vertebrados",
+          "explicacion": "La lombriz de tierra tiene circulación cerrada y todos los vertebrados también la tienen."
+        },
+        {
+          "texto": "El sistema cerrado permite una circulación más rápida y eficiente",
+          "explicacion": "La presión se mantiene en los vasos, lo que facilita el flujo de la sangre hacia los tejidos más activos."
+        },
+        {
+          "texto": "La sangre de los vertebrados circula en un solo sentido por las válvulas del corazón",
+          "explicacion": "Las válvulas impiden el retroceso de la sangre entre las cavidades cardíacas."
+        }
+      ]
+    },
+    {
+      "titulo": "Circulación simple",
+      "puntos": [
+        {
+          "texto": "En la circulación simple la sangre pasa una vez por el corazón en cada recorrido",
+          "explicacion": "Los peces tienen circulación simple: el corazón bombea la sangre a las branquias y de allí al resto del cuerpo."
+        },
+        {
+          "texto": "En los peces el corazón tiene dos cavidades",
+          "explicacion": "Una aurícula y un ventrículo; la sangre pasa por el corazón una sola vez en cada recorrido completo."
+        },
+        {
+          "texto": "En la circulación simple la sangre pasa por las branquias antes de llegar a los tejidos",
+          "explicacion": "Allí se oxigena y luego se distribuye por el cuerpo sin pasar de nuevo por el corazón."
+        }
+      ]
+    },
+    {
+      "titulo": "Circulación doble",
+      "puntos": [
+        {
+          "texto": "En la circulación doble la sangre pasa dos veces por el corazón en cada recorrido",
+          "explicacion": "Una vez para enviarla a los pulmones y otra para distribuirla al resto del cuerpo."
+        },
+        {
+          "texto": "La circulación doble se divide en pulmonar y sistémica",
+          "explicacion": "La pulmonar lleva la sangre al pulmón para oxigenarla, y la sistémica la distribuye a los tejidos."
+        },
+        {
+          "texto": "En la circulación doble incompleta la sangre oxigenada y la desoxigenada se mezclan",
+          "explicacion": "Dato por confirmar: ocurre en anfibios y en algunos reptiles, cuyo corazón tiene un solo ventrículo."
+        },
+        {
+          "texto": "En la circulación doble completa la sangre oxigenada y la desoxigenada se separan",
+          "explicacion": "Dato por confirmar: ocurre en aves y mamíferos, cuyo corazón tiene dos ventrículos separados."
+        },
+        {
+          "texto": "El ser humano tiene circulación doble completa",
+          "explicacion": "Su corazón tiene cuatro cavidades, dos aurículas y dos ventrículos, que separan los dos circuitos."
+        }
+      ]
+    },
+    {
+      "titulo": "Vasos sanguíneos",
+      "puntos": [
+        {
+          "texto": "Las arterias llevan la sangre desde el corazón hacia los tejidos",
+          "explicacion": "Tienen paredes gruesas y elásticas que soportan la presión de la sangre al salir del corazón."
+        },
+        {
+          "texto": "Las venas llevan la sangre desde los tejidos hacia el corazón",
+          "explicacion": "Tienen paredes más delgadas y válvulas que impiden el retroceso de la sangre."
+        },
+        {
+          "texto": "Los capilares son los vasos de menor calibre",
+          "explicacion": "Sus paredes tienen una sola capa de células, lo que permite el intercambio de gases y nutrientes con los tejidos."
+        },
+        {
+          "texto": "Las arteriolas y las vénulas conectan los capilares con las arterias y venas",
+          "explicacion": "Dato por confirmar: las arteriolas regulan el flujo sanguíneo hacia los capilares de cada tejido."
+        }
+      ]
+    },
+    {
+      "titulo": "Líquido intersticial y linfa",
+      "puntos": [
+        {
+          "texto": "El líquido intersticial rodea a todas las células del cuerpo",
+          "explicacion": "Se forma a partir del plasma que filtra por los capilares y es el medio donde las células intercambian sustancias."
+        },
+        {
+          "texto": "El sistema linfático recupera el exceso de líquido intersticial",
+          "explicacion": "Dato por confirmar: el líquido recuperado se devuelve a la sangre por las venas subclavias."
+        }
+      ]
+    },
+    {
+      "titulo": "Transporte de gases",
+      "puntos": [
+        {
+          "texto": "Los pigmentos respiratorios aumentan la capacidad de transporte de oxígeno",
+          "explicacion": "La hemoglobina de los vertebrados y la hemocianina de algunos invertebrados se unen al oxígeno."
+        },
+        {
+          "texto": "La hemocianina contiene cobre y da color azulado a la hemolinfa",
+          "explicacion": "Dato por confirmar: se encuentra en moluscos y artrópodos, como los cangrejos y los pulpos."
+        },
+        {
+          "texto": "La hemoglobina contiene hierro y da color rojo a la sangre",
+          "explicacion": "Dato por confirmar: su grupo hemo es el sitio donde se une el oxígeno."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia del sistema circulatorio",
+      "puntos": [
+        {
+          "texto": "El sistema circulatorio mantiene la homeostasis del organismo",
+          "explicacion": "Regula la temperatura, el pH y la concentración de sustancias en los tejidos."
+        },
+        {
+          "texto": "El sistema circulatorio transporta mensajeros químicos",
+          "explicacion": "Las hormonas viajan por la sangre para llegar a sus órganos blanco."
+        }
       ]
     }
   ]

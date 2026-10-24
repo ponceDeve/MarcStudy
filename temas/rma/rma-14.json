@@ -1,0 +1,33 @@
+{
+  "curso": "Habilidad Lógico Matemático",
+  "tema": "Inductivo geométrico",
+  "glosario": {
+    "etapa": "Figura de una secuencia que crece paso a paso",
+    "cuadrícula": "Conjunto de cuadrados unitarios unidos en filas",
+    "palillo": "Segmento que forma los lados de una figura",
+    "regla de crecimiento": "Relación que indica cómo aumenta la cantidad"
+  },
+  "theory": [
+    {
+      "titulo": "Figuras por etapas",
+      "puntos": [
+        { "texto": "Compara cada etapa con la anterior", "explicacion": "Se identifica qué elementos se agregan en cada paso para hallar la regla de crecimiento." },
+        { "texto": "Cuenta un elemento nuevo por etapa", "explicacion": "Si cada etapa agrega 3 palillos, la etapa n usa 3n palillos. Ejemplo: la etapa 5 usa 15." }
+      ]
+    },
+    {
+      "titulo": "Conteo de cuadrados",
+      "puntos": [
+        { "texto": "Cuadrados de todos los tamaños", "explicacion": "En una cuadrícula 3 × 3 hay 9 cuadrados de lado 1, 4 de lado 2 y 1 de lado 3: total 14." },
+        { "texto": "Cuadrados de lado k en un n × n", "explicacion": "Su cantidad es (n − k + 1)². Ejemplo: en 3 × 3, los de lado 2 son (3 − 2 + 1)² = 4." }
+      ]
+    },
+    {
+      "titulo": "Regla de crecimiento",
+      "puntos": [
+        { "texto": "Crecimiento lineal: cantidad proporcional a la etapa", "explicacion": "Si cada etapa agrega un valor fijo, la cantidad total es esa cantidad por el número de etapa." },
+        { "texto": "Crecimiento cuadrático: cantidad igual al cuadrado", "explicacion": "Si la etapa n tiene n² cuadrados unitarios, la etapa 4 tiene 16." }
+      ]
+    }
+  ]
+}

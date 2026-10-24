@@ -1,33 +1,119 @@
 {
-  "curso": "Biología",
-  "tema": "Leyes de la herencia",
-  "glosario": {
-    "Ley de uniformidad": "Los híbridos de la F1 son iguales entre sí.",
-    "Ley de segregación": "Los dos alelos de un gen se separan al formarse los gametos.",
-    "Ley de distribución independiente": "Los alelos de genes distintos se heredan de forma independiente.",
-    "Gameto": "Célula sexual haploide que lleva un solo alelo de cada gen.",
-    "Meiosis": "División que produce gametos con la mitad de los cromosomas."
-  },
-  "theory": [
-    {
-      "titulo": "Primera ley: uniformidad",
-      "puntos": [
-        { "texto": "Al cruzar dos líneas puras, todos los híbridos de la F1 son iguales.", "explicacion": "Son heterocigotos y presentan el fenotipo dominante." }
-      ]
-    },
-    {
-      "titulo": "Segunda ley: segregación",
-      "puntos": [
-        { "texto": "Los dos alelos de un gen se separan durante la formación de los gametos.", "explicacion": "Cada gameto recibe solo uno de los dos alelos del individuo." },
-        { "texto": "Los alelos se separan por la meiosis.", "explicacion": "Por eso la proporción de la F2 es 3:1 en un cruce monohíbrido." }
-      ]
-    },
-    {
-      "titulo": "Tercera ley: distribución independiente",
-      "puntos": [
-        { "texto": "Los alelos de genes ubicados en cromosomas distintos se separan de forma independiente.", "explicacion": "Esta ley explica la proporción 9:3:3:1 de la cruza dihíbrida." },
-        { "texto": "La ley se cumple para genes que están en cromosomas diferentes.", "explicacion": "Los genes en el mismo cromosoma tienden a heredarse juntos, lo que se estudia en el tema de genética ligada." }
-      ]
-    }
-  ]
+"curso":"Biología",
+"tema":"Leyes de la herencia",
+"glosario":{
+"ley de la herencia":"principio general que describe la transmisión de caracteres",
+"uniformidad":"igualdad de todos los individuos de una generación",
+"segregación":"separación de los alelos al formar gametos",
+"pureza de los gametos":"cada gameto lleva un solo alelo",
+"distribución independiente":"herencia separada de genes de caracteres distintos",
+"alelo":"forma alternativa de un gen",
+"genotipo":"conjunto de alelos de un individuo",
+"fenotipo":"característica observable de un individuo",
+"homocigoto":"individuo con dos alelos iguales",
+"heterocigoto":"individuo con dos alelos distintos",
+"dominancia completa":"el heterocigoto muestra solo el rasgo dominante",
+"gameto":"célula sexual haploide",
+"meiosis":"división celular que forma gametos",
+"cromosomas homólogos":"par de cromosomas con los mismos genes",
+"anafase I":"etapa en que se separan los homólogos",
+"probabilidad":"posibilidad de que ocurra un suceso",
+"regla del producto":"multiplicación de probabilidades de sucesos independientes",
+"regla de la suma":"adición de probabilidades de sucesos excluyentes",
+"cuadro de Punnett":"tabla que combina gametos de los progenitores",
+"ligamiento":"herencia conjunta de genes del mismo cromosoma",
+"cruce monohíbrido":"cruce que estudia un solo carácter",
+"cruce dihíbrido":"cruce que estudia dos caracteres",
+"proporción genotípica":"relación entre los genotipos de la descendencia",
+"proporción fenotípica":"relación entre los fenotipos de la descendencia",
+"línea pura":"población homocigota que se mantiene igual"
+},
+"theory":[
+{"titulo":"Generalidades","puntos":[
+{"texto":"«Leyes de la herencia» = principios que explican la transmisión de caracteres","explicacion":"Son tres, y se deducen de los experimentos de Gregor Johann Mendel con arvejas. Fueron sistematizadas a comienzos del siglo XX, tras el redescubrimiento de su obra en 1900."},
+{"texto":"Mendel formuló tres leyes","explicacion":"La primera se refiere a la uniformidad de la primera generación, la segunda a la separación de los alelos y la tercera a la herencia independiente de caracteres distintos."},
+{"texto":"Nombres de las leyes ⇒ varían según el autor","explicacion":"La primera se llama también ley de la dominancia, la segunda ley de la segregación o de la pureza de los gametos, y la tercera ley de la distribución independiente o de la combinación independiente de los caracteres."},
+{"texto":"Notación de los ejemplos ⇒ A dominante, a recesivo","explicacion":"Para el carácter color de flor de arveja, la letra A representa el alelo dominante de flor púrpura y la letra a el alelo recesivo de flor blanca. Para el segundo carácter se usa B para semilla lisa dominante y b para semilla rugosa recesiva."}
+]},
+{"titulo":"Primera ley","puntos":[
+{"texto":"Primera ley ⇒ uniformidad de los híbridos de la primera generación","explicacion":"Establece que el cruce de dos líneas puras que difieren en un carácter produce una descendencia idéntica entre sí. La primera generación filial (F1) es uniforme."},
+{"texto":"Primera ley: AA × aa → 100 por ciento Aa","explicacion":"El progenitor AA solo forma gametos A y el progenitor aa solo gametos a. Todos los hijos reciben un alelo de cada tipo, de modo que son heterocigotos."},
+{"texto":"Uniformidad genotípica ⇒ todos los híbridos son heterocigotos","explicacion":"Los individuos de F1 tienen todos el mismo genotipo, Aa. No hay diferencias entre ellos por lo que se refiere al carácter estudiado."},
+{"texto":"Uniformidad fenotípica ⇒ todos muestran el rasgo dominante","explicacion":"Como el alelo A domina sobre a, todas las plantas de F1 tienen flor púrpura. El rasgo recesivo está presente, pero no se observa."},
+{"texto":"Primera ley ✓ líneas puras en la generación parental","explicacion":"Si los progenitores no fueran homocigotos, la descendencia no sería uniforme. Por eso Mendel comenzó sus experimentos con líneas puras."},
+{"texto":"Primera ley ✓ dominancia completa","explicacion":"Se cumple tal como se enuncia cuando un alelo domina por completo sobre el otro. Si no hay dominancia completa, F1 sigue siendo uniforme, pero con fenotipo intermedio o con ambos rasgos."},
+{"texto":"Cruce recíproco ⇒ mismo resultado en F1","explicacion":"Da igual cuál de las líneas puras actúe como madre y cuál como padre. Los hijos de ambos cruces son iguales entre sí, porque ambos progenitores aportan un alelo."}
+]},
+{"titulo":"Segunda ley","puntos":[
+{"texto":"Segunda ley ⇒ segregación de los caracteres","explicacion":"Establece que los dos alelos de un gen se separan al formarse los gametos, de modo que cada gameto recibe solo uno. Los alelos se reúnen de nuevo en la fecundación."},
+{"texto":"Segunda ley = pureza de los gametos","explicacion":"Cada gameto es puro para el carácter estudiado, porque lleva un solo alelo y nunca ambos. Los alelos no se mezclan ni se alteran por convivir en el heterocigoto."},
+{"texto":"Heterocigoto Aa ⇒ 50 por ciento gametos A + 50 por ciento gametos a","explicacion":"La separación es equitativa, por lo que se forman los dos tipos de gametos en igual cantidad. Esto sucede tanto en el óvulo como en el espermatozoide."},
+{"texto":"Cruce de dos híbridos: Aa × Aa","explicacion":"Se obtiene al cruzar o autofecundar plantas de F1. Cada progenitor forma gametos A y a, que se combinan al azar en la fecundación."},
+{"texto":"F2 ⇒ proporción fenotípica 3 : 1","explicacion":"De cada cuatro descendientes, tres muestran el rasgo dominante y uno el recesivo. En el ejemplo, tres plantas de flor púrpura por cada una de flor blanca."},
+{"texto":"F2 ⇒ proporción genotípica 1 : 2 : 1","explicacion":"De cada cuatro descendientes, uno es AA, dos son Aa y uno es aa. Los fenotipos púrpura corresponden a dos genotipos, AA y Aa, lo que explica por qué la proporción fenotípica es 3 a 1."},
+{"texto":"Rasgo recesivo en F2 ⇒ homocigotos aa","explicacion":"El rasgo recesivo reaparece solo en los individuos con dos alelos recesivos. Por eso todas las plantas de flor blanca de F2 son líneas puras."},
+{"texto":"Proporción 3 : 1 ⇒ valor esperado, no exacto","explicacion":"Se cumple de forma aproximada cuando hay muchos descendientes, porque los gametos se unen al azar. En familias de pocos hijos, el resultado real puede alejarse bastante."},
+{"texto":"Segunda ley ✓ gametos que se unen al azar","explicacion":"Todos los gametos tienen la misma probabilidad de intervenir en la fecundación. Además cada tipo de gameto debe producir cigotos igualmente viables."}
+]},
+{"titulo":"Tercera ley","puntos":[
+{"texto":"Tercera ley ⇒ distribución independiente de los caracteres","explicacion":"Establece que los alelos de genes distintos se reparten en los gametos de forma independiente. La herencia de un carácter no condiciona la de otro."},
+{"texto":"Tercera ley ✓ genes en cromosomas distintos","explicacion":"Se cumple cuando los genes que se estudian están en cromosomas diferentes, o muy distantes en el mismo cromosoma. Si están en el mismo cromosoma, tienden a heredarse juntos."},
+{"texto":"Dihíbrido AaBb ⇒ cuatro tipos de gametos","explicacion":"Los gametos son AB, Ab, aB y ab, y todos aparecen en igual proporción, un cuarto cada uno. Cada alelo de un gen puede combinarse con cualquiera del otro gen."},
+{"texto":"Cruce dihíbrido: AABB × aabb → AaBb","explicacion":"El progenitor AABB solo forma gametos AB y el progenitor aabb solo gametos ab. Toda la F1 es dihíbrida y muestra los dos rasgos dominantes, lo que cumple la primera ley."},
+{"texto":"F2 dihíbrida ⇒ proporción fenotípica 9 : 3 : 3 : 1","explicacion":"De cada dieciséis descendientes, nueve tienen ambos rasgos dominantes, tres tienen el primer rasgo dominante y el segundo recesivo, otros tres lo contrario y uno tiene ambos recesivos."},
+{"texto":"F2 dihíbrida ⇒ cuatro fenotipos distintos","explicacion":"En el ejemplo de la arveja son semilla lisa amarilla, lisa verde, rugosa amarilla y rugosa verde. Dos de estas combinaciones son nuevas respecto a los progenitores."},
+{"texto":"Fenotipos recombinados ⇒ combinaciones distintas de las parentales","explicacion":"Son las que resultan de reunir un rasgo de cada progenitor. Su aparición es la evidencia de que los caracteres se heredan de manera independiente."},
+{"texto":"Proporción 9 : 3 : 3 : 1 = (3 : 1) × (3 : 1)","explicacion":"Cada carácter, tomado por separado, sigue la proporción 3 a 1 de la segunda ley. Al combinarlos, las probabilidades se multiplican, como ocurre con dos sucesos independientes."}
+]},
+{"titulo":"Cruces monohíbridos posibles","puntos":[
+{"texto":"AA × AA ⇒ todos AA","explicacion":"Ambos progenitores forman solo gametos A. Toda la descendencia es homocigota dominante y con rasgo dominante."},
+{"texto":"AA × Aa ⇒ mitad AA + mitad Aa","explicacion":"El progenitor AA forma gametos A y el Aa forma A y a. Todos los hijos tienen fenotipo dominante, pero la mitad son heterocigotos."},
+{"texto":"AA × aa ⇒ todos Aa","explicacion":"Es el cruce de líneas puras de la primera ley. Toda la descendencia es heterocigota y con rasgo dominante."},
+{"texto":"Aa × Aa ⇒ 1 AA : 2 Aa : 1 aa","explicacion":"Es el cruce de la segunda ley. La proporción fenotípica es 3 dominantes por 1 recesivo."},
+{"texto":"Aa × aa ⇒ mitad Aa + mitad aa","explicacion":"El heterocigoto forma gametos A y a y el recesivo solo gametos a. La proporción fenotípica y la genotípica coinciden, 1 a 1. Este tipo de cruce se aplica en el cruce de prueba."},
+{"texto":"aa × aa ⇒ todos aa","explicacion":"Ambos progenitores forman solo gametos a. Toda la descendencia es homocigota recesiva, con rasgo recesivo."}
+]},
+{"titulo":"Cuadro dihíbrido","puntos":[
+{"texto":"Cuadro de Punnett dihíbrido ⇒ 16 combinaciones","explicacion":"Cada progenitor AaBb forma cuatro tipos de gametos, que se colocan en filas y columnas. El cuadro tiene 4 por 4 casillas, cada una con igual probabilidad."},
+{"texto":"F2 dihíbrida ⇒ nueve genotipos distintos","explicacion":"Son AABB, AABb, AaBB, AaBb, AAbb, Aabb, aaBB, aaBb y aabb. Cada uno tiene una frecuencia distinta en el cuadro."},
+{"texto":"Proporción genotípica dihíbrida ⇒ 1 : 2 : 2 : 4 : 2 : 1 : 2 : 1 : 1","explicacion":"AABB aparece una vez, AABb y AaBB dos veces cada uno, AaBb cuatro veces, AAbb una vez, Aabb dos veces, aaBB una vez, aaBb dos veces y aabb una vez. Suman 16."},
+{"texto":"Fenotipo con ambos rasgos dominantes ⇒ 9 de 16","explicacion":"Corresponde a los genotipos AABB (1), AABb (2), AaBB (2) y AaBb (4), que suman nueve. Es el fenotipo más frecuente."},
+{"texto":"Fenotipo con un rasgo recesivo ⇒ 3 de 16 cada uno","explicacion":"Tres son dominantes para A y recesivos para b: AAbb (1) y Aabb (2). Otros tres son recesivos para a y dominantes para B: aaBB (1) y aaBb (2)."},
+{"texto":"Fenotipo con ambos rasgos recesivos ⇒ 1 de 16","explicacion":"Solo corresponde al genotipo aabb. Es el menos frecuente y siempre es una línea pura para los dos caracteres."}
+]},
+{"titulo":"Probabilidad","puntos":[
+{"texto":"«Probabilidad» = posibilidad de que ocurra un suceso","explicacion":"Se expresa como una fracción entre 0 y 1, o como porcentaje. En genética sirve para predecir la proporción de descendientes con cierto genotipo o fenotipo."},
+{"texto":"Cada gameto de un heterocigoto ⇒ probabilidad un medio","explicacion":"Un individuo Aa forma gametos A con probabilidad 1/2 y gametos a con probabilidad 1/2. Es como lanzar una moneda."},
+{"texto":"«Regla del producto» ⇒ multiplicar probabilidades independientes","explicacion":"Cuando dos sucesos son independientes, la probabilidad de que ocurran ambos es el producto de sus probabilidades. Por ejemplo, un descendiente aa de un cruce Aa × Aa requiere un gameto a de cada progenitor: 1/2 × 1/2 = 1/4."},
+{"texto":"«Regla de la suma» ⇒ sumar probabilidades excluyentes","explicacion":"Cuando un resultado puede darse por varios caminos que no pueden ocurrir a la vez, se suman sus probabilidades. Por ejemplo, un hijo con rasgo dominante en Aa × Aa puede ser AA con probabilidad 1/4 o Aa con probabilidad 1/2, y su suma es 3/4."},
+{"texto":"Probabilidad de aabb en AaBb × AaBb = 1/16","explicacion":"Se multiplican las probabilidades de cada carácter: aa con probabilidad 1/4 y bb con probabilidad 1/4, de modo que 1/4 × 1/4 = 1/16. Coincide con el cuadro de Punnett."},
+{"texto":"Probabilidad de ambos rasgos dominantes = 9/16","explicacion":"Cada carácter tiene probabilidad 3/4 de mostrar el rasgo dominante, y 3/4 × 3/4 = 9/16. Es el mismo valor de la proporción 9 : 3 : 3 : 1."},
+{"texto":"Dos hijos sucesivos aa en Aa × Aa = 1/16","explicacion":"Cada hijo tiene probabilidad 1/4 de ser aa, independiente del anterior, y 1/4 × 1/4 = 1/16. Tener un hijo afectado no cambia la probabilidad del siguiente."}
+]},
+{"titulo":"Fórmulas de combinación","puntos":[
+{"texto":"Tipos de gametos = 2 elevado al número de genes heterocigotos","explicacion":"Con un gen heterocigoto se forman 2 tipos de gametos, con dos genes 4 y con tres genes 8. Los genes en homocigosis no aumentan el número."},
+{"texto":"Combinaciones en el cuadro = 4 elevado al número de genes heterocigotos","explicacion":"Con un gen heterocigoto en ambos progenitores son 4 combinaciones, con dos genes 16 y con tres genes 64."},
+{"texto":"Genotipos distintos en F2 = 3 elevado al número de genes heterocigotos","explicacion":"Con un gen hay 3 genotipos, con dos genes 9 y con tres genes 27."},
+{"texto":"Fenotipos distintos en F2 = 2 elevado al número de genes heterocigotos","explicacion":"Vale para dominancia completa. Con un gen hay 2 fenotipos, con dos genes 4 y con tres genes 8."},
+{"texto":"Trihíbrido AaBbCc ⇒ 8 gametos + 64 combinaciones + 27 genotipos + 8 fenotipos","explicacion":"Se obtiene al aplicar las cuatro fórmulas con tres genes. La proporción fenotípica de F2 es 27 : 9 : 9 : 9 : 3 : 3 : 3 : 1, que resulta de multiplicar (3 : 1) tres veces."}
+]},
+{"titulo":"Base cromosómica","puntos":[
+{"texto":"Alelos de un gen ∈ cromosomas homólogos","explicacion":"Los dos alelos de un individuo se ubican en el mismo locus de los dos cromosomas del par. Sutton y Boveri relacionaron esto con los factores de Mendel."},
+{"texto":"Segunda ley ⇒ separación de homólogos en anafase I","explicacion":"Durante la primera división de la meiosis, los cromosomas homólogos se separan hacia polos opuestos. Cada gameto recibe un solo cromosoma de cada par, y con él un solo alelo."},
+{"texto":"Tercera ley ⇒ orientación al azar de los pares de homólogos","explicacion":"En la metafase I cada par de homólogos se coloca en el plano ecuatorial con orientación independiente de los demás pares. Así se forman todas las combinaciones posibles de alelos de genes en cromosomas distintos."},
+{"texto":"Fecundación ⇒ restablece los pares de alelos","explicacion":"La unión del espermatozoide con el óvulo reúne dos juegos de cromosomas, y con ello vuelven a formarse los pares de alelos que Mendel llamó pares de factores."}
+]},
+{"titulo":"Limitaciones de las leyes","puntos":[
+{"texto":"«Ligamiento» ⇒ excepción a la tercera ley","explicacion":"Los genes ubicados cerca en el mismo cromosoma tienden a heredarse juntos y no de forma independiente. Fue descrito por Thomas Hunt Morgan con la mosca Drosophila."},
+{"texto":"Dominancia incompleta ⇒ excepción a la primera ley","explicacion":"En F1 aparece un fenotipo intermedio, de modo que no se observa solo el rasgo dominante. La uniformidad se mantiene, y se estudia en su propio tema."},
+{"texto":"Codominancia + alelos múltiples ⇒ amplían las leyes","explicacion":"Son casos en que el heterocigoto muestra los dos rasgos o en que existen más de dos alelos por gen. Se estudian en sus propios temas."},
+{"texto":"Leyes de Mendel ⇒ se mantienen como base de la genética","explicacion":"Las excepciones no las invalidan; las precisan. La separación de alelos y su unión al azar siguen siendo el fundamento de la herencia en la mayoría de los organismos."}
+]},
+{"titulo":"Conexión con otros temas","puntos":[
+{"texto":"Experimentos de Mendel dan origen a las leyes","explicacion":"Los cruces con arveja, los siete caracteres y la técnica de cruzamiento se desarrollan en el tema anterior."},
+{"texto":"Cruce de prueba aplica la segunda ley","explicacion":"Usa un cruce con un homocigoto recesivo para saber si un individuo dominante es AA o Aa. Se estudia en su propio tema."},
+{"texto":"Genética humana aplica estas leyes a familias","explicacion":"Los árboles genealógicos y las enfermedades hereditarias se desarrollan en su propio tema."},
+{"texto":"Meiosis explica la base celular de las leyes","explicacion":"Las fases de la meiosis y la formación de gametos se estudian en el tema correspondiente."}
+]}
+]
 }

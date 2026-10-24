@@ -2,47 +2,526 @@
   "curso": "Biología",
   "tema": "Teorías sobre el origen de la vida",
   "glosario": {
-    "Abiogénesis": "Origen de la vida a partir de materia no viva.",
-    "Biogénesis": "Principio de que la vida solo surge de vida preexistente.",
-    "Generación espontánea": "Idea descartada de que seres vivos surgen de materia inerte.",
-    "Panspermia": "Hipótesis de que la vida llegó a la Tierra desde el espacio.",
-    "Creacionismo": "Idea de que la vida fue creada por una entidad sobrenatural.",
-    "Coacervado": "Agregado de moléculas orgánicas rodeado de agua.",
-    "Protobionte": "Agregado molecular precursor de la célula primitiva."
+    "abiogénesis": "Origen de la vida desde materia inerte",
+    "biogénesis": "Todo ser vivo procede de otro",
+    "generación espontánea": "Idea de seres vivos desde materia inerte",
+    "creacionismo": "Creencia en el origen divino de la vida",
+    "fijismo": "Idea de especies que no cambian",
+    "panspermia": "Origen de la vida fuera de la Tierra",
+    "coacervado": "Gotita de coloides rodeada de agua",
+    "protobionte": "Agregado de moléculas anterior a la célula",
+    "microesfera proteinoide": "Esfera formada al calentar aminoácidos",
+    "liposoma": "Esfera de fosfolípidos",
+    "ribozima": "ARN con actividad catalítica",
+    "atmósfera reductora": "Atmósfera sin oxígeno, rica en hidrógeno",
+    "heterótrofo": "Organismo que no fabrica su alimento",
+    "autótrofo": "Organismo que fabrica su alimento",
+    "anaerobio": "Organismo que vive sin oxígeno",
+    "fermentación": "Obtención de energía sin oxígeno",
+    "quimiosíntesis": "Fabricación de alimento con energía química",
+    "estromatolito": "Roca laminada formada por microorganismos",
+    "cianobacteria": "Bacteria fotosintética",
+    "fuente hidrotermal": "Chimenea submarina de agua caliente",
+    "esporas": "Formas de resistencia de microorganismos",
+    "meteorito": "Fragmento rocoso caído desde el espacio",
+    "capa de ozono": "Capa atmosférica que filtra radiación ultravioleta",
+    "procariota": "Célula sin núcleo",
+    "eucariota": "Célula con núcleo",
+    "polímero": "Molécula formada por unidades repetidas",
+    "monómero": "Unidad que forma un polímero",
+    "abiótico": "Sin intervención de seres vivos"
   },
   "theory": [
     {
-      "titulo": "Ideas antiguas",
+      "titulo": "Origen de la vida",
       "puntos": [
-        { "texto": "El «creacionismo» atribuye el origen de la vida a una creación sobrenatural.", "explicacion": "No es una hipótesis contrastable con el método científico." },
-        { "texto": "La «generación espontánea» suponía que la vida surgía de materia inerte.", "explicacion": "Experimentos con recipientes cerrados demostraron que no ocurre en condiciones normales." }
+        {
+          "texto": "«Origen de la vida» = cómo surgieron los primeros seres vivos",
+          "explicacion": "Es un problema que se aborda con hipótesis, porque no se puede observar directamente. Se apoya en la geología, la química, la astronomía y la paleontología."
+        },
+        {
+          "texto": "Abiogénesis = vida a partir de materia no viva",
+          "explicacion": "Es el proceso que se postula para el origen de la primera vida, y no debe confundirse con la teoría de la generación espontánea, que suponía su ocurrencia continua."
+        },
+        {
+          "texto": "Biogénesis = todo ser vivo procede de otro ser vivo",
+          "explicacion": "Es el principio que hoy rige para los organismos actuales, y se resume en la frase latina omne vivum ex vivo."
+        },
+        {
+          "texto": "Edad de la Tierra ≈ 4540 millones de años",
+          "explicacion": "Se calcula por la datación radiactiva de rocas y meteoritos. La vida apareció después de que el planeta se enfriara lo suficiente para tener agua líquida."
+        },
+        {
+          "texto": "Circón más antiguo ≈ 4400 millones de años",
+          "explicacion": "Su composición sugiere que ya había agua líquida en la superficie terrestre poco después de formarse el planeta."
+        },
+        {
+          "texto": "Hipótesis principales ⊃ creacionismo, generación espontánea, panspermia y quimiosintética",
+          "explicacion": "Cada una explica el origen de la vida de modo distinto: las dos primeras son históricas y las dos últimas son las que hoy se discuten con base científica."
+        }
       ]
     },
     {
-      "titulo": "Biogénesis",
+      "titulo": "Creacionismo",
       "puntos": [
-        { "texto": "La «biogénesis» afirma que todo ser vivo proviene de otro preexistente.", "explicacion": "Es la base de la teoría celular y del rechazo a la generación espontánea." }
+        {
+          "texto": "Creacionismo = la vida es obra de un creador",
+          "explicacion": "Sostiene que un ser sobrenatural creó la vida y las especies. Se basa en textos religiosos y no en pruebas experimentales."
+        },
+        {
+          "texto": "Fijismo = las especies no cambian",
+          "explicacion": "Complementa al creacionismo: afirma que las especies actuales son las mismas desde su creación."
+        },
+        {
+          "texto": "James Ussher fechó la creación en el año 4004 antes de Cristo",
+          "explicacion": "Arzobispo irlandés que en 1650 calculó esa fecha sumando las generaciones de la Biblia; hoy se sabe que es incompatible con la edad real de la Tierra."
+        },
+        {
+          "texto": "Creacionismo ✗ comprobable con el método científico",
+          "explicacion": "Sus afirmaciones no pueden ponerse a prueba con experimentos, por eso no se considera una explicación científica del origen de la vida."
+        }
+      ]
+    },
+    {
+      "titulo": "Generación espontánea",
+      "puntos": [
+        {
+          "texto": "Generación espontánea = seres vivos nacen de materia inerte",
+          "explicacion": "También se llama abiogénesis clásica. Suponía que ciertos organismos surgían de forma continua del barro, la carne podrida o la basura."
+        },
+        {
+          "texto": "Aristóteles defendió la generación espontánea",
+          "explicacion": "Pensaba que insectos, gusanos y algunos peces surgían de la humedad, el rocío o la materia en descomposición, y su autoridad hizo que la idea dominara casi dos mil años."
+        },
+        {
+          "texto": "Jan Baptist van Helmont propuso una receta para ratones",
+          "explicacion": "Afirmó que granos de trigo y una camisa sucia, guardados en un recipiente, producían ratones en unos 21 días; en realidad los ratones entraban atraídos por el grano."
+        },
+        {
+          "texto": "Antonie van Leeuwenhoek observó microorganismos en 1676",
+          "explicacion": "Con sus microscopios descubrió los animálculos en el agua, lo que planteó de dónde venían y reavivó el debate."
+        },
+        {
+          "texto": "Carne podrida ⇒ gusanos en la mentalidad antigua",
+          "explicacion": "Aparecían larvas en la carne descompuesta y se creía que la carne las producía, sin saber que provenían de huevos de moscas."
+        }
+      ]
+    },
+    {
+      "titulo": "Experimentos contra la espontánea",
+      "puntos": [
+        {
+          "texto": "William Harvey postuló que todo animal procede de un huevo",
+          "explicacion": "En 1651 resumió su idea con omne vivum ex ovo, una de las primeras objeciones a la generación espontánea."
+        },
+        {
+          "texto": "Francesco Redi realizó su experimento en 1668",
+          "explicacion": "Fue el primer experimento controlado contra la generación espontánea de los organismos visibles, hecho con frascos que contenían carne."
+        },
+        {
+          "texto": "Redi ⇒ frascos abiertos, cubiertos con gasa y sellados",
+          "explicacion": "Puso trozos de carne en tres grupos de frascos, uno abierto, otro cerrado con gasa y otro sellado, para comprobar el papel de las moscas."
+        },
+        {
+          "texto": "Redi ⇒ larvas solo en el frasco abierto",
+          "explicacion": "Las moscas ponían huevos en la carne del frasco abierto, y en el de gasa los dejaban sobre la tela, pero en el sellado no había larvas."
+        },
+        {
+          "texto": "Experimento de Redi ✗ explica a los microorganismos",
+          "explicacion": "Sus resultados no impidieron que se siguiera creyendo que los microbios sí podían surgir de forma espontánea."
+        },
+        {
+          "texto": "John Turberville Needham defendió la espontánea con caldos",
+          "explicacion": "Entre 1745 y 1748 calentó caldos de carne, los selló con corchos y vio que aparecían microorganismos, y concluyó que se generaban por una fuerza vital."
+        },
+        {
+          "texto": "Lazzaro Spallanzani repitió el experimento en 1768",
+          "explicacion": "Hirvió los caldos más tiempo y selló los frascos fundiendo el cuello de vidrio, y no aparecieron microorganismos."
+        },
+        {
+          "texto": "Needham objetó que sin aire no hay fuerza vital",
+          "explicacion": "Respondió que el calor excesivo destruía la fuerza vital y que sellar los frascos impedía el paso del aire necesario."
+        },
+        {
+          "texto": "Louis Pasteur resolvió la controversia en 1862",
+          "explicacion": "Con un experimento muy elegante demostró que los microorganismos del caldo venían del aire y no se generaban solos."
+        },
+        {
+          "texto": "Pasteur ⇒ matraz de cuello de cisne",
+          "explicacion": "Hirvió caldos en matraces cuyo cuello largo y curvo dejaba pasar el aire, pero retenía el polvo y los microbios."
+        },
+        {
+          "texto": "Matraz de Pasteur ⇒ caldo estéril mientras el cuello esté intacto",
+          "explicacion": "Los microorganismos se quedaban en la curva del cuello. Si el cuello se rompía o el matraz se inclinaba, el caldo se contaminaba."
+        },
+        {
+          "texto": "Pasteur ⇒ el aire no genera vida por sí solo",
+          "explicacion": "Demostró que el aire sin microorganismos no produce vida, así que la fuerza vital de Needham no era necesaria."
+        },
+        {
+          "texto": "John Tyndall explicó los fracasos en 1877",
+          "explicacion": "Demostró que algunos caldos requieren hervirse varias veces porque contienen formas resistentes de las bacterias, llamadas esporas."
+        },
+        {
+          "texto": "Rudolf Virchow formuló omne cellula e cellula en 1855",
+          "explicacion": "Afirmó que toda célula procede de otra célula, y apoyó la biogénesis en el nivel celular."
+        },
+        {
+          "texto": "Resultado ⇒ triunfo de la biogénesis",
+          "explicacion": "Desde Pasteur se aceptó que los organismos actuales proceden de otros seres vivos, pero quedó sin explicar cómo apareció la primera vida."
+        }
       ]
     },
     {
       "titulo": "Panspermia",
       "puntos": [
-        { "texto": "La «panspermia» propone que la vida llegó a la Tierra desde el espacio.", "explicacion": "No explica cómo surgió la vida, solo cómo pudo llegar al planeta." }
+        {
+          "texto": "Panspermia = la vida llegó del espacio",
+          "explicacion": "Propone que la vida, o sus componentes, se originó en otro lugar del universo y llegó a la Tierra en meteoritos o cometas."
+        },
+        {
+          "texto": "Anaxágoras ⇒ idea antigua de panspermia",
+          "explicacion": "El filósofo griego pensó que las semillas de la vida estaban esparcidas por el cosmos."
+        },
+        {
+          "texto": "Hermann von Helmholtz y William Thomson (Lord Kelvin) la retomaron en 1871",
+          "explicacion": "Propusieron que meteoritos podrían haber traído organismos desde otros mundos a la Tierra."
+        },
+        {
+          "texto": "Svante August Arrhenius formuló la panspermia en 1908",
+          "explicacion": "Sugirió que esporas viajaban por el espacio impulsadas por la presión de la radiación estelar; recibió el Premio Nobel de Química en 1903, por otro trabajo."
+        },
+        {
+          "texto": "Panspermia dirigida = la vida fue sembrada intencionalmente",
+          "explicacion": "Francis Crick y Leslie Orgel la propusieron en 1973, con seres inteligentes que habrían enviado microorganismos a la Tierra."
+        },
+        {
+          "texto": "Meteorito Murchison ⇒ aminoácidos extraterrestres",
+          "explicacion": "Cayó en Australia en 1969 y contenía muchos aminoácidos y otras moléculas orgánicas, lo que muestra que se pueden formar fuera de la Tierra."
+        },
+        {
+          "texto": "Meteorito ALH84001 ⇒ posibles señales de vida en Marte",
+          "explicacion": "Procede de Marte y en 1996 se anunciaron estructuras parecidas a bacterias fósiles, pero esa interpretación sigue discutida."
+        },
+        {
+          "texto": "Tardígrados ⇒ resistencia extrema",
+          "explicacion": "Estos animales microscópicos sobreviven al vacío y a la radiación en el espacio, y se usan para discutir si organismos podrían viajar entre planetas."
+        },
+        {
+          "texto": "Panspermia ✗ explica el origen de la vida",
+          "explicacion": "Solo traslada el problema a otro lugar del universo, sin explicar cómo surgió la vida allí."
+        },
+        {
+          "texto": "Radiación ultravioleta y cósmica ⇒ obstáculo para la panspermia",
+          "explicacion": "Los microorganismos en el espacio recibirían radiación que dañaría su material genético durante un viaje largo."
+        }
       ]
     },
     {
-      "titulo": "Abiogénesis química",
+      "titulo": "Teoría de Oparin y Haldane",
       "puntos": [
-        { "texto": "La «abiogénesis» química propone que la vida surgió de moléculas orgánicas simples.", "explicacion": "Alexander Oparin y John Haldane propusieron que la atmósfera primitiva era reductora." },
-        { "texto": "Los compuestos orgánicos se acumularon en una «sopa primordial».", "explicacion": "La energía luminosa y las descargas eléctricas favorecieron la formación de moléculas complejas." },
-        { "texto": "Los «coacervados» serían agregados precursores de las primeras células.", "explicacion": "Se formarían al agrupar moléculas orgánicas rodeadas de agua." }
+        {
+          "texto": "Hipótesis quimiosintética = la vida surgió por evolución química",
+          "explicacion": "Propone que moléculas inorgánicas formaron compuestos orgánicos cada vez más complejos, hasta originar los primeros seres vivos, en la Tierra primitiva."
+        },
+        {
+          "texto": "Aleksandr Ivánovich Oparin la propuso en 1924",
+          "explicacion": "Fue un bioquímico ruso que publicó El origen de la vida; ampliaría su teoría en un libro de 1936."
+        },
+        {
+          "texto": "John Burdon Sanderson Haldane propuso ideas similares en 1929",
+          "explicacion": "Fue un biólogo británico que llegó de forma independiente a una hipótesis muy parecida, por eso la teoría lleva ambos nombres."
+        },
+        {
+          "texto": "Atmósfera primitiva de Oparin = reductora",
+          "explicacion": "Sin oxígeno libre y rica en metano, amoníaco, hidrógeno y vapor de agua, que son gases con tendencia a ceder electrones."
+        },
+        {
+          "texto": "Oxígeno libre ✗ en la atmósfera primitiva",
+          "explicacion": "El oxígeno habría destruido las moléculas orgánicas formadas, así que su ausencia fue condición para el origen de la vida."
+        },
+        {
+          "texto": "Fuentes de energía ⊃ radiación ultravioleta, descargas eléctricas, calor y radiactividad",
+          "explicacion": "Esa energía rompía y reordenaba los gases de la atmósfera, y formaba compuestos orgánicos sencillos; sin capa de ozono, la radiación ultravioleta llegaba sin filtro."
+        },
+        {
+          "texto": "Caldo primitivo = mar rico en compuestos orgánicos",
+          "explicacion": "Haldane lo describió como una sopa caliente diluida formada por la lluvia que arrastraba los compuestos al océano."
+        },
+        {
+          "texto": "Etapa 1 ⇒ formación de compuestos orgánicos simples",
+          "explicacion": "A partir de los gases de la atmósfera se formaron moléculas como aminoácidos, azúcares y bases nitrogenadas."
+        },
+        {
+          "texto": "Etapa 2 ⇒ formación de polímeros",
+          "explicacion": "Los compuestos simples se unieron entre sí, quizá sobre arcillas o en charcas que se secaban, y originaron proteínas y ácidos nucleicos primitivos."
+        },
+        {
+          "texto": "Etapa 3 ⇒ formación de coacervados",
+          "explicacion": "Los polímeros se agruparon en gotitas separadas del agua, con una frontera que les permitía intercambiar sustancias."
+        },
+        {
+          "texto": "Etapa 4 ⇒ aparición de protobiontes con herencia",
+          "explicacion": "Algunos agregados adquirieron la capacidad de copiarse y de transmitir sus características, y se convirtieron en las primeras células."
+        },
+        {
+          "texto": "Primeros seres vivos ⇒ heterótrofos anaerobios",
+          "explicacion": "Se alimentaban de las moléculas orgánicas del caldo primitivo y obtenían energía por fermentación, pues no había oxígeno."
+        },
+        {
+          "texto": "Agotamiento del alimento ⇒ aparición de autótrofos",
+          "explicacion": "Cuando faltó el alimento ya formado, se vieron favorecidos los organismos capaces de fabricar su propio alimento, primero por quimiosíntesis y luego por fotosíntesis."
+        },
+        {
+          "texto": "Fotosíntesis ⇒ oxígeno libre en la atmósfera",
+          "explicacion": "Las cianobacterias liberaron oxígeno hace unos 2400 millones de años, en el llamado gran evento de oxidación, lo que permitió la respiración aeróbica."
+        },
+        {
+          "texto": "Oxígeno ⇒ capa de ozono",
+          "explicacion": "Parte del oxígeno se transformó en ozono, que filtra la radiación ultravioleta y permitió a la vida colonizar tierra firme."
+        },
+        {
+          "texto": "Respiración aeróbica ⇒ mayor aprovechamiento de energía",
+          "explicacion": "Los organismos aerobios obtienen mucha más energía del alimento que los fermentadores, y esto favoreció seres más complejos."
+        }
+      ]
+    },
+    {
+      "titulo": "Coacervados",
+      "puntos": [
+        {
+          "texto": "Coacervado = gotita formada por coloides",
+          "explicacion": "Oparin los propuso como modelo de protobionte: son agregados de proteínas, azúcares y otras moléculas rodeados de agua."
+        },
+        {
+          "texto": "Coacervado ⇒ forma una frontera con el medio",
+          "explicacion": "Aunque no tiene membrana verdadera, la capa de agua que lo rodea lo separa del entorno y selecciona qué sustancias entran."
+        },
+        {
+          "texto": "Coacervado ⇒ puede incorporar sustancias",
+          "explicacion": "Absorbe moléculas del medio, crece y se divide al hacerse grande, lo que se parece a algunas funciones de una célula."
+        },
+        {
+          "texto": "Coacervado ✗ herencia propia",
+          "explicacion": "No copia información genética, por eso no es una célula, solo un modelo de organización previo a la vida."
+        },
+        {
+          "texto": "Protobionte = agregado de moléculas antes de la célula",
+          "explicacion": "Tiene frontera y cierto metabolismo, pero carece de un sistema hereditario completo."
+        },
+        {
+          "texto": "Microesferas proteinoides = modelo de Sidney Fox",
+          "explicacion": "Fox las obtuvo en la década de 1950 al calentar mezclas secas de aminoácidos y disolver el producto en agua."
+        },
+        {
+          "texto": "Microesferas de Fox ⇒ crecen y se dividen",
+          "explicacion": "Tienen una doble capa parecida a una membrana y algunas actividades enzimáticas sencillas."
+        },
+        {
+          "texto": "Liposoma = esfera de fosfolípidos",
+          "explicacion": "Se forma de manera espontánea en agua, y es un modelo de cómo pudo originarse la membrana de las primeras células."
+        }
       ]
     },
     {
       "titulo": "Experimento de Miller y Urey",
       "puntos": [
-        { "texto": "Stanley Miller y Harold Urey simularon la atmósfera primitiva en un laboratorio.", "explicacion": "Usaron vapor de agua, metano, amoníaco e hidrógeno, con descargas eléctricas." },
-        { "texto": "El experimento produjo aminoácidos a partir de compuestos inorgánicos.", "explicacion": "Demostró que la síntesis de moléculas orgánicas es posible en condiciones prebióticas." }
+        {
+          "texto": "Experimento de Miller y Urey = síntesis abiótica de aminoácidos",
+          "explicacion": "Stanley Lloyd Miller, bajo la dirección de Harold Clayton Urey, lo realizó en la Universidad de Chicago en 1953, y publicó los resultados en la revista Science."
+        },
+        {
+          "texto": "Objetivo ⇒ probar la hipótesis de Oparin y Haldane",
+          "explicacion": "Quisieron comprobar si en condiciones parecidas a las de la Tierra primitiva se formaban compuestos orgánicos."
+        },
+        {
+          "texto": "Aparato ⊃ matraz con agua y otro con gases",
+          "explicacion": "El agua representaba el océano primitivo y los gases, la atmósfera."
+        },
+        {
+          "texto": "Gases usados = metano, amoníaco, hidrógeno y vapor de agua",
+          "explicacion": "Es la mezcla reductora propuesta por Oparin, sin oxígeno libre."
+        },
+        {
+          "texto": "Descargas eléctricas ⇒ simulan relámpagos",
+          "explicacion": "Dos electrodos producían chispas dentro del matraz de gases, como fuente de energía para las reacciones."
+        },
+        {
+          "texto": "Calentamiento y condensador ⇒ ciclo del agua",
+          "explicacion": "El agua se evaporaba, circulaba con los gases, se enfriaba y caía como lluvia a una trampa, y el ciclo se repetía."
+        },
+        {
+          "texto": "Duración = una semana",
+          "explicacion": "Tras ese tiempo el líquido de la trampa se había vuelto turbio y de color rojizo o pardo."
+        },
+        {
+          "texto": "Resultado ⇒ aminoácidos y otros compuestos orgánicos",
+          "explicacion": "Se identificaron glicina, alanina, ácido aspártico y ácido glutámico, además de ácidos orgánicos y urea."
+        },
+        {
+          "texto": "Experimento ⇒ moléculas de la vida se forman sin seres vivos",
+          "explicacion": "Mostró que bajo condiciones adecuadas se pueden formar de manera abiótica los aminoácidos, componentes de las proteínas."
+        },
+        {
+          "texto": "Productos ✗ proteínas ni seres vivos",
+          "explicacion": "Solo se obtuvieron monómeros, y de ellos a la célula hay muchos pasos que no se habían demostrado."
+        },
+        {
+          "texto": "Reanálisis de 2008 ⇒ más de 20 aminoácidos",
+          "explicacion": "Jeffrey Bada y su equipo estudiaron muestras guardadas de Miller y encontraron más aminoácidos de los publicados originalmente."
+        },
+        {
+          "texto": "Crítica ⇒ la atmósfera primitiva quizá no era reductora",
+          "explicacion": "Muchos geólogos piensan que era más rica en dióxido de carbono y nitrógeno, con menos producción de aminoácidos."
+        },
+        {
+          "texto": "Compuestos orgánicos se forman también cerca de volcanes",
+          "explicacion": "Los gases volcánicos con rayos pueden producir moléculas similares, lo que apoya la validez del experimento."
+        },
+        {
+          "texto": "Joan Oró sintetizó adenina en 1960",
+          "explicacion": "Obtuvo esa base nitrogenada del ácido nucleico a partir de cianuro de amonio en agua, lo que mostró que las bases también se forman de manera abiótica."
+        }
+      ]
+    },
+    {
+      "titulo": "Mundo de ARN",
+      "puntos": [
+        {
+          "texto": "Mundo de ARN = ARN como primera molécula de la vida",
+          "explicacion": "Según esta hipótesis, el Ácido Ribonucleico (ARN) guardaba información y también catalizaba reacciones, antes de que existieran el Ácido Desoxirribonucleico (ADN) y las proteínas."
+        },
+        {
+          "texto": "Problema ⇒ ¿qué fue primero, ADN o proteínas?",
+          "explicacion": "El ADN necesita proteínas para copiarse y las proteínas necesitan ADN para fabricarse, así que el ARN resuelve ese círculo."
+        },
+        {
+          "texto": "Ribozima = ARN con actividad catalítica",
+          "explicacion": "Thomas Cech la descubrió en 1982 en el protozoo Tetrahymena, y Sidney Altman en 1983 en una enzima bacteriana; ambos recibieron el Premio Nobel de Química en 1989."
+        },
+        {
+          "texto": "Walter Gilbert acuñó el término mundo de ARN en 1986",
+          "explicacion": "Lo propuso en una revista científica para describir una etapa en que el ARN cumplía todas las funciones."
+        },
+        {
+          "texto": "ARN ⇒ guarda información genética",
+          "explicacion": "Su secuencia de bases puede transportar información, como ocurre en el material genético de muchos virus."
+        },
+        {
+          "texto": "ARN ⇒ cataliza reacciones químicas",
+          "explicacion": "Las ribozimas pueden cortar y unir moléculas de ARN, y así copiarse a sí mismo."
+        },
+        {
+          "texto": "Ribosoma ⇒ evidencia del mundo de ARN",
+          "explicacion": "La reacción que une aminoácidos es catalizada por el ARN ribosómico, y así lo hace una ribozima."
+        },
+        {
+          "texto": "ARN → ADN y proteínas",
+          "explicacion": "El ADN, más estable, tomó el papel de guardar la información, y las proteínas, más variadas, el de catalizar las reacciones."
+        },
+        {
+          "texto": "Mundo de ARN ✗ demostrado por completo",
+          "explicacion": "Todavía no se ha logrado formar el ARN de manera abiótica por completo, y su molécula es inestable."
+        }
+      ]
+    },
+    {
+      "titulo": "Hipótesis hidrotermal",
+      "puntos": [
+        {
+          "texto": "Hipótesis hidrotermal = la vida surgió en fuentes del fondo marino",
+          "explicacion": "Propone que los primeros seres aparecieron en el fondo oceánico, donde hay agua caliente cargada de minerales y energía química."
+        },
+        {
+          "texto": "Fuente hidrotermal = chimenea de agua caliente en el fondo del mar",
+          "explicacion": "Expulsa agua con sulfuros y metales, y alberga comunidades de organismos sin necesidad de luz solar."
+        },
+        {
+          "texto": "Chimeneas negras ⇒ agua muy caliente rica en sulfuros",
+          "explicacion": "Expulsan agua a más de 300 grados Celsius con sulfuro de hierro, que precipita como humo oscuro."
+        },
+        {
+          "texto": "Fuentes alcalinas ⇒ agua tibia y rica en hidrógeno",
+          "explicacion": "Michael Russell las propuso como cuna de la vida, pues sus poros de minerales funcionan como pequeñas cámaras."
+        },
+        {
+          "texto": "Ciudad Perdida ⇒ campo de fuentes alcalinas",
+          "explicacion": "Fue descubierto en el Atlántico en el año 2000 y sirve como modelo de cómo habrían sido las fuentes primitivas."
+        },
+        {
+          "texto": "Gradiente de protones ⇒ fuente de energía de las primeras células",
+          "explicacion": "La diferencia de acidez entre el agua de la fuente y el océano pudo impulsar reacciones químicas, como ocurre hoy en las células."
+        },
+        {
+          "texto": "Mundo de hierro y azufre = propuesta de Günter Wächtershäuser",
+          "explicacion": "En 1988 planteó que las reacciones del metabolismo primitivo ocurrieron sobre la superficie de minerales de sulfuro de hierro."
+        },
+        {
+          "texto": "Ventaja ⇒ protección de la radiación ultravioleta",
+          "explicacion": "En el fondo marino la vida estaba a salvo de la radiación y de los impactos de meteoritos grandes."
+        },
+        {
+          "texto": "Hipótesis de las arcillas = propuesta de Graham Cairns-Smith",
+          "explicacion": "En 1966 sugirió que cristales de arcilla pudieron copiarse y servir de molde y de superficie para las primeras moléculas orgánicas."
+        }
+      ]
+    },
+    {
+      "titulo": "Evidencias de la vida primitiva",
+      "puntos": [
+        {
+          "texto": "Estromatolito = roca formada por capas de microorganismos",
+          "explicacion": "Es una estructura laminada producida por cianobacterias, y es de los fósiles más antiguos que se conocen."
+        },
+        {
+          "texto": "Estromatolitos más antiguos ≈ 3500 millones de años",
+          "explicacion": "Hay ejemplos en Australia, lo que indica que la vida ya existía poco después de que la Tierra se enfriara."
+        },
+        {
+          "texto": "Primeros fósiles ⇒ microorganismos procariotas",
+          "explicacion": "Eran células sin núcleo, y tardó más de mil millones de años en aparecer la célula eucariota."
+        },
+        {
+          "texto": "Último ancestro común universal (LUCA) = antepasado de todos los seres vivos",
+          "explicacion": "Es la población de células de la que descienden las bacterias, arqueas y eucariotas; se estima que vivió hace unos 3500 a 4000 millones de años."
+        },
+        {
+          "texto": "Código genético universal ⇒ ancestro común",
+          "explicacion": "Todos los seres vivos usan el mismo código genético y el mismo sistema para fabricar proteínas, lo que apoya un origen único."
+        },
+        {
+          "texto": "Gran evento de oxidación ≈ 2400 millones de años",
+          "explicacion": "Los depósitos de hierro en bandas de las rocas antiguas muestran cuándo el oxígeno comenzó a acumularse en la atmósfera."
+        },
+        {
+          "texto": "Célula eucariota ≈ 2000 millones de años",
+          "explicacion": "Su origen se explica por la teoría endosimbiótica, que se estudia con la célula eucariota en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorías sobre el origen: comparación",
+      "puntos": [
+        {
+          "texto": "Generación espontánea ≠ abiogénesis moderna",
+          "explicacion": "La primera decía que los organismos actuales surgen de la materia inerte todos los días. La segunda plantea que solo ocurrió una vez en la Tierra primitiva y a lo largo de millones de años."
+        },
+        {
+          "texto": "Teoría de Oparin ✓ condiciones primitivas",
+          "explicacion": "Requiere una atmósfera sin oxígeno, energía y un largo tiempo, condiciones que ya no existen en la Tierra actual."
+        },
+        {
+          "texto": "Vida actual ✗ origina de materia inerte",
+          "explicacion": "Hoy el oxígeno y los microorganismos descomponen rápido las moléculas orgánicas, así que no se formaría vida nueva fuera de las células."
+        },
+        {
+          "texto": "Teoría quimiosintética = hipótesis más aceptada",
+          "explicacion": "Es la que tiene más evidencia experimental, aunque todavía hay pasos sin demostrar."
+        },
+        {
+          "texto": "Teoría de Oparin ≈ evolución química y luego biológica",
+          "explicacion": "Primero evolucionaron las moléculas, y luego la selección natural actuó sobre las primeras células."
+        }
       ]
     }
   ]

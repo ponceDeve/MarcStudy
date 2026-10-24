@@ -1,0 +1,73 @@
+{
+  "curso": "Física",
+  "tema": "Movimiento Circular Uniformemente Variado",
+  "glosario": {
+    "Movimiento Circular Uniformemente Variado": "Movimiento circular con aceleración angular constante",
+    "Aceleración angular": "Cambio de velocidad angular por unidad de tiempo",
+    "Velocidad angular inicial": "Velocidad angular al comenzar el intervalo",
+    "Aceleración tangencial": "Aceleración que cambia la rapidez del cuerpo",
+    "Aceleración centrípeta": "Aceleración que cambia la dirección del movimiento"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de MCUV",
+      "puntos": [
+        {
+          "texto": "Movimiento Circular Uniformemente Variado (MCUV) tiene aceleración angular constante.",
+          "explicacion": "La rapidez angular cambia cantidades iguales en tiempos iguales, en una circunferencia."
+        },
+        {
+          "texto": "La rapidez del cuerpo varía en el MCUV.",
+          "explicacion": "Por eso aparece una aceleración tangencial, además de la centrípeta."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones angulares",
+      "puntos": [
+        {
+          "texto": "Velocidad angular: ω = ω0 + α × t.",
+          "explicacion": "Ejemplo: ω0 = 2 rad/s, α = 1 rad/s², t = 4 s; ω = 2 + 1 × 4 = 6 rad/s."
+        },
+        {
+          "texto": "Ángulo recorrido: θ = ω0 × t + ½ × α × t².",
+          "explicacion": "Con los mismos datos: θ = 2 × 4 + ½ × 1 × 16 = 16 rad."
+        },
+        {
+          "texto": "Sin tiempo: ω² = ω0² + 2 × α × θ.",
+          "explicacion": "Comprobación: ω² = 4 + 2 × 1 × 16 = 36, así ω = 6 rad/s, igual al primer resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Aceleraciones lineales",
+      "puntos": [
+        {
+          "texto": "Aceleración tangencial: at = α × R.",
+          "explicacion": "Ejemplo: α = 1 rad/s² y R = 2 m; at = 2 m/s²."
+        },
+        {
+          "texto": "Velocidad lineal: v = ω × R.",
+          "explicacion": "Con ω = 6 rad/s y R = 2 m, v = 12 m/s."
+        },
+        {
+          "texto": "Aceleración centrípeta: ac = v² / R.",
+          "explicacion": "Con v = 12 m/s y R = 2 m, ac = 144 / 2 = 72 m/s²."
+        }
+      ]
+    },
+    {
+      "titulo": "Aceleración total",
+      "puntos": [
+        {
+          "texto": "La aceleración total combina at y ac.",
+          "explicacion": "Son perpendiculares, así que a = √(at² + ac²); con los valores anteriores, a ≈ 72,03 m/s²."
+        },
+        {
+          "texto": "La aceleración tangencial no es perpendicular al radio.",
+          "explicacion": "Es tangente a la trayectoria, mientras que la centrípeta apunta hacia el centro."
+        }
+      ]
+    }
+  ]
+}

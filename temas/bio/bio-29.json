@@ -2,55 +2,210 @@
   "curso": "Biología",
   "tema": "Tejido muscular",
   "glosario": {
-    "Miofibrilla": "Estructura contráctil formada por sarcómeros en serie.",
-    "Sarcómero": "Unidad contráctil de la miofibrilla comprendida entre dos líneas Z.",
-    "Línea Z": "Límite del sarcómero donde se anclan los filamentos de actina.",
-    "Actina": "Proteína de filamento delgado que interactúa con la miosina.",
-    "Miosina": "Proteína de filamento grueso con cabezas que se unen a la actina.",
-    "Estriación": "Patrón de bandas oscuras y claras visibles al microscopio.",
-    "Disco intercalar": "Unión entre células cardíacas que permite la contracción coordinada.",
-    "Sarcolema": "Membrana plasmática de la célula muscular."
+    "Tejido muscular": "Tejido formado por células especializadas en contraerse y producir movimiento.",
+    "Fibra muscular": "Célula muscular alargada que contiene miofibrillas en su citoplasma.",
+    "Miofibrilla": "Estructura cilíndrica formada por filamentos de actina y miosina dispuestos en paralelo.",
+    "Actina": "Proteína de los filamentos finos del músculo que se desliza sobre la miosina.",
+    "Miosina": "Proteína de los filamentos gruesos del músculo que forma puentes con la actina.",
+    "Sarcómero": "Unidad contráctil del músculo estriado, comprendida entre dos líneas Z.",
+    "Línea Z": "Límite del sarcómero y punto de anclaje de los filamentos de actina.",
+    "Banda A": "Región del sarcómero que contiene los filamentos gruesos de miosina.",
+    "Banda I": "Región del sarcómero que contiene solo filamentos finos de actina.",
+    "Estriación": "Patrón de bandas claras y oscuras que resulta de la disposición de la actina y la miosina.",
+    "Músculo estriado": "Tejido muscular con bandas transversales, que incluye el esquelético y el cardíaco.",
+    "Músculo voluntario": "Músculo que se contrae bajo control consciente, como el esquelético.",
+    "Músculo involuntario": "Músculo que se contrae sin control consciente, como el cardíaco y el liso.",
+    "Disco intercalar": "Unión especializada entre células del músculo cardíaco que permite la transmisión de la contracción.",
+    "Retículo sarcoplasmático": "Retículo endoplasmático liso especializado que almacena calcio en la fibra muscular.",
+    "Troponina": "Proteína reguladora que, al unirse al calcio, permite la interacción entre actina y miosina.",
+    "Tropomiosina": "Proteína que bloquea los sitios de unión de la actina cuando el músculo está en reposo.",
+    "Mioblasto": "Célula precursora que se fusiona para formar las fibras del músculo esquelético.",
+    "Miocardio": "Capa muscular del corazón formada por tejido muscular cardíaco."
   },
   "theory": [
     {
-      "titulo": "Concepto del tejido muscular",
+      "titulo": "Concepto de tejido muscular",
       "puntos": [
-        { "texto": "El tejido muscular produce la contracción y el movimiento.", "explicacion": "Sus células contienen gran cantidad de miofibrillas formadas por actina y miosina." },
-        { "texto": "Existen tres tipos: esquelético, cardíaco y liso.", "explicacion": "Se diferencian por estriación, control nervioso y número de núcleos." }
+        {
+          "texto": "El tejido muscular está formado por células especializadas en la contracción",
+          "explicacion": "Estas células se llaman fibras musculares y son capaces de acortarse de forma reversible y sincronizada."
+        },
+        {
+          "texto": "La contracción muscular es un acortamiento reversible de la célula",
+          "explicacion": "Al contraerse, la fibra disminuye su longitud y genera fuerza o movimiento."
+        },
+        {
+          "texto": "La contracción depende de proteínas contráctiles, principalmente actina y miosina",
+          "explicacion": "La interacción entre estas dos proteínas produce el acortamiento de la fibra."
+        }
       ]
     },
     {
-      "titulo": "Mecanismo de contracción",
+      "titulo": "Organización de la fibra muscular",
       "puntos": [
-        { "texto": "La contracción se produce por el deslizamiento de la actina sobre la miosina.", "explicacion": "Las cabezas de miosina se unen a la actina y tiran de ella, acortando el sarcómero." },
-        { "texto": "El sarcómero se extiende entre dos «líneas Z».", "explicacion": "Al contraerse, la distancia entre las líneas Z disminuye." }
+        {
+          "texto": "La fibra muscular contiene miofibrillas en su citoplasma",
+          "explicacion": "Las miofibrillas son estructuras cilíndricas paralelas al eje de la fibra que ocupan casi todo el citoplasma."
+        },
+        {
+          "texto": "Las miofibrillas están formadas por filamentos de actina y miosina",
+          "explicacion": "La miosina forma los filamentos gruesos y la actina los filamentos finos."
+        },
+        {
+          "texto": "El sarcómero es la unidad contráctil del músculo estriado",
+          "explicacion": "Se encuentra entre dos líneas Z consecutivas, y la repetición de sarcómeros produce la estriación."
+        },
+        {
+          "texto": "La estriación se debe a la disposición regular de actina y miosina",
+          "explicacion": "Las bandas claras y oscuras que se observan al microscopio reflejan la organización ordenada de estas proteínas."
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura del sarcómero",
+      "puntos": [
+        {
+          "texto": "La línea Z marca el límite del sarcómero y ancla los filamentos de actina",
+          "explicacion": "Al acortarse el sarcómero, las líneas Z se acercan entre sí."
+        },
+        {
+          "texto": "La banda A contiene los filamentos gruesos de miosina",
+          "explicacion": "Es la región oscura del sarcómero y su longitud no cambia durante la contracción."
+        },
+        {
+          "texto": "La banda I contiene solo filamentos finos de actina",
+          "explicacion": "Es la región clara del sarcómero y se acorta durante la contracción."
+        },
+        {
+          "texto": "La zona H contiene solo filamentos de miosina",
+          "explicacion": "Dato por confirmar: es la parte central de la banda A donde no hay filamentos de actina."
+        }
+      ]
+    },
+    {
+      "titulo": "Mecanismo de la contracción",
+      "puntos": [
+        {
+          "texto": "La contracción ocurre por el deslizamiento de la actina sobre la miosina",
+          "explicacion": "Los filamentos se superponen más, lo que acorta el sarcómero sin que los filamentos cambien de longitud."
+        },
+        {
+          "texto": "Las cabezas de la miosina se unen a la actina formando puentes cruzados",
+          "explicacion": "Dato por confirmar: la miosina usa energía del ATP para mover la actina en cada ciclo de contracción."
+        },
+        {
+          "texto": "El calcio permite la interacción entre actina y miosina",
+          "explicacion": "Dato por confirmar: al liberarse calcio del retículo sarcoplasmático, la troponina cambia de posición y deja libres los sitios de unión."
+        },
+        {
+          "texto": "La tropomiosina bloquea los sitios de unión de la actina en reposo",
+          "explicacion": "Dato por confirmar: al desplazarse, deja expuestos los sitios de unión y la contracción puede iniciarse."
+        },
+        {
+          "texto": "La relajación ocurre cuando el calcio regresa al retículo sarcoplasmático",
+          "explicacion": "Dato por confirmar: sin calcio libre, la troponina y la tropomiosina vuelven a bloquear la interacción entre actina y miosina."
+        }
       ]
     },
     {
       "titulo": "Músculo esquelético",
       "puntos": [
-        { "texto": "El músculo esquelético es estriado y de contracción voluntaria.", "explicacion": "Está bajo control del sistema nervioso somático." },
-        { "texto": "Sus células son cilíndricas y multinucleadas, con núcleos periféricos.", "explicacion": "Cada fibra es una célula muy larga formada por la fusión de varias células." }
+        {
+          "texto": "El músculo esquelético es estriado y voluntario",
+          "explicacion": "Sus fibras son cilindros largos y multinucleados, y se contraen bajo control consciente."
+        },
+        {
+          "texto": "El músculo esquelético se une a los huesos mediante tendones",
+          "explicacion": "Al contraerse, tira de los huesos y permite el movimiento del cuerpo."
+        },
+        {
+          "texto": "Las fibras del músculo esquelético se forman por fusión de mioblastos",
+          "explicacion": "Dato por confirmar: los mioblastos se unen en una célula con varios núcleos, lo que da origen a la fibra muscular."
+        },
+        {
+          "texto": "El músculo esquelético tiene fibras de contracción lenta y rápida",
+          "explicacion": "Dato por confirmar: las de contracción lenta actúan en movimientos sostenidos, y las rápidas en movimientos breves e intensos."
+        }
       ]
     },
     {
       "titulo": "Músculo cardíaco",
       "puntos": [
-        { "texto": "El músculo cardíaco es estriado e involuntario.", "explicacion": "Se contrae de forma rítmica y automática, aunque su frecuencia puede ser modificada por el sistema nervioso autónomo." },
-        { "texto": "Sus células tienen un núcleo central y «discos intercalares».", "explicacion": "Los discos permiten que las células se contraigan de forma coordinada." }
+        {
+          "texto": "El músculo cardíaco es estriado e involuntario",
+          "explicacion": "Se contrae de forma automática, sin control consciente, y forma la pared del corazón."
+        },
+        {
+          "texto": "El músculo cardíaco forma el miocardio",
+          "explicacion": "Es la capa muscular del corazón y también está presente en la base de algunos grandes vasos."
+        },
+        {
+          "texto": "Las fibras del músculo cardíaco están unidas por discos intercalares",
+          "explicacion": "Los discos intercalares permiten que la contracción se transmita de una célula a otra de forma coordinada."
+        },
+        {
+          "texto": "Las células del músculo cardíaco son ramificadas y con un solo núcleo",
+          "explicacion": "Dato por confirmar: estas ramificaciones les permiten formar una red muscular continua."
+        },
+        {
+          "texto": "El músculo cardíaco tiene una gran cantidad de mitocondrias",
+          "explicacion": "Dato por confirmar: necesita energía constante para contraerse durante toda la vida sin fatigarse."
+        }
       ]
     },
     {
       "titulo": "Músculo liso",
       "puntos": [
-        { "texto": "El músculo liso no presenta estriaciones.", "explicacion": "Sus filamentos de actina y miosina no forman sarcómeros." },
-        { "texto": "El músculo liso es involuntario y está bajo control autónomo.", "explicacion": "Se encuentra en las paredes de vasos sanguíneos y en órganos del tubo digestivo." }
+        {
+          "texto": "El músculo liso no tiene estriaciones y es involuntario",
+          "explicacion": "Sus filamentos de actina y miosina no están organizados en sarcómeros, por eso no presenta bandas."
+        },
+        {
+          "texto": "El músculo liso forma las túnicas musculares de órganos internos",
+          "explicacion": "Se encuentra en el intestino, los vasos sanguíneos, la vejiga y el útero, entre otros órganos."
+        },
+        {
+          "texto": "El músculo liso es inervado por el sistema nervioso autónomo",
+          "explicacion": "Dato por confirmar: su contracción se regula de forma automática, sin control voluntario."
+        },
+        {
+          "texto": "El músculo liso realiza movimientos lentos y sostenidos",
+          "explicacion": "Dato por confirmar: permite la peristalsis del intestino y la regulación del diámetro de los vasos sanguíneos."
+        }
       ]
     },
     {
-      "titulo": "Conexiones",
+      "titulo": "Comparación de los tres músculos",
       "puntos": [
-        { "texto": "El control de la contracción depende de señales del sistema nervioso.", "explicacion": "Su estudio corresponde al tema de sistema nervioso y coordinación." }
+        {
+          "texto": "El músculo esquelético y el cardíaco son estriados; el liso no lo es",
+          "explicacion": "La estriación depende de la organización regular de la actina y la miosina en sarcómeros."
+        },
+        {
+          "texto": "El músculo esquelético es voluntario; el cardíaco y el liso son involuntarios",
+          "explicacion": "El tipo de control nervioso determina si la contracción puede dirigirse de forma consciente."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones del tejido muscular",
+      "puntos": [
+        {
+          "texto": "El tejido muscular produce el movimiento del cuerpo",
+          "explicacion": "Junto con el esqueleto, permite caminar, sostener objetos y mantener la postura."
+        },
+        {
+          "texto": "El tejido muscular bombea la sangre por el corazón",
+          "explicacion": "El músculo cardíaco se contrae de forma rítmica y mantiene la circulación de la sangre."
+        },
+        {
+          "texto": "El tejido muscular liso regula el movimiento de sustancias en los órganos",
+          "explicacion": "Por ejemplo, impulsa el alimento por el intestino y regula el diámetro de los vasos sanguíneos."
+        },
+        {
+          "texto": "El tejido muscular participa en la producción de calor",
+          "explicacion": "Dato por confirmar: las contracciones involuntarias, como los escalofríos, generan calor para mantener la temperatura corporal."
+        }
       ]
     }
   ]

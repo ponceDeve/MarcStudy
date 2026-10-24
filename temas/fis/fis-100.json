@@ -1,0 +1,39 @@
+{
+  "curso": "Física",
+  "tema": "Conexión de condensadores",
+  "glosario": {
+    "Conexión en serie": "Condensadores conectados uno tras otro en un solo camino",
+    "Conexión en paralelo": "Condensadores conectados con sus dos extremos comunes",
+    "Capacidad equivalente": "Capacidad de un único condensador que reemplaza al conjunto",
+    "Carga": "Cantidad de electricidad almacenada en una placa",
+    "Diferencia de potencial": "Trabajo por unidad de carga entre dos puntos"
+  },
+  "theory": [
+    {
+      "titulo": "Conexión en serie",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: 1 / Ceq = 1/C1 + 1/C2 + ...",
+          "explicacion": "En serie, todos los condensadores tienen la misma carga Q."
+        },
+        {
+          "texto": "Ejemplo: C1 = 2 μF y C2 = 3 μF en serie.",
+          "explicacion": "1 / Ceq = 1/2 + 1/3 = 5/6, así Ceq = 1,2 μF, menor que la menor de las dos."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión en paralelo",
+      "puntos": [
+        {
+          "texto": "«Fórmula»: Ceq = C1 + C2 + ...",
+          "explicacion": "En paralelo, todos los condensadores tienen la misma diferencia de potencial."
+        },
+        {
+          "texto": "Ejemplo: C1 = 2 μF y C2 = 3 μF en paralelo.",
+          "explicacion": "Ceq = 2 + 3 = 5 μF, mayor que la mayor de las dos."
+        }
+      ]
+    }
+  ]
+}

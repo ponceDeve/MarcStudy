@@ -1,0 +1,33 @@
+{
+  "curso": "Habilidad Lógico Matemático",
+  "tema": "Cronometría II",
+  "glosario": {
+    "reloj adelantado": "Reloj que marca una hora mayor a la real",
+    "reloj atrasado": "Reloj que marca una hora menor a la real",
+    "tiempo transcurrido": "Duración entre dos instantes registrados",
+    "ritmo de error": "Cantidad de tiempo ganada o perdida por hora"
+  },
+  "theory": [
+    {
+      "titulo": "Reloj que adelanta o atrasa",
+      "puntos": [
+        { "texto": "Calcula el error acumulado por hora", "explicacion": "Si un reloj gana 5 minutos por hora, el error es 5 × horas transcurridas." },
+        { "texto": "Hora real igual a hora marcada menos error", "explicacion": "Ejemplo: un reloj que gana 5 min por hora marca 12:20 tras 4 horas desde las 8:00 reales." }
+      ]
+    },
+    {
+      "titulo": "Tiempo transcurrido",
+      "puntos": [
+        { "texto": "Resta las horas y luego los minutos", "explicacion": "Ejemplo: de 9:45 a 13:10 pasan 3 horas y 25 minutos, es decir 3 h 25 min." },
+        { "texto": "Cambia de hora a minutos para comparar", "explicacion": "Una hora equivale a 60 minutos; así se suman o restan intervalos sin confusiones." }
+      ]
+    },
+    {
+      "titulo": "Relojes en cadena",
+      "puntos": [
+        { "texto": "Cada reloj tiene su propio error", "explicacion": "Se calcula el error de cada uno por separado y luego se comparan con la hora real." },
+        { "texto": "La diferencia entre relojes crece con el tiempo", "explicacion": "Si uno gana 2 minutos por hora y otro pierde 1, la separación aumenta 3 minutos por hora." }
+      ]
+    }
+  ]
+}

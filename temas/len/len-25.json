@@ -1,55 +1,298 @@
 {
   "curso": "Lenguaje",
-  "tema": "Alófono",
+  "tema": "Oración compuesta y Oración compuesta por subordinación",
   "glosario": {
-    "Alófono": "variante de un fonema sin valor distintivo",
-    "Distribución complementaria": "reparto de variantes según su contexto fonético",
-    "Variación libre": "alternancia de variantes sin cambio de contexto",
-    "Fonema": "unidad fonológica mínima que distingue significados"
+    "Proposición": "Unidad con verbo conjugado dentro de una oración.",
+    "Oración simple": "Oración con un solo verbo conjugado.",
+    "Nexo": "Palabra que enlaza proposiciones.",
+    "Coordinación": "Unión de proposiciones del mismo nivel.",
+    "Yuxtaposición": "Unión de proposiciones sin nexo.",
+    "Subordinación": "Dependencia de una proposición respecto de otra.",
+    "Proposición principal": "Proposición que contiene a la subordinada.",
+    "Proposición subordinada": "Proposición que depende de la principal.",
+    "Conjunción": "Nexo que solo une proposiciones.",
+    "Relativo": "Nexo que une y cumple función.",
+    "Verbo no personal": "Infinitivo, participio o gerundio.",
+    "Perífrasis verbal": "Dos verbos que funcionan como un solo núcleo.",
+    "Función sintáctica": "Papel de una unidad dentro de la oración.",
+    "Adyacente": "Complemento que precisa a un sustantivo."
   },
   "theory": [
     {
-      "titulo": "Concepto de alófono",
+      "titulo": "Oración compuesta",
       "puntos": [
         {
-          "texto": "Un «alófono» es una variante de un fonema que no cambia el significado",
-          "explicacion": "Todas las variantes de un mismo fonema se reconocen como el mismo sonido por el hablante."
+          "texto": "«Oración compuesta» = oración con dos o más proposiciones",
+          "explicacion": "Reúne varios verbos conjugados en un solo enunciado; por eso se analiza proposición por proposición antes de clasificarla."
+        },
+        {
+          "texto": "«Proposición» = unidad con verbo conjugado propio",
+          "explicacion": "Es la pieza que se cuenta para decidir si una oración es simple o compuesta; cada una tiene su propio predicado."
+        },
+        {
+          "texto": "Proposición ∈ oración compuesta",
+          "explicacion": "Se habla de proposición cuando el verbo forma parte de un conjunto mayor y no de un enunciado aislado."
+        },
+        {
+          "texto": "«Oración compuesta» ⊃ coordinación + yuxtaposición + subordinación",
+          "explicacion": "Las proposiciones pueden quedar al mismo nivel, con o sin nexo, o en relación de dependencia; cada modo da una clase distinta."
+        },
+        {
+          "texto": "«Oración simple» = un solo verbo conjugado",
+          "explicacion": "Sirve de contraste: «Admiro la pintura» es simple, mientras que «Admiro la pintura y estudio su historia» suma dos proposiciones con «y»."
+        },
+        {
+          "texto": "«Perífrasis verbal» ⇒ una sola proposición",
+          "explicacion": "Error frecuente: contar dos verbos como dos proposiciones. En una perífrasis ambos verbos forman un solo núcleo del predicado, como en «Voy a cantar»."
         }
       ]
     },
     {
-      "titulo": "Relación con el fonema",
+      "titulo": "Coordinación",
       "puntos": [
         {
-          "texto": "Los alófonos son realizaciones concretas de un fonema",
-          "explicacion": "El fonema es la unidad abstracta; el alófono es la forma concreta en que se pronuncia en cada caso."
+          "texto": "«Coordinación» = proposiciones del mismo nivel unidas por nexo coordinante",
+          "explicacion": "Ninguna proposición se apoya en otra: se suman, se oponen o se alternan con igual jerarquía."
+        },
+        {
+          "texto": "Coordinadas ✗ dependencia entre proposiciones",
+          "explicacion": "Como ninguna está incluida en otra, ninguna es principal ni subordinada."
+        },
+        {
+          "texto": "Cada coordinada ✓ sujeto + predicado propios",
+          "explicacion": "Por eso, al separarlas, cada una conserva su estructura y su sentido, como en «Llegó a la estación y compró el billete»."
+        },
+        {
+          "texto": "«Nexo coordinante» = palabra que solo une proposiciones",
+          "explicacion": "No cumple función dentro de ninguna proposición; únicamente enlaza, lo que lo distingue del relativo y del interrogativo."
         }
       ]
     },
     {
-      "titulo": "Distribución complementaria",
+      "titulo": "Tipos de coordinadas",
       "puntos": [
         {
-          "texto": "Los alófonos aparecen en contextos distintos y nunca se oponen",
-          "explicacion": "Por ejemplo, el fonema /b/ suena oclusivo en «bola» y fricativo entre vocales, como en «cabo»."
+          "texto": "«Copulativa» = suma acciones",
+          "explicacion": "Se usa cuando las acciones se acumulan o se suceden: «Llegó a la estación y compró el billete»."
+        },
+        {
+          "texto": "Copulativa ✓ nexos y, e, ni",
+          "explicacion": "Son los nexos de suma; reconocerlos es la forma más directa de identificar esta clase."
+        },
+        {
+          "texto": "«Disyuntiva» = expresa opción",
+          "explicacion": "Presenta alternativas entre las que se elige: «¿Estudias o trabajas?»."
+        },
+        {
+          "texto": "Disyuntiva ✓ nexos o, u, o bien",
+          "explicacion": "Estos nexos introducen la alternativa y distinguen esta clase de la copulativa."
+        },
+        {
+          "texto": "«Adversativa» = expresa oposición",
+          "explicacion": "La segunda proposición contrasta con la primera o la corrige: «Seguimos sus indicaciones, pero no nos ayudaron»."
+        },
+        {
+          "texto": "Adversativa ✓ nexos pero, mas, sino, sin embargo",
+          "explicacion": "Marcan el contraste entre las dos proposiciones; no suman, a diferencia de los copulativos."
+        },
+        {
+          "texto": "«Explicativa» = aclara la proposición anterior",
+          "explicacion": "La segunda precisa el sentido de la primera: «Es hispanohablante, o sea, habla español»."
+        },
+        {
+          "texto": "Explicativa ✓ nexos es decir, o sea, esto es",
+          "explicacion": "Son nexos de reformulación: repiten la idea anterior con otras palabras, sin oponerse a ella."
+        },
+        {
+          "texto": "«Distributiva» = alterna acciones",
+          "explicacion": "Reparte las acciones entre sujetos o momentos: «Unos cantan, otros bailan»."
+        },
+        {
+          "texto": "Distributiva ✓ nexos ya… ya, bien… bien, unos… otros",
+          "explicacion": "Los nexos se repiten en pares, uno en cada proposición, lo que la distingue de las demás clases."
         }
       ]
     },
     {
-      "titulo": "Variación libre",
+      "titulo": "Yuxtaposición",
       "puntos": [
         {
-          "texto": "Algunas variantes alternan libremente sin cambiar el contexto",
-          "explicacion": "Ninguna de las variantes libres produce una palabra distinta, por lo que siguen siendo alófonos."
+          "texto": "«Yuxtaposición» = proposiciones del mismo nivel sin nexo",
+          "explicacion": "La relación existe, pero ninguna palabra la marca; el sentido lo aporta el contexto."
+        },
+        {
+          "texto": "Yuxtapuestas ✓ signo de puntuación como separador",
+          "explicacion": "Al faltar el nexo, solo un signo señala dónde termina una proposición y empieza la siguiente."
+        },
+        {
+          "texto": "Coma ∈ signos que separan yuxtapuestas",
+          "explicacion": "Aparece en «Llegué, vi, vencí», donde ocupa el lugar del nexo ausente."
+        },
+        {
+          "texto": "Punto y coma ∈ signos que separan yuxtapuestas",
+          "explicacion": "Sustituye al nexo ausente, igual que la coma y los dos puntos."
+        },
+        {
+          "texto": "Dos puntos ∈ signos que separan yuxtapuestas",
+          "explicacion": "También sustituye al nexo ausente entre proposiciones del mismo nivel."
+        },
+        {
+          "texto": "«Yuxtaposición» = modalidad de coordinación sin nexo",
+          "explicacion": "Por eso tampoco hay dependencia entre las proposiciones yuxtapuestas; solo falta el nexo coordinante."
+        },
+        {
+          "texto": "«Llegué, vi, vencí» = tres proposiciones yuxtapuestas",
+          "explicacion": "Hay tres verbos conjugados, tres proposiciones de igual nivel y solo comas entre ellas."
         }
       ]
     },
     {
-      "titulo": "Distractor: fonema",
+      "titulo": "Subordinación",
       "puntos": [
         {
-          "texto": "El «fonema» se opone al alófono porque sí distingue significados",
-          "explicacion": "Si cambiar un sonido crea otra palabra, se trata de fonemas diferentes y no de alófonos."
+          "texto": "«Subordinación» = una proposición depende de otra",
+          "explicacion": "La dependencia es gramatical: la subordinada no se sostiene sola porque cumple una función dentro de la otra."
+        },
+        {
+          "texto": "Subordinación ⇒ proposiciones de distinto nivel",
+          "explicacion": "Una proposición contiene a la otra, lo que genera una jerarquía entre principal y subordinada."
+        },
+        {
+          "texto": "«Oración compleja» = oración compuesta por subordinación",
+          "explicacion": "Es otro nombre para la misma estructura: una principal con una o más subordinadas dentro."
+        },
+        {
+          "texto": "«Quiero que vengas pronto» = principal + subordinada",
+          "explicacion": "«Quiero» es la principal; «que vengas pronto» depende de ella y completa lo que se quiere."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposición principal",
+      "puntos": [
+        {
+          "texto": "«Proposición principal» = la que contiene a la subordinada",
+          "explicacion": "Es el eje de la oración: las demás proposiciones se integran dentro de ella."
+        },
+        {
+          "texto": "Principal = núcleo con sentido completo",
+          "explicacion": "Da sentido completo a la oración, mientras que las subordinadas la complementan."
+        },
+        {
+          "texto": "Principal ⊃ una o varias subordinadas",
+          "explicacion": "Una misma principal puede tener dos subordinadas, cada una con su propia función."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposición subordinada",
+      "puntos": [
+        {
+          "texto": "«Proposición subordinada» = depende de la principal",
+          "explicacion": "Su significado se completa con la principal; por eso no funciona como enunciado independiente."
+        },
+        {
+          "texto": "Subordinada ✗ sentido pleno sola",
+          "explicacion": "«Que compré ayer» queda incompleta si se separa de «El libro es muy interesante»."
+        },
+        {
+          "texto": "Subordinada → función sintáctica dentro de la principal",
+          "explicacion": "No está solo unida: ocupa un lugar con función dentro de la principal, como lo haría una palabra o frase."
+        },
+        {
+          "texto": "Subordinada con función de sujeto",
+          "explicacion": "En «Que vengas pronto es importante», la subordinada es lo que se afirma como importante."
+        },
+        {
+          "texto": "Subordinada con función de complemento directo",
+          "explicacion": "En «Quiero que vengas pronto», la subordinada completa el verbo de la principal."
+        },
+        {
+          "texto": "Subordinada con función de circunstancial",
+          "explicacion": "En «Seguimos sus indicaciones porque nos parecían correctas», indica la causa de lo que dice la principal."
+        },
+        {
+          "texto": "Subordinada con función de adyacente",
+          "explicacion": "En «El libro que compré es interesante», precisa al sustantivo «libro»."
+        },
+        {
+          "texto": "Subordinada ≈ sustantivo, adjetivo o adverbio",
+          "explicacion": "Por eso puede reemplazarse por una palabra de esas clases, y de ello depende su clasificación posterior."
+        },
+        {
+          "texto": "Verbo de subordinada ∈ forma personal o no personal",
+          "explicacion": "Las formas no personales son infinitivo, participio y gerundio; las personales llevan persona y número."
+        },
+        {
+          "texto": "Verbo no personal ⇒ nexo ausente posible",
+          "explicacion": "Al no haber verbo conjugado, la subordinada puede aparecer sin conjunción que la introduzca."
+        },
+        {
+          "texto": "Prueba: reemplazar la subordinada por pronombre, adjetivo o adverbio",
+          "explicacion": "Si la oración sigue siendo correcta, la proposición depende de la principal: «Quiero que vengas» pasa a «Quiero eso»."
+        }
+      ]
+    },
+    {
+      "titulo": "Nexos subordinantes",
+      "puntos": [
+        {
+          "texto": "«Nexo subordinante» = palabra que introduce la subordinada",
+          "explicacion": "Une la subordinada con la principal y marca dónde empieza; sin él la dependencia no queda señalada."
+        },
+        {
+          "texto": "Conjunciones subordinantes ⊃ que, si, porque, aunque, para que, como",
+          "explicacion": "Son las palabras más frecuentes para introducir subordinadas con verbo conjugado."
+        },
+        {
+          "texto": "Conjunción subordinante ✗ función en la subordinada",
+          "explicacion": "Solo une: no es sujeto ni complemento de ningún verbo de la subordinada."
+        },
+        {
+          "texto": "Relativos ⊃ que, quien, el cual, cuyo, donde, como, cuando",
+          "explicacion": "Introducen subordinadas y retoman un elemento de la principal."
+        },
+        {
+          "texto": "Interrogativos ⊃ qué, quién, cómo, cuándo, dónde",
+          "explicacion": "También introducen subordinadas, con sentido de pregunta."
+        },
+        {
+          "texto": "Relativos e interrogativos ⇒ unen + función en la subordinada",
+          "explicacion": "Error frecuente: tratar todo «que» como conjunción; si cumple una función en la subordinada, es relativo."
+        },
+        {
+          "texto": "En «El libro que compré», que = complemento directo",
+          "explicacion": "«Que» reemplaza a «libro» dentro de la subordinada («compré el libro») y a la vez la une con la principal."
+        }
+      ]
+    },
+    {
+      "titulo": "Coordinación frente a subordinación",
+      "puntos": [
+        {
+          "texto": "Coordinadas = independientes; subordinadas = dependientes",
+          "explicacion": "En la coordinación las proposiciones son del mismo nivel; en la subordinación una se integra en la otra."
+        },
+        {
+          "texto": "Nexo coordinante solo une ≠ nexo subordinante marca dependencia",
+          "explicacion": "Esta diferencia ayuda a decidir qué tipo de oración compuesta se tiene ante la palabra de enlace."
+        },
+        {
+          "texto": "Coordinada separada ⇒ conserva sentido",
+          "explicacion": "Cada coordinada puede entenderse por sí sola, porque no depende de la otra."
+        },
+        {
+          "texto": "Subordinada separada ⇒ ✗ sentido completo",
+          "explicacion": "La subordinada pierde significado fuera de la principal, porque cumple una función dentro de ella."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de subordinadas",
+      "puntos": [
+        {
+          "texto": "Subordinadas ⊃ sustantivas + adjetivas + adverbiales",
+          "explicacion": "Cada clase equivale a sustantivo, adjetivo o adverbio; se desarrollan en temas propios."
         }
       ]
     }

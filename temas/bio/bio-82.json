@@ -2,33 +2,347 @@
   "curso": "Biología",
   "tema": "Alelos múltiples",
   "glosario": {
-    "Alelos múltiples": "Tres o más formas alternativas de un mismo gen en una población.",
-    "Serie alélica": "Conjunto de alelos múltiples de un mismo gen.",
-    "Grupo sanguíneo ABO": "Sistema de grupos sanguíneos determinado por tres alelos.",
-    "Alelo IA": "Alelo que produce el antígeno A en los glóbulos rojos.",
-    "Alelo IB": "Alelo que produce el antígeno B en los glóbulos rojos.",
-    "Alelo i": "Alelo recesivo que no produce antígenos A ni B."
+    "gen": "Unidad hereditaria que determina un carácter",
+    "alelo": "Forma alternativa de un mismo gen",
+    "locus": "Lugar fijo de un gen en el cromosoma",
+    "cromosoma": "Estructura que contiene los genes",
+    "diploide": "Con dos juegos de cromosomas",
+    "homocigoto": "Individuo con dos alelos iguales",
+    "heterocigoto": "Individuo con dos alelos distintos",
+    "genotipo": "Conjunto de alelos de un individuo",
+    "fenotipo": "Rasgos observables de un individuo",
+    "dominante": "Alelo que se expresa en heterocigotos",
+    "recesivo": "Alelo oculto ante el dominante",
+    "codominancia": "Ambos alelos se expresan a la vez",
+    "serie alélica": "Conjunto de alelos de un mismo gen",
+    "antígeno": "Molécula que el sistema inmunitario reconoce",
+    "anticuerpo": "Proteína que reconoce un antígeno",
+    "aglutinación": "Agrupación de células por anticuerpos",
+    "enzima": "Proteína que acelera reacciones químicas",
+    "mutación": "Cambio hereditario en el material genético",
+    "glóbulo rojo": "Célula sanguínea que transporta oxígeno",
+    "plasma": "Parte líquida de la sangre",
+    "pigmento": "Sustancia que da color",
+    "gameto": "Célula sexual con un solo alelo",
+    "tirosinasa": "Enzima que forma el pigmento melanina",
+    "autofecundación": "Fecundación entre gametos del mismo individuo",
+    "herencia poligénica": "Carácter determinado por varios genes"
   },
   "theory": [
     {
-      "titulo": "Concepto de alelos múltiples",
+      "titulo": "Conceptos previos",
       "puntos": [
-        { "texto": "Un gen puede tener más de dos alelos en la población.", "explicacion": "Aunque la población tenga muchos alelos, cada individuo solo porta dos de ellos." },
-        { "texto": "El conjunto de alelos de un gen forma una serie alélica.", "explicacion": "Las relaciones de dominancia entre los alelos de la serie determinan los fenotipos." }
+        {
+          "texto": "«Gen» = unidad hereditaria que determina un carácter",
+          "explicacion": "Ocupa un lugar fijo en un cromosoma, llamado locus. Cada individuo diploide tiene dos copias de cada gen, una recibida de cada progenitor."
+        },
+        {
+          "texto": "«Alelo» = forma alternativa de un mismo gen",
+          "explicacion": "Los alelos surgen de cambios en la secuencia del gen y producen versiones distintas del mismo carácter, como el color de un pelaje."
+        },
+        {
+          "texto": "«Diploide» = con dos juegos de cromosomas",
+          "explicacion": "Por eso cada individuo diploide lleva solo dos alelos de cada gen, aunque en la población existan más."
+        },
+        {
+          "texto": "Dominancia completa ⇒ un alelo oculta al otro en el heterocigoto",
+          "explicacion": "Es la relación que presentan muchos alelos de una serie múltiple, ordenados en una jerarquía."
+        },
+        {
+          "texto": "Codominancia (tema 80) ⇒ ambos alelos se expresan a la vez",
+          "explicacion": "Se desarrolla en su propio tema. Aparece en los alelos múltiples del grupo sanguíneo ABO."
+        },
+        {
+          "texto": "Dominancia incompleta (tema 79) ⇒ heterocigoto con fenotipo intermedio",
+          "explicacion": "Se desarrolla en su propio tema. También puede darse entre alelos de una serie múltiple."
+        }
       ]
     },
     {
-      "titulo": "Grupo sanguíneo ABO",
+      "titulo": "Definición básica",
       "puntos": [
-        { "texto": "El sistema ABO está determinado por los alelos IA, IB e i.", "explicacion": "Los alelos IA e IB son codominantes entre sí y dominantes sobre i." },
-        { "texto": "Los genotipos IA IA e IA i producen el grupo A.", "explicacion": "Ambos genotipos expresan el antígeno A en los glóbulos rojos." },
-        { "texto": "El genotipo ii produce el grupo O.", "explicacion": "No se producen antígenos A ni B en los glóbulos rojos." }
+        {
+          "texto": "«Alelos múltiples» = gen con más de dos alelos en la población",
+          "explicacion": "El gen es el mismo y ocupa el mismo locus, pero en la población existen tres o más versiones distintas de él. Los individuos son diploides, así que cada uno hereda solo dos."
+        },
+        {
+          "texto": "Cada individuo diploide ⇒ solo dos alelos de la serie",
+          "explicacion": "Puede ser homocigoto, con dos copias del mismo alelo, o heterocigoto, con dos alelos distintos de la serie. Que haya más de dos alelos es una propiedad de la población, no del individuo."
+        },
+        {
+          "texto": "Serie alélica = conjunto de alelos de un mismo gen",
+          "explicacion": "Los alelos de la serie se ordenan según su relación de dominancia, desde el que domina sobre todos hasta el que es recesivo frente a todos."
+        }
       ]
     },
     {
-      "titulo": "Otro ejemplo",
+      "titulo": "Nombres alternativos",
       "puntos": [
-        { "texto": "En los conejos, la serie alélica del color del pelaje tiene varios alelos.", "explicacion": "Cada alelo produce un color diferente, como el agutí, el chinchilla o el albino." }
+        {
+          "texto": "«Alelismo múltiple» = otro nombre de los alelos múltiples",
+          "explicacion": "Resalta que el fenómeno es una propiedad del gen: tiene varias formas alélicas."
+        },
+        {
+          "texto": "«Polialelia» = otro nombre de los alelos múltiples",
+          "explicacion": "El prefijo poli- significa muchos, e indica que hay muchos alelos para un mismo gen."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen de los alelos",
+      "puntos": [
+        {
+          "texto": "Mutaciones del mismo gen ⇒ nuevos alelos",
+          "explicacion": "Cada cambio distinto en la secuencia del gen puede originar un alelo nuevo. Con el tiempo, la población acumula varios alelos. Las mutaciones se desarrollan en su propio tema (tema 88)."
+        },
+        {
+          "texto": "Alelo nuevo ⇒ puede conservarse en la población",
+          "explicacion": "Si el cambio no perjudica al individuo, el alelo se transmite a la descendencia y se suma a los ya existentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de genotipos",
+      "puntos": [
+        {
+          "texto": "n = número de alelos del gen en la población",
+          "explicacion": "Es la variable que se usa en las fórmulas siguientes. En el sistema ABO, n vale 3."
+        },
+        {
+          "texto": "Genotipos homocigotos posibles = n",
+          "explicacion": "Hay un homocigoto por cada alelo, formado por dos copias de ese alelo. Con 3 alelos hay 3 homocigotos."
+        },
+        {
+          "texto": "Genotipos heterocigotos posibles = $\\frac{n(n-1)}{2}$",
+          "explicacion": "Es el número de pares distintos que se pueden formar con n alelos. Con n = 3 resulta 3 × 2 ÷ 2 = 3 heterocigotos, y con n = 4 resulta 4 × 3 ÷ 2 = 6."
+        },
+        {
+          "texto": "Genotipos totales posibles = $\\frac{n(n+1)}{2}$",
+          "explicacion": "Es la suma de homocigotos y heterocigotos: n + n(n−1)/2 = n(n+1)/2. Con n = 3 resulta 3 × 4 ÷ 2 = 6 genotipos, y con n = 4 resulta 4 × 5 ÷ 2 = 10."
+        },
+        {
+          "texto": "n ↑ ⇒ genotipos posibles ↑ más rápido",
+          "explicacion": "Los genotipos crecen más rápido que el número de alelos, porque se forman todos los pares posibles. Con 10 alelos hay 10 × 11 ÷ 2 = 55 genotipos."
+        }
+      ]
+    },
+    {
+      "titulo": "Grupos sanguíneos ABO",
+      "puntos": [
+        {
+          "texto": "Sistema «ABO» = grupos sanguíneos A, B, AB y O",
+          "explicacion": "Karl Landsteiner lo descubrió en 1901. El nombre viene de los antígenos A y B, y del grupo O, que no tiene ninguno."
+        },
+        {
+          "texto": "«Antígeno» = molécula de la superficie del glóbulo rojo",
+          "explicacion": "Los antígenos A y B son azúcares unidos a la membrana. Cada persona reconoce como propios los suyos."
+        },
+        {
+          "texto": "Iᴬ = alelo que forma el antígeno A",
+          "explicacion": "Codifica una enzima que agrega N-acetilgalactosamina a la sustancia base de la membrana."
+        },
+        {
+          "texto": "Iᴮ = alelo que forma el antígeno B",
+          "explicacion": "Codifica una enzima que agrega galactosa a la misma sustancia base."
+        },
+        {
+          "texto": "i = alelo que no forma antígeno",
+          "explicacion": "Codifica una enzima no funcional, así que la sustancia base queda sin modificar."
+        },
+        {
+          "texto": "Tres alelos ⇒ Iᴬ + Iᴮ + i",
+          "explicacion": "Son los tres alelos de un solo gen, ubicado en el cromosoma 9, que forman la serie alélica del sistema ABO."
+        },
+        {
+          "texto": "Jerarquía ⇒ Iᴬ = Iᴮ > i",
+          "explicacion": "Los alelos Iᴬ e Iᴮ dominan sobre i, y entre ellos son codominantes. Esta es la relación más importante del sistema."
+        },
+        {
+          "texto": "Tres alelos ⇒ 6 genotipos",
+          "explicacion": "Aplicando n(n+1)/2 con n = 3 resultan 3 × 4 ÷ 2 = 6 genotipos: tres homocigotos y tres heterocigotos."
+        },
+        {
+          "texto": "IᴬIᴬ + Iᴬi ⇒ grupo A",
+          "explicacion": "El alelo Iᴬ domina sobre i, así que tanto el homocigoto como el heterocigoto forman solo el antígeno A."
+        },
+        {
+          "texto": "IᴮIᴮ + Iᴮi ⇒ grupo B",
+          "explicacion": "El alelo Iᴮ domina sobre i, así que tanto el homocigoto como el heterocigoto forman solo el antígeno B."
+        },
+        {
+          "texto": "IᴬIᴮ ⇒ grupo AB",
+          "explicacion": "Los dos alelos son codominantes y se expresan a la vez, de modo que el glóbulo rojo tiene los dos antígenos."
+        },
+        {
+          "texto": "ii ⇒ grupo O",
+          "explicacion": "Ningún alelo forma antígeno, y el glóbulo rojo no tiene ni A ni B."
+        },
+        {
+          "texto": "6 genotipos ⇒ 4 fenotipos",
+          "explicacion": "Los genotipos IᴬIᴬ e Iᴬi dan el mismo fenotipo A, y IᴮIᴮ e Iᴮi dan el mismo fenotipo B. Solo AB y O tienen un genotipo cada uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Anticuerpos y transfusión",
+      "puntos": [
+        {
+          "texto": "Plasma del grupo A ⇒ anticuerpos anti-B",
+          "explicacion": "Los anticuerpos son proteínas del plasma que reaccionan contra los antígenos ausentes en la persona. El grupo A tiene antígeno A, así que tiene anticuerpos contra B."
+        },
+        {
+          "texto": "Plasma del grupo B ⇒ anticuerpos anti-A",
+          "explicacion": "El grupo B tiene antígeno B, así que tiene anticuerpos contra A."
+        },
+        {
+          "texto": "Plasma del grupo AB ✗ anticuerpos anti-A ni anti-B",
+          "explicacion": "Tiene los dos antígenos, así que no forma anticuerpos contra ninguno."
+        },
+        {
+          "texto": "Plasma del grupo O ⇒ anticuerpos anti-A + anti-B",
+          "explicacion": "No tiene ningún antígeno, y forma anticuerpos contra los dos."
+        },
+        {
+          "texto": "Transfusión incompatible ⇒ aglutinación de glóbulos rojos",
+          "explicacion": "Los anticuerpos del receptor se unen a los antígenos extraños de los glóbulos recibidos y los hacen agruparse, lo que puede obstruir los vasos y ser mortal."
+        },
+        {
+          "texto": "Grupo O ⇒ donante universal de glóbulos rojos",
+          "explicacion": "Sus glóbulos no tienen antígenos A ni B, así que no desencadenan reacción en receptores de otros grupos."
+        },
+        {
+          "texto": "Grupo AB ⇒ receptor universal de glóbulos rojos",
+          "explicacion": "No tiene anticuerpos anti-A ni anti-B, así que tolera glóbulos de cualquier grupo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cruces del sistema ABO",
+      "puntos": [
+        {
+          "texto": "IᴬIᴮ × ii → 50 % grupo A + 50 % grupo B",
+          "explicacion": "El progenitor ii solo aporta i. Los hijos son Iᴬi o Iᴮi según el gameto del otro progenitor, y ninguno es AB ni O."
+        },
+        {
+          "texto": "Iᴬi × Iᴮi → 25 % A + 25 % B + 25 % AB + 25 % O",
+          "explicacion": "Cada progenitor forma dos tipos de gameto en igual proporción, y los cuatro grupos aparecen con la misma probabilidad. Es el único cruce que da los cuatro grupos."
+        },
+        {
+          "texto": "Iᴬi × Iᴬi → 75 % A + 25 % O",
+          "explicacion": "Los hijos IᴬIᴬ e Iᴬi tienen grupo A, y los hijos ii tienen grupo O. Es la razón 3 : 1 de la dominancia completa."
+        },
+        {
+          "texto": "Hijo O ⇒ ambos progenitores tienen alelo i",
+          "explicacion": "El hijo ii recibió i de cada progenitor. Los padres pueden ser A, B u O, pero nunca AB."
+        },
+        {
+          "texto": "Progenitor AB ✗ hijo O",
+          "explicacion": "Un progenitor IᴬIᴮ solo aporta Iᴬ o Iᴮ, así que ningún hijo puede ser ii."
+        },
+        {
+          "texto": "Grupo sanguíneo ⇒ puede excluir paternidad, no confirmarla",
+          "explicacion": "Una incompatibilidad entre los grupos demuestra que una persona no puede ser el progenitor, pero la compatibilidad no prueba que lo sea, porque muchas personas comparten un mismo grupo."
+        },
+        {
+          "texto": "Fenotipo Bombay ⇒ excepción al sistema ABO",
+          "explicacion": "Algunas personas no forman la sustancia base sobre la que actúan Iᴬ e Iᴮ, por un gen distinto, y parecen del grupo O aunque tengan alelos Iᴬ o Iᴮ."
+        }
+      ]
+    },
+    {
+      "titulo": "Pelaje del conejo",
+      "puntos": [
+        {
+          "texto": "Serie del color del conejo = 4 alelos",
+          "explicacion": "El conejo europeo, Oryctolagus cuniculus, tiene un gen del color del pelaje con cuatro alelos que se ordenan en una jerarquía lineal."
+        },
+        {
+          "texto": "C = alelo del color silvestre, pelaje agutí",
+          "explicacion": "Es el alelo que domina sobre todos los demás de la serie. El agutí es el color grisáceo o pardo propio de los conejos silvestres."
+        },
+        {
+          "texto": "cᶜʰ = alelo chinchilla",
+          "explicacion": "Reduce el pigmento amarillo y da un pelaje gris plateado. Es recesivo frente a C y dominante frente a los dos siguientes."
+        },
+        {
+          "texto": "cʰ = alelo himalaya",
+          "explicacion": "Da un cuerpo blanco con extremidades oscuras. Es recesivo frente a C y a cᶜʰ y dominante frente al albino."
+        },
+        {
+          "texto": "c = alelo albino",
+          "explicacion": "Es recesivo frente a todos los demás y solo se expresa en homocigoto. El conejo es blanco con ojos rosados."
+        },
+        {
+          "texto": "Jerarquía ⇒ C > cᶜʰ > cʰ > c",
+          "explicacion": "Cada alelo domina sobre los que están a su derecha. Por eso el fenotipo de un heterocigoto es el del alelo que ocupa mejor lugar en la serie."
+        },
+        {
+          "texto": "4 alelos ⇒ 10 genotipos",
+          "explicacion": "Se calcula 4 × 5 ÷ 2 = 10: cuatro homocigotos y seis heterocigotos, que producen solo cuatro fenotipos."
+        },
+        {
+          "texto": "Himalaya ⇒ enzima sensible a la temperatura",
+          "explicacion": "La enzima tirosinasa, que forma el pigmento, solo funciona a baja temperatura. El pigmento aparece en las zonas frías del cuerpo, como orejas, nariz, patas y cola."
+        },
+        {
+          "texto": "Albino ⇒ tirosinasa no funcional",
+          "explicacion": "Sin enzima funcional no se forma pigmento en ninguna parte del cuerpo."
+        },
+        {
+          "texto": "cᶜʰc × cᶜʰc → 75 % chinchilla + 25 % albino",
+          "explicacion": "El alelo chinchilla domina sobre el albino. Los hijos cᶜʰcᶜʰ y cᶜʰc son chinchilla y los hijos cc son albinos."
+        }
+      ]
+    },
+    {
+      "titulo": "Otros ejemplos",
+      "puntos": [
+        {
+          "texto": "«HLA» = antígenos leucocitarios humanos",
+          "explicacion": "Son proteínas de la superficie celular que ayudan a distinguir lo propio de lo ajeno."
+        },
+        {
+          "texto": "Genes HLA ⇒ miles de alelos en la población",
+          "explicacion": "Son uno de los casos con mayor cantidad de alelos conocidos. Esta variedad hace que sea muy raro que dos personas no emparentadas tengan los mismos."
+        },
+        {
+          "texto": "Alelos de autoincompatibilidad en plantas ⇒ cientos de alelos",
+          "explicacion": "Impiden que el polen fecunde a una flor que lleva el mismo alelo, lo que evita la autofecundación y favorece el cruzamiento entre individuos distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencias con conceptos vecinos",
+      "puntos": [
+        {
+          "texto": "Alelos múltiples ≠ genes múltiples",
+          "explicacion": "En los alelos múltiples un solo gen tiene varias formas. En la herencia poligénica varios genes distintos influyen sobre un mismo carácter."
+        },
+        {
+          "texto": "Alelos múltiples ≠ más de dos alelos por individuo",
+          "explicacion": "Cada individuo diploide solo tiene dos alelos de la serie. La serie completa solo existe a nivel de población."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Persona del grupo A ≠ siempre IᴬIᴬ",
+          "explicacion": "Puede ser también Iᴬi. Para saberlo hay que mirar los grupos de sus padres o hijos."
+        },
+        {
+          "texto": "Iᴬ e Iᴮ ≠ recesivos entre sí",
+          "explicacion": "Los dos dominan sobre i, pero entre ellos son codominantes y se expresan a la vez."
+        },
+        {
+          "texto": "Grupo AB ≠ fenotipo intermedio entre A y B",
+          "explicacion": "La persona tiene los dos antígenos completos, y no una forma intermedia."
+        },
+        {
+          "texto": "Cuatro fenotipos ≠ cuatro genotipos",
+          "explicacion": "El sistema ABO tiene seis genotipos que producen cuatro fenotipos."
+        }
       ]
     }
   ]
