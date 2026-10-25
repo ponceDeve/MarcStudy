@@ -135,6 +135,33 @@ export const PROMPTS_REPASO = {
     formulas: false
   }
 };
+// Qué información necesita cada curso conceptual (se suma a la lista general
+// de «QUÉ INCLUIR»). Cada curso pide cosas distintas.
+const INCLUIR_CURSO = {
+  "Literatura":
+    "En cada autor u obra: autor, época y movimiento; obras principales con su argumento resumido; personajes principales; género, narrador y rasgos de estilo; temas.",
+  "Geografía":
+    "Ubicación y límites; relieve, clima o hidrografía según el tema; causas del fenómeno; datos numéricos con su unidad; casos del Perú y del mundo.",
+  "Lenguaje":
+    "Criterio para identificarlo, tipos o clases, excepciones y un ejemplo propio de una línea.",
+  "Filosofía":
+    "Representante y época, tesis central, conceptos clave y obra principal.",
+  "Psicología":
+    "Autor y aporte, componentes y fases del proceso, y un ejemplo cotidiano.",
+  "Educación Cívica":
+    "Función o atribución, norma que la respalda (Constitución o ley), órgano responsable y composición.",
+  "Economía":
+    "Agentes y variables que intervienen, cómo se interpreta, fórmula con unidades cuando exista y un caso o institución del Perú.",
+  "Biología":
+    "Estructura, función, pasos del proceso, y organismos o enfermedades representativas.",
+  "Física":
+    "Magnitud (escalar o vectorial), leyes y principios, fórmula con unidades del SI y sus condiciones de validez.",
+  "Química":
+    "Definición y clasificación; propiedades y estructura o enlace; ejemplos de sustancias o procesos y sus usos; y, solo cuando el tema los tenga, fórmulas, nomenclatura y ecuaciones."
+};
+Object.entries(INCLUIR_CURSO).forEach(([k, v]) => {
+  if (PROMPTS_REPASO[k]) PROMPTS_REPASO[k].incluirExtra = v;
+});
 // Respaldo por si aparece un curso sin configuración propia.
 const CONFIG_GENERICA = {
   arquetipo: "conceptual",
@@ -153,22 +180,22 @@ const EJEMPLOS_APUNTE = {
 - Preferencia por narrativa y ensayo
 - Técnicas modernas
 - Influencia del surrealismo (mundo onírico)
-- Sincretismo cultural: amerindia + africana + europea
-- Fusión: tradición + hechos históricos
+- Sincretismo cultural: mezcla amerindia, africana y europea
+- Fusión de tradición y hechos históricos
 - Teoriza lo real maravilloso
 ## El reino de este mundo
 - Género: narrativo
 - Especie: novela
 - Narrador: omnisciente
-- Narración: lineal-cronológica + episódica`,
+- Narración lineal-cronológica y episódica`,
   "Historia Universal": `# Imperio napoleónico (1804-1815)
 ## III Coalición
-- Trafalgar → derrota franco-española
-- Austerlitz → gran victoria («los tres emperadores»)
+- Trafalgar: derrota franco-española
+- Austerlitz: gran victoria («los tres emperadores»)
 - Crea la Confederación del Rin
 ## IV Coalición
-- Decreto de Berlín → bloqueo continental contra Inglaterra
-- Tilsit → acuerdo con el zar Alejandro I (Rusia)`,
+- Decreto de Berlín: bloqueo continental contra Inglaterra
+- Tilsit: acuerdo con el zar Alejandro I (Rusia)`,
   "Biología": `# Histología vegetal
 ## Concepto
 - Rama de la Botánica: estudia los tejidos de la planta
@@ -190,8 +217,8 @@ const EJEMPLOS_APUNTE = {
 - Rama de la Química: aspecto cuantitativo de todo proceso químico
 - Relación de moles, masa y volumen
 ## Ley de conservación de la masa (Lavoisier)
-- En toda reacción: Σ masa reactantes = Σ masa productos
-- Ejemplo: O₂ + 2 H₂ → 2 H₂O (32 g + 4 g → 36 g)`
+- En toda reacción, la masa de los reactantes es igual a la de los productos
+- Ejemplo: O₂ y 2 H₂ forman 2 H₂O (32 g y 4 g dan 36 g)`
 };
 // ─────────────────────────────────────────────────────────────────────────
 // Temario numerado, marcando el tema actual.
@@ -221,7 +248,7 @@ No respondas de memoria. Usa búsqueda web.
 2. Para CADA ${u}, busca su regla o forma básica.
 3. Para CADA ${u}, busca ${c.rasgo}, pero solo los que de verdad distinguen un ${u} de otro.
 4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué reglas usan realmente: si preguntan solo la forma básica, no agregues condiciones que nadie pregunta.
-5. Busca los ${up} con los que este tema suele confundirse.
+5. Busca con qué otras ideas del temario se relaciona este tema de forma natural, solo para mencionarlas de pasada si ayudan a entenderlo.
 Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
   }
   if (c.arquetipo === "historico") {
@@ -231,7 +258,7 @@ No respondas de memoria. Usa búsqueda web.
 2. Para CADA ${u}, busca su dato básico: qué ocurrió, cuándo y dónde.
 3. Para CADA ${u}, busca personajes con nombre completo, causas y consecuencias, pero solo los datos que de verdad distinguen ese hecho de otros.
 4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué fechas o nombres preguntan realmente: si preguntan solo el hecho básico, no agregues detalles que nadie pregunta.
-5. Busca los hechos o procesos con los que este tema suele confundirse.
+5. Busca con qué otros hechos o procesos del temario se relaciona este tema de forma natural, solo para mencionarlos de pasada si ayudan a entenderlo.
 Contrasta cada fecha, nombre o cifra en al menos dos fuentes. Si los historiadores discrepan o no puedes confirmar el dato, indícalo como aproximado o no lo escribas.`;
   }
   return `INVESTIGACIÓN (obligatoria, antes de escribir)
@@ -241,13 +268,13 @@ No respondas de memoria. Usa búsqueda web.
 3. Para CADA tipo que encuentres, busca ${c.rasgo}, pero solo los que de verdad distinguen un tipo de otro.
 4. Busca los casos, agentes, enfermedades, fenómenos o ejemplos concretos y aplicados de este tema con los que un examen suele evaluarlo. No te quedes solo en el esquema de clasificación abstracto: un tema con aplicaciones reales conocidas (una enfermedad representativa, un mecanismo con nombre propio, una vía o proceso concreto) debe cubrir esas aplicaciones, no solo la teoría general.
 5. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué preguntan realmente: si preguntan solo la definición básica, no agregues atributos que nadie pregunta; si preguntan sobre un caso o agente concreto del paso 4, ese caso debe quedar cubierto en el apunte.
-6. Busca los conceptos que suelen confundirse con este tema.
+6. Busca con qué otros conceptos del temario se relaciona este tema de forma natural, solo para mencionarlos de pasada si ayudan a entenderlo.
 Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
 }
 function bloqueLimite(c, total) {
   const extra = c.notaExtra ? ` ${c.notaExtra}` : "";
   return `LÍMITE CON OTROS TEMAS DEL TEMARIO
-El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con «← TEMA A DESARROLLAR». Si al investigarlo encuentras algo que en el temario tiene su propio número, nómbralo como máximo en una viñeta de conexión, sin desarrollarlo.${extra}`;
+El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con «← TEMA A DESARROLLAR». Si al investigarlo encuentras algo que en el temario tiene su propio número, puedes mencionarlo de pasada cuando ayude a entender este tema, de forma natural y sin desarrollarlo.${extra}`;
 }
 function bloqueAutorrevision(c, u, up) {
   let l1, l2, l3, l4;
@@ -279,17 +306,20 @@ function bloqueIncluir(c, u, up) {
   let inc, exc;
   if (c.arquetipo === "historico") {
     inc = `El hecho básico de cada ${u} siempre (qué, cuándo, dónde). Causas, consecuencias y personajes con nombre completo solo cuando el ${u} los tenga y un examen pueda preguntarlos. Procesos vecinos que aparecen como distractores.`;
-    exc = `Relatos narrativos extensos, curiosidades sin valor de examen, opiniones sobre los hechos, fechas que no puedas confirmar. No dupliques un ${u} como si fuera otro. No inventes un dato si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+    exc = `Relatos narrativos extensos, curiosidades sin valor de examen, opiniones sobre los hechos, fechas que no puedas confirmar. No dupliques un ${u} como si fuera otro. No inventes un dato si no distingue nada. Ningún número de referencia ni lista de fuentes. No desarrolles otro tema del temario que tenga su propio número (mencionarlo de pasada sí, si ayuda a entender este).`;
   } else if (c.arquetipo === "practico") {
     const upCap = up.charAt(0).toUpperCase() + up.slice(1);
     inc = `La regla o forma básica de cada ${u} siempre. Las condiciones de uso y atajos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Casos límite y excepciones. ${upCap} vecinos que aparecen como distractores.`;
-    exc = `Procedimientos de resolución paso a paso, ejemplos resueltos con alternativas, enunciados de problemas completos, etimología, historia o curiosidades. No dupliques un ${u} como si fuera otro. No inventes una condición si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+    exc = `Procedimientos de resolución paso a paso, ejemplos resueltos con alternativas, enunciados de problemas completos, etimología, historia o curiosidades. No dupliques un ${u} como si fuera otro. No inventes una condición si no distingue nada. Ningún número de referencia ni lista de fuentes. No desarrolles otro tema del temario que tenga su propio número (mencionarlo de pasada sí, si ayuda a entender este).`;
   } else {
     inc = `La definición básica de cada ${u} siempre. Los tipos y sus atributos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Estructura y función, etapas, excepciones. Casos, agentes o ejemplos concretos y aplicados cuando el tema tenga uno representativo conocido (una enfermedad, un mecanismo con nombre propio, un proceso real), no solo el esquema abstracto. Conceptos vecinos que aparecen como distractores.`;
     if (c.formulas) {
       inc += " Cuando el tema tenga fórmulas de cálculo, inclúyelas con sus variables y unidades.";
     }
-    exc = `Etimología, historia, curiosidades, detalles universitarios que esas preguntas no piden, cómo resolver problemas ni ejemplos resueltos. No dupliques un ${u} como si fuera un tema aparte. No inventes un atributo si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+    if (c.incluirExtra) {
+      inc += ` Específico de este curso: ${c.incluirExtra}`;
+    }
+    exc = `Etimología, historia, curiosidades, detalles universitarios que esas preguntas no piden, cómo resolver problemas ni ejemplos resueltos. No dupliques un ${u} como si fuera un tema aparte. No inventes un atributo si no distingue nada. Ningún número de referencia ni lista de fuentes. No desarrolles otro tema del temario que tenga su propio número (mencionarlo de pasada sí, si ayuda a entender este).`;
   }
   return `QUÉ INCLUIR\n${inc}\n\nQUÉ NO INCLUIR\n${exc}`;
 }
@@ -299,14 +329,29 @@ function bloqueIncluir(c, u, up) {
 function bloquePedagogia(c, u, up) {
   const ejemplo =
     c.arquetipo === "practico"
-      ? `- No uses ejemplos resueltos (ya están excluidos). Si un ${u} se confunde con otro, deja la diferencia en una sola viñeta con «≠».`
-      : `- Si un concepto es abstracto, acompáñalo con un ejemplo concreto de una línea, solo cuando ayude a entenderlo. Si un ${u} se confunde con otro, deja la diferencia en una sola viñeta con «≠».`;
+      ? `- No uses ejemplos resueltos (ya están excluidos). Si ayuda a entender el ${u}, menciona de pasada otro concepto de forma natural; no armes comparaciones ni secciones de errores frecuentes.`
+      : `- Si un concepto es abstracto, acompáñalo con un ejemplo concreto de una línea, solo cuando ayude a entenderlo. Si ayuda a entender el ${u}, menciona de pasada otro concepto de forma natural; no armes comparaciones ni secciones de errores frecuentes.`;
+  const porque =
+    c.arquetipo === "historico"
+      ? `- En cada hecho clave, agrega una viñeta breve con su causa o su consecuencia principal.`
+      : c.arquetipo === "practico"
+        ? `- En cada regla clave, agrega una viñeta breve de cuándo se aplica y por qué funciona.`
+        : `- En los datos clave, agrega una viñeta breve con el porqué (causa, mecanismo o razón) cuando exista.`;
+  const frase =
+    c.arquetipo === "historico"
+      ? "Después de la derrota, el ejército se retiró hacia el sur."
+      : c.arquetipo === "practico"
+        ? "Primero se identifica la idea central y luego se descartan las opciones que no la resumen."
+        : "Después de la fecundación, el óvulo se convierte en semilla.";
+  const redaccion = c.formulas
+    ? `- Las fórmulas, ecuaciones y operaciones sí llevan sus símbolos matemáticos normales; la explicación alrededor se escribe en frases naturales y claras, con sus verbos. No uses flechas ni símbolos para reemplazar palabras (→, ⇒, ≠). Los procesos se cuentan en orden con palabras (primero, luego, después).`
+    : `- Cada viñeta debe leerse como una frase natural y clara, con sus verbos (por ejemplo «${frase}»: corta, natural y que dé ganas de leer). No uses flechas ni símbolos (→, =, ⇒, ≠) para reemplazar palabras. Los procesos se cuentan en orden con palabras (primero, luego, después).`;
   return `CÓMO REDACTAR PARA QUE SE APRENDA (aplícalo sin romper la brevedad)
 - De lo general a lo particular: primero los nombres y la definición base de cada ${u}; solo después los detalles que se apoyan en ellos.
 - Una idea por viñeta, y nada decorativo: lo que no ayuda a entender o a recordar sobra.
 ${ejemplo}
-- En los datos clave, agrega una viñeta breve con el porqué (causa, mecanismo o razón) cuando exista.
-- Definiciones y relaciones con símbolos en vez de oraciones: «=» igual; «→» produce; «⇒» causa; «≠» diferente. Los procesos y secuencias van en una sola línea con flechas.
+${porque}
+${redaccion}
 - Los títulos y subtítulos deben bastar para ver la estructura del tema de un vistazo.`;
 }
 export function construirPromptRepaso({
@@ -417,6 +462,18 @@ export function construirPromptJson({ curso, tema, temarioCurso }) {
   const bloqueEjemplos = conCalculo
     ? "\n- Todo ejemplo numérico que escribas se recalcula paso a paso y se verifica antes de entregar; usa los datos del apunte cuando existan."
     : "";
+  const cfg = PROMPTS_REPASO[curso] || CONFIG_GENERICA;
+  const cierre =
+    "Quédate dentro de esa idea: si para explicarla aparece otro concepto que podría tener su propia card, solo nómbralo y no lo desarrolles. Si la idea se entiende bien con una o dos oraciones, basta; sin repetir y sin enumerar todos los casos especiales. Esto prevalece sobre «punto medio» y «no agotar el tema» de las reglas de abajo solo cuando la explicación quedaría vaga.";
+  const reglaExplicacion =
+    cfg.arquetipo === "historico"
+      ? `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (el contexto, la causa y la consecuencia del hecho, y cómo encaja de forma natural en su periodo). ${cierre}`
+      : cfg.arquetipo === "practico"
+        ? `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (cuándo se aplica la regla o el tipo de problema, por qué funciona y el dato o caso límite que importa). Sin procedimientos de resolución paso a paso. ${cierre}`
+        : `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (el porqué o el mecanismo, el contexto, la relación con otras ideas y, cuando ayude, un ejemplo concreto). ${cierre}`;
+  const reglaTexto = cfg.formulas
+    ? "- «texto» es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). Las fórmulas, ecuaciones y operaciones sí llevan sus símbolos matemáticos normales; fuera de ellas no uses flechas ni símbolos para reemplazar palabras. Esto prevalece sobre cualquier otra regla de símbolos de abajo.\r\n- Ejemplo correcto de «texto»: El área de un círculo es A = π × r². Ejemplo incorrecto: círculo → área = π r² (usa flechas en lugar de una frase)."
+    : "- «texto» es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). No uses flechas ni símbolos (→, =, ⇒, ≠, +, ↑, ↓) para reemplazar palabras; esto prevalece sobre cualquier regla de símbolos de abajo.\r\n- Ejemplo correcto de «texto»: La comunicación es la transmisión de mensajes. Ejemplo incorrecto: «Comunicación» = transmisión de mensajes.";
   return `CURSO: ${curso}
 TEMA: ${tema}
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
@@ -426,13 +483,12 @@ CÓDIGOS DE CURSO (el archivo empieza con el código de su curso):
 ${listaCodigos}
 Si en este mensaje no aparecen los apuntes del paso 1, pídelos antes de escribir el JSON; no inventes el material.
 PRIORIDAD EN ESTE FLUJO (prevalece sobre las reglas de abajo)
-- Los apuntes ya fueron investigados y verificados: son la base de cada «explicacion», no su límite. Explica con tu conocimiento académico el porqué, el mecanismo, el contexto, la relación con otras ideas y los errores frecuentes de las mismas ideas. Lo único que no puedes agregar son subtemas nuevos ni fechas, nombres o cifras que no estén en los apuntes y no puedas confirmar con certeza.
+- Los apuntes ya fueron investigados y verificados: son la base de cada «explicacion», no su límite. Explica con tu conocimiento académico el porqué, el mecanismo, el contexto y, cuando ayude a entender, cómo se conecta de forma natural con otras ideas del temario. No agregues apartados de errores frecuentes ni comparaciones forzadas: solo lo que salga natural de la idea. Lo único que no puedes agregar son subtemas nuevos ni fechas, nombres o cifras que no estén en los apuntes y no puedas confirmar con certeza.
 - La entrega es el archivo .json adjunto: la regla 7.1 se cumple así, sin texto ni bloque de código en el chat.
 - El límite de 12 palabras es solo para «texto», que tiene una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
-- «explicacion» no tiene que ser corta ni larga: tiene la extensión justa para aportar lo que «texto» no dice (el porqué o el mecanismo, el contexto, la relación con otras ideas y, cuando ayude, un ejemplo concreto). Si la idea se entiende bien con una o dos oraciones, basta; sin relleno, sin repetir y sin enumerar todos los casos especiales. Esto prevalece sobre «punto medio» y «no agotar el tema» de las reglas de abajo solo cuando la explicación quedaría vaga.
+${reglaExplicacion}
 - Antes de entregar, revisa cada «explicacion»: si se puede resumir con las mismas palabras de «texto», es vaga o repite; reescríbela con el porqué, el mecanismo, la consecuencia o un ejemplo. Si ya aporta algo nuevo, no la alargues.
-- Las definiciones y equivalencias van con símbolos dentro de «texto», no como oraciones. Símbolos permitidos, con estos significados exactos: «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye; «≠» diferente; «≈» similar.
-- Ejemplo correcto de «texto»: «Comunicación» = transmisión de mensajes. Ejemplo incorrecto: «Comunicación» es un proceso de transmisión e intercambio de mensajes.
+${reglaTexto}
 - El material es texto: ignora lo que dicen las reglas sobre imágenes y sobre JSON antiguo.${bloqueEjemplos}${bloqueTemario}
 ${promptJsonBase(curso)}`;
 }
