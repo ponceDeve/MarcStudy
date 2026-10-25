@@ -293,6 +293,22 @@ function bloqueIncluir(c, u, up) {
   }
   return `QUÉ INCLUIR\n${inc}\n\nQUÉ NO INCLUIR\n${exc}`;
 }
+// Cómo redactar los apuntes para que se aprendan mejor (pedagogía basada en
+// evidencia: coherencia y señalización, conceptos previos antes del detalle,
+// ejemplos concretos, el «porqué», contraste entre conceptos vecinos).
+function bloquePedagogia(c, u, up) {
+  const ejemplo =
+    c.arquetipo === "practico"
+      ? `- No uses ejemplos resueltos (ya están excluidos). Si un ${u} se confunde con otro, deja la diferencia en una sola viñeta con «≠».`
+      : `- Si un concepto es abstracto, acompáñalo con un ejemplo concreto de una línea, solo cuando ayude a entenderlo. Si un ${u} se confunde con otro, deja la diferencia en una sola viñeta con «≠».`;
+  return `CÓMO REDACTAR PARA QUE SE APRENDA (aplícalo sin romper la brevedad)
+- De lo general a lo particular: primero los nombres y la definición base de cada ${u}; solo después los detalles que se apoyan en ellos.
+- Una idea por viñeta, y nada decorativo: lo que no ayuda a entender o a recordar sobra.
+${ejemplo}
+- En los datos clave, agrega una viñeta breve con el porqué (causa, mecanismo o razón) cuando exista.
+- Definiciones y relaciones con símbolos en vez de oraciones: «=» igual; «→» produce; «⇒» causa; «≠» diferente. Los procesos y secuencias van en una sola línea con flechas.
+- Los títulos y subtítulos deben bastar para ver la estructura del tema de un vistazo.`;
+}
 export function construirPromptRepaso({
   curso,
   tema,
@@ -311,7 +327,7 @@ export function construirPromptRepaso({
     ? `EJEMPLO DE APUNTE REAL (de otro tema: solo ilustra el estilo y la brevedad; NO copies su contenido)\n${ejemplo}\n\n`
     : "";
   const avisoJson = paraJson
-    ? "\nEste es el PASO 1 de 3: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía."
+    ? `\nEste es el PASO 1 de 3: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía.\n${CICLO_SIGUIENTE}`
     : "";
   return `Actúa como profesor de ${curso} preuniversitario e investigador. Prepara apuntes para copiar a mi cuaderno sobre el tema marcado en el temario de abajo, para el examen de admisión de la UNMSM (Área C).
 No te doy apuntes: investiga tú solo. No muestres el proceso de investigación ni fuentes: nada de links, citas, notas ni marcadores como [1] o [cite]. No menciones la universidad, academias, profesores ni el examen dentro de los apuntes.${avisoJson}
@@ -321,6 +337,7 @@ ${bloqueInvestigacion(c, u, up)}
 ${bloqueLimite(c, total)}
 ${bloqueAutorrevision(c, u, up)}
 ${bloqueIncluir(c, u, up)}
+${bloquePedagogia(c, u, up)}
 BREVEDAD (regla principal)
 - Cada viñeta es breve: una idea, máximo 12 palabras. Sin oraciones largas.
 - Un mismo concepto puede tener varias viñetas si cada una aporta algo distinto: definición, ejemplo, diferencia o consecuencia. No repitas la misma frase.
@@ -354,6 +371,14 @@ function promptJsonBase(curso) {
   if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
+// Ciclo por temas: con «siguiente» el chat alterna apuntes (paso 1) y JSON (paso 2)
+// sin que haya que pegar el prompt otra vez. El paso 3 (examen) no cambia.
+const CICLO_SIGUIENTE = `MODO «SIGUIENTE» (un tema tras otro, en este mismo chat)
+- Si te escribo «siguiente» después de un JSON (paso 2): toma el tema que sigue en el temario numerado y haz solo el PASO 1 de ese tema, con todas las reglas del prompt del paso 1 de este chat (investigación, límite con otros temas, autorrevisión, qué incluir, cómo redactar, brevedad y formato). No hagas el JSON todavía.
+- Si te escribo «siguiente» después de unos apuntes (paso 1): conviértelos en el JSON (paso 2), con todas las reglas del prompt del paso 2 de este chat. El archivo se llama «código del curso» + «-» + número del tema en el temario, con dos dígitos (ejemplo: «len-01.json»).
+- Así se alterna: apuntes → JSON → apuntes → JSON, un tema por mensaje, sin que yo repita el prompt.
+- Si te pido el examen (paso 3), úsalo sobre el JSON del último tema entregado.
+- Si ya no quedan temas después del último, dilo y no inventes otro.`;
 function numeroSemana(clave) {
   return parseInt(String(clave).replace("semana_", ""), 10);
 }
@@ -396,13 +421,16 @@ export function construirPromptJson({ curso, tema, temarioCurso }) {
 TEMA: ${tema}
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
 Entrega el JSON como archivo adjunto descargable llamado «${archivoJson}». No lo pegues en el chat ni en bloque de código: el archivo es la única salida. Sigue todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+${CICLO_SIGUIENTE}
 CÓDIGOS DE CURSO (el archivo empieza con el código de su curso):
 ${listaCodigos}
 Si en este mensaje no aparecen los apuntes del paso 1, pídelos antes de escribir el JSON; no inventes el material.
 PRIORIDAD EN ESTE FLUJO (prevalece sobre las reglas de abajo)
-- Los apuntes ya fueron investigados y verificados. La ampliación (regla 1.5) se limita a explicar el porqué, el contexto y los errores frecuentes de las mismas ideas: no agregues subtemas, fechas, nombres ni cifras que no estén en los apuntes y no puedas confirmar con certeza.
+- Los apuntes ya fueron investigados y verificados: son la base de cada «explicacion», no su límite. Explica con tu conocimiento académico el porqué, el mecanismo, el contexto, la relación con otras ideas y los errores frecuentes de las mismas ideas. Lo único que no puedes agregar son subtemas nuevos ni fechas, nombres o cifras que no estén en los apuntes y no puedas confirmar con certeza.
 - La entrega es el archivo .json adjunto: la regla 7.1 se cumple así, sin texto ni bloque de código en el chat.
-- Cada «texto» tiene máximo 12 palabras y una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
+- El límite de 12 palabras es solo para «texto», que tiene una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
+- «explicacion» no tiene que ser corta ni larga: tiene la extensión justa para aportar lo que «texto» no dice (el porqué o el mecanismo, el contexto, la relación con otras ideas y, cuando ayude, un ejemplo concreto). Si la idea se entiende bien con una o dos oraciones, basta; sin relleno, sin repetir y sin enumerar todos los casos especiales. Esto prevalece sobre «punto medio» y «no agotar el tema» de las reglas de abajo solo cuando la explicación quedaría vaga.
+- Antes de entregar, revisa cada «explicacion»: si se puede resumir con las mismas palabras de «texto», es vaga o repite; reescríbela con el porqué, el mecanismo, la consecuencia o un ejemplo. Si ya aporta algo nuevo, no la alargues.
 - Las definiciones y equivalencias van con símbolos dentro de «texto», no como oraciones. Símbolos permitidos, con estos significados exactos: «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye; «≠» diferente; «≈» similar.
 - Ejemplo correcto de «texto»: «Comunicación» = transmisión de mensajes. Ejemplo incorrecto: «Comunicación» es un proceso de transmisión e intercambio de mensajes.
 - El material es texto: ignora lo que dicen las reglas sobre imágenes y sobre JSON antiguo.${bloqueEjemplos}${bloqueTemario}
