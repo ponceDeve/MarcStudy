@@ -105,7 +105,7 @@ export const PROMPTS_REPASO = {
   },
   "Lenguaje": {
     arquetipo: "conceptual",
-    rasgo: "su criterio de identificación, sus excepciones y un ejemplo propio de una línea",
+    rasgo: "su criterio de identificación, sus excepciones y, solo si aclara, un ejemplo propio de una línea",
     formulas: false
   },
   "Literatura": {
@@ -136,18 +136,18 @@ export const PROMPTS_REPASO = {
   }
 };
 // Qué información necesita cada curso conceptual (se suma a la lista general
-// de «QUÉ INCLUIR»). Cada curso pide cosas distintas.
+// de QUÉ INCLUIR). Cada curso pide cosas distintas.
 const INCLUIR_CURSO = {
   "Literatura":
     "En cada autor u obra: autor, época y movimiento; obras principales con su argumento resumido; personajes principales; género, narrador y rasgos de estilo; temas.",
   "Geografía":
     "Ubicación y límites; relieve, clima o hidrografía según el tema; causas del fenómeno; datos numéricos con su unidad; casos del Perú y del mundo.",
   "Lenguaje":
-    "Criterio para identificarlo, tipos o clases, excepciones y un ejemplo propio de una línea.",
+    "Criterio para identificarlo, tipos o clases, excepciones y, solo si aclara, un ejemplo propio de una línea.",
   "Filosofía":
     "Representante y época, tesis central, conceptos clave y obra principal.",
   "Psicología":
-    "Autor y aporte, componentes y fases del proceso, y un ejemplo cotidiano.",
+    "Autor y aporte, componentes y fases del proceso, y un ejemplo cotidiano solo si aclara.",
   "Educación Cívica":
     "Función o atribución, norma que la respalda (Constitución o ley), órgano responsable y composición.",
   "Economía":
@@ -157,7 +157,7 @@ const INCLUIR_CURSO = {
   "Física":
     "Magnitud (escalar o vectorial), leyes y principios, fórmula con unidades del SI y sus condiciones de validez.",
   "Química":
-    "Definición y clasificación; propiedades y estructura o enlace; ejemplos de sustancias o procesos y sus usos; y, solo cuando el tema los tenga, fórmulas, nomenclatura y ecuaciones."
+    "Definición y clasificación; propiedades y estructura o enlace; ejemplos de sustancias o procesos y sus usos cuando aporten; y, solo cuando el tema los tenga, fórmulas, nomenclatura y ecuaciones."
 };
 Object.entries(INCLUIR_CURSO).forEach(([k, v]) => {
   if (PROMPTS_REPASO[k]) PROMPTS_REPASO[k].incluirExtra = v;
@@ -191,7 +191,7 @@ const EJEMPLOS_APUNTE = {
   "Historia Universal": `# Imperio napoleónico (1804-1815)
 ## III Coalición
 - Trafalgar: derrota franco-española
-- Austerlitz: gran victoria («los tres emperadores»)
+- Austerlitz: gran victoria (los tres emperadores)
 - Crea la Confederación del Rin
 ## IV Coalición
 - Decreto de Berlín: bloqueo continental contra Inglaterra
@@ -274,7 +274,7 @@ Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo
 function bloqueLimite(c, total) {
   const extra = c.notaExtra ? ` ${c.notaExtra}` : "";
   return `LÍMITE CON OTROS TEMAS DEL TEMARIO
-El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con «← TEMA A DESARROLLAR». Si al investigarlo encuentras algo que en el temario tiene su propio número, puedes mencionarlo de pasada cuando ayude a entender este tema, de forma natural y sin desarrollarlo.${extra}`;
+El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con ← TEMA A DESARROLLAR. Si al investigarlo encuentras algo que en el temario tiene su propio número, puedes mencionarlo de pasada cuando ayude a entender este tema, de forma natural y sin desarrollarlo.${extra}`;
 }
 function bloqueAutorrevision(c, u, up) {
   let l1, l2, l3, l4;
@@ -325,12 +325,12 @@ function bloqueIncluir(c, u, up) {
 }
 // Cómo redactar los apuntes para que se aprendan mejor (pedagogía basada en
 // evidencia: coherencia y señalización, conceptos previos antes del detalle,
-// ejemplos concretos, el «porqué», contraste entre conceptos vecinos).
+// ejemplos concretos, el porqué, contraste entre conceptos vecinos).
 function bloquePedagogia(c, u, up) {
   const ejemplo =
     c.arquetipo === "practico"
       ? `- No uses ejemplos resueltos (ya están excluidos). Si ayuda a entender el ${u}, menciona de pasada otro concepto de forma natural; no armes comparaciones ni secciones de errores frecuentes.`
-      : `- Si un concepto es abstracto, acompáñalo con un ejemplo concreto de una línea, solo cuando ayude a entenderlo. Si ayuda a entender el ${u}, menciona de pasada otro concepto de forma natural; no armes comparaciones ni secciones de errores frecuentes.`;
+      : `- Si un concepto es abstracto, puedes acompañarlo con un ejemplo concreto de una línea, solo si sin él no se entiende; si ya se entiende, no pongas ejemplo. Si ayuda a entender el ${u}, menciona de pasada otro concepto de forma natural; no armes comparaciones ni secciones de errores frecuentes.`;
   const porque =
     c.arquetipo === "historico"
       ? `- En cada hecho clave, agrega una viñeta breve con su causa o su consecuencia principal.`
@@ -345,14 +345,15 @@ function bloquePedagogia(c, u, up) {
         : "Después de la fecundación, el óvulo se convierte en semilla.";
   const redaccion = c.formulas
     ? `- Las fórmulas, ecuaciones y operaciones sí llevan sus símbolos matemáticos normales; la explicación alrededor se escribe en frases naturales y claras, con sus verbos. No uses flechas ni símbolos para reemplazar palabras (→, ⇒, ≠). Los procesos se cuentan en orden con palabras (primero, luego, después).`
-    : `- Cada viñeta debe leerse como una frase natural y clara, con sus verbos (por ejemplo «${frase}»: corta, natural y que dé ganas de leer). No uses flechas ni símbolos (→, =, ⇒, ≠) para reemplazar palabras. Los procesos se cuentan en orden con palabras (primero, luego, después).`;
+    : `- Cada viñeta debe leerse como una frase natural y clara, con sus verbos (por ejemplo ${frase}: corta, natural y que dé ganas de leer). No uses flechas ni símbolos (→, =, ⇒, ≠) para reemplazar palabras. Los procesos se cuentan en orden con palabras (primero, luego, después).`;
   return `CÓMO REDACTAR PARA QUE SE APRENDA (aplícalo sin romper la brevedad)
 - De lo general a lo particular: primero los nombres y la definición base de cada ${u}; solo después los detalles que se apoyan en ellos.
 - Una idea por viñeta, y nada decorativo: lo que no ayuda a entender o a recordar sobra.
 ${ejemplo}
 ${porque}
 ${redaccion}
-- Los títulos y subtítulos deben bastar para ver la estructura del tema de un vistazo.`;
+- Los títulos y subtítulos deben bastar para ver la estructura del tema de un vistazo.
+- No uses comillas angulares ni comillas en lo que escribas; los términos van sin comillas.`;
 }
 export function construirPromptRepaso({
   curso,
@@ -416,11 +417,11 @@ function promptJsonBase(curso) {
   if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
-// Ciclo por temas: con «siguiente» el chat alterna apuntes (paso 1) y JSON (paso 2)
+// Ciclo por temas: con siguiente el chat alterna apuntes (paso 1) y JSON (paso 2)
 // sin que haya que pegar el prompt otra vez. El paso 3 (examen) no cambia.
-const CICLO_SIGUIENTE = `MODO «SIGUIENTE» (un tema tras otro, en este mismo chat)
-- Si te escribo «siguiente» después de un JSON (paso 2): toma el tema que sigue en el temario numerado y haz solo el PASO 1 de ese tema, con todas las reglas del prompt del paso 1 de este chat (investigación, límite con otros temas, autorrevisión, qué incluir, cómo redactar, brevedad y formato). No hagas el JSON todavía.
-- Si te escribo «siguiente» después de unos apuntes (paso 1): conviértelos en el JSON (paso 2), con todas las reglas del prompt del paso 2 de este chat. El archivo se llama «código del curso» + «-» + número del tema en el temario, con dos dígitos (ejemplo: «len-01.json»).
+const CICLO_SIGUIENTE = `MODO SIGUIENTE (un tema tras otro, en este mismo chat)
+- Si te escribo siguiente después de un JSON (paso 2): toma el tema que sigue en el temario numerado y haz solo el PASO 1 de ese tema, con todas las reglas del prompt del paso 1 de este chat (investigación, límite con otros temas, autorrevisión, qué incluir, cómo redactar, brevedad y formato). No hagas el JSON todavía.
+- Si te escribo siguiente después de unos apuntes (paso 1): conviértelos en el JSON (paso 2), con todas las reglas del prompt del paso 2 de este chat. El archivo se llama el código del curso, un guion y el número del tema en el temario con dos dígitos (ejemplo: len-01.json).
 - Así se alterna: apuntes → JSON → apuntes → JSON, un tema por mensaje, sin que yo repita el prompt.
 - Si te pido el examen (paso 3), úsalo sobre el JSON del último tema entregado.
 - Si ya no quedan temas después del último, dilo y no inventes otro.`;
@@ -457,37 +458,37 @@ export function construirPromptJson({ curso, tema, temarioCurso }) {
     CURSOS_JSON_MATE.includes(curso) || CURSOS_JSON_CIENCIA.includes(curso);
   const { total, lista } = temarioNumerado(temarioCurso, tema);
   const bloqueTemario = temarioCurso
-    ? `\n- No desarrolles ningún tema que en este temario tenga su propio número (${total} en total); solo el marcado con «← TEMA A DESARROLLAR».\nTEMARIO (referencia)\n${lista}`
+    ? `\n- No desarrolles ningún tema que en este temario tenga su propio número (${total} en total); solo el marcado con ← TEMA A DESARROLLAR.\nTEMARIO (referencia)\n${lista}`
     : "\n- No desarrolles temas distintos al indicado en TEMA.";
   const bloqueEjemplos = conCalculo
     ? "\n- Todo ejemplo numérico que escribas se recalcula paso a paso y se verifica antes de entregar; usa los datos del apunte cuando existan."
     : "";
   const cfg = PROMPTS_REPASO[curso] || CONFIG_GENERICA;
   const cierre =
-    "Quédate dentro de esa idea: si para explicarla aparece otro concepto que podría tener su propia card, solo nómbralo y no lo desarrolles. Si la idea se entiende bien con una o dos oraciones, basta; sin repetir y sin enumerar todos los casos especiales. Esto prevalece sobre «punto medio» y «no agotar el tema» de las reglas de abajo solo cuando la explicación quedaría vaga.";
+    "Quédate dentro de esa idea: si para explicarla aparece otro concepto que podría tener su propia card, solo nómbralo y no lo desarrolles. Si la idea se entiende bien con una o dos oraciones, basta; sin repetir y sin enumerar todos los casos especiales. Esto prevalece sobre punto medio y no agotar el tema de las reglas de abajo solo cuando la explicación quedaría vaga.";
   const reglaExplicacion =
     cfg.arquetipo === "historico"
-      ? `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (el contexto, la causa y la consecuencia del hecho, y cómo encaja de forma natural en su periodo). ${cierre}`
+      ? `- explicacion desarrolla con detalle la única idea de su texto, con la extensión justa y sin relleno, y aporta lo que texto no dice (el contexto, la causa y la consecuencia del hecho, y cómo encaja de forma natural en su periodo). ${cierre}`
       : cfg.arquetipo === "practico"
-        ? `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (cuándo se aplica la regla o el tipo de problema, por qué funciona y el dato o caso límite que importa). Sin procedimientos de resolución paso a paso. ${cierre}`
-        : `- «explicacion» desarrolla con detalle la única idea de su «texto», con la extensión justa y sin relleno, y aporta lo que «texto» no dice (el porqué o el mecanismo, el contexto, la relación con otras ideas y, cuando ayude, un ejemplo concreto). ${cierre}`;
+        ? `- explicacion desarrolla con detalle la única idea de su texto, con la extensión justa y sin relleno, y aporta lo que texto no dice (cuándo se aplica la regla o el tipo de problema, por qué funciona y el dato o caso límite que importa). Sin procedimientos de resolución paso a paso. ${cierre}`
+        : `- explicacion desarrolla con detalle la única idea de su texto, con la extensión justa y sin relleno, y aporta lo que texto no dice (el porqué o el mecanismo, el contexto, la relación con otras ideas y, cuando ayude, un ejemplo concreto). ${cierre}`;
   const reglaTexto = cfg.formulas
-    ? "- «texto» es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). Las fórmulas, ecuaciones y operaciones sí llevan sus símbolos matemáticos normales; fuera de ellas no uses flechas ni símbolos para reemplazar palabras. Esto prevalece sobre cualquier otra regla de símbolos de abajo.\r\n- Ejemplo correcto de «texto»: El área de un círculo es A = π × r². Ejemplo incorrecto: círculo → área = π r² (usa flechas en lugar de una frase)."
-    : "- «texto» es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). No uses flechas ni símbolos (→, =, ⇒, ≠, +, ↑, ↓) para reemplazar palabras; esto prevalece sobre cualquier regla de símbolos de abajo.\r\n- Ejemplo correcto de «texto»: La comunicación es la transmisión de mensajes. Ejemplo incorrecto: «Comunicación» = transmisión de mensajes.";
+    ? "- texto es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). Las fórmulas, ecuaciones y operaciones sí llevan sus símbolos matemáticos normales; fuera de ellas no uses flechas ni símbolos para reemplazar palabras. Esto prevalece sobre cualquier otra regla de símbolos de abajo.\r\n- Ejemplo correcto de texto: El área de un círculo es A = π × r². Ejemplo incorrecto: círculo → área = π r² (usa flechas en lugar de una frase)."
+    : "- texto es una frase corta y natural, con su verbo, que se entienda de un vistazo (máximo 12 palabras). No uses flechas ni símbolos (→, =, ⇒, ≠, +, ↑, ↓) para reemplazar palabras; esto prevalece sobre cualquier regla de símbolos de abajo.\r\n- Ejemplo correcto de texto: La comunicación es la transmisión de mensajes. Ejemplo incorrecto: Comunicación = transmisión de mensajes.";
   return `CURSO: ${curso}
 TEMA: ${tema}
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
-Entrega el JSON como archivo adjunto descargable llamado «${archivoJson}». No lo pegues en el chat ni en bloque de código: el archivo es la única salida. Sigue todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+Entrega el JSON como archivo adjunto descargable llamado ${archivoJson}. No lo pegues en el chat ni en bloque de código: el archivo es la única salida. Sigue todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
 ${CICLO_SIGUIENTE}
 CÓDIGOS DE CURSO (el archivo empieza con el código de su curso):
 ${listaCodigos}
 Si en este mensaje no aparecen los apuntes del paso 1, pídelos antes de escribir el JSON; no inventes el material.
 PRIORIDAD EN ESTE FLUJO (prevalece sobre las reglas de abajo)
-- Los apuntes ya fueron investigados y verificados: son la base de cada «explicacion», no su límite. Explica con tu conocimiento académico el porqué, el mecanismo, el contexto y, cuando ayude a entender, cómo se conecta de forma natural con otras ideas del temario. No agregues apartados de errores frecuentes ni comparaciones forzadas: solo lo que salga natural de la idea. Lo único que no puedes agregar son subtemas nuevos ni fechas, nombres o cifras que no estén en los apuntes y no puedas confirmar con certeza.
+- Los apuntes ya fueron investigados y verificados: son la base de cada explicacion, no su límite. Explica con tu conocimiento académico el porqué, el mecanismo, el contexto y, cuando ayude a entender, cómo se conecta de forma natural con otras ideas del temario. No agregues apartados de errores frecuentes ni comparaciones forzadas: solo lo que salga natural de la idea. Lo único que no puedes agregar son subtemas nuevos ni fechas, nombres o cifras que no estén en los apuntes y no puedas confirmar con certeza.
 - La entrega es el archivo .json adjunto: la regla 7.1 se cumple así, sin texto ni bloque de código en el chat.
-- El límite de 12 palabras es solo para «texto», que tiene una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
+- El límite de 12 palabras es solo para texto, que tiene una sola idea. Si un concepto tiene partes (qué es, elementos, funciones, ejemplo), cada parte es una card separada.
 ${reglaExplicacion}
-- Antes de entregar, revisa cada «explicacion»: si se puede resumir con las mismas palabras de «texto», es vaga o repite; reescríbela con el porqué, el mecanismo, la consecuencia o un ejemplo. Si ya aporta algo nuevo, no la alargues.
+- Antes de entregar, revisa cada explicacion: si se puede resumir con las mismas palabras de texto, es vaga o repite; reescríbela con el porqué, el mecanismo, la consecuencia o un ejemplo. Si ya aporta algo nuevo, no la alargues.
 ${reglaTexto}
 - El material es texto: ignora lo que dicen las reglas sobre imágenes y sobre JSON antiguo.${bloqueEjemplos}${bloqueTemario}
 ${promptJsonBase(curso)}`;
@@ -504,8 +505,8 @@ function promptExamenBase(curso) {
 export function construirPromptExamen({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
-PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que «recibes» en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
-Si el JSON se corta por el límite de longitud, cuando te diga «continúa» sigue exactamente desde donde quedó, dentro del mismo bloque de código y sin repetir nada.
+PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que recibes en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
+Si el JSON se corta por el límite de longitud, cuando te diga continúa sigue exactamente desde donde quedó, dentro del mismo bloque de código y sin repetir nada.
 ${promptExamenBase(curso)}`;
 }
 // ─────────────────────────────────────────────────────────────────────────
