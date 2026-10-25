@@ -1,12 +1,14 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import manifest from "../data/manifest.json";
+import palabrasClave from "../data/palabrasClave.json";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {
   embeberTextos,
   similitudCoseno
 } from "../lib/semantico";
 import EditarNombreModal from "./EditarNombreModal";
+import { construirIndicePalabrasClave } from "../lib/indicePalabrasClave";
 const CURSOS_ITEMS = manifest.cursos.map(c => ({
   type: "curso",
   nombre: c.nombre
@@ -17,6 +19,41 @@ const TEMAS_ITEMS = manifest.cursos.flatMap(c => c.temas.map(t => ({
   tema: t.tema,
   archivo: t.archivo
 })));
+/*
+ * Palabras clave por tema (src/data/palabrasClave.json).
+ * El JSON tiene solo curso y tema (sin semanas); se asocian a cada tema
+ * del manifest por su archivo, aunque el nombre esté escrito distinto.
+ */
+const PALABRAS_CLAVE_POR_ARCHIVO = construirIndicePalabrasClave(
+  palabrasClave,
+  manifest.cursos
+);
+const PALABRAS_VACIAS = new Set([
+  "de", "del", "la", "las", "el", "los", "un", "una",
+  "y", "o", "en", "al", "por", "para", "con", "que", "a"
+]);
+/*
+ * Puntaje de una consulta contra las palabras clave de un tema.
+ * 3 = coincide con una palabra clave completa, 2 = coincide por
+ * palabras (incluye singular/plural), 0 = no coincide.
+ */
+function puntajePalabrasClave(tema, consulta) {
+  const claves = PALABRAS_CLAVE_POR_ARCHIVO.get(tema.archivo);
+  if (!claves || !claves.length) return 0;
+  const q = normalizarTexto(consulta);
+  if (q.length < 3) return 0;
+  const palabrasConsulta = obtenerPalabras(q);
+  if (!palabrasConsulta.some(p => !PALABRAS_VACIAS.has(p))) return 0;
+  let mejor = 0;
+  for (const clave of claves) {
+    const c = normalizarTexto(clave);
+    if (c === q) return 3;
+    if (puntajeLexico(c, q) >= 0.85) {
+      mejor = 2;
+    }
+  }
+  return mejor;
+}
 // Número del tema dentro de su curso (el mismo que se ve sin buscar),
 // para que el número no cambie ni desaparezca al buscar.
 function numeroDeTemaEnCurso(tema, posicionEnLista) {
@@ -360,6 +397,23 @@ function obtenerCoincidenciasLiterales(consulta) {
     const puntaje = puntajeLexico(tema.tema, q);
     if (puntaje >= 0.85) {
       agregarTema(tema, puntaje, 3);
+    }
+  }
+  /*
+   * 4. Palabras clave del tema. Tienen la prioridad más baja: solo
+   * agregan temas que no coincidieron ya por su nombre, para no
+   * cambiar el orden ni los resultados actuales.
+   */
+  for (const tema of TEMAS_ITEMS) {
+    const clave = [
+      normalizarTexto(tema.curso),
+      normalizarTexto(tema.tema),
+      tema.archivo || ""
+    ].join("::");
+    if (resultadosTemas.has(clave)) continue;
+    const puntaje = puntajePalabrasClave(tema, q);
+    if (puntaje > 0) {
+      agregarTema(tema, puntaje, 4);
     }
   }
   const cursos = [...resultadosCursos.values()]
