@@ -1,73 +1,561 @@
 {
   "curso": "Química",
-  "tema": "Fenómenos físicos, químicos y nucleares",
+  "tema": "Transferencia de calor",
   "glosario": {
-    "fenómeno físico": "Cambio que no modifica la composición química.",
-    "fenómeno químico": "Cambio que produce una o más sustancias nuevas.",
-    "fenómeno nuclear": "Cambio en el núcleo del átomo.",
-    "reacción química": "Proceso que reorganiza enlaces y forma nuevas sustancias.",
-    "radiactividad": "Emisión espontánea de radiación por núcleos inestables.",
-    "fisión nuclear": "División de un núcleo pesado en núcleos menores.",
-    "fusión nuclear": "Unión de núcleos ligeros que forma uno mayor."
+    "Calor": "Energía transferida por diferencia de temperatura",
+    "Temperatura": "Medida de qué tan caliente está un cuerpo",
+    "Energía interna": "Energía asociada al movimiento de las partículas",
+    "Energía cinética": "Energía asociada al movimiento",
+    "Termómetro": "Instrumento que mide la temperatura",
+    "Escala Celsius": "Escala de temperatura en grados Celsius",
+    "Escala Kelvin": "Escala de temperatura en kelvin",
+    "Cero absoluto": "Temperatura más baja posible",
+    "Joule": "Unidad de energía del Sistema Internacional",
+    "Caloría": "Unidad de calor basada en el agua",
+    "Equilibrio térmico": "Estado en que los cuerpos igualan su temperatura",
+    "Sistema aislado": "Sistema que no intercambia energía con el exterior",
+    "Conducción": "Transferencia de calor por choques entre partículas",
+    "Convección": "Transferencia de calor por movimiento de fluido",
+    "Radiación": "Transferencia de calor mediante ondas electromagnéticas",
+    "Fluido": "Líquido o gas que puede desplazarse",
+    "Corriente de convección": "Movimiento circular de fluido caliente y frío",
+    "Onda electromagnética": "Onda que se propaga incluso en el vacío",
+    "Conductividad térmica": "Facilidad con que un material conduce el calor",
+    "Aislante térmico": "Material de baja conductividad térmica",
+    "Electrón libre": "Electrón que se mueve por el metal",
+    "Capacidad calorífica": "Calor necesario para variar 1 °C un cuerpo",
+    "Calor específico": "Calor por grado y por gramo de sustancia",
+    "Calor sensible": "Calor que provoca un cambio de temperatura",
+    "Calor latente": "Calor de cambio de estado sin variar temperatura",
+    "Cambio de estado": "Paso de una sustancia a otro estado",
+    "Propiedad intensiva": "Propiedad independiente de la cantidad de materia",
+    "Densidad": "Masa de una sustancia por unidad de volumen"
   },
   "theory": [
     {
-      "titulo": "Fenómeno físico",
+      "titulo": "Calor",
       "puntos": [
         {
-          "texto": "«Fenómeno físico»: no altera la composición química",
-          "explicacion": "La sustancia sigue siendo la misma antes y después; ejemplos son la fusión del hielo, la evaporación del agua y la disolución de sal."
+          "texto": "El «calor» es energía transferida entre cuerpos por diferencia de temperatura",
+          "explicacion": "No es una sustancia que los cuerpos contengan, sino energía en tránsito: aparece solo mientras pasa de un cuerpo a otro. Por eso se habla de transferencia de calor."
         },
         {
-          "texto": "El cambio físico suele ser reversible",
-          "explicacion": "El agua congelada vuelve a líquido al calentarse, sin perder su identidad."
+          "texto": "El calor fluye del cuerpo más caliente al más frío",
+          "explicacion": "El sentido es siempre el mismo, de mayor a menor temperatura, y continúa hasta que ambos cuerpos igualan su temperatura. Por eso una bebida caliente se enfría en el ambiente y no al revés."
+        },
+        {
+          "texto": "Los cuerpos no almacenan calor, sino energía interna",
+          "explicacion": "Lo que tiene un cuerpo es energía interna, asociada al movimiento de sus partículas. El calor es la parte de esa energía que se transfiere a otro cuerpo."
+        },
+        {
+          "texto": "El calor se representa con la letra Q",
+          "explicacion": "Es el símbolo que se usa en las fórmulas, como Q = m × c × ΔT. Se mide en unidades de energía."
+        },
+        {
+          "texto": "Para que haya transferencia de calor debe existir diferencia de temperatura",
+          "explicacion": "Si dos cuerpos están a la misma temperatura, no hay transferencia neta de calor entre ellos. La diferencia de temperatura es lo que impulsa el flujo de energía."
         }
       ]
     },
     {
-      "titulo": "Fenómeno químico",
+      "titulo": "Temperatura",
       "puntos": [
         {
-          "texto": "«Fenómeno químico»: produce sustancias nuevas",
-          "explicacion": "Las sustancias resultantes tienen propiedades distintas a las originales."
+          "texto": "La «temperatura» mide qué tan caliente o frío está un cuerpo",
+          "explicacion": "Es una medida del estado térmico del cuerpo, no una cantidad de energía transferida. Dos cuerpos con la misma temperatura no intercambian calor entre sí."
         },
         {
-          "texto": "El cambio químico suele ser irreversible",
-          "explicacion": "La sustancia original no se recupera fácilmente con calentamiento o enfriamiento."
+          "texto": "La temperatura se relaciona con la energía cinética media de las partículas",
+          "explicacion": "A mayor agitación de las partículas, mayor energía cinética media y mayor temperatura. Por eso calentar una sustancia hace que sus partículas se muevan más rápido."
         },
         {
-          "texto": "Señales observables de un cambio químico",
-          "explicacion": "Algunas son el cambio de color, el desprendimiento de gas y la liberación de calor; ejemplos: combustión, oxidación del hierro y fermentación."
+          "texto": "La temperatura se mide con el termómetro",
+          "explicacion": "El termómetro se pone en contacto con el cuerpo hasta alcanzar el equilibrio térmico con él, y la temperatura del termómetro es la que se lee."
         }
       ]
     },
     {
-      "titulo": "Fenómeno nuclear",
+      "titulo": "Escala Celsius",
       "puntos": [
         {
-          "texto": "«Fenómeno nuclear»: cambio en el núcleo",
-          "explicacion": "Puede transformar un elemento en otro; un fenómeno químico, en cambio, afecta solo a los electrones externos."
-        },
-        {
-          "texto": "«Radiactividad»: emisión espontánea de radiación",
-          "explicacion": "Los núcleos inestables emiten partículas o energía para alcanzar mayor estabilidad, sin intervención externa."
-        },
-        {
-          "texto": "«Fisión nuclear»: división de un núcleo pesado",
-          "explicacion": "Libera gran cantidad de energía; el uranio-235 es un combustible típico de los reactores nucleares."
-        },
-        {
-          "texto": "«Fusión nuclear»: unión de núcleos ligeros",
-          "explicacion": "Ocurre en el Sol, donde núcleos de hidrógeno se combinan para formar helio."
+          "texto": "La escala Celsius mide la temperatura en grados Celsius",
+          "explicacion": "Se expresa en °C y es la escala de uso cotidiano. En ella, el agua se funde a 0 °C."
         }
       ]
     },
     {
-      "titulo": "Comparación de energía",
+      "titulo": "Escala Kelvin",
       "puntos": [
         {
-          "texto": "La energía nuclear supera a la química",
-          "explicacion": "La energía liberada en la fisión es muy superior, del orden de un millón de veces la de una reacción química común; la relación entre masa y energía se estudia en otro tema."
+          "texto": "La escala Kelvin mide la temperatura en kelvin",
+          "explicacion": "Se expresa en K, sin el símbolo de grado. Es la escala que se usa en el trabajo científico."
+        },
+        {
+          "texto": "El kelvin es la unidad de temperatura del Sistema Internacional",
+          "explicacion": "Por eso las fórmulas científicas suelen emplear K. La escala empieza en el cero absoluto."
+        }
+      ]
+    },
+    {
+      "titulo": "Conversión de escalas",
+      "puntos": [
+        {
+          "texto": "La relación entre las escalas es K = °C + 273",
+          "explicacion": "Para pasar de Celsius a Kelvin se suman 273. Ejemplo: 25 °C equivalen a 25 + 273 = 298 K. Para el camino inverso se resta: 0 K equivalen a 0 − 273 = −273 °C."
+        },
+        {
+          "texto": "Un cambio de 1 °C equivale a un cambio de 1 K",
+          "explicacion": "Los grados de ambas escalas tienen el mismo tamaño y solo difieren en el punto de partida. Por eso la variación de temperatura ΔT vale lo mismo en °C que en K."
+        }
+      ]
+    },
+    {
+      "titulo": "Cero absoluto",
+      "puntos": [
+        {
+          "texto": "El cero absoluto es 0 K",
+          "explicacion": "Es la temperatura más baja posible. En grados Celsius equivale a −273 °C, según la relación entre las escalas."
+        }
+      ]
+    },
+    {
+      "titulo": "Joule",
+      "puntos": [
+        {
+          "texto": "El joule es la unidad del calor en el Sistema Internacional",
+          "explicacion": "Como el calor es una forma de transferencia de energía, se mide con la misma unidad que cualquier energía. Se abrevia J."
+        }
+      ]
+    },
+    {
+      "titulo": "Caloría",
+      "puntos": [
+        {
+          "texto": "La «caloría» es otra unidad de calor",
+          "explicacion": "Se abrevia cal y sigue en uso, sobre todo en química, aunque no es la unidad del Sistema Internacional."
+        },
+        {
+          "texto": "Una caloría eleva 1 °C la temperatura de 1 g de agua",
+          "explicacion": "Esta definición liga la caloría al agua y explica por qué el calor específico del agua vale 1 cal/(g·°C)."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalencia de unidades",
+      "puntos": [
+        {
+          "texto": "La equivalencia es 1 cal = 4,186 J",
+          "explicacion": "Sirve para pasar de calorías a joules multiplicando por 4,186. Ejemplo: 100 cal × 4,186 J/cal = 418,6 J."
+        },
+        {
+          "texto": "La equivalencia también se usa como 1 cal = 4,18 J",
+          "explicacion": "Es una aproximación del valor anterior. En los problemas conviene usar el valor que indique el enunciado."
+        }
+      ]
+    },
+    {
+      "titulo": "Equilibrio térmico",
+      "puntos": [
+        {
+          "texto": "El «equilibrio térmico» ocurre cuando los cuerpos alcanzan la misma temperatura",
+          "explicacion": "Una taza de café caliente y el aire de la habitación terminan a la misma temperatura. Cuando se logra, la transferencia de calor se detiene."
+        },
+        {
+          "texto": "En el equilibrio térmico el intercambio neto de energía es cero",
+          "explicacion": "Los cuerpos pueden seguir intercambiando energía, pero lo que uno cede lo gana el otro, por lo que el resultado neto es nulo."
+        },
+        {
+          "texto": "En un sistema aislado el calor cedido es igual al absorbido",
+          "explicacion": "Al no entrar ni salir energía del sistema, el calor que pierde el cuerpo caliente es el que gana el frío. Esta igualdad permite calcular la temperatura final de una mezcla."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley cero",
+      "puntos": [
+        {
+          "texto": "La ley cero relaciona tres sistemas en equilibrio térmico",
+          "explicacion": "Dice que si un sistema A y un sistema B están en equilibrio térmico con un tercer sistema C, entonces A y B están en equilibrio entre sí. Esto justifica que el termómetro, usado como tercer sistema, sirva para comparar temperaturas."
+        }
+      ]
+    },
+    {
+      "titulo": "Conducción",
+      "puntos": [
+        {
+          "texto": "La «conducción» transmite calor por choques entre partículas vecinas",
+          "explicacion": "Las partículas más energéticas de la zona caliente chocan con las vecinas y les pasan energía, de modo que el calor avanza de partícula en partícula."
+        },
+        {
+          "texto": "En la conducción el medio material no se mueve",
+          "explicacion": "Solo se transmite la energía; las partículas permanecen en su lugar, vibrando. Esto la diferencia de la convección."
+        },
+        {
+          "texto": "La conducción requiere contacto directo entre los cuerpos",
+          "explicacion": "Para que los choques pasen la energía, los cuerpos o las partes del cuerpo deben estar en contacto."
+        },
+        {
+          "texto": "La conducción ocurre sobre todo en sólidos",
+          "explicacion": "En los sólidos las partículas están muy juntas, lo que facilita los choques entre vecinas."
+        }
+      ]
+    },
+    {
+      "titulo": "Conducción en metales",
+      "puntos": [
+        {
+          "texto": "En los metales participan también los electrones libres",
+          "explicacion": "Los electrones libres se mueven por el metal y transportan energía con rapidez, por eso los metales son buenos conductores del calor."
+        },
+        {
+          "texto": "Una cuchara metálica se calienta en una sopa caliente por conducción",
+          "explicacion": "El calor pasa de la sopa a la parte sumergida y luego recorre la cuchara hasta el mango por choques entre partículas."
+        }
+      ]
+    },
+    {
+      "titulo": "Convección",
+      "puntos": [
+        {
+          "texto": "La «convección» transmite calor por movimiento de masas de fluido",
+          "explicacion": "En lugar de pasar de partícula en partícula, el fluido mismo se desplaza y lleva consigo la energía de una región a otra."
+        },
+        {
+          "texto": "La convección ocurre en líquidos y gases",
+          "explicacion": "Solo los fluidos pueden desplazarse en masa, por eso la convección no ocurre en sólidos."
+        },
+        {
+          "texto": "En la convección el fluido caliente sube y el frío baja",
+          "explicacion": "Esto forma corrientes de convección: el fluido caliente sube, se enfría arriba, vuelve a bajar y el ciclo se repite."
+        },
+        {
+          "texto": "El fluido caliente sube porque es menos denso",
+          "explicacion": "Al calentarse, el fluido se expande y su densidad baja, por lo que flota sobre el fluido frío, que es más denso."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de convección",
+      "puntos": [
+        {
+          "texto": "La convección natural ocurre sin ayuda externa",
+          "explicacion": "Se debe solo a las diferencias de densidad producidas por el calentamiento, como en el agua que hierve en una olla."
+        },
+        {
+          "texto": "La convección forzada ocurre con ayuda externa",
+          "explicacion": "Un dispositivo, como un ventilador o una bomba, mueve el fluido y acelera la transferencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Rapidez de convección",
+      "puntos": [
+        {
+          "texto": "La convección suele ser más rápida que la conducción",
+          "explicacion": "Mover masas de fluido lleva la energía más lejos y con mayor rapidez que los choques entre partículas vecinas."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de convección",
+      "puntos": [
+        {
+          "texto": "El agua hirviendo es un ejemplo de convección",
+          "explicacion": "El agua del fondo se calienta, sube, y el agua más fría baja, de modo que todo el líquido se calienta."
+        },
+        {
+          "texto": "La calefacción de una casa usa convección",
+          "explicacion": "El aire caliente sube y el frío baja, formando corrientes que reparten el calor por la habitación."
+        },
+        {
+          "texto": "Las brisas son un ejemplo de convección",
+          "explicacion": "Se producen por corrientes de aire que se forman al calentarse de forma desigual el aire de la atmósfera."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiación",
+      "puntos": [
+        {
+          "texto": "La «radiación» transmite calor mediante ondas electromagnéticas",
+          "explicacion": "La energía viaja en forma de ondas que emite un cuerpo y absorbe otro. Es el mecanismo por el que se siente el calor al acercar la mano a una fogata."
+        },
+        {
+          "texto": "La radiación no necesita un medio material",
+          "explicacion": "Puede propagarse en el vacío, algo que no pueden hacer la conducción ni la convección, que requieren materia."
+        },
+        {
+          "texto": "Las ondas de la radiación viajan a la velocidad de la luz",
+          "explicacion": "Las ondas térmicas son ondas electromagnéticas, como la luz, y comparten su rapidez."
+        },
+        {
+          "texto": "Todos los cuerpos emiten radiación, salvo a 0 K",
+          "explicacion": "Todo cuerpo con temperatura superior al cero absoluto emite ondas electromagnéticas, y cuanto más caliente está, más radia."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiación solar",
+      "puntos": [
+        {
+          "texto": "El calor del Sol llega a la Tierra por radiación infrarroja",
+          "explicacion": "Entre el Sol y la Tierra hay vacío, por lo que solo la radiación puede llevar la energía solar hasta nosotros."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de mecanismos",
+      "puntos": [
+        {
+          "texto": "Solo la convección implica movimiento de materia",
+          "explicacion": "En la conducción las partículas solo vibran sin desplazarse, y en la radiación la energía viaja en ondas. Esta es la diferencia clave entre los tres mecanismos."
+        },
+        {
+          "texto": "Solo la radiación puede transferir calor en el vacío",
+          "explicacion": "La conducción y la convección necesitan un medio material, mientras que la radiación se propaga sin él."
+        }
+      ]
+    },
+    {
+      "titulo": "Conductividad térmica",
+      "puntos": [
+        {
+          "texto": "La «conductividad térmica» mide qué tan bien un material conduce calor",
+          "explicacion": "Cada material tiene su valor. Un material de alta conductividad deja pasar el calor rápidamente; uno de baja, lentamente."
+        },
+        {
+          "texto": "Los metales son buenos conductores térmicos",
+          "explicacion": "Por eso las ollas y sartenes se fabrican de metal: reparten rápido el calor del fuego hacia los alimentos."
+        }
+      ]
+    },
+    {
+      "titulo": "Aislante térmico",
+      "puntos": [
+        {
+          "texto": "Un «aislante térmico» tiene baja conductividad térmica",
+          "explicacion": "Los aislantes dificultan el paso de calor y por eso se emplean para mantener temperaturas, como en las paredes de una casa."
+        },
+        {
+          "texto": "Un aislante retarda la transferencia de calor",
+          "explicacion": "Disminuye la conducción y la convección, lo que ayuda a conservar la energía térmica."
+        },
+        {
+          "texto": "La madera es un ejemplo de aislante térmico",
+          "explicacion": "Por eso los mangos de ollas y utensilios se hacen de madera: no transmiten bien el calor a la mano."
+        }
+      ]
+    },
+    {
+      "titulo": "Capacidad calorífica",
+      "puntos": [
+        {
+          "texto": "La «capacidad calorífica» es el calor necesario por grado de un cuerpo",
+          "explicacion": "Es el calor necesario para variar 1 °C la temperatura de un cuerpo. Mide cuánta energía necesita el cuerpo completo, con toda su masa, para cambiar un grado."
+        },
+        {
+          "texto": "La capacidad calorífica depende del material y de la masa",
+          "explicacion": "Un cuerpo de más masa necesita más calor para el mismo cambio de temperatura. Por eso una olla grande tarda más en calentarse que una pequeña del mismo metal."
+        },
+        {
+          "texto": "La capacidad calorífica se mide en J/K en el Sistema Internacional",
+          "explicacion": "Resulta de dividir joules entre kelvin. También se puede expresar en cal/°C, porque un cambio de 1 °C equivale a uno de 1 K."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de capacidad",
+      "puntos": [
+        {
+          "texto": "La capacidad calorífica se calcula con C = Q ÷ ΔT",
+          "explicacion": "Se divide el calor absorbido entre el cambio de temperatura. Ejemplo: un cuerpo absorbe 600 cal y su temperatura sube 20 °C. Entonces C = 600 cal ÷ 20 °C = 30 cal/°C. Significa que ese cuerpo necesita 30 cal por cada grado que se quiere elevar su temperatura."
+        },
+        {
+          "texto": "En la fórmula, C representa la capacidad calorífica",
+          "explicacion": "En el ejemplo anterior, C vale 30 cal/°C. Depende del cuerpo y de su masa, por lo que dos cuerpos del mismo material pero de distinta masa tienen distinta C."
+        }
+      ]
+    },
+    {
+      "titulo": "Calor específico",
+      "puntos": [
+        {
+          "texto": "El «calor específico» es el calor por grado y por gramo",
+          "explicacion": "Es el calor necesario para variar 1 °C la temperatura de 1 g de sustancia. A diferencia de la capacidad calorífica, que es del cuerpo entero, se refiere a una unidad de masa de la sustancia."
+        },
+        {
+          "texto": "En el Sistema Internacional el calor específico se refiere a 1 kg",
+          "explicacion": "En lugar de 1 g se toma 1 kg de sustancia. Por eso la unidad correspondiente es J/(kg·K)."
+        },
+        {
+          "texto": "El calor específico se representa con la letra c",
+          "explicacion": "Es el símbolo que aparece en la fórmula del calor sensible, Q = m × c × ΔT."
+        },
+        {
+          "texto": "El calor específico es característico de cada sustancia",
+          "explicacion": "Cada sustancia tiene su propio valor, y por eso sirve para identificar materiales. Es una propiedad intensiva, pues no depende de la cantidad de materia."
+        },
+        {
+          "texto": "Con mayor calor específico, cuesta más cambiar la temperatura",
+          "explicacion": "Una sustancia de alto c necesita mucha energía para calentarse y también libera mucha al enfriarse. Eso explica que el agua tarde en calentarse y en enfriarse."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de calor específico",
+      "puntos": [
+        {
+          "texto": "El calor específico se calcula con c = Q ÷ (m × ΔT)",
+          "explicacion": "Se divide el calor entre la masa y el cambio de temperatura. Ejemplo: 100 g de plata absorben 280 cal y su temperatura pasa de 20 °C a 70 °C. Primero, ΔT = 70 °C − 20 °C = 50 °C. Luego, c = 280 cal ÷ (100 g × 50 °C) = 280 ÷ 5000 = 0,056 cal/(g·°C). Cada gramo de plata necesita 0,056 cal para subir 1 °C."
+        }
+      ]
+    },
+    {
+      "titulo": "Unidades de calor específico",
+      "puntos": [
+        {
+          "texto": "El calor específico se mide en cal/(g·°C)",
+          "explicacion": "Resulta de dividir calorías entre el producto de gramos y grados Celsius. Se usa cuando el calor está en calorías y la masa en gramos."
+        },
+        {
+          "texto": "El calor específico también se mide en J/(kg·K)",
+          "explicacion": "Es la unidad del Sistema Internacional, que se usa cuando el calor está en joules y la masa en kilogramos."
+        }
+      ]
+    },
+    {
+      "titulo": "Calor específico del agua",
+      "puntos": [
+        {
+          "texto": "El agua tiene un calor específico de 1 cal/(g·°C)",
+          "explicacion": "Es consecuencia de la definición de la caloría: 1 cal eleva 1 °C la temperatura de 1 g de agua."
+        }
+      ]
+    },
+    {
+      "titulo": "Capacidad y calor específico",
+      "puntos": [
+        {
+          "texto": "La capacidad calorífica es C = m × c",
+          "explicacion": "Une las dos magnitudes: la capacidad calorífica del cuerpo es su masa por el calor específico. Ejemplo: 200 g de agua tienen C = 200 g × 1 cal/(g·°C) = 200 cal/°C. Esto coincide con C = Q ÷ ΔT = 6000 cal ÷ 30 °C = 200 cal/°C, resultado del ejemplo del calor sensible."
+        }
+      ]
+    },
+    {
+      "titulo": "Calor sensible",
+      "puntos": [
+        {
+          "texto": "El «calor sensible» provoca un cambio de temperatura",
+          "explicacion": "Se llama sensible porque el efecto se puede percibir y medir con un termómetro: el cuerpo se calienta o se enfría."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de calor sensible",
+      "puntos": [
+        {
+          "texto": "El calor sensible se calcula con Q = m × c × ΔT",
+          "explicacion": "Se multiplican la masa, el calor específico y la variación de temperatura. Ejemplo: ¿cuánto calor necesitan 200 g de agua para pasar de 20 °C a 50 °C? Datos: m = 200 g, c = 1 cal/(g·°C) y ΔT = 50 °C − 20 °C = 30 °C. Entonces Q = 200 g × 1 cal/(g·°C) × 30 °C = 6000 cal. En joules: 6000 × 4,186 = 25 116 J."
+        },
+        {
+          "texto": "En la fórmula, Q es el calor",
+          "explicacion": "En el ejemplo vale 6000 cal. Es la energía que el agua absorbe para calentarse."
+        },
+        {
+          "texto": "En la fórmula, m es la masa",
+          "explicacion": "En el ejemplo vale 200 g. Es la cantidad de sustancia que se calienta."
+        },
+        {
+          "texto": "En la fórmula, c es el calor específico",
+          "explicacion": "En el ejemplo vale 1 cal/(g·°C), propio del agua."
+        },
+        {
+          "texto": "En la fórmula, ΔT es la variación de temperatura",
+          "explicacion": "En el ejemplo vale 30 °C. Mide cuánto cambia la temperatura entre el inicio y el final."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación de temperatura",
+      "puntos": [
+        {
+          "texto": "La variación de temperatura es ΔT = T final − T inicial",
+          "explicacion": "Se resta la temperatura inicial de la final. Ejemplo: de 20 °C a 70 °C, ΔT = 70 − 20 = 50 °C. Si el cuerpo se enfría, ΔT sale negativa."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo del calor",
+      "puntos": [
+        {
+          "texto": "Q es positivo si el cuerpo absorbe calor y negativo si cede",
+          "explicacion": "Al calentarse, ΔT es positiva y Q también; al enfriarse, ΔT es negativa y Q resulta negativo. En el ejemplo del agua, Q = +6000 cal indica que absorbe calor."
+        }
+      ]
+    },
+    {
+      "titulo": "Unidades del calor sensible",
+      "puntos": [
+        {
+          "texto": "Con Q en cal, m va en g y c en cal/(g·°C)",
+          "explicacion": "Las unidades se cancelan: g × cal/(g·°C) × °C da cal. En el ejemplo, 200 g × 1 cal/(g·°C) × 30 °C da 6000 cal."
+        },
+        {
+          "texto": "Con Q en J, m va en kg y c en J/(kg·K)",
+          "explicacion": "Las unidades se cancelan de la misma forma y el resultado sale en joules, la unidad del Sistema Internacional."
+        }
+      ]
+    },
+    {
+      "titulo": "Factores del calor sensible",
+      "puntos": [
+        {
+          "texto": "Más masa o mayor ΔT exigen más calor",
+          "explicacion": "Q es proporcional a la masa y a la variación de temperatura: duplicar cualquiera de las dos duplica el calor necesario."
+        }
+      ]
+    },
+    {
+      "titulo": "Calor latente",
+      "puntos": [
+        {
+          "texto": "El «calor latente» cambia el estado sin cambiar la temperatura",
+          "explicacion": "Durante un cambio de estado, la energía se usa en reordenar las partículas y no en elevar la temperatura. Por eso se llama latente, porque no se nota en el termómetro."
+        },
+        {
+          "texto": "Durante el cambio de estado la temperatura se mantiene constante",
+          "explicacion": "Aunque se siga entregando calor, la temperatura no sube hasta que toda la sustancia cambia de estado. Es característico de las sustancias puras."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de calor latente",
+      "puntos": [
+        {
+          "texto": "El calor latente se calcula con Q = m × L",
+          "explicacion": "Se multiplica la masa por el calor latente de la sustancia. Ejemplo con un valor supuesto: si L = 50 cal/g y se cambian 20 g de estado, Q = 20 g × 50 cal/g = 1000 cal."
+        },
+        {
+          "texto": "En la fórmula, L es el calor latente por unidad de masa",
+          "explicacion": "En el ejemplo, L vale 50 cal/g. Cada sustancia y cada cambio de estado tienen su propio valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Absorción de calor latente",
+      "puntos": [
+        {
+          "texto": "El calor latente se absorbe en fusión, vaporización y sublimación",
+          "explicacion": "Para pasar de un estado a otro menos ordenado, las partículas necesitan ganar energía para vencer la cohesión. Los cambios de estado se estudian en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Liberación de calor latente",
+      "puntos": [
+        {
+          "texto": "El calor latente se libera en solidificación, condensación y sublimación inversa",
+          "explicacion": "En los cambios contrarios, las partículas pasan a un estado más ordenado y entregan energía al entorno."
         }
       ]
     }

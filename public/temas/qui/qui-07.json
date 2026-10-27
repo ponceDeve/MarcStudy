@@ -1,75 +1,543 @@
 {
   "curso": "Química",
-  "tema": "Propiedades físicas y químicas",
+  "tema": "Fenómenos físicos, químicos y nucleares",
   "glosario": {
-    "propiedad física": "Característica observable sin cambiar la composición.",
-    "propiedad química": "Capacidad de formar nuevas sustancias en una reacción.",
-    "propiedad extensiva": "Depende de la cantidad de materia presente.",
-    "propiedad intensiva": "No depende de la cantidad de materia.",
-    "densidad": "Masa de una sustancia por unidad de volumen.",
-    "punto de fusión": "Temperatura en que un sólido se funde.",
-    "punto de ebullición": "Temperatura a la que un líquido hierve.",
-    "combustibilidad": "Capacidad de arder en presencia de oxígeno.",
-    "reactividad": "Capacidad de reaccionar con otras sustancias."
+    "Fenómeno": "Cambio que experimenta la materia",
+    "Fenómeno físico": "Cambio donde la sustancia sigue siendo la misma",
+    "Fenómeno químico": "Cambio donde unas sustancias se transforman en otras",
+    "Fenómeno nuclear": "Cambio que ocurre en el núcleo del átomo",
+    "Reacción química": "Proceso donde cambia la composición de la materia",
+    "Cambio químico": "Otro nombre de la reacción química",
+    "Enlace químico": "Unión entre átomos en una sustancia",
+    "Reactivo": "Sustancia inicial de una reacción",
+    "Producto": "Sustancia nueva formada en una reacción",
+    "Precipitado": "Sólido insoluble que se forma en el medio",
+    "Efervescencia": "Aparición de burbujas de gas en un líquido",
+    "Cambio de estado": "Paso de una sustancia a otro estado",
+    "Dilatación": "Aumento de tamaño de un material al calentarse",
+    "Destilación": "Separación de componentes mediante cambios de estado",
+    "Filtración": "Separación de un sólido de un líquido",
+    "Combustión": "Reacción de una sustancia que arde con oxígeno",
+    "Oxidación": "Reacción de una sustancia con el oxígeno",
+    "Fermentación": "Transformación de sustancias orgánicas por microorganismos",
+    "Putrefacción": "Descomposición de la materia orgánica",
+    "Núcleo": "Centro del átomo con protones y neutrones",
+    "Protón": "Partícula del núcleo con carga positiva",
+    "Neutrón": "Partícula del núcleo sin carga",
+    "Electrón": "Partícula con carga negativa",
+    "Positrón": "Partícula de masa del electrón y carga positiva",
+    "Isótopo": "Átomo del mismo elemento con distintos neutrones",
+    "Radiactividad": "Emisión espontánea de radiación por núcleos inestables",
+    "Radiación alfa": "Núcleos de helio emitidos por un núcleo inestable",
+    "Radiación beta": "Electrones o positrones de alta energía",
+    "Radiación gamma": "Radiación electromagnética de muy alta energía",
+    "Fisión nuclear": "División de un núcleo pesado en núcleos ligeros",
+    "Fusión nuclear": "Unión de núcleos ligeros en uno más pesado",
+    "Núcleo fisionable": "Núcleo pesado que se divide con un neutrón",
+    "Reactor nuclear": "Instalación que genera electricidad mediante fisión",
+    "Residuo radiactivo": "Desecho que sigue emitiendo radiación",
+    "Deuterio": "Isótopo del hidrógeno con un neutrón",
+    "Tritio": "Isótopo del hidrógeno con dos neutrones"
   },
   "theory": [
     {
-      "titulo": "Propiedades físicas",
+      "titulo": "Fenómeno",
       "puntos": [
         {
-          "texto": "«Propiedades físicas»: no cambian la composición",
-          "explicacion": "Se observan o miden sin transformar la sustancia; ejemplos son el color, la dureza, el punto de fusión y la densidad."
-        },
-        {
-          "texto": "«Densidad»: masa dividida entre volumen",
-          "explicacion": "Un metal de 50 g ocupa 20 cm³: densidad = 50 g / 20 cm³ = 2.5 g/cm³. Cada cm³ de ese metal tiene 2.5 g de masa, valor que ayuda a identificarlo."
-        },
-        {
-          "texto": "Punto de fusión y ebullición constantes",
-          "explicacion": "Son valores fijos para una sustancia pura a una presión dada, por eso ayudan a identificarla."
+          "texto": "Un «fenómeno» es un cambio que experimenta la materia",
+          "explicacion": "La materia cambia constantemente, desde el hielo que se derrite hasta el Sol que emite energía. Estos cambios se agrupan por el tipo de transformación que sufre la materia."
         }
       ]
     },
     {
-      "titulo": "Propiedades extensivas e intensivas",
+      "titulo": "Clasificación de fenómenos",
       "puntos": [
         {
-          "texto": "«Extensivas»: dependen de la cantidad de materia",
-          "explicacion": "Masa y volumen aumentan al tomar más muestra; por eso no sirven para identificar una sustancia."
+          "texto": "Los fenómenos se clasifican en físicos, químicos y nucleares",
+          "explicacion": "Son tres grandes grupos, ordenados según qué parte de la materia se modifica. Cada grupo se desarrolla en las secciones siguientes."
         },
         {
-          "texto": "«Intensivas»: no dependen de la cantidad",
-          "explicacion": "Densidad, color y punto de fusión son iguales en un gramo que en un kilogramo de la misma sustancia."
-        },
-        {
-          "texto": "La densidad no cambia al cortar una muestra",
-          "explicacion": "La masa y el volumen disminuyen en la misma proporción, así que su cociente se mantiene."
+          "texto": "Se distinguen según cambie la forma, los enlaces o el núcleo",
+          "explicacion": "Este es el criterio de clasificación: en los físicos cambia la forma o el estado; en los químicos, los enlaces entre átomos; en los nucleares, el núcleo del átomo. Cada nivel es más profundo que el anterior."
         }
       ]
     },
     {
-      "titulo": "Propiedades químicas",
+      "titulo": "Fenómeno físico",
       "puntos": [
         {
-          "texto": "«Propiedades químicas»: se observan al reaccionar",
-          "explicacion": "Requieren que la sustancia se transforme; la sustancia original desaparece y aparece una nueva."
+          "texto": "Un «fenómeno físico» no cambia la sustancia",
+          "explicacion": "Después del cambio, la materia sigue siendo la misma sustancia, aunque su aspecto, forma o estado haya variado. El agua sigue siendo H₂O tanto en hielo como en vapor."
         },
         {
-          "texto": "«Combustibilidad»: capacidad de arder",
-          "explicacion": "El alcohol etílico es combustible porque al arder forma dióxido de carbono y agua."
+          "texto": "En un fenómeno físico no se rompen ni forman enlaces químicos",
+          "explicacion": "Los átomos de la sustancia permanecen unidos como antes. Lo que cambia es la forma en que se agrupan o se mueven las partículas, por eso no se forma nada nuevo."
         },
         {
-          "texto": "«Reactividad»: capacidad de reaccionar con otras sustancias",
-          "explicacion": "El hierro reacciona con el oxígeno del aire y forma óxido, por eso se oxida."
+          "texto": "Los fenómenos físicos suelen ser reversibles",
+          "explicacion": "Como la sustancia no cambió, se puede volver a la situación inicial: el hielo derretido puede volver a congelarse. Esto los diferencia de la mayoría de los fenómenos químicos."
         }
       ]
     },
     {
-      "titulo": "Propiedades en una sustancia",
+      "titulo": "Cambios de estado",
       "puntos": [
         {
-          "texto": "Una misma sustancia tiene ambos tipos de propiedades",
-          "explicacion": "El hierro es sólido, magnético y de color gris (físicas), y además se oxida (química)."
+          "texto": "Los cambios de estado son fenómenos físicos",
+          "explicacion": "Fusión, vaporización, condensación y otros cambios de estado solo modifican cómo están dispuestas las partículas, no la sustancia. Los cambios de estado se estudian en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de fenómenos físicos",
+      "puntos": [
+        {
+          "texto": "La fusión del hielo es un fenómeno físico",
+          "explicacion": "El agua sólida pasa a líquida, pero sigue siendo agua. Es el ejemplo más usado para ilustrar un cambio físico."
+        },
+        {
+          "texto": "La evaporación del agua es un fenómeno físico",
+          "explicacion": "El agua líquida pasa a vapor sin dejar de ser H₂O, por lo que no se forma otra sustancia."
+        },
+        {
+          "texto": "La dilatación de los metales es un fenómeno físico",
+          "explicacion": "Al calentarse, un metal aumenta de tamaño pero sigue siendo el mismo metal; al enfriarse, vuelve a su tamaño original."
+        },
+        {
+          "texto": "Doblar o cortar un material es un fenómeno físico",
+          "explicacion": "Solo cambia la forma del material; su composición permanece igual. Un papel cortado sigue siendo papel."
+        },
+        {
+          "texto": "Moler un sólido es un fenómeno físico",
+          "explicacion": "Al molerlo se obtienen trozos más pequeños de la misma sustancia, por lo que solo cambia el tamaño de las partículas."
+        }
+      ]
+    },
+    {
+      "titulo": "Disolución de sal",
+      "puntos": [
+        {
+          "texto": "Disolver sal en agua es un fenómeno físico",
+          "explicacion": "La sal parece desaparecer, pero solo se dispersa en el agua y sigue estando presente; se puede recuperar evaporando el agua."
+        }
+      ]
+    },
+    {
+      "titulo": "Destilación",
+      "puntos": [
+        {
+          "texto": "La destilación aprovecha fenómenos físicos",
+          "explicacion": "Separa los componentes de una mezcla usando cambios de estado, sin transformar las sustancias. Los métodos de separación se estudian en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Filtración",
+      "puntos": [
+        {
+          "texto": "La filtración aprovecha fenómenos físicos",
+          "explicacion": "Separa un sólido de un líquido sin cambiar la composición de ninguno de ellos, solo retiene las partículas sólidas."
+        }
+      ]
+    },
+    {
+      "titulo": "Fenómeno químico",
+      "puntos": [
+        {
+          "texto": "Un «fenómeno químico» transforma unas sustancias en otras",
+          "explicacion": "Las sustancias que había al inicio ya no existen al final: se forman sustancias distintas con propiedades diferentes. Por eso la identidad de la materia cambia."
+        },
+        {
+          "texto": "Un fenómeno químico también se llama reacción química",
+          "explicacion": "Es el nombre que se usa en química para el proceso en el que cambia la composición de la materia."
+        },
+        {
+          "texto": "Un fenómeno químico también se llama cambio químico",
+          "explicacion": "Es otro nombre para el mismo proceso, que enfatiza que el cambio afecta la identidad de las sustancias."
+        },
+        {
+          "texto": "En un fenómeno químico se rompen y forman enlaces entre átomos",
+          "explicacion": "Los átomos de los reactivos se reordenan: se rompen los enlaces que los unían y se forman otros distintos. Ese reordenamiento es lo que genera las sustancias nuevas."
+        },
+        {
+          "texto": "Los fenómenos químicos suelen ser irreversibles",
+          "explicacion": "Una vez formados los productos, no se puede volver a los reactivos con facilidad; por ejemplo, la madera quemada no recupera su forma original. Algunos exigen condiciones especiales para invertirse."
+        }
+      ]
+    },
+    {
+      "titulo": "Reactivos",
+      "puntos": [
+        {
+          "texto": "Los «reactivos» son las sustancias iniciales de la reacción",
+          "explicacion": "Son las sustancias que se consumen y se transforman durante el fenómeno químico."
+        }
+      ]
+    },
+    {
+      "titulo": "Productos",
+      "puntos": [
+        {
+          "texto": "Los «productos» son las sustancias nuevas que se forman",
+          "explicacion": "Aparecen al final de la reacción y tienen propiedades distintas de las de los reactivos."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de fenómenos químicos",
+      "puntos": [
+        {
+          "texto": "La combustión es un fenómeno químico",
+          "explicacion": "Al quemar papel o leña se forman nuevas sustancias, como cenizas y gases, y se liberan luz y calor."
+        },
+        {
+          "texto": "La oxidación del hierro es un fenómeno químico",
+          "explicacion": "El hierro reacciona con el oxígeno y forma óxido, una sustancia distinta con propiedades diferentes de las del metal."
+        },
+        {
+          "texto": "La fermentación es un fenómeno químico",
+          "explicacion": "Ocurre cuando microorganismos transforman sustancias orgánicas, como el jugo de uva, en otras con propiedades distintas."
+        },
+        {
+          "texto": "La putrefacción de alimentos es un fenómeno químico",
+          "explicacion": "La descomposición de la materia orgánica produce sustancias nuevas, con otro olor y otro color."
+        },
+        {
+          "texto": "La digestión es un fenómeno químico",
+          "explicacion": "Los alimentos se transforman en sustancias distintas que el organismo puede aprovechar."
+        }
+      ]
+    },
+    {
+      "titulo": "Evidencias de reacción",
+      "puntos": [
+        {
+          "texto": "Un cambio de color puede indicar un fenómeno químico",
+          "explicacion": "Un nuevo color suele señalar que se formó una sustancia distinta. Ejemplo: se forma óxido verdoso en el cobre expuesto al aire."
+        },
+        {
+          "texto": "Un cambio de olor puede indicar un fenómeno químico",
+          "explicacion": "Un olor distinto indica que se formaron sustancias nuevas, como ocurre con la comida que se echa a perder."
+        },
+        {
+          "texto": "La formación de un gas puede indicar un fenómeno químico",
+          "explicacion": "Se nota por la aparición de burbujas o efervescencia, como al mezclar bicarbonato de sodio con vinagre."
+        },
+        {
+          "texto": "La formación de un precipitado puede indicar un fenómeno químico",
+          "explicacion": "Al mezclar dos disoluciones puede aparecer un sólido que antes no estaba, señal de que se formó una sustancia nueva."
+        },
+        {
+          "texto": "La emisión de luz puede indicar un fenómeno químico",
+          "explicacion": "Algunas reacciones liberan luz, a menudo acompañada de calor, como la combustión de la leña."
+        },
+        {
+          "texto": "Un cambio de temperatura puede indicar un fenómeno químico",
+          "explicacion": "Las reacciones químicas liberan calor o lo absorben, por lo que la temperatura de la mezcla puede subir o bajar."
+        }
+      ]
+    },
+    {
+      "titulo": "Precipitado",
+      "puntos": [
+        {
+          "texto": "Un «precipitado» es un sólido insoluble que se forma en el medio",
+          "explicacion": "Al no disolverse, queda como partículas sólidas que se ven como turbidez y luego se depositan en el fondo."
+        }
+      ]
+    },
+    {
+      "titulo": "Burbujas",
+      "puntos": [
+        {
+          "texto": "Las burbujas no siempre indican una reacción química",
+          "explicacion": "También aparecen en la ebullición del agua, que es un cambio de estado y por tanto un fenómeno físico. Para decidir hay que comprobar si se formó una sustancia nueva."
+        }
+      ]
+    },
+    {
+      "titulo": "Reacciones químicas",
+      "puntos": [
+        {
+          "texto": "Las reacciones químicas se estudian con detalle en otro tema",
+          "explicacion": "Aquí solo se distingue el fenómeno químico de los demás; sus tipos y ecuaciones corresponden a otro tema del temario."
+        }
+      ]
+    },
+    {
+      "titulo": "Fenómeno nuclear",
+      "puntos": [
+        {
+          "texto": "Un «fenómeno nuclear» ocurre en el núcleo del átomo",
+          "explicacion": "A diferencia de los físicos y químicos, que afectan la forma o los enlaces, aquí cambia el centro mismo del átomo, por lo que puede cambiar el elemento."
+        },
+        {
+          "texto": "El núcleo del átomo está formado por protones y neutrones",
+          "explicacion": "Los protones tienen carga positiva y los neutrones no tienen carga. Un fenómeno nuclear modifica la cantidad o la agrupación de estas partículas."
+        },
+        {
+          "texto": "Los fenómenos nucleares incluyen radiactividad, fisión y fusión",
+          "explicacion": "Son los tres procesos principales en los que el núcleo cambia. Cada uno se desarrolla en una sección propia."
+        }
+      ]
+    },
+    {
+      "titulo": "Energía nuclear",
+      "puntos": [
+        {
+          "texto": "La energía nuclear es mucho mayor que la de una reacción química",
+          "explicacion": "Los cambios en el núcleo implican fuerzas mucho más intensas que las que unen a los átomos en un enlace, por lo que liberan cantidades enormes de energía."
+        },
+        {
+          "texto": "La energía liberada proviene de masa que se convierte en energía",
+          "explicacion": "Una pequeña parte de la masa de los núcleos desaparece y se transforma en energía. Esta relación se explica en otro tema, con la ecuación de Einstein."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiactividad",
+      "puntos": [
+        {
+          "texto": "La «radiactividad» es la emisión espontánea de radiación por núcleos inestables",
+          "explicacion": "Un núcleo inestable libera partículas o radiación para alcanzar una forma más estable. Ocurre por sí sola, sin que nadie la provoque."
+        },
+        {
+          "texto": "Ningún proceso físico ni químico modifica la radiactividad",
+          "explicacion": "Como el origen está en el núcleo, calentar, disolver o hacer reaccionar el material no la cambia. Esto la distingue de los fenómenos físicos y químicos."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de radiación",
+      "puntos": [
+        {
+          "texto": "Los tres tipos de radiación son alfa, beta y gamma",
+          "explicacion": "Se nombran con las tres primeras letras griegas. Se distinguen por su naturaleza, su carga eléctrica y lo que las frena."
+        },
+        {
+          "texto": "Alfa y beta suelen ir acompañadas de radiación gamma",
+          "explicacion": "Después de emitir una partícula, el núcleo suele quedar con exceso de energía, que libera como radiación gamma."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiación alfa",
+      "puntos": [
+        {
+          "texto": "La radiación alfa son núcleos de helio",
+          "explicacion": "Cada partícula alfa tiene dos protones y dos neutrones, la misma composición que el núcleo del helio."
+        },
+        {
+          "texto": "La radiación alfa tiene carga positiva",
+          "explicacion": "La carga positiva proviene de los dos protones que contiene."
+        },
+        {
+          "texto": "El papel frena la radiación alfa",
+          "explicacion": "Las partículas alfa son grandes y poco penetrantes, por lo que una hoja de papel basta para detenerlas."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiación beta",
+      "puntos": [
+        {
+          "texto": "La radiación beta son electrones de alta energía",
+          "explicacion": "Se trata de electrones que salen del núcleo con mucha energía. También puede ser de positrones."
+        },
+        {
+          "texto": "La radiación beta tiene carga negativa",
+          "explicacion": "Su carga negativa es la de los electrones que la forman."
+        },
+        {
+          "texto": "La radiación beta también puede ser de positrones",
+          "explicacion": "Un positrón es una partícula con la misma masa que el electrón pero carga positiva; en ese caso la radiación beta es positiva."
+        },
+        {
+          "texto": "El aluminio frena la radiación beta",
+          "explicacion": "Es más penetrante que la alfa, por lo que hace falta una lámina metálica como el aluminio para detenerla."
+        }
+      ]
+    },
+    {
+      "titulo": "Radiación gamma",
+      "puntos": [
+        {
+          "texto": "La radiación gamma es radiación electromagnética de alta energía",
+          "explicacion": "No es materia, sino energía en forma de fotones de muy alta frecuencia, parecida a la luz pero mucho más energética."
+        },
+        {
+          "texto": "La radiación gamma no tiene carga",
+          "explicacion": "Como no está formada por partículas con carga, no se desvía con campos eléctricos."
+        },
+        {
+          "texto": "El plomo frena la radiación gamma",
+          "explicacion": "Es muy penetrante, por lo que se necesita un material denso como el plomo para detenerla."
+        }
+      ]
+    },
+    {
+      "titulo": "Fisión nuclear",
+      "puntos": [
+        {
+          "texto": "La «fisión nuclear» divide un núcleo pesado en núcleos más ligeros",
+          "explicacion": "Un núcleo grande e inestable se parte en dos o más núcleos menores, y ese proceso libera una gran cantidad de energía."
+        },
+        {
+          "texto": "La fisión se inicia al bombardear el núcleo con un neutrón",
+          "explicacion": "Un neutrón lento es absorbido por el núcleo pesado y lo desestabiliza hasta que se divide. El neutrón no tiene carga, por lo que no lo repele el núcleo positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Núcleos fisionables",
+      "puntos": [
+        {
+          "texto": "El uranio-235 es un núcleo fisionable",
+          "explicacion": "Es un núcleo pesado e inestable que se divide al absorber un neutrón, por lo que se usa como combustible nuclear."
+        },
+        {
+          "texto": "El plutonio-239 es un núcleo fisionable",
+          "explicacion": "También es un núcleo pesado que se puede dividir por fisión, y por eso se emplea como combustible nuclear."
+        }
+      ]
+    },
+    {
+      "titulo": "Liberación en la fisión",
+      "puntos": [
+        {
+          "texto": "La fisión libera neutrones",
+          "explicacion": "Los neutrones liberados pueden dividir otros núcleos, lo que permite mantener el proceso."
+        },
+        {
+          "texto": "La fisión libera rayos gamma",
+          "explicacion": "Es radiación electromagnética de alta energía que acompaña a la división del núcleo."
+        },
+        {
+          "texto": "La fisión libera gran cantidad de energía",
+          "explicacion": "Esta energía se aprovecha en forma de calor, y es mucho mayor que la de cualquier reacción química."
+        }
+      ]
+    },
+    {
+      "titulo": "Reactores nucleares",
+      "puntos": [
+        {
+          "texto": "Los reactores nucleares usan la fisión para generar electricidad",
+          "explicacion": "El calor producido se usa para generar electricidad, lo que permite aprovechar la energía del núcleo de manera controlada."
+        }
+      ]
+    },
+    {
+      "titulo": "Armas nucleares",
+      "puntos": [
+        {
+          "texto": "Las armas nucleares usan la fisión",
+          "explicacion": "En ellas la fisión se produce sin control, y libera toda la energía de forma destructiva y súbita."
+        }
+      ]
+    },
+    {
+      "titulo": "Residuos radiactivos",
+      "puntos": [
+        {
+          "texto": "La fisión genera residuos radiactivos",
+          "explicacion": "Los núcleos más pequeños que se forman suelen ser inestables y siguen emitiendo radiación, por lo que requieren manejo especial."
+        }
+      ]
+    },
+    {
+      "titulo": "Fusión nuclear",
+      "puntos": [
+        {
+          "texto": "La «fusión nuclear» une núcleos ligeros para formar uno más pesado",
+          "explicacion": "Es el proceso inverso de la fisión: dos núcleos pequeños se juntan en uno mayor y liberan energía."
+        },
+        {
+          "texto": "En la fusión, núcleos de hidrógeno se unen y forman helio",
+          "explicacion": "Es la reacción que ocurre en el Sol: el hidrógeno se convierte en helio y libera energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Isótopos del hidrógeno",
+      "puntos": [
+        {
+          "texto": "El deuterio y el tritio son isótopos del hidrógeno",
+          "explicacion": "Los isótopos son átomos del mismo elemento con distinto número de neutrones. Por eso el deuterio y el tritio siguen siendo hidrógeno."
+        },
+        {
+          "texto": "El deuterio y el tritio forman helio y un neutrón",
+          "explicacion": "Al fusionarse, estos dos isótopos del hidrógeno dan un núcleo de helio y liberan un neutrón junto con energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones de fusión",
+      "puntos": [
+        {
+          "texto": "La fusión requiere temperaturas y presiones extremas",
+          "explicacion": "Los núcleos tienen carga positiva y se repelen; solo con condiciones extremas logran acercarse lo suficiente para unirse. Por eso es difícil lograrla de forma controlada."
+        }
+      ]
+    },
+    {
+      "titulo": "Fusión en estrellas",
+      "puntos": [
+        {
+          "texto": "La fusión es la fuente de energía del Sol y las estrellas",
+          "explicacion": "En el interior de las estrellas, las condiciones extremas permiten que el hidrógeno se fusione de manera continua, lo que produce la luz y el calor que llegan a la Tierra."
+        }
+      ]
+    },
+    {
+      "titulo": "Bomba de hidrógeno",
+      "puntos": [
+        {
+          "texto": "La bomba de hidrógeno usa fusión con energía no controlada",
+          "explicacion": "Obtiene su enorme poder destructivo de la fusión, pero esa energía no se puede controlar."
+        }
+      ]
+    },
+    {
+      "titulo": "Residuos de fusión",
+      "puntos": [
+        {
+          "texto": "La fusión produce menos residuos radiactivos que la fisión",
+          "explicacion": "Usa combustibles abundantes, como el hidrógeno, y genera residuos radiactivos mínimos, lo que la hace atractiva como fuente de energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Qué se modifica",
+      "puntos": [
+        {
+          "texto": "Un fenómeno físico modifica la forma o el estado",
+          "explicacion": "Para reconocerlo, hay que ver si la sustancia sigue siendo la misma; si es así, solo cambió su aspecto, tamaño o estado."
+        },
+        {
+          "texto": "Un fenómeno químico modifica los enlaces entre átomos",
+          "explicacion": "Los átomos se reagrupan con enlaces nuevos, de modo que aparecen sustancias distintas."
+        },
+        {
+          "texto": "Un fenómeno nuclear modifica el núcleo del átomo",
+          "explicacion": "Es el nivel más profundo de cambio: se altera el núcleo y no solo los electrones que forman los enlaces."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de composición",
+      "puntos": [
+        {
+          "texto": "En un fenómeno físico la composición no cambia",
+          "explicacion": "La sustancia es la misma antes y después, por lo que se puede recuperar la situación inicial."
+        },
+        {
+          "texto": "En un fenómeno químico se forman sustancias nuevas",
+          "explicacion": "Las sustancias finales tienen propiedades diferentes de las iniciales, aunque los átomos sean los mismos."
+        },
+        {
+          "texto": "En un fenómeno nuclear cambia el elemento",
+          "explicacion": "Como cambia el núcleo, el átomo puede convertirse en otro elemento, algo que ni los físicos ni los químicos logran."
         }
       ]
     }

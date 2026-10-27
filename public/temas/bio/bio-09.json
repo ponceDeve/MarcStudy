@@ -1,247 +1,495 @@
 {
   "curso": "Biología",
-  "tema": "Lípidos",
+  "tema": "Proteínas",
   "glosario": {
-    "Lípido": "Biomolécula orgánica, apolar e hidrofóbica, que es insoluble en agua.",
-    "Lípido saponificable": "Lípido que contiene ácidos grasos y puede formar jabones al reaccionar con álcalis.",
-    "Lípido insaponificable": "Lípido que no contiene ácidos grasos y no forma jabones.",
-    "Ácido graso": "Cadena de carbonos con un grupo carboxilo al final.",
-    "Ácido graso saturado": "Ácido graso sin dobles enlaces entre sus carbonos.",
-    "Ácido graso insaturado": "Ácido graso con uno o más dobles enlaces entre sus carbonos.",
-    "Esterificación": "Unión de un alcohol con un ácido, formando un enlace éster y agua.",
-    "Enlace éster": "Enlace que une un grupo ácido con un grupo alcohol.",
-    "Glicerol": "Alcohol de tres carbonos que forma parte de muchos lípidos.",
-    "Triglicérido": "Lípido formado por un glicerol unido a tres ácidos grasos.",
-    "Fosfolípido": "Lípido formado por glicerol, dos ácidos grasos y un grupo fosfato.",
-    "Cera": "Lípido formado por un alcohol de cadena larga unido a un ácido graso.",
-    "Esteroide": "Lípido con núcleo formado por cuatro anillos de carbono.",
-    "Colesterol": "Esteroide que es precursor de las hormonas esteroides y de las sales biliares.",
-    "Anfipático": "Molécula que tiene una región polar y otra apolar.",
-    "Bicapa lipídica": "Doble capa de fosfolípidos que forma la base de las membranas celulares.",
-    "Lipólisis": "Descomposición de los triglicéridos en glicerol y ácidos grasos.",
-    "Prostaglandina": "Lípido derivado de ácidos grasos de veinte carbonos que actúa como mensajero.",
-    "Terpeno": "Lípido insaponificable formado por unidades de isopreno.",
-    "Hormona esteroide": "Hormona derivada del colesterol que regula diversas funciones del organismo."
+    "proteína": "Biomolécula formada por cadenas de aminoácidos.",
+    "aminoácido": "Unidad básica de las proteínas.",
+    "polímero": "Molécula formada por unidades repetidas.",
+    "cadena lateral": "Parte variable de cada aminoácido.",
+    "aminoácido esencial": "Aminoácido que el cuerpo no fabrica.",
+    "autótrofo": "Organismo que fabrica su propio alimento.",
+    "enlace peptídico": "Enlace covalente entre dos aminoácidos.",
+    "enlace covalente": "Enlace donde se comparten electrones.",
+    "condensación": "Unión de moléculas con pérdida de agua.",
+    "hidrólisis": "Ruptura de un enlace al agregar agua.",
+    "péptido": "Aminoácidos unidos por enlaces peptídicos.",
+    "oligopéptido": "Cadena corta de aminoácidos.",
+    "polipéptido": "Cadena larga de aminoácidos.",
+    "estructura primaria": "Secuencia lineal de aminoácidos.",
+    "estructura secundaria": "Plegamiento local regular de la cadena.",
+    "estructura terciaria": "Forma tridimensional de una cadena.",
+    "estructura cuaternaria": "Asociación de varias cadenas.",
+    "puente de hidrógeno": "Atracción débil entre átomos polares.",
+    "hélice alfa": "Cadena enrollada en espiral.",
+    "hoja beta plegada": "Tramos de cadena en zigzag paralelos.",
+    "puente disulfuro": "Enlace covalente entre dos azufres.",
+    "enlace iónico": "Atracción entre cargas opuestas.",
+    "subunidad": "Cada cadena de una proteína cuaternaria.",
+    "proteína fibrosa": "Proteína alargada e insoluble en agua.",
+    "proteína globular": "Proteína compacta y soluble en agua.",
+    "proteína simple": "Proteína formada solo por aminoácidos.",
+    "proteína conjugada": "Proteína con un grupo no proteico.",
+    "grupo prostético": "Parte no proteica de una proteína conjugada.",
+    "desnaturalización": "Pérdida de la forma tridimensional de la proteína.",
+    "enzima": "Proteína que acelera reacciones químicas.",
+    "catalizador": "Sustancia que acelera una reacción.",
+    "sustrato": "Sustancia sobre la que actúa la enzima.",
+    "sitio activo": "Zona de la enzima que une el sustrato.",
+    "anticuerpo": "Proteína que defiende contra agentes extraños.",
+    "hormona": "Mensajero químico que regula procesos del cuerpo.",
+    "potencial de hidrógeno": "Medida de la acidez de una solución."
   },
   "theory": [
     {
-      "titulo": "Concepto de lípidos",
+      "titulo": "Concepto",
       "puntos": [
         {
-          "texto": "Los lípidos son biomoléculas orgánicas apolares e hidrofóbicas",
-          "explicacion": "No se disuelven en agua porque no tienen cargas que interactúen con sus moléculas, y se disuelven en solventes orgánicos."
+          "texto": "Las «proteínas» son biomoléculas formadas por cadenas de aminoácidos.",
+          "explicacion": "Cada proteína es una o varias cadenas de aminoácidos plegadas en una forma precisa. De esa forma depende lo que la proteína puede hacer en la célula."
         },
         {
-          "texto": "Los lípidos no son polímeros y no tienen monómeros definidos",
-          "explicacion": "Son un grupo muy heterogéneo de compuestos; por eso no se describen como cadenas repetidas de una misma unidad."
+          "texto": "Las proteínas son polímeros de 20 tipos de aminoácidos.",
+          "explicacion": "Es un polímero porque repite una misma clase de unidad, el aminoácido, que se une a otras unidades en cadena. Todas las proteínas conocidas se arman con los mismos veinte aminoácidos."
         },
         {
-          "texto": "Los lípidos cumplen funciones de reserva, estructura y regulación",
-          "explicacion": "Los triglicéridos almacenan energía, los fosfolípidos forman membranas y las hormonas esteroides regulan procesos del organismo."
+          "texto": "Las proteínas contienen carbono, hidrógeno, oxígeno y nitrógeno.",
+          "explicacion": "El nitrógeno viene del grupo amino de los aminoácidos, y por eso distingue a las proteínas de los carbohidratos y los lípidos."
+        },
+        {
+          "texto": "Algunas proteínas contienen también azufre.",
+          "explicacion": "El azufre procede de ciertos aminoácidos y permite formar enlaces que estabilizan la forma de la proteína."
+        },
+        {
+          "texto": "Las proteínas tienen el mayor número de funciones entre las biomoléculas.",
+          "explicacion": "Casi ningún proceso biológico ocurre sin ellas: aceleran reacciones, dan soporte, transportan y defienden."
+        },
+        {
+          "texto": "Con 20 aminoácidos se forman infinitas proteínas distintas.",
+          "explicacion": "Cambiar el orden y el tipo de aminoácidos produce una proteína diferente, igual que con las letras del alfabeto se forman muchísimas palabras."
         }
       ]
     },
     {
-      "titulo": "Clasificación de los lípidos",
+      "titulo": "Aminoácidos",
       "puntos": [
         {
-          "texto": "Los lípidos se clasifican en saponificables e insaponificables",
-          "explicacion": "El criterio es la presencia o ausencia de ácidos grasos en su estructura."
+          "texto": "Los «aminoácidos» son las unidades básicas de las proteínas.",
+          "explicacion": "Son los monómeros que se unen para formar las cadenas proteicas."
         },
         {
-          "texto": "Los lípidos saponificables contienen ácidos grasos",
-          "explicacion": "Al reaccionar con álcalis, sus enlaces éster se hidrolizan y forman jabones."
+          "texto": "Cada aminoácido tiene grupo amino, grupo carboxilo y cadena lateral.",
+          "explicacion": "El grupo amino y el grupo carboxilo se unen con otros aminoácidos para formar la cadena. La cadena lateral es la parte que cambia de un aminoácido a otro."
         },
         {
-          "texto": "Los lípidos insaponificables no contienen ácidos grasos",
-          "explicacion": "No tienen enlaces éster y, por lo tanto, no pueden hidrolizarse para formar jabones."
+          "texto": "Los 20 aminoácidos se diferencian solo en su cadena lateral.",
+          "explicacion": "El esqueleto básico es igual en todos, así que la identidad de cada aminoácido la da su cadena lateral. Esa cadena determina cómo se comporta dentro de la proteína."
         },
         {
-          "texto": "Los lípidos saponificables se dividen en simples y complejos",
-          "explicacion": "Los simples están formados por ácidos grasos y un alcohol; los complejos añaden otros grupos, como un fosfato."
+          "texto": "Por su cadena lateral, un aminoácido es apolar o polar.",
+          "explicacion": "Los apolares rechazan el agua. Los polares la atraen y pueden ser sin carga o con carga. Esa diferencia decide en qué parte de la proteína se ubica cada aminoácido."
         },
         {
-          "texto": "Los lípidos insaponificables incluyen terpenos, esteroides y prostaglandinas",
-          "explicacion": "Aunque no tienen ácidos grasos, algunos de ellos derivan de hidrocarburos o cumplen roles hormonales."
+          "texto": "Los aminoácidos polares con carga pueden ser ácidos o básicos.",
+          "explicacion": "Los ácidos tienen carga negativa y los básicos carga positiva, y por eso pueden formar enlaces iónicos."
+        },
+        {
+          "texto": "Los aminoácidos «esenciales» deben obtenerse de la dieta.",
+          "explicacion": "El cuerpo no puede fabricarlos, así que dependen de los alimentos. Los demás aminoácidos sí los sintetiza."
+        },
+        {
+          "texto": "En humanos se describen diez aminoácidos esenciales.",
+          "explicacion": "Son fenilalanina, isoleucina, leucina, lisina, metionina, treonina, triptófano, valina, arginina e histidina."
+        },
+        {
+          "texto": "Los organismos autótrofos fabrican todos los aminoácidos de sus proteínas.",
+          "explicacion": "Las plantas, por ejemplo, producen sus propios aminoácidos y no dependen de otros seres vivos para obtenerlos."
+        },
+        {
+          "texto": "Las proteínas de origen animal suelen aportar aminoácidos esenciales completos.",
+          "explicacion": "Por eso los alimentos de origen animal son una fuente confiable de esos aminoácidos."
         }
       ]
     },
     {
-      "titulo": "Ácidos grasos",
+      "titulo": "Enlace peptídico",
       "puntos": [
         {
-          "texto": "Los ácidos grasos son cadenas de carbonos con un grupo carboxilo",
-          "explicacion": "Son ácidos orgánicos de cadena larga; el grupo carboxilo está en un extremo de la cadena."
+          "texto": "El «enlace peptídico» es un enlace covalente de tipo amida.",
+          "explicacion": "Es el enlace que mantiene unidos a los aminoácidos de una proteína."
         },
         {
-          "texto": "Los ácidos grasos rara vez aparecen libres en los seres vivos",
-          "explicacion": "Suelen estar unidos a otras moléculas mediante enlaces éster, formando lípidos saponificables."
+          "texto": "El grupo carboxilo de un aminoácido se une al amino del siguiente.",
+          "explicacion": "De esta forma, cada aminoácido queda enlazado a su vecino, y la cadena crece de uno en uno."
         },
         {
-          "texto": "Los ácidos grasos pueden ser saturados o insaturados",
-          "explicacion": "La diferencia está en la presencia o ausencia de dobles enlaces en su cadena de carbonos."
+          "texto": "El enlace peptídico se forma por condensación, con pérdida de agua.",
+          "explicacion": "Es la misma clase de reacción que une los monosacáridos. El agua que se libera sale del grupo carboxilo y del grupo amino."
         },
         {
-          "texto": "Los ácidos grasos saturados no tienen dobles enlaces",
-          "explicacion": "Sus cadenas son rectas y se empaquetan de forma compacta, por lo que suelen ser sólidos a temperatura ambiente."
+          "texto": "El enlace carbono nitrógeno actúa en parte como doble enlace.",
+          "explicacion": "Esa característica de doble enlace hace que el nitrógeno y el carbono compartan sus electrones de manera parcial."
         },
         {
-          "texto": "Los ácidos grasos insaturados tienen uno o más dobles enlaces",
-          "explicacion": "Los dobles enlaces generan curvas en la cadena, lo que impide el empaquetamiento compacto y los mantiene líquidos."
+          "texto": "El enlace peptídico es rígido y no permite el giro libre.",
+          "explicacion": "Al comportarse como doble enlace, los átomos no pueden girar entre sí. Esta rigidez limita las formas que puede adoptar la cadena y guía su plegamiento."
         },
         {
-          "texto": "Los ácidos grasos poliinsaturados son esenciales para el ser humano",
-          "explicacion": "Dato por confirmar: el organismo no puede sintetizarlos y deben obtenerse de la dieta, como los omega 3 y omega 6."
+          "texto": "El enlace peptídico es plano.",
+          "explicacion": "Los átomos que participan en el enlace quedan en un mismo plano."
         },
         {
-          "texto": "Los ácidos grasos monoinsaturados no son esenciales",
-          "explicacion": "Dato por confirmar: el organismo puede sintetizarlos a partir de otros ácidos grasos."
+          "texto": "El enlace peptídico es polar.",
+          "explicacion": "El oxígeno y el nitrógeno del enlace atraen y reparten sus electrones de forma desigual, y eso favorece los puentes de hidrógeno entre tramos de la cadena."
         },
         {
-          "texto": "Los ácidos grasos son sustancias anfipáticas",
-          "explicacion": "Su cadena de carbonos es apolar, pero su grupo carboxilo es polar, lo que les permite interactuar con el agua y con los lípidos."
+          "texto": "Los átomos unidos por el enlace peptídico están en configuración trans.",
+          "explicacion": "En esta configuración los átomos quedan en lados opuestos del enlace. Es la configuración típica de las cadenas polipeptídicas."
+        },
+        {
+          "texto": "El enlace peptídico se rompe por hidrólisis.",
+          "explicacion": "La hidrólisis agrega agua y separa los aminoácidos. Puede lograrse con ácidos, con bases o con enzimas proteolíticas."
+        },
+        {
+          "texto": "Un «péptido» es la unión de aminoácidos mediante enlaces peptídicos.",
+          "explicacion": "Puede ser una proteína entera o un fragmento pequeño de ella."
+        },
+        {
+          "texto": "Un «oligopéptido» está formado por pocos aminoácidos unidos.",
+          "explicacion": "Es una cadena corta, de menor tamaño que un polipéptido."
+        },
+        {
+          "texto": "Un «polipéptido» es una cadena larga de aminoácidos.",
+          "explicacion": "Tiene muchos aminoácidos y es la base de una proteína."
+        },
+        {
+          "texto": "Una cadena de aminoácidos tiene un extremo amino y un extremo carboxilo.",
+          "explicacion": "En un extremo queda libre el grupo amino y en el otro el grupo carboxilo, porque solo los grupos centrales se unen entre sí."
+        },
+        {
+          "texto": "Una proteína es un polipéptido con estructura tridimensional definida.",
+          "explicacion": "No basta con tener la cadena: la proteína necesita plegarse en una forma específica para funcionar."
         }
       ]
     },
     {
-      "titulo": "Triglicéridos",
+      "titulo": "Estructura primaria",
       "puntos": [
         {
-          "texto": "Los triglicéridos están formados por glicerol y tres ácidos grasos",
-          "explicacion": "Los tres ácidos grasos se unen al glicerol mediante enlaces éster por un proceso de esterificación."
+          "texto": "La estructura primaria es la secuencia lineal de aminoácidos.",
+          "explicacion": "Es el orden en que están unidos los aminoácidos, desde el extremo amino hasta el extremo carboxilo."
         },
         {
-          "texto": "Los acilglicéridos pueden tener uno, dos o tres ácidos grasos",
-          "explicacion": "Según su número de ácidos grasos se llaman monoglicéridos, diglicéridos o triglicéridos."
+          "texto": "Los enlaces peptídicos estabilizan la estructura primaria.",
+          "explicacion": "Al ser enlaces covalentes, son fuertes y mantienen unida la cadena."
         },
         {
-          "texto": "Los triglicéridos son la principal reserva energética de los seres vivos",
-          "explicacion": "Almacenan mucha energía en poco volumen porque son apolares y se almacenan sin agua."
+          "texto": "El orden de los aminoácidos determina la forma y la función.",
+          "explicacion": "Cada aminoácido tiene una cadena lateral distinta, y esas cadenas dirigen el plegamiento de la proteína. Un cambio en la secuencia puede alterar la función."
         },
         {
-          "texto": "Los triglicéridos se llaman grasas neutras",
-          "explicacion": "Carecen de polaridad, por lo que no se disuelven en agua y forman depósitos en el tejido adiposo."
-        },
-        {
-          "texto": "Los aceites son triglicéridos líquidos a temperatura ambiente",
-          "explicacion": "Tienen ácidos grasos insaturados, lo que les impide solidificarse a temperatura ambiente."
-        },
-        {
-          "texto": "Las mantecas son triglicéridos semisólidos a temperatura ambiente",
-          "explicacion": "Tienen ácidos grasos saturados de cadena corta, que les dan una consistencia intermedia."
-        },
-        {
-          "texto": "Los sólidos son triglicéridos con ácidos grasos saturados",
-          "explicacion": "Como la grasa animal, sus cadenas rectas se empaquetan y forman sólidos a temperatura ambiente."
-        },
-        {
-          "texto": "Los triglicéridos se descomponen por lipólisis cuando se necesita energía",
-          "explicacion": "La lipólisis libera glicerol y ácidos grasos, que pueden usarse para producir ATP en las células."
-        },
-        {
-          "texto": "Los triglicéridos de la dieta deben degradarse antes de ser absorbidos",
-          "explicacion": "Se descomponen en ácidos grasos y glicerol para poder atravesar la pared intestinal."
-        },
-        {
-          "texto": "Los triglicéridos en exceso se relacionan con enfermedades cardiovasculares",
-          "explicacion": "Dato por confirmar: niveles elevados de triglicéridos en sangre se asocian con mayor riesgo cardiovascular."
+          "texto": "Las estructuras secundaria, terciaria y cuaternaria dependen de la estructura primaria.",
+          "explicacion": "La secuencia contiene la información para que la proteína se pliegue sola en su forma final."
         }
       ]
     },
     {
-      "titulo": "Fosfolípidos",
+      "titulo": "Estructura secundaria",
       "puntos": [
         {
-          "texto": "Los fosfolípidos están formados por glicerol, dos ácidos grasos y un fosfato",
-          "explicacion": "El grupo fosfato forma la región polar y las dos cadenas de ácidos grasos forman la región apolar."
+          "texto": "La estructura secundaria es el plegamiento local regular de la cadena.",
+          "explicacion": "Algunos tramos de la cadena adoptan formas repetidas y ordenadas."
         },
         {
-          "texto": "Los fosfolípidos son moléculas anfipáticas",
-          "explicacion": "Su cabeza con fosfato es hidrofílica y sus colas de ácidos grasos son hidrofóbicas."
+          "texto": "Los puentes de hidrógeno estabilizan la estructura secundaria.",
+          "explicacion": "Se forman entre átomos del esqueleto peptídico, no entre las cadenas laterales. Como el enlace peptídico es polar, favorece estos puentes."
         },
         {
-          "texto": "Los fosfolípidos forman la bicapa lipídica de las membranas celulares",
-          "explicacion": "En agua se organizan con las cabezas hacia el agua y las colas hacia el interior, formando una doble capa."
+          "texto": "En la «hélice alfa», la cadena se enrolla en espiral.",
+          "explicacion": "Los puentes de hidrógeno unen vueltas consecutivas y mantienen la espiral."
         },
         {
-          "texto": "Los fosfolípidos cumplen una función estructural en las membranas",
-          "explicacion": "Dan la base que permite la separación entre el interior y el exterior de la célula."
+          "texto": "En la «hoja beta plegada», tramos de cadena en zigzag van paralelos.",
+          "explicacion": "Los puentes de hidrógeno unen los tramos vecinos, y el conjunto queda como una lámina plegada."
         }
       ]
     },
     {
-      "titulo": "Ceras",
+      "titulo": "Estructura terciaria",
       "puntos": [
         {
-          "texto": "Las ceras son ésteres formados por un alcohol de cadena larga y un ácido graso",
-          "explicacion": "Se forman por esterificación; los ácidos grasos de cadena larga tienen entre catorce y treinta y seis carbonos."
+          "texto": "La estructura terciaria es la forma tridimensional de una sola cadena.",
+          "explicacion": "Es el plegamiento global de toda la cadena polipeptídica, que da a la proteína su forma funcional."
         },
         {
-          "texto": "Las ceras son sólidas a temperatura ambiente",
-          "explicacion": "Sus dos extremos son apolares, lo que les da una consistencia firme e impermeable."
+          "texto": "Las cadenas laterales de los aminoácidos determinan la estructura terciaria.",
+          "explicacion": "Las interacciones entre estas cadenas laterales plegan la cadena en una forma específica."
         },
         {
-          "texto": "Las ceras cumplen una función protectora en plantas y animales",
-          "explicacion": "Recubren las hojas y la piel de algunos seres vivos, evitando la pérdida de agua y protegiendo frente a patógenos."
+          "texto": "Las fuerzas de Van der Waals estabilizan la estructura terciaria.",
+          "explicacion": "Son atracciones débiles entre átomos cercanos."
+        },
+        {
+          "texto": "Los enlaces iónicos estabilizan la estructura terciaria.",
+          "explicacion": "Se forman entre cadenas laterales con cargas opuestas."
+        },
+        {
+          "texto": "Los puentes de hidrógeno estabilizan la estructura terciaria.",
+          "explicacion": "Se forman entre cadenas laterales polares."
+        },
+        {
+          "texto": "Los puentes disulfuro estabilizan la estructura terciaria.",
+          "explicacion": "Son enlaces covalentes entre azufres de dos aminoácidos. Son más fuertes que las demás interacciones."
+        },
+        {
+          "texto": "Los aminoácidos apolares quedan hacia el interior de la proteína.",
+          "explicacion": "Al rechazar el agua, se ocultan en el centro, y los polares quedan hacia afuera, en contacto con el agua."
+        },
+        {
+          "texto": "Con la estructura terciaria, la proteína puede ser globular o fibrosa.",
+          "explicacion": "La forma final resulta del plegamiento de la cadena."
         }
       ]
     },
     {
-      "titulo": "Esteroides",
+      "titulo": "Estructura cuaternaria",
       "puntos": [
         {
-          "texto": "Los esteroides tienen un núcleo formado por cuatro anillos de carbono",
-          "explicacion": "Derivan del esterano y no contienen ácidos grasos en su estructura."
+          "texto": "Solo tienen estructura cuaternaria las proteínas con varias cadenas.",
+          "explicacion": "Las proteínas de una sola cadena llegan como máximo a la estructura terciaria."
         },
         {
-          "texto": "El colesterol es el esteroide precursor de muchas hormonas",
-          "explicacion": "A partir del colesterol se sintetizan hormonas como las sexuales y las suprarrenales."
+          "texto": "Cada cadena de una proteína cuaternaria se llama subunidad.",
+          "explicacion": "Cada subunidad conserva su propia estructura terciaria."
         },
         {
-          "texto": "Los esteroides regulan funciones como la presión sanguínea",
-          "explicacion": "Las hormonas esteroides actúan en procesos fisiológicos como la presión arterial, la inflamación y el metabolismo."
+          "texto": "La estructura cuaternaria describe cómo se asocian las subunidades.",
+          "explicacion": "Es el modo en que las subunidades se acomodan y se unen para formar una proteína completa."
         },
         {
-          "texto": "El colesterol forma parte de las membranas celulares",
-          "explicacion": "Dato por confirmar: se inserta entre los fosfolípidos y regula la fluidez de la membrana."
-        },
-        {
-          "texto": "Las sales biliares se derivan del colesterol",
-          "explicacion": "Dato por confirmar: ayudan a emulsionar las grasas de la dieta para que puedan ser digeridas."
+          "texto": "La hemoglobina es un ejemplo de proteína con estructura cuaternaria.",
+          "explicacion": "Está formada por subunidades que se asocian entre sí, y esa asociación le permite transportar oxígeno."
         }
       ]
     },
     {
-      "titulo": "Otros lípidos insaponificables",
+      "titulo": "Forma de las proteínas",
       "puntos": [
         {
-          "texto": "Las prostaglandinas son derivadas de ácidos grasos de veinte carbonos",
-          "explicacion": "Actúan como mensajeros químicos locales y participan en procesos como la inflamación y la coagulación."
+          "texto": "Las proteínas «fibrosas» forman filamentos largos.",
+          "explicacion": "Son alargadas, como hilos o cuerdas."
         },
         {
-          "texto": "Los terpenos derivan de hidrocarburos lineales o cíclicos",
-          "explicacion": "Dato por confirmar: tienen como unidad básica el isopreno, y son componentes de aromas y pigmentos."
+          "texto": "Las proteínas fibrosas son insolubles en agua.",
+          "explicacion": "Su forma alargada y su superficie con muchos aminoácidos apolares dificultan que se disuelvan."
+        },
+        {
+          "texto": "Las proteínas fibrosas cumplen función estructural.",
+          "explicacion": "Su resistencia sirve para dar soporte y protección. El colágeno y la queratina son ejemplos."
+        },
+        {
+          "texto": "Las proteínas «globulares» forman estructuras compactas y esféricas.",
+          "explicacion": "La cadena se enrolla sobre sí misma y forma una bola."
+        },
+        {
+          "texto": "Las proteínas globulares son solubles en agua.",
+          "explicacion": "Los aminoácidos polares quedan hacia afuera y se disuelven con facilidad."
+        },
+        {
+          "texto": "Las proteínas globulares suelen ser enzimas.",
+          "explicacion": "Su forma compacta y su movilidad les permiten reconocer y transformar otras moléculas."
+        },
+        {
+          "texto": "Las proteínas globulares también realizan transporte y regulación.",
+          "explicacion": "Al ser solubles, circulan en la sangre y en el interior de la célula."
+        },
+        {
+          "texto": "La hemoglobina es una proteína globular.",
+          "explicacion": "Se disuelve en la sangre para llevar oxígeno."
         }
       ]
     },
     {
-      "titulo": "Funciones de los lípidos",
+      "titulo": "Composición de las proteínas",
       "puntos": [
         {
-          "texto": "Los lípidos son reserva energética a largo plazo",
-          "explicacion": "Un gramo de grasa libera más energía que un gramo de carbohidrato, por eso se almacenan como reserva prolongada."
+          "texto": "Las proteínas «simples» contienen solo aminoácidos.",
+          "explicacion": "No tienen ningún componente adicional. La insulina es un ejemplo."
         },
         {
-          "texto": "Los lípidos forman el tejido adiposo que aísla el cuerpo",
-          "explicacion": "Dato por confirmar: el tejido adiposo protege órganos y ayuda a conservar la temperatura corporal."
+          "texto": "Las proteínas «conjugadas» contienen aminoácidos y un grupo no proteico.",
+          "explicacion": "El grupo extra les da propiedades que los aminoácidos solos no tienen."
         },
         {
-          "texto": "Los lípidos forman estructuras como membranas y capas protectoras",
-          "explicacion": "Los fosfolípidos construyen las membranas y las ceras recubren superficies para proteger del agua y los microorganismos."
+          "texto": "El grupo no proteico de una proteína conjugada se llama grupo prostético.",
+          "explicacion": "Puede ser un azúcar, un ácido nucleico o un lípido."
         },
         {
-          "texto": "Los lípidos regulan procesos mediante hormonas y mensajeros",
-          "explicacion": "Las hormonas esteroides y las prostaglandinas actúan como señales que coordinan funciones del organismo."
+          "texto": "La hemoglobina es una proteína conjugada.",
+          "explicacion": "Además de aminoácidos, tiene un grupo hemo con hierro que se une al oxígeno."
+        }
+      ]
+    },
+    {
+      "titulo": "Desnaturalización",
+      "puntos": [
+        {
+          "texto": "La «desnaturalización» es la pérdida de la estructura tridimensional de la proteína.",
+          "explicacion": "La cadena se despliega y la proteína pierde su forma funcional."
+        },
+        {
+          "texto": "En la desnaturalización se pierden las estructuras secundaria, terciaria y cuaternaria.",
+          "explicacion": "Estas son las estructuras que dependen del plegamiento de la cadena."
+        },
+        {
+          "texto": "En la desnaturalización se rompen los enlaces débiles del plegamiento.",
+          "explicacion": "Los puentes de hidrógeno, los enlaces iónicos y las fuerzas de Van der Waals son fáciles de romper."
+        },
+        {
+          "texto": "La desnaturalización no rompe los enlaces peptídicos.",
+          "explicacion": "Esos enlaces covalentes son fuertes y resisten las condiciones que desnaturalizan. Los aminoácidos no se destruyen."
+        },
+        {
+          "texto": "La desnaturalización no altera la estructura primaria.",
+          "explicacion": "La secuencia de aminoácidos queda igual, y solo cambia el plegamiento."
+        },
+        {
+          "texto": "Una proteína desnaturalizada pierde su función.",
+          "explicacion": "La función depende de la forma tridimensional, y esa forma se perdió."
+        },
+        {
+          "texto": "El calor puede causar desnaturalización.",
+          "explicacion": "El aumento de temperatura agita los átomos y rompe las interacciones débiles que mantienen el plegamiento."
+        },
+        {
+          "texto": "Los cambios de acidez, medida como potencial de hidrógeno (pH), causan desnaturalización.",
+          "explicacion": "Al cambiar la carga de las cadenas laterales, se alteran los enlaces iónicos y los puentes de hidrógeno."
+        },
+        {
+          "texto": "Las concentraciones altas de sal causan desnaturalización.",
+          "explicacion": "La sal interfiere en las interacciones entre las cargas de las cadenas laterales."
+        },
+        {
+          "texto": "La fiebre muy alta puede desnaturalizar proteínas vitales del cuerpo.",
+          "explicacion": "Si la temperatura del cuerpo sube mucho por encima de lo normal, algunas proteínas pierden su forma y su función."
+        }
+      ]
+    },
+    {
+      "titulo": "Enzimas",
+      "puntos": [
+        {
+          "texto": "Las «enzimas» son proteínas que actúan como catalizadores biológicos.",
+          "explicacion": "Un catalizador acelera una reacción. Las enzimas lo hacen en las reacciones químicas de los seres vivos."
+        },
+        {
+          "texto": "Las enzimas aceleran las reacciones del metabolismo sin consumirse.",
+          "explicacion": "Una misma enzima puede actuar una y otra vez, por eso se necesitan en cantidades pequeñas."
+        },
+        {
+          "texto": "El «sustrato» es la sustancia sobre la que actúa la enzima.",
+          "explicacion": "Es el reactivo que la enzima transforma."
+        },
+        {
+          "texto": "El «sitio activo» es la zona que une el sustrato.",
+          "explicacion": "Tiene una forma y un ambiente específicos, y allí ocurre la reacción. Por eso cada enzima actúa sobre sustratos concretos."
+        },
+        {
+          "texto": "Las enzimas catabólicas descomponen su sustrato.",
+          "explicacion": "Las enzimas digestivas son un ejemplo: rompen los alimentos en unidades más pequeñas."
+        },
+        {
+          "texto": "Las enzimas anabólicas construyen moléculas.",
+          "explicacion": "Intervienen en la síntesis de moléculas esenciales para la célula."
+        },
+        {
+          "texto": "La amilasa salival hidroliza el almidón.",
+          "explicacion": "Empieza a romper el almidón de los alimentos desde la boca."
+        },
+        {
+          "texto": "La pepsina, la tripsina y la lipasa son enzimas digestivas.",
+          "explicacion": "Actúan en la digestión de los alimentos."
+        }
+      ]
+    },
+    {
+      "titulo": "Función estructural",
+      "puntos": [
+        {
+          "texto": "Las proteínas estructurales dan sostén y protección.",
+          "explicacion": "Forman parte del soporte de células, tejidos y órganos."
+        },
+        {
+          "texto": "El colágeno abunda en la piel, los tendones y los vasos sanguíneos.",
+          "explicacion": "Es una proteína fibrosa muy resistente que da firmeza a estos tejidos."
+        },
+        {
+          "texto": "La queratina forma las uñas, el pelo y los cuernos.",
+          "explicacion": "Es una proteína fibrosa e insoluble en agua, apropiada para estas estructuras protectoras."
+        }
+      ]
+    },
+    {
+      "titulo": "Función de transporte",
+      "puntos": [
+        {
+          "texto": "Las proteínas de transporte llevan sustancias por la sangre.",
+          "explicacion": "Al ser solubles, circulan por el cuerpo con su carga."
+        },
+        {
+          "texto": "La hemoglobina lleva oxígeno a las células por la sangre.",
+          "explicacion": "Se une al oxígeno en los pulmones y lo libera en los tejidos."
+        },
+        {
+          "texto": "La albúmina es una proteína de transporte de la sangre.",
+          "explicacion": "Ayuda a mantener el equilibrio entre el medio interno y el externo del organismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Función hormonal",
+      "puntos": [
+        {
+          "texto": "Las hormonas proteicas regulan procesos del cuerpo.",
+          "explicacion": "Son mensajeros químicos que coordinan la actividad de distintos sistemas."
+        },
+        {
+          "texto": "La insulina permite que las células usen la glucosa.",
+          "explicacion": "Regula el nivel de glucosa en la sangre. Es una proteína simple."
+        }
+      ]
+    },
+    {
+      "titulo": "Función de defensa",
+      "puntos": [
+        {
+          "texto": "Los anticuerpos son proteínas de defensa del sistema inmunitario.",
+          "explicacion": "Reconocen agentes extraños, como los patógenos, y ayudan a eliminarlos."
+        }
+      ]
+    },
+    {
+      "titulo": "Función contráctil",
+      "puntos": [
+        {
+          "texto": "Las proteínas contráctiles permiten la contracción muscular.",
+          "explicacion": "Se localizan en los músculos y hacen que se acorten y se estiren."
+        },
+        {
+          "texto": "La actina y la miosina son proteínas contráctiles.",
+          "explicacion": "Forman las fibras de los músculos, y su deslizamiento produce el movimiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Función de reserva",
+      "puntos": [
+        {
+          "texto": "Las proteínas de reserva almacenan aminoácidos.",
+          "explicacion": "Sirven de alimento durante el desarrollo temprano del embrión."
+        },
+        {
+          "texto": "La ovoalbúmina es la proteína de reserva de la clara de huevo.",
+          "explicacion": "Aporta nutrientes al embrión que se forma dentro del huevo."
         }
       ]
     }

@@ -1,98 +1,542 @@
 {
   "curso": "Química",
-  "tema": "Estados de agregación",
+  "tema": "Propiedades físicas y químicas",
   "glosario": {
-    "estado de agregación": "Forma física en que se presenta la materia.",
-    "fuerzas de cohesión": "Atracciones que mantienen unidas las partículas.",
-    "plasma": "Gas con partículas cargadas eléctricamente, a alta temperatura.",
-    "fusión": "Paso de sólido a líquido por calentamiento.",
-    "vaporización": "Paso de líquido a gas por calentamiento.",
-    "evaporación": "Vaporización que ocurre solo en la superficie.",
-    "ebullición": "Vaporización que ocurre en todo el líquido.",
-    "sublimación": "Paso directo de sólido a gas.",
-    "deposición": "Paso directo de gas a sólido.",
-    "condensación": "Paso de gas a líquido.",
-    "solidificación": "Paso de líquido a sólido."
+    "Propiedad": "Característica que describe a la materia",
+    "Propiedad física": "Propiedad que se mide sin cambiar la composición",
+    "Propiedad química": "Propiedad que implica transformarse en otra sustancia",
+    "Propiedades organolépticas": "Propiedades que se perciben con los sentidos",
+    "Densidad": "Masa de una sustancia por unidad de volumen",
+    "Punto de fusión": "Temperatura a la que un sólido se funde",
+    "Punto de ebullición": "Temperatura a la que un líquido hierve",
+    "Solubilidad": "Cantidad de sustancia que se disuelve en otra",
+    "Soluto": "Sustancia que se disuelve",
+    "Disolvente": "Sustancia en la que se disuelve el soluto",
+    "Conductividad eléctrica": "Capacidad de conducir la corriente eléctrica",
+    "Conductividad térmica": "Capacidad de transmitir el calor",
+    "Dureza": "Resistencia de un material a ser rayado",
+    "Escala de Mohs": "Escala que ordena materiales por su dureza",
+    "Tenacidad": "Resistencia de un sólido a romperse",
+    "Ductilidad": "Capacidad de formar hilos sin romperse",
+    "Maleabilidad": "Capacidad de formar láminas",
+    "Elasticidad": "Capacidad de recuperar la forma original",
+    "Viscosidad": "Resistencia de un líquido a fluir",
+    "Reactividad": "Capacidad de reaccionar con otra sustancia",
+    "Oxidación": "Tendencia de una sustancia a oxidarse",
+    "Inflamabilidad": "Capacidad de una sustancia de arder",
+    "Toxicidad": "Capacidad de dañar a los seres vivos",
+    "Acidez": "Capacidad de comportarse como un ácido",
+    "Alcalinidad": "Capacidad de neutralizar un ácido",
+    "Combustión": "Reacción de una sustancia que arde con oxígeno",
+    "Reacción química": "Proceso donde cambia la composición de la materia",
+    "Propiedades generales": "Propiedades comunes a todos los cuerpos",
+    "Propiedades específicas": "Propiedades propias de cada sustancia",
+    "Masa": "Cantidad de materia de un cuerpo",
+    "Volumen": "Espacio que ocupa un cuerpo",
+    "Peso": "Fuerza con que la gravedad atrae",
+    "Gravedad": "Fuerza que atrae los cuerpos hacia un astro",
+    "Inercia": "Resistencia a cambiar el reposo o movimiento",
+    "Impenetrabilidad": "Dos cuerpos no ocupan el mismo lugar",
+    "Divisibilidad": "Capacidad de dividirse en partes más pequeñas",
+    "Porosidad": "Espacio vacío entre las partículas de un cuerpo",
+    "Propiedad extensiva": "Propiedad que depende de la cantidad de materia",
+    "Propiedad intensiva": "Propiedad independiente de la cantidad de materia",
+    "Cambio físico": "Cambio que no altera la composición"
   },
   "theory": [
     {
-      "titulo": "Estado sólido",
+      "titulo": "Propiedad",
       "puntos": [
         {
-          "texto": "«Sólido»: forma y volumen definidos",
-          "explicacion": "Sus partículas están muy juntas y ordenadas, por eso casi no se comprime."
-        },
-        {
-          "texto": "Partículas solo vibran en posiciones fijas",
-          "explicacion": "Las fuerzas de cohesión son intensas, así que las partículas no se desplazan libremente como en un líquido."
+          "texto": "Una «propiedad» es una característica que describe a la materia",
+          "explicacion": "Las propiedades son lo que se observa o se mide de un material y permiten describirlo con precisión. Con ellas se reconoce una sustancia, se compara con otra y se anticipa cómo se comportará."
         }
       ]
     },
     {
-      "titulo": "Estado líquido",
+      "titulo": "Clasificación de propiedades",
       "puntos": [
         {
-          "texto": "«Líquido»: volumen definido y forma del recipiente",
-          "explicacion": "Sus partículas están juntas pero se deslizan unas sobre otras, por eso fluye."
+          "texto": "Las propiedades se pueden clasificar como físicas o químicas",
+          "explicacion": "El criterio es si al manifestarse la propiedad cambia o no la composición de la sustancia. Cada tipo se desarrolla en las secciones siguientes."
         },
         {
-          "texto": "Líquidos casi incompresibles",
-          "explicacion": "Sus partículas están prácticamente en contacto; reducir su volumen exigiría presiones muy grandes."
+          "texto": "Las propiedades se pueden clasificar como generales o específicas",
+          "explicacion": "El criterio es si la propiedad la tienen todos los cuerpos o si es propia de cada sustancia. Las primeras no permiten distinguir sustancias; las segundas sí."
+        },
+        {
+          "texto": "Las propiedades se pueden clasificar como extensivas o intensivas",
+          "explicacion": "El criterio es si el valor de la propiedad depende o no de la cantidad de materia que se mide. Es una clasificación distinta de las anteriores, por eso una misma propiedad puede ser, por ejemplo, física e intensiva."
         }
       ]
     },
     {
-      "titulo": "Estado gaseoso",
+      "titulo": "Propiedad física",
       "puntos": [
         {
-          "texto": "«Gas»: sin forma ni volumen definidos",
-          "explicacion": "Sus partículas están separadas y se mueven libremente, así que ocupa todo el recipiente que lo contiene."
+          "texto": "Una «propiedad física» se mide sin cambiar la composición",
+          "explicacion": "Al medirla u observarla, la sustancia sigue siendo la misma: no se forma ninguna sustancia nueva. Por eso se puede medir la densidad de un trozo de hierro y el hierro sigue siendo hierro."
         },
         {
-          "texto": "Gases muy compresibles",
-          "explicacion": "Al haber mucho espacio entre partículas, un aumento de presión reduce su volumen con facilidad."
+          "texto": "Algunas propiedades físicas se observan sin cambiar el estado",
+          "explicacion": "El color y la densidad se pueden determinar con la sustancia tal como está, sin necesidad de transformarla en otro estado físico."
+        },
+        {
+          "texto": "Otras propiedades físicas se observan durante un cambio físico",
+          "explicacion": "El punto de fusión, por ejemplo, solo se aprecia cuando el sólido se funde. Aun así sigue siendo física, porque durante el cambio físico la composición no varía."
         }
       ]
     },
     {
-      "titulo": "Estado plasmático",
+      "titulo": "Propiedades organolépticas",
       "puntos": [
         {
-          "texto": "«Plasma»: gas con partículas cargadas eléctricamente",
-          "explicacion": "Se forma a temperaturas muy altas, como en el Sol y en las estrellas, y conduce la electricidad."
+          "texto": "Las «propiedades organolépticas» se perciben con los sentidos",
+          "explicacion": "Son propiedades físicas que no necesitan instrumentos para detectarse: basta mirar, oler, probar o tocar. Dependen de la sustancia y por eso ayudan a reconocerla."
+        },
+        {
+          "texto": "El color es una propiedad organoléptica",
+          "explicacion": "Se percibe con la vista. Es una propiedad física porque observar el color no altera la composición de la sustancia."
+        },
+        {
+          "texto": "El olor es una propiedad organoléptica",
+          "explicacion": "Se percibe con el olfato. Muchas sustancias tienen un olor característico que ayuda a reconocerlas."
+        },
+        {
+          "texto": "El sabor es una propiedad organoléptica",
+          "explicacion": "Se percibe con el gusto; en el laboratorio no se prueban las sustancias, pero en alimentos y bebidas es una propiedad útil."
+        },
+        {
+          "texto": "La textura es una propiedad organoléptica",
+          "explicacion": "Se percibe con el tacto y describe si una superficie es lisa, áspera, blanda o rugosa."
         }
       ]
     },
     {
-      "titulo": "Cambios de estado",
+      "titulo": "Densidad",
       "puntos": [
         {
-          "texto": "«Fusión»: sólido → líquido",
-          "explicacion": "Requiere absorber calor; el hielo que se derrite es un ejemplo cotidiano."
+          "texto": "La «densidad» es la masa de una sustancia por unidad de volumen",
+          "explicacion": "Mide qué tan compacta es la materia: a igual volumen, una sustancia más densa tiene más masa. Cada sustancia pura tiene su propia densidad, por eso sirve para identificarla; por ejemplo, el agua, la glicerina y el aceite mineral se distinguen por su densidad."
         },
         {
-          "texto": "«Vaporización»: líquido → gas",
-          "explicacion": "Puede ser evaporación, que ocurre en la superficie, o ebullición, que ocurre en todo el líquido."
+          "texto": "La densidad se calcula con la fórmula ρ = m ÷ V",
+          "explicacion": "Se divide la masa entre el volumen. Ejemplo: un bloque de metal tiene masa de 200 g y volumen de 50 cm³. Sustituyendo, ρ = 200 g ÷ 50 cm³ = 4 g/cm³. Esto significa que cada centímetro cúbico de ese metal tiene 4 g de masa. Si se corta el bloque a la mitad, la masa y el volumen se reducen a la mitad y la densidad sigue siendo 4 g/cm³."
         },
         {
-          "texto": "«Sublimación»: sólido → gas",
-          "explicacion": "Ocurre sin pasar por el estado líquido; el hielo seco, que es dióxido de carbono sólido, es un ejemplo."
+          "texto": "En la fórmula de la densidad, ρ representa la densidad",
+          "explicacion": "Es la letra griega ρ. En el ejemplo del bloque de metal, ρ es el resultado de 4 g/cm³, el dato que se busca."
         },
         {
-          "texto": "«Condensación»: gas → líquido",
-          "explicacion": "Libera calor; las gotas de agua que aparecen en un vaso frío provienen del vapor de agua del aire."
+          "texto": "En la fórmula de la densidad, m representa la masa",
+          "explicacion": "Es la cantidad de materia de la muestra. En el ejemplo del bloque, m vale 200 g y se mide con una balanza."
         },
         {
-          "texto": "«Solidificación»: líquido → sólido",
-          "explicacion": "Libera calor; el agua que se congela en el refrigerador es un ejemplo."
+          "texto": "En la fórmula de la densidad, V representa el volumen",
+          "explicacion": "Es el espacio que ocupa la muestra. En el ejemplo del bloque, V vale 50 cm³."
         },
         {
-          "texto": "«Deposición»: gas → sólido",
-          "explicacion": "Es el paso inverso de la sublimación, como la formación de escarcha en superficies frías."
+          "texto": "La densidad se expresa en g/cm³ o en kg/m³",
+          "explicacion": "Las unidades resultan de dividir una unidad de masa entre una de volumen: gramos entre centímetros cúbicos, o kilogramos entre metros cúbicos. Conviene usar unidades coherentes en m y en V para que el resultado salga en la unidad esperada."
+        }
+      ]
+    },
+    {
+      "titulo": "Punto de fusión",
+      "puntos": [
+        {
+          "texto": "El «punto de fusión» es la temperatura en que se funde",
+          "explicacion": "Cada sustancia pura tiene un valor propio, por eso es una propiedad física característica. Se observa durante el cambio de estado de sólido a líquido."
+        }
+      ]
+    },
+    {
+      "titulo": "Punto de ebullición",
+      "puntos": [
+        {
+          "texto": "El «punto de ebullición» es la temperatura en que hierve",
+          "explicacion": "También es característico de cada sustancia pura y se observa durante el paso de líquido a gas. Junto con el punto de fusión, ayuda a identificar una sustancia."
+        }
+      ]
+    },
+    {
+      "titulo": "Solubilidad",
+      "puntos": [
+        {
+          "texto": "La «solubilidad» es cuánto de una sustancia se disuelve en otra",
+          "explicacion": "Indica hasta qué punto una sustancia, el soluto, se puede incorporar a otra, el disolvente. Es una propiedad física porque disolver no cambia la identidad de las sustancias."
+        }
+      ]
+    },
+    {
+      "titulo": "Conductividad eléctrica",
+      "puntos": [
+        {
+          "texto": "La «conductividad eléctrica» es la capacidad de conducir la corriente eléctrica",
+          "explicacion": "Indica con qué facilidad pasan las cargas eléctricas por un material. Es una propiedad física, pues el material no se transforma al conducir la corriente."
         },
         {
-          "texto": "Temperatura constante durante un cambio de estado",
-          "explicacion": "Mientras dura el cambio, el calor suministrado se usa para romper las fuerzas de cohesión, no para subir la temperatura."
+          "texto": "Los metales son buenos conductores eléctricos",
+          "explicacion": "Esto los hace útiles en cables y circuitos. La conductividad eléctrica distingue a los metales de muchos otros materiales."
+        }
+      ]
+    },
+    {
+      "titulo": "Conductividad térmica",
+      "puntos": [
+        {
+          "texto": "La «conductividad térmica» es la capacidad de transmitir el calor",
+          "explicacion": "Indica con qué facilidad el calor pasa a través de un material. Muchos metales la tienen alta, por lo que se usan en ollas y utensilios. La transferencia de calor se estudia en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Dureza",
+      "puntos": [
+        {
+          "texto": "La «dureza» es la resistencia de un material a ser rayado",
+          "explicacion": "Un material duro no se raya con facilidad. Depende de la fuerza con que están unidas sus partículas, por eso se considera una propiedad física del material."
+        },
+        {
+          "texto": "La escala de Mohs mide la dureza",
+          "explicacion": "Es una escala de referencia que ordena los materiales según cuál puede rayar a cuál. Permite comparar la dureza de unos materiales con la de otros."
+        },
+        {
+          "texto": "El diamante es el material más duro",
+          "explicacion": "Se ubica en el extremo superior de la escala de Mohs, por lo que no se raya con los demás materiales de la escala."
+        },
+        {
+          "texto": "El talco es el material menos duro",
+          "explicacion": "Se ubica en el extremo inferior de la escala de Mohs, por lo que se raya con facilidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Tenacidad",
+      "puntos": [
+        {
+          "texto": "La «tenacidad» es la resistencia de un sólido a romperse",
+          "explicacion": "Un material tenaz soporta bien los golpes y los esfuerzos sin fracturarse. No debe confundirse con la dureza, que es resistencia al rayado."
+        }
+      ]
+    },
+    {
+      "titulo": "Ductilidad",
+      "puntos": [
+        {
+          "texto": "La «ductilidad» es la capacidad de formar hilos sin romperse",
+          "explicacion": "Un material dúctil se puede estirar hasta convertirlo en alambre. Esta propiedad se aprovecha para fabricar cables."
+        }
+      ]
+    },
+    {
+      "titulo": "Maleabilidad",
+      "puntos": [
+        {
+          "texto": "La «maleabilidad» es la capacidad de formar láminas",
+          "explicacion": "Un material maleable se puede aplanar o golpear hasta obtener láminas delgadas. Se diferencia de la ductilidad en la forma que se obtiene: lámina en lugar de hilo."
+        }
+      ]
+    },
+    {
+      "titulo": "Elasticidad",
+      "puntos": [
+        {
+          "texto": "La «elasticidad» es la capacidad de recuperar la forma original",
+          "explicacion": "Un material elástico se deforma por una fuerza y regresa a su forma cuando la fuerza deja de actuar, como ocurre al estirar una liga o un resorte."
+        }
+      ]
+    },
+    {
+      "titulo": "Viscosidad",
+      "puntos": [
+        {
+          "texto": "La «viscosidad» es la resistencia de un líquido a fluir",
+          "explicacion": "Un líquido muy viscoso, como la miel, fluye con dificultad; uno poco viscoso, como el agua, fluye con facilidad. Se desarrolla con más detalle en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades particulares",
+      "puntos": [
+        {
+          "texto": "Algunos textos llaman particulares a dureza, ductilidad, maleabilidad y elasticidad",
+          "explicacion": "Se les llama así porque no las tienen todos los cuerpos, a diferencia de las propiedades generales. Al nombrarlas de este modo se sigue tratándolas como propiedades físicas de los materiales."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad química",
+      "puntos": [
+        {
+          "texto": "Una «propiedad química» describe cómo una sustancia se transforma en otra",
+          "explicacion": "Indica la capacidad de la sustancia de convertirse en otras distintas, por ejemplo al reaccionar con el oxígeno."
+        },
+        {
+          "texto": "Una propiedad química solo se observa cuando cambia la composición",
+          "explicacion": "Para verla hay que provocar una reacción química: la sustancia original desaparece y aparecen otras con propiedades distintas."
+        },
+        {
+          "texto": "Una propiedad química se identifica buscando un cambio químico",
+          "explicacion": "Si la sustancia produce materia nueva, como cuando se forma óxido en el hierro, se ha puesto de manifiesto una propiedad química. Los fenómenos químicos se estudian en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Reactividad",
+      "puntos": [
+        {
+          "texto": "La «reactividad» es la capacidad de reaccionar con otra sustancia",
+          "explicacion": "Indica con qué facilidad una sustancia participa en una reacción química. Algunas sustancias son muy reactivas y otras casi no reaccionan."
+        }
+      ]
+    },
+    {
+      "titulo": "Oxidación",
+      "puntos": [
+        {
+          "texto": "La «oxidación» es la tendencia de una sustancia a oxidarse",
+          "explicacion": "El hierro tiene esta propiedad: al exponerse al aire y la humedad forma óxido, una sustancia distinta de las que había antes. Por eso es una propiedad química."
+        }
+      ]
+    },
+    {
+      "titulo": "Inflamabilidad",
+      "puntos": [
+        {
+          "texto": "La «inflamabilidad» es la capacidad de una sustancia de arder",
+          "explicacion": "El carbón, por ejemplo, arde en presencia de oxígeno y se transforma en otras sustancias. Al arder se produce una combustión, un cambio químico."
+        }
+      ]
+    },
+    {
+      "titulo": "Toxicidad",
+      "puntos": [
+        {
+          "texto": "La «toxicidad» es la capacidad de dañar a los seres vivos",
+          "explicacion": "Es una propiedad química porque el daño suele deberse a reacciones de la sustancia con componentes del organismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Acidez",
+      "puntos": [
+        {
+          "texto": "La «acidez» es la capacidad de comportarse como un ácido",
+          "explicacion": "Es la propiedad que muestran, por ejemplo, el vinagre o el limón. Los ácidos se estudian en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Alcalinidad",
+      "puntos": [
+        {
+          "texto": "La «alcalinidad» es la capacidad de neutralizar un ácido",
+          "explicacion": "Es la propiedad contraria a la acidez en sus efectos: una sustancia alcalina contrarresta a un ácido. Se estudia con más detalle en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Incapacidad de cambiar",
+      "puntos": [
+        {
+          "texto": "La incapacidad de cambiar también es una propiedad química",
+          "explicacion": "El cromo, por ejemplo, no se oxida, a diferencia del hierro. Que una sustancia no reaccione bajo ciertas condiciones también describe su comportamiento químico."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades generales",
+      "puntos": [
+        {
+          "texto": "Las «propiedades generales» las tienen todos los cuerpos",
+          "explicacion": "Son comunes a toda la materia, sin importar de qué sustancia esté hecho el cuerpo."
+        },
+        {
+          "texto": "Las propiedades generales no distinguen una sustancia de otra",
+          "explicacion": "Al ser compartidas por todos los cuerpos, no sirven para identificar una sustancia; para eso se usan las propiedades específicas."
+        }
+      ]
+    },
+    {
+      "titulo": "Masa",
+      "puntos": [
+        {
+          "texto": "La «masa» es la cantidad de materia de un cuerpo",
+          "explicacion": "Se mide en kilogramos con una balanza. Es una propiedad general porque todo cuerpo tiene masa."
+        }
+      ]
+    },
+    {
+      "titulo": "Volumen",
+      "puntos": [
+        {
+          "texto": "El «volumen» es el espacio que ocupa un cuerpo",
+          "explicacion": "Se expresa en metros cúbicos o en litros. Es una propiedad general porque todo cuerpo ocupa espacio."
+        }
+      ]
+    },
+    {
+      "titulo": "Peso",
+      "puntos": [
+        {
+          "texto": "El «peso» es la fuerza con que la gravedad atrae",
+          "explicacion": "Depende de la gravedad del lugar donde se encuentre el cuerpo. A diferencia de la masa, no es una cantidad fija."
+        },
+        {
+          "texto": "La masa es constante; el peso cambia según la gravedad",
+          "explicacion": "Un cuerpo conserva su masa en cualquier lugar, pero su peso es distinto en la Tierra que en otro astro porque la gravedad cambia."
+        }
+      ]
+    },
+    {
+      "titulo": "Inercia",
+      "puntos": [
+        {
+          "texto": "La «inercia» es la resistencia a cambiar el reposo o el movimiento",
+          "explicacion": "Un cuerpo en reposo tiende a seguir en reposo y uno en movimiento tiende a seguir moviéndose. Por eso cuesta empujar un objeto pesado."
+        },
+        {
+          "texto": "A mayor masa, mayor inercia",
+          "explicacion": "Un cuerpo con más masa opone más resistencia a cambiar su estado de reposo o de movimiento, por eso un camión es más difícil de detener que una bicicleta."
+        }
+      ]
+    },
+    {
+      "titulo": "Impenetrabilidad",
+      "puntos": [
+        {
+          "texto": "La «impenetrabilidad» impide que dos cuerpos coincidan en un lugar",
+          "explicacion": "El espacio que ocupa un cuerpo no puede ser ocupado por otro al mismo tiempo, salvo que lo desplace, como cuando un objeto se sumerge en agua y desplaza parte de ella."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisibilidad",
+      "puntos": [
+        {
+          "texto": "La «divisibilidad» permite dividir un cuerpo en partes más pequeñas",
+          "explicacion": "Con los medios adecuados, un cuerpo se puede fraccionar hasta pulverizarse, como ocurre al moler un sólido."
+        }
+      ]
+    },
+    {
+      "titulo": "Porosidad",
+      "puntos": [
+        {
+          "texto": "La «porosidad» es el espacio vacío entre las partículas de un cuerpo",
+          "explicacion": "Un colador es un ejemplo de objeto poroso. Los espacios entre partículas son los que permiten que pasen líquidos o gases a través del cuerpo."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades específicas",
+      "puntos": [
+        {
+          "texto": "Las «propiedades específicas» son propias de cada sustancia",
+          "explicacion": "Cada sustancia tiene valores característicos de estas propiedades, a diferencia de las generales."
+        },
+        {
+          "texto": "Las propiedades específicas permiten distinguir una sustancia de otra",
+          "explicacion": "Dos sustancias distintas difieren en alguna propiedad específica, como la densidad o el punto de ebullición, y eso permite reconocerlas."
+        },
+        {
+          "texto": "Las propiedades específicas se dividen en físicas y químicas",
+          "explicacion": "Las físicas se miden sin cambiar la composición y las químicas implican una reacción. Ambos grupos se describieron en las secciones anteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades extensivas",
+      "puntos": [
+        {
+          "texto": "Una «propiedad extensiva» depende de la cantidad de materia",
+          "explicacion": "Si se mide la propiedad en una muestra más grande, el valor aumenta; si la muestra es menor, el valor disminuye."
+        },
+        {
+          "texto": "El valor de una propiedad extensiva es proporcional a la materia",
+          "explicacion": "Si se duplica la cantidad de materia, se duplica el valor de la propiedad. Por eso al unir dos muestras los valores se suman."
+        },
+        {
+          "texto": "La masa es una propiedad extensiva",
+          "explicacion": "Un galón de leche tiene más masa que un vaso de leche: a mayor cantidad de materia, mayor masa."
+        },
+        {
+          "texto": "El volumen es una propiedad extensiva",
+          "explicacion": "A mayor cantidad de materia, mayor es el espacio que ocupa."
+        },
+        {
+          "texto": "El peso es una propiedad extensiva",
+          "explicacion": "Un cuerpo con más materia es atraído con más fuerza por la gravedad, por lo que pesa más."
+        },
+        {
+          "texto": "La longitud es una propiedad extensiva",
+          "explicacion": "Un trozo más largo del mismo material contiene más materia, por lo que su valor depende de la cantidad medida."
+        },
+        {
+          "texto": "El área es una propiedad extensiva",
+          "explicacion": "Una lámina más grande del mismo material tiene más superficie y más materia, así que el valor cambia con el tamaño de la muestra."
+        },
+        {
+          "texto": "La masa, el volumen y el peso también son propiedades generales",
+          "explicacion": "Son comunes a todos los cuerpos y además dependen de la cantidad de materia, por lo que pertenecen a ambas clasificaciones."
+        },
+        {
+          "texto": "Las propiedades extensivas no identifican la sustancia",
+          "explicacion": "Una muestra grande y una pequeña de la misma sustancia dan valores distintos, así que el valor depende del tamaño de la muestra y no de la sustancia."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades intensivas",
+      "puntos": [
+        {
+          "texto": "Una «propiedad intensiva» no depende de la cantidad de materia",
+          "explicacion": "El valor es el mismo en una muestra grande y en una pequeña de la misma sustancia, por eso describe a la sustancia y no al tamaño de la muestra."
+        },
+        {
+          "texto": "La temperatura es una propiedad intensiva",
+          "explicacion": "Si se juntan dos tazas de leche, ambas a 20 °C, la mezcla sigue a 20 °C: la cantidad de materia no cambia la temperatura."
+        },
+        {
+          "texto": "La densidad es una propiedad intensiva",
+          "explicacion": "Un trozo pequeño y uno grande de la misma sustancia tienen la misma densidad, porque al crecer la masa también crece el volumen en la misma proporción."
+        },
+        {
+          "texto": "El color es una propiedad intensiva",
+          "explicacion": "Un trozo pequeño y uno grande de la misma sustancia tienen el mismo color, que no cambia con la cantidad."
+        },
+        {
+          "texto": "El punto de fusión es una propiedad intensiva",
+          "explicacion": "Una sustancia pura se funde a la misma temperatura sin importar cuánta cantidad se tenga."
+        },
+        {
+          "texto": "El punto de ebullición es una propiedad intensiva",
+          "explicacion": "Una sustancia pura hierve a la misma temperatura sin importar el volumen de líquido, bajo las mismas condiciones."
+        },
+        {
+          "texto": "La dureza es una propiedad intensiva",
+          "explicacion": "La resistencia al rayado es la misma en un trozo pequeño y en uno grande del mismo material."
+        },
+        {
+          "texto": "La solubilidad es una propiedad intensiva",
+          "explicacion": "Indica cuánto soluto puede disolverse en una cantidad determinada de disolvente, y esa relación no depende del tamaño de la muestra."
+        },
+        {
+          "texto": "La conductividad eléctrica es una propiedad intensiva",
+          "explicacion": "Es una característica del material y no depende de cuánta cantidad se tenga."
+        },
+        {
+          "texto": "Las propiedades específicas son intensivas",
+          "explicacion": "Como no dependen de la cantidad de materia, sirven para identificar la sustancia sea cual sea el tamaño de la muestra."
+        },
+        {
+          "texto": "Una propiedad extensiva dividida entre otra da una intensiva",
+          "explicacion": "Cuando dos propiedades dependen de la cantidad de materia, al dividirlas el efecto de la cantidad se cancela. Por eso el resultado deja de depender del tamaño de la muestra."
+        },
+        {
+          "texto": "La masa dividida entre el volumen da la densidad",
+          "explicacion": "Es el ejemplo clásico: la masa y el volumen son extensivos, pero su cociente, la densidad, es intensivo."
         }
       ]
     }

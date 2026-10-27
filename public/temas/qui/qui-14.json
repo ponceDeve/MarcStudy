@@ -1,71 +1,384 @@
 {
   "curso": "Química",
-  "tema": "Isótopos",
+  "tema": "Notación de Lewis",
   "glosario": {
-    "isótopos": "Átomos del mismo elemento, distinto número de neutrones.",
-    "abundancia isotópica": "Porcentaje de cada isótopo en la naturaleza.",
-    "masa atómica promedio": "Media de las masas isotópicas, ponderada por abundancia.",
-    "radiactivo": "Isótopo inestable que emite radiación.",
-    "uma": "Unidad para expresar masas atómicas."
+    "electrones de valencia": "Electrones del nivel externo que participan en enlaces",
+    "nivel de energía": "Región de energía donde se ubican electrones",
+    "subnivel": "División de un nivel de energía",
+    "configuración electrónica": "Distribución de electrones en niveles y subniveles",
+    "gas noble": "Elemento del grupo 18, casi inerte",
+    "elementos representativos": "Elementos de los grupos A",
+    "elementos de transición": "Metales del bloque d, grupos 3 al 12",
+    "octeto": "Ocho electrones en el nivel externo",
+    "dueto": "Dos electrones en el nivel externo",
+    "par enlazante": "Par de electrones compartido entre dos átomos",
+    "par libre": "Par de electrones sin compartir de un átomo",
+    "enlace simple": "Enlace donde se comparte un par de electrones",
+    "enlace doble": "Enlace donde se comparten dos pares de electrones",
+    "enlace triple": "Enlace donde se comparten tres pares de electrones",
+    "ion": "Átomo con carga eléctrica neta",
+    "catión": "Ion con carga positiva",
+    "anión": "Ion con carga negativa",
+    "átomo central": "Átomo al que se unen los demás",
+    "radical libre": "Especie con un electrón sin aparear",
+    "electrón desapareado": "Electrón que no forma pareja con otro"
   },
   "theory": [
     {
-      "titulo": "Concepto de isótopos",
+      "titulo": "Definición",
       "puntos": [
         {
-          "texto": "«Isótopos»: mismo elemento, distinto número de neutrones",
-          "explicacion": "Comparten número atómico y, por eso, propiedades químicas, pero tienen distinta masa."
+          "texto": "La «notación de Lewis» representa electrones de valencia con puntos.",
+          "explicacion": "Gilbert Newton Lewis propuso esta forma de dibujar los átomos para mostrar con claridad qué electrones intervienen cuando se unen. Es una herramienta visual: permite ver de un vistazo cuántos electrones puede ceder, ganar o compartir un átomo."
         },
         {
-          "texto": "Notación: A arriba y Z abajo del símbolo",
-          "explicacion": "Ejemplo: ¹⁶O indica oxígeno con A = 16 y Z = 8, es decir, 8 neutrones."
+          "texto": "Los puntos se escriben alrededor del símbolo del elemento.",
+          "explicacion": "El símbolo químico, como Na o Cl, representa el núcleo y los electrones internos del átomo. Los puntos alrededor representan solo los electrones externos."
+        },
+        {
+          "texto": "La notación de Lewis también se llama diagrama de puntos.",
+          "explicacion": "Ambos nombres se refieren a la misma representación. También se habla de símbolo de Lewis cuando se trata de un átomo aislado."
+        },
+        {
+          "texto": "Los «electrones de valencia» son los del nivel externo del átomo.",
+          "explicacion": "El nivel externo es el nivel de energía más alejado del núcleo que contiene electrones. Esos electrones son los que se transfieren o se comparten al formar enlaces."
+        },
+        {
+          "texto": "Solo los electrones de valencia se representan con puntos.",
+          "explicacion": "Los electrones internos están muy cerca del núcleo y no participan en los enlaces, así que dibujarlos no aporta información. Por eso el símbolo sustituye a todo el resto del átomo."
         }
       ]
     },
     {
-      "titulo": "Isótopos del hidrógeno",
+      "titulo": "Símbolo de Lewis",
       "puntos": [
         {
-          "texto": "«Protio»: hidrógeno sin neutrones",
-          "explicacion": "Es el isótopo más abundante del hidrógeno y tiene A = 1."
+          "texto": "El símbolo de Lewis lleva un punto por electrón de valencia.",
+          "explicacion": "Se escribe el símbolo del elemento y se agregan tantos puntos como electrones de valencia tenga. Un átomo de azufre, con seis electrones de valencia, se dibuja con seis puntos."
         },
         {
-          "texto": "«Deuterio»: hidrógeno con un neutrón",
-          "explicacion": "Tiene A = 2 y forma parte del agua pesada."
+          "texto": "Los puntos se reparten en los cuatro lados del símbolo.",
+          "explicacion": "Se coloca un punto en cada lado, arriba, abajo, a la izquierda y a la derecha, antes de repetir lado. Así se muestra que los electrones tienden a ocupar posiciones separadas."
         },
         {
-          "texto": "«Tritio»: hidrógeno con dos neutrones",
-          "explicacion": "Tiene A = 3 y es radiactivo, es decir, emite radiación."
+          "texto": "Desde el quinto electrón, los puntos se emparejan.",
+          "explicacion": "Cuando ya hay un punto en cada lado, los siguientes se colocan junto a los primeros formando pares. Un átomo con siete electrones de valencia tiene tres pares y un punto suelto."
+        },
+        {
+          "texto": "Un átomo nunca tiene más de ocho puntos.",
+          "explicacion": "Ocho puntos son cuatro pares, que es el máximo de electrones que caben en los subniveles s y p del nivel externo. Esa cantidad corresponde a un nivel externo completo."
+        },
+        {
+          "texto": "El número de puntos es igual al número del grupo A.",
+          "explicacion": "El grupo A indica la cantidad de electrones de valencia, por lo que basta mirar la tabla periódica para dibujar el símbolo. Un elemento del grupo VIIA se dibuja con siete puntos."
+        },
+        {
+          "texto": "Los elementos de un mismo grupo tienen el mismo símbolo de Lewis.",
+          "explicacion": "Dentro de un grupo todos tienen igual número de electrones de valencia, aunque estén en distinto nivel de energía. Solo cambia el símbolo del elemento. Por eso el cloro y el bromo se dibujan con la misma cantidad de puntos."
+        },
+        {
+          "texto": "El helio es una excepción: tiene dos puntos.",
+          "explicacion": "El helio está en el grupo 18, pero su único nivel de energía solo admite dos electrones. Por eso su nivel externo queda completo con dos puntos y no con ocho."
+        },
+        {
+          "texto": "El hidrógeno tiene un solo punto.",
+          "explicacion": "Tiene un único electrón, así que se dibuja con un punto. Está en el grupo 1, pero no se comporta como los metales alcalinos."
         }
       ]
     },
     {
-      "titulo": "Isótopos del carbono",
+      "titulo": "Puntos por grupo",
       "puntos": [
         {
-          "texto": "«Carbono-12»: isótopo más abundante",
-          "explicacion": "Tiene 6 protones y 6 neutrones; el carbono-13 es mucho menos abundante."
+          "texto": "Los alcalinos, del grupo 1, tienen un punto.",
+          "explicacion": "Tienen un electrón de valencia, que ceden con facilidad. Por eso sus átomos forman iones positivos."
         },
         {
-          "texto": "«Carbono-14»: isótopo radiactivo",
-          "explicacion": "Tiene 8 neutrones y se emplea para datar restos orgánicos antiguos."
+          "texto": "Los alcalinotérreos, del grupo 2, tienen dos puntos.",
+          "explicacion": "Tienen dos electrones de valencia, que ceden para quedar con el nivel anterior completo."
+        },
+        {
+          "texto": "Los térreos, del grupo 13, tienen tres puntos.",
+          "explicacion": "Tienen tres electrones de valencia. Boro y aluminio los comparten y forman compuestos con menos de ocho electrones alrededor."
+        },
+        {
+          "texto": "Los carbonoides, del grupo 14, tienen cuatro puntos.",
+          "explicacion": "Tienen cuatro electrones de valencia, la mitad de un octeto. Por eso el carbono comparte electrones y forma cuatro enlaces."
+        },
+        {
+          "texto": "Los nitrogenoides, del grupo 15, tienen cinco puntos.",
+          "explicacion": "Se dibujan con un par de puntos y tres puntos sueltos. Los tres puntos sueltos indican que pueden formar tres enlaces."
+        },
+        {
+          "texto": "Los anfígenos, del grupo 16, tienen seis puntos.",
+          "explicacion": "Se dibujan con dos pares de puntos y dos puntos sueltos. Los dos puntos sueltos indican que forman dos enlaces, como el oxígeno en el agua."
+        },
+        {
+          "texto": "Los halógenos, del grupo 17, tienen siete puntos.",
+          "explicacion": "Se dibujan con tres pares de puntos y un punto suelto. Ese punto suelto indica que forman un solo enlace o que ganan un electrón."
+        },
+        {
+          "texto": "Los gases nobles, del grupo 18, tienen ocho puntos.",
+          "explicacion": "Los cuatro pares indican un nivel externo completo, y por eso casi no forman enlaces. El helio, con dos puntos, es la excepción."
         }
       ]
     },
     {
-      "titulo": "Abundancia y masa promedio",
+      "titulo": "Regla del octeto",
       "puntos": [
         {
-          "texto": "«Abundancia isotópica»: porcentaje de cada isótopo",
-          "explicacion": "En la naturaleza, los isótopos de un elemento aparecen en proporciones casi constantes."
+          "texto": "La «regla del octeto» dice que los átomos buscan ocho electrones.",
+          "explicacion": "Un octeto es un nivel externo con ocho electrones. Los átomos se enlazan para alcanzar esa condición, y el enlace es el medio que usan para conseguirla."
         },
         {
-          "texto": "Masa promedio = suma de masa × fracción isotópica",
-          "explicacion": "Ejemplo con cloro: Cl-35 (34.969 uma, abundancia 0.7577) y Cl-37 (36.966 uma, abundancia 0.2423). 34.969 × 0.7577 + 36.966 × 0.2423 = 26.50 + 8.96 = 35.45 uma."
+          "texto": "La regla del octeto se aplica sobre todo a los representativos.",
+          "explicacion": "Los elementos representativos son los de los grupos A, cuyo nivel externo se llena con subniveles s y p. Estos subniveles completos suman ocho electrones."
         },
         {
-          "texto": "La masa promedio se acerca al isótopo más abundante",
-          "explicacion": "El valor 35.45 uma queda cerca de 35, la masa del cloro-35, que es el isótopo más abundante."
+          "texto": "El octeto corresponde a la configuración estable de un gas noble.",
+          "explicacion": "Los gases nobles tienen el nivel externo completo y casi no reaccionan. Los demás átomos se enlazan para parecerse a ellos."
+        },
+        {
+          "texto": "Un átomo alcanza el octeto ganando, cediendo o compartiendo electrones.",
+          "explicacion": "Según el elemento y con quién se una, elige una de esas tres vías. Cada vía da lugar a un tipo distinto de enlace, que se estudia en su propio tema."
+        },
+        {
+          "texto": "Los metales suelen ceder electrones para alcanzar el octeto.",
+          "explicacion": "Tienen pocos electrones de valencia, así que les resulta más fácil perderlos que ganar muchos. Al perderlos quedan con el nivel anterior completo."
+        },
+        {
+          "texto": "Los no metales ganan o comparten electrones para alcanzar el octeto.",
+          "explicacion": "Tienen muchos electrones de valencia y les faltan pocos para completar ocho. Los ganan de un metal o los comparten con otro no metal."
+        },
+        {
+          "texto": "Los elementos de transición no siguen la regla del octeto.",
+          "explicacion": "Sus electrones de valencia se reparten entre subniveles s y d, por lo que no se completan ocho electrones. Por eso la regla se limita a los representativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla del dueto",
+      "puntos": [
+        {
+          "texto": "El hidrógeno completa su nivel externo con solo dos electrones.",
+          "explicacion": "Su único nivel de energía solo admite dos electrones, así que no necesita ocho. Esta condición se llama dueto y es la excepción del hidrógeno a la regla del octeto."
+        },
+        {
+          "texto": "El hidrógeno imita la configuración del helio, 1s².",
+          "explicacion": "El helio es un gas noble con dos electrones y es muy estable. Al compartir un electrón, el hidrógeno llega a esa misma configuración, como en la molécula H₂."
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura de Lewis",
+      "puntos": [
+        {
+          "texto": "La estructura de Lewis combina símbolos de Lewis para mostrar un enlace.",
+          "explicacion": "Se colocan varios símbolos de Lewis juntos para representar cómo se transfieren o se comparten electrones al formar un compuesto. Así se pasa de un átomo aislado a una molécula o un ion."
+        },
+        {
+          "texto": "La estructura de Lewis muestra los enlaces y los pares libres.",
+          "explicacion": "Con ella se puede contar de forma directa cuántos electrones comparte cada átomo y cuántos conserva para sí. Esa información sirve para identificar el tipo de enlace."
+        },
+        {
+          "texto": "Un «par enlazante» es un par de electrones compartido por dos átomos.",
+          "explicacion": "Es el que mantiene unidos a los átomos. Cada átomo aporta, por lo general, un electrón al par compartido."
+        },
+        {
+          "texto": "Un «par libre» es un par de electrones que no se comparte.",
+          "explicacion": "Pertenece a un solo átomo y no participa en el enlace. También se llama par no enlazante o par solitario."
+        },
+        {
+          "texto": "El par enlazante se dibuja como una raya entre los átomos.",
+          "explicacion": "La raya sustituye a dos puntos y hace el dibujo más limpio. También puede escribirse con dos puntos entre los símbolos."
+        },
+        {
+          "texto": "El par libre se dibuja como dos puntos junto a un átomo.",
+          "explicacion": "Quedan pegados al símbolo del átomo al que pertenecen, sin ninguna raya hacia otro átomo."
+        },
+        {
+          "texto": "Cada raya equivale a dos electrones.",
+          "explicacion": "Una raya es un par de electrones, es decir, dos electrones. Para contar los electrones que rodean a un átomo, cada raya vale dos y cada punto vale uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicidad de enlaces",
+      "puntos": [
+        {
+          "texto": "Un «enlace simple» comparte un par de electrones.",
+          "explicacion": "Se dibuja con una sola raya. Es el enlace más largo y el más débil de los tres, como el que hay entre el hidrógeno y el oxígeno en el agua."
+        },
+        {
+          "texto": "Un «enlace doble» comparte dos pares de electrones.",
+          "explicacion": "Se dibuja con dos rayas. Aparece cuando un solo par no basta para completar el octeto, como en el dióxido de carbono."
+        },
+        {
+          "texto": "Un «enlace triple» comparte tres pares de electrones.",
+          "explicacion": "Se dibuja con tres rayas. Es el más corto y el más fuerte de los tres, como el del nitrógeno del aire."
+        }
+      ]
+    },
+    {
+      "titulo": "Enlaces por átomo",
+      "puntos": [
+        {
+          "texto": "Los enlaces de un átomo igualan los electrones que le faltan.",
+          "explicacion": "Cada electrón que le falta a un átomo se obtiene compartiendo un par más. Un átomo de oxígeno tiene 6 electrones de valencia, le faltan 8 − 6 = 2 y por eso forma dos enlaces."
+        },
+        {
+          "texto": "El hidrógeno forma un enlace.",
+          "explicacion": "Le falta un electrón para completar su dueto, por lo que comparte un par."
+        },
+        {
+          "texto": "Los halógenos forman un enlace.",
+          "explicacion": "Tienen siete electrones de valencia y les falta uno, por lo que comparten un par. Su símbolo de Lewis muestra tres pares y un punto suelto."
+        },
+        {
+          "texto": "El oxígeno forma dos enlaces.",
+          "explicacion": "Tiene seis electrones de valencia y le faltan dos. Puede formar dos enlaces simples o un enlace doble."
+        },
+        {
+          "texto": "El nitrógeno forma tres enlaces.",
+          "explicacion": "Tiene cinco electrones de valencia y le faltan tres. Puede formar tres enlaces simples o un enlace triple."
+        },
+        {
+          "texto": "El carbono forma cuatro enlaces.",
+          "explicacion": "Tiene cuatro electrones de valencia y le faltan cuatro. Esa capacidad le permite unirse a muchos átomos y formar cadenas."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de estructuras",
+      "puntos": [
+        {
+          "texto": "Agua (H₂O): dos pares enlazantes y dos pares libres en oxígeno.",
+          "explicacion": "El oxígeno forma un enlace simple con cada hidrógeno y conserva dos pares libres. Con eso queda rodeado de cuatro pares, que son ocho electrones."
+        },
+        {
+          "texto": "Amoníaco (NH₃): tres pares enlazantes y un par libre en nitrógeno.",
+          "explicacion": "El nitrógeno forma tres enlaces simples con hidrógeno y conserva un par libre. También queda con ocho electrones."
+        },
+        {
+          "texto": "Metano (CH₄): cuatro enlaces simples y ningún par libre.",
+          "explicacion": "El carbono usa sus cuatro electrones de valencia en cuatro enlaces simples con hidrógeno. No le sobra ningún par, y por eso no tiene pares libres."
+        },
+        {
+          "texto": "Dióxido de carbono (CO₂): dos enlaces dobles, carbono sin pares libres.",
+          "explicacion": "El carbono forma un enlace doble con cada oxígeno. Cada oxígeno conserva dos pares libres, y así los tres átomos completan el octeto."
+        },
+        {
+          "texto": "Nitrógeno (N₂): un enlace triple y un par libre por átomo.",
+          "explicacion": "Cada átomo comparte tres electrones y conserva un par libre, con lo que completa ocho. Ese enlace triple explica la gran estabilidad del nitrógeno del aire."
+        },
+        {
+          "texto": "Cloruro de hidrógeno (HCl): un enlace y tres pares libres en cloro.",
+          "explicacion": "El hidrógeno completa su dueto con el par compartido. El cloro completa su octeto con ese par más sus tres pares libres."
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura de iones",
+      "puntos": [
+        {
+          "texto": "En un ion, los puntos se escriben entre corchetes con su carga.",
+          "explicacion": "Los corchetes indican que la carga pertenece al ion completo. Los iones se forman cuando un átomo gana o pierde electrones, como ocurre en el enlace iónico."
+        },
+        {
+          "texto": "Un catión metálico que perdió su valencia no lleva puntos.",
+          "explicacion": "Al ceder todos sus electrones de valencia, no le queda ninguno que dibujar. Solo se escribe el símbolo con su carga positiva."
+        },
+        {
+          "texto": "El ion sodio, Na⁺, no lleva puntos.",
+          "explicacion": "El sodio tenía un electrón de valencia, que cedió. Quedó con una carga positiva y sin electrones de valencia que representar."
+        },
+        {
+          "texto": "Un anión queda con ocho puntos entre corchetes.",
+          "explicacion": "Los electrones ganados completan el octeto, por eso el símbolo queda rodeado de cuatro pares. Se escribe además su carga negativa."
+        },
+        {
+          "texto": "El ion cloruro, Cl⁻, tiene ocho puntos.",
+          "explicacion": "El cloro tenía siete electrones de valencia y ganó uno, con lo que 7 + 1 = 8. Se dibuja con ocho puntos y una carga negativa."
+        }
+      ]
+    },
+    {
+      "titulo": "Excepciones al octeto",
+      "puntos": [
+        {
+          "texto": "Hay tres excepciones a la regla del octeto.",
+          "explicacion": "Son el octeto incompleto, el octeto expandido y las moléculas con número impar de electrones. En todas, el átomo central no queda con exactamente ocho electrones."
+        }
+      ]
+    },
+    {
+      "titulo": "Octeto incompleto",
+      "puntos": [
+        {
+          "texto": "En el «octeto incompleto», el átomo central tiene menos de ocho electrones.",
+          "explicacion": "Ocurre cuando el átomo central tiene pocos electrones de valencia y ya no puede formar más enlaces. Son compuestos de elementos de los primeros grupos."
+        },
+        {
+          "texto": "El boro en BF₃ tiene seis electrones.",
+          "explicacion": "El boro forma tres enlaces simples con flúor, y cada enlace aporta dos electrones. Así queda con seis y no con ocho."
+        },
+        {
+          "texto": "El berilio en BeCl₂ tiene cuatro electrones.",
+          "explicacion": "El berilio forma dos enlaces simples con cloro. Cada enlace aporta dos electrones, y por eso queda con cuatro."
+        },
+        {
+          "texto": "El octeto incompleto se debe a pocos electrones de valencia.",
+          "explicacion": "El boro tiene tres y el berilio tiene dos. Con tan pocos electrones no alcanzan a formar suficientes enlaces para llegar a ocho."
+        },
+        {
+          "texto": "El aluminio también forma compuestos con octeto incompleto.",
+          "explicacion": "Tiene tres electrones de valencia, como el boro, y se comporta de forma parecida. Ambos son del grupo 13."
+        }
+      ]
+    },
+    {
+      "titulo": "Octeto expandido",
+      "puntos": [
+        {
+          "texto": "En el «octeto expandido», el átomo central tiene más de ocho electrones.",
+          "explicacion": "El átomo central forma más enlaces de los que permitiría el octeto. Por eso queda rodeado de cinco o seis pares de electrones."
+        },
+        {
+          "texto": "El fósforo en PCl₅ tiene diez electrones.",
+          "explicacion": "Está rodeado de cinco pares de electrones, cada uno en un enlace con cloro. Cinco pares son diez electrones."
+        },
+        {
+          "texto": "El azufre en SF₆ tiene doce electrones.",
+          "explicacion": "Está rodeado de seis pares de electrones, cada uno en un enlace con flúor. Seis pares son doce electrones."
+        },
+        {
+          "texto": "El octeto expandido ocurre en elementos del tercer período o posteriores.",
+          "explicacion": "Los elementos del segundo período, como el carbono o el oxígeno, nunca superan ocho electrones. Los de períodos posteriores sí pueden hacerlo."
+        },
+        {
+          "texto": "El octeto expandido se explica por la presencia de subniveles d.",
+          "explicacion": "En el nivel externo de esos elementos existen subniveles d disponibles, que permiten alojar más electrones. En el segundo período no hay subniveles d."
+        }
+      ]
+    },
+    {
+      "titulo": "Número impar",
+      "puntos": [
+        {
+          "texto": "En algunas moléculas queda un electrón sin aparear.",
+          "explicacion": "Un electrón desapareado es el que no forma pareja con otro. Si el total de electrones de valencia es impar, al menos un electrón queda sin pareja."
+        },
+        {
+          "texto": "Estas moléculas se llaman radicales libres.",
+          "explicacion": "Un radical libre es una especie con un electrón sin aparear. Por esa falta de pareja suelen ser muy reactivas."
+        },
+        {
+          "texto": "El óxido nítrico, NO, es un ejemplo.",
+          "explicacion": "El nitrógeno aporta cinco electrones de valencia y el oxígeno seis, y el total, 5 + 6 = 11, es impar. Algún átomo no llega al octeto."
+        },
+        {
+          "texto": "La causa es una suma impar de electrones de valencia.",
+          "explicacion": "Los electrones se distribuyen en pares, así que una suma impar siempre deja uno sin pareja. Por eso no se puede cumplir el octeto en todos los átomos a la vez."
         }
       ]
     }

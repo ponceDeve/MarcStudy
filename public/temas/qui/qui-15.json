@@ -1,48 +1,365 @@
 {
   "curso": "Química",
-  "tema": "Unidad de masa atómica",
+  "tema": "Propiedades periódicas",
   "glosario": {
-    "uma": "Doceava parte de la masa del carbono-12.",
-    "masa atómica": "Masa de un átomo expresada en uma.",
-    "carbono-12": "Isótopo de carbono usado como referencia de masa."
+    "propiedad periódica": "Propiedad que varía regularmente con el número atómico",
+    "número atómico": "Cantidad de protones del núcleo de un átomo",
+    "configuración electrónica": "Distribución de electrones en niveles y subniveles",
+    "nivel de energía": "Región de energía donde se ubican electrones",
+    "subnivel": "División de un nivel de energía",
+    "electrones de valencia": "Electrones del nivel externo que participan en enlaces",
+    "carga nuclear efectiva": "Carga positiva neta que sienten los electrones externos",
+    "constante de apantallamiento": "Medida de la repulsión de electrones internos",
+    "apantallamiento": "Reducción de la atracción nuclear por electrones internos",
+    "radio atómico": "Tamaño del átomo medido desde el núcleo",
+    "picómetro": "Unidad de longitud, una billonésima de metro",
+    "ion": "Átomo con carga eléctrica neta",
+    "catión": "Ion con carga positiva",
+    "anión": "Ion con carga negativa",
+    "radio iónico": "Tamaño de un ion",
+    "especies isoelectrónicas": "Especies con igual número de electrones",
+    "energía de ionización": "Energía para arrancar un electrón de un átomo",
+    "afinidad electrónica": "Energía liberada al ganar un electrón",
+    "electronegatividad": "Capacidad de atraer electrones de un enlace",
+    "escala de Pauling": "Escala numérica de la electronegatividad",
+    "enlace polar": "Enlace con reparto desigual de electrones",
+    "carácter metálico": "Facilidad de un átomo para perder electrones",
+    "carácter no metálico": "Facilidad de un átomo para ganar electrones",
+    "gas noble": "Elemento del grupo 18, casi inerte",
+    "alcalinos": "Metales del grupo 1, sin contar el hidrógeno",
+    "metal": "Elemento que tiende a formar cationes",
+    "no metal": "Elemento que tiende a formar aniones"
   },
   "theory": [
     {
-      "titulo": "Concepto de uma",
+      "titulo": "Definición",
       "puntos": [
         {
-          "texto": "«Uma»: doceava parte de la masa del carbono-12",
-          "explicacion": "Sirve como referencia porque las masas reales de los átomos son extremadamente pequeñas al expresarlas en gramos."
+          "texto": "Las «propiedades periódicas» varían de forma regular con el número atómico.",
+          "explicacion": "Como los elementos se ordenan por número atómico, sus propiedades vuelven a repetirse a intervalos definidos. Ese patrón es el que permite comparar dos elementos solo por su ubicación en la tabla."
         },
         {
-          "texto": "Equivalencia: 1 uma = 1.66 × 10⁻²⁴ g",
-          "explicacion": "Este valor permite pasar de uma a gramos cuando se necesita la masa real de un átomo."
+          "texto": "Sus valores siguen patrones a lo largo de períodos y grupos.",
+          "explicacion": "Al recorrer un período de izquierda a derecha o un grupo de arriba hacia abajo, cada propiedad aumenta o disminuye de manera gradual. Por eso se habla de tendencias."
+        },
+        {
+          "texto": "Dependen de la configuración electrónica y la carga nuclear efectiva.",
+          "explicacion": "En un período se agrega un protón y un electrón en el mismo nivel de energía, y en un grupo el número de electrones de valencia se mantiene mientras aumenta el nivel. Esos dos cambios explican todas las tendencias."
+        },
+        {
+          "texto": "Las principales son radio atómico, energía de ionización, afinidad electrónica y electronegatividad.",
+          "explicacion": "Cada una se desarrolla en su propia sección. Se estudian juntas porque están relacionadas: dependen de lo cerca que están los electrones externos del núcleo."
+        },
+        {
+          "texto": "El radio iónico y el carácter metálico también son periódicos.",
+          "explicacion": "El radio iónico describe el tamaño de los iones, y el carácter metálico, la facilidad para perder electrones. Ambos se deducen de las propiedades anteriores."
+        },
+        {
+          "texto": "Las tendencias son generales y presentan excepciones.",
+          "explicacion": "Algunos elementos se apartan de la tendencia por detalles de su configuración electrónica, como ocurre con la energía de ionización. Esas excepciones se indican en cada propiedad."
         }
       ]
     },
     {
-      "titulo": "Masa de partículas",
+      "titulo": "Carga nuclear efectiva",
       "puntos": [
         {
-          "texto": "Protón y neutrón tienen masa cercana a 1 uma",
-          "explicacion": "El electrón, en cambio, tiene una masa alrededor de 1836 veces menor que la del protón."
+          "texto": "La «carga nuclear efectiva» es la carga neta sobre los electrones externos.",
+          "explicacion": "El núcleo atrae a los electrones, pero los electrones internos se interponen y reducen esa atracción. Lo que llega a los electrones externos es la carga nuclear efectiva, representada por Zef."
         },
         {
-          "texto": "Electrón: masa despreciable frente al núcleo",
-          "explicacion": "Su masa, de 0.00055 uma, se desprecia en el número de masa; por eso la masa atómica depende casi solo de protones y neutrones."
+          "texto": "La carga nuclear efectiva se calcula con Zef = Z − S.",
+          "explicacion": "Ejemplo con el sodio (Na): Z = 11 y S = 8,8, valor estimado por las reglas de Slater, así que Zef = 11 − 8,8 = 2,2. Con el cloro (Cl): Z = 17 y S = 10,9, así que Zef = 17 − 10,9 = 6,1. El cloro, que está más a la derecha en el mismo período, atrae sus electrones externos con más fuerza."
+        },
+        {
+          "texto": "Z es el número atómico del elemento.",
+          "explicacion": "Es la cantidad de protones del núcleo, es decir, la carga positiva real del átomo."
+        },
+        {
+          "texto": "S es la constante de apantallamiento.",
+          "explicacion": "Es una medida de cuánto repelen los electrones internos a los externos. Mientras más electrones internos hay, mayor es S."
+        },
+        {
+          "texto": "El apantallamiento es la repulsión de los electrones internos sobre los externos.",
+          "explicacion": "Funciona como una pantalla que tapa parte de la carga del núcleo. Por eso los electrones externos no sienten la carga completa de los protones."
+        },
+        {
+          "texto": "La carga nuclear efectiva aumenta en un período.",
+          "explicacion": "Cada elemento suma un protón al núcleo y un electrón al mismo nivel externo. Los electrones del mismo nivel se apantallan poco entre sí, así que la carga efectiva crece."
+        },
+        {
+          "texto": "La carga nuclear efectiva casi no cambia en un grupo.",
+          "explicacion": "Al bajar se agregan protones, pero también electrones internos que apantallan casi lo mismo. El resultado neto es una variación muy pequeña."
+        },
+        {
+          "texto": "A mayor carga nuclear efectiva, los electrones externos están más atraídos.",
+          "explicacion": "Esta atracción es la causa de la mayoría de las tendencias. Si los electrones están muy atraídos, el átomo es pequeño y cuesta arrancarlos."
         }
       ]
     },
     {
-      "titulo": "Ejemplos de cálculo",
+      "titulo": "Radio atómico",
       "puntos": [
         {
-          "texto": "«Ejemplo»: masa de un átomo de carbono-12 en gramos",
-          "explicacion": "Datos: masa = 12 uma y 1 uma = 1.66 × 10⁻²⁴ g. Cálculo: 12 × 1.66 × 10⁻²⁴ g = 1.99 × 10⁻²³ g. Interpretación: un átomo de carbono-12 pesa cerca de 2 × 10⁻²³ gramos."
+          "texto": "El «radio atómico» mide el tamaño del átomo.",
+          "explicacion": "Se toma desde el núcleo hasta el electrón más externo. Como los átomos no tienen un borde definido, el valor depende de cómo se mida."
         },
         {
-          "texto": "Comparación de masas atómicas en uma",
-          "explicacion": "Un átomo de oxígeno tiene 16 uma y uno de carbono-12 tiene 12 uma; la relación es 16 / 12 = 1.33, es decir, el oxígeno es 1.33 veces más pesado."
+          "texto": "El radio atómico se expresa en picómetros (pm).",
+          "explicacion": "Un picómetro es una billonésima parte de un metro, una escala adecuada para átomos."
+        },
+        {
+          "texto": "El radio atómico disminuye en un período.",
+          "explicacion": "Al avanzar hacia la derecha, los electrones se agregan al mismo nivel de energía. El tamaño no crece porque el núcleo gana carga."
+        },
+        {
+          "texto": "En un período, la causa es la mayor carga nuclear efectiva.",
+          "explicacion": "Los electrones externos son atraídos con más fuerza y se acercan al núcleo, y así la nube electrónica se contrae. Por eso el litio es mayor que el flúor."
+        },
+        {
+          "texto": "El radio atómico aumenta en un grupo.",
+          "explicacion": "Al bajar, los electrones externos ocupan niveles cada vez más alejados del núcleo."
+        },
+        {
+          "texto": "En un grupo, la causa es el mayor nivel de energía.",
+          "explicacion": "Cada nuevo período agrega un nivel de energía, con orbitales más grandes. La carga nuclear efectiva casi no cambia y no compensa ese aumento."
+        },
+        {
+          "texto": "Los átomos más grandes están abajo a la izquierda.",
+          "explicacion": "Allí se combinan los mayores niveles de energía con la menor carga nuclear efectiva del período. Los más pequeños están arriba a la derecha."
+        }
+      ]
+    },
+    {
+      "titulo": "Radio iónico",
+      "puntos": [
+        {
+          "texto": "El «radio iónico» es el tamaño de un ion.",
+          "explicacion": "Se mide igual que el radio atómico, pero en átomos que ganaron o perdieron electrones. Su valor suele diferir bastante del radio del átomo neutro."
+        },
+        {
+          "texto": "Un catión es menor que su átomo neutro.",
+          "explicacion": "Un catión es un ion positivo. Tiene los mismos protones, pero menos electrones, y suele perder el nivel externo completo."
+        },
+        {
+          "texto": "El catión es menor porque los electrones restantes son más atraídos.",
+          "explicacion": "Hay menos repulsión entre electrones y el núcleo atrae a los que quedan con más fuerza, así que la nube se contrae."
+        },
+        {
+          "texto": "Un anión es mayor que su átomo neutro.",
+          "explicacion": "Un anión es un ion negativo. Tiene los mismos protones, pero más electrones."
+        },
+        {
+          "texto": "El anión es mayor porque aumenta la repulsión entre electrones.",
+          "explicacion": "Con la carga nuclear igual y más electrones, la atracción por cada uno disminuye. La nube electrónica se expande."
+        },
+        {
+          "texto": "El radio iónico aumenta en un grupo.",
+          "explicacion": "Sigue la misma causa que el radio atómico: cada fila agrega un nivel de energía."
+        },
+        {
+          "texto": "Las especies isoelectrónicas tienen igual número de electrones.",
+          "explicacion": "Pueden ser iones o átomos de distintos elementos. Ejemplo: N³⁻, O²⁻, F⁻, Ne, Na⁺, Mg²⁺ y Al³⁺ tienen todos la configuración 1s² 2s² 2p⁶."
+        },
+        {
+          "texto": "En isoelectrónicas, mayor número atómico significa menor radio.",
+          "explicacion": "En la serie anterior, el N³⁻ es el más grande y el Al³⁺ el más pequeño."
+        },
+        {
+          "texto": "En isoelectrónicas, la causa es la mayor carga nuclear.",
+          "explicacion": "Tienen los mismos electrones, pero un núcleo con más protones los atrae con más fuerza y los acerca."
+        }
+      ]
+    },
+    {
+      "titulo": "Energía de ionización",
+      "puntos": [
+        {
+          "texto": "La «energía de ionización» es la necesaria para arrancar un electrón.",
+          "explicacion": "Se mide en estado gaseoso porque así el átomo no interactúa con otros. Es una medida de qué tan fuerte retiene un átomo a sus electrones."
+        },
+        {
+          "texto": "La energía de ionización se expresa en kJ/mol.",
+          "explicacion": "Indica los kilojoules necesarios para arrancar un electrón a un mol de átomos."
+        },
+        {
+          "texto": "La primera energía de ionización arranca el primer electrón.",
+          "explicacion": "Se arranca el electrón menos retenido, el del nivel más externo, y el átomo se convierte en un catión con una carga positiva."
+        },
+        {
+          "texto": "La segunda energía de ionización arranca el segundo electrón.",
+          "explicacion": "Se aplica sobre el catión que quedó después del primer paso."
+        },
+        {
+          "texto": "La segunda energía de ionización es mayor que la primera.",
+          "explicacion": "El ion positivo retiene sus electrones con más fuerza, porque tiene la misma carga nuclear con menos electrones. Por eso cada ionización sucesiva requiere más energía."
+        },
+        {
+          "texto": "A mayor energía de ionización, cuesta más quitar un electrón.",
+          "explicacion": "Un valor alto indica que el átomo retiene con fuerza sus electrones y tiende a no formar cationes."
+        },
+        {
+          "texto": "La energía de ionización aumenta en un período.",
+          "explicacion": "Al avanzar a la derecha, el átomo es más pequeño y retiene mejor a sus electrones."
+        },
+        {
+          "texto": "En un período, la causa es mayor carga efectiva y menor radio.",
+          "explicacion": "Los electrones externos están más cerca del núcleo y más atraídos, por lo que cuesta más arrancarlos."
+        },
+        {
+          "texto": "La energía de ionización disminuye en un grupo.",
+          "explicacion": "Al bajar, el electrón externo se aleja del núcleo y es más fácil de arrancar."
+        },
+        {
+          "texto": "En un grupo, la causa es mayor radio y más apantallamiento.",
+          "explicacion": "Los electrones internos se interponen y el electrón externo está lejos del núcleo, así que la atracción es menor."
+        },
+        {
+          "texto": "A mayor radio atómico, menor energía de ionización.",
+          "explicacion": "Ambas propiedades varían de forma inversa. Si el electrón está lejos del núcleo, cuesta menos retirarlo."
+        },
+        {
+          "texto": "Los gases nobles tienen la mayor energía de ionización de su período.",
+          "explicacion": "Tienen el nivel externo completo y son muy estables, así que cuesta mucho arrancarles un electrón."
+        },
+        {
+          "texto": "Los alcalinos tienen la menor energía de ionización de su período.",
+          "explicacion": "Tienen un solo electrón de valencia, lejos del núcleo y muy apantallado, que ceden con facilidad."
+        },
+        {
+          "texto": "Excepción: el nitrógeno (N) supera al oxígeno (O).",
+          "explicacion": "Rompe la tendencia del período, que indicaría lo contrario, porque el nitrógeno está a la izquierda del oxígeno."
+        },
+        {
+          "texto": "El nitrógeno tiene el subnivel p medio lleno, que es estable.",
+          "explicacion": "Esa estabilidad hace más difícil arrancarle un electrón. Al oxígeno, en cambio, le conviene perder un electrón para quedar con el subnivel p medio lleno."
+        },
+        {
+          "texto": "Excepción: el berilio (Be) supera al boro (B).",
+          "explicacion": "El electrón del boro está en un subnivel p, de mayor energía que el s del berilio. Por eso el boro lo pierde con más facilidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Afinidad electrónica",
+      "puntos": [
+        {
+          "texto": "La «afinidad electrónica» es la energía liberada al ganar un electrón.",
+          "explicacion": "Se mide en un átomo gaseoso que se convierte en anión. Mientras más energía libera, más tendencia tiene el átomo a ganar electrones."
+        },
+        {
+          "texto": "Un valor negativo de afinidad electrónica indica liberación de energía.",
+          "explicacion": "Es una convención de signos: negativo significa que el proceso desprende energía y el anión es estable. Cuanto más negativo, mayor es la afinidad."
+        },
+        {
+          "texto": "La afinidad electrónica aumenta en un período.",
+          "explicacion": "Los átomos de la derecha tienen mayor carga nuclear efectiva y sienten mucha atracción por el electrón que llega."
+        },
+        {
+          "texto": "En un período, la causa es mayor carga efectiva y menor radio.",
+          "explicacion": "El electrón nuevo entra cerca del núcleo, y por eso se libera más energía."
+        },
+        {
+          "texto": "La afinidad electrónica disminuye en un grupo.",
+          "explicacion": "Al bajar, el átomo es mayor y el electrón que llega queda lejos del núcleo."
+        },
+        {
+          "texto": "En un grupo, la causa es el mayor radio atómico.",
+          "explicacion": "A mayor tamaño, menor atracción por el electrón nuevo y menos energía liberada."
+        },
+        {
+          "texto": "Los gases nobles no tienden a ganar electrones.",
+          "explicacion": "Tienen el nivel externo completo, así que un electrón extra tendría que ocupar un nivel nuevo, lo que no es favorable."
+        },
+        {
+          "texto": "El cloro (Cl) tiene la mayor afinidad electrónica.",
+          "explicacion": "Es el elemento que más energía libera al ganar un electrón."
+        },
+        {
+          "texto": "El flúor (F) tiene afinidad menor que el cloro.",
+          "explicacion": "Es una excepción a la tendencia, que indicaría que el flúor, más arriba en el grupo, debería tener la mayor."
+        },
+        {
+          "texto": "El flúor tiene menor afinidad porque su tamaño pequeño aumenta la repulsión.",
+          "explicacion": "El electrón que llega se encuentra con los electrones ya presentes en un espacio muy reducido. Esa repulsión resta parte de la energía liberada."
+        }
+      ]
+    },
+    {
+      "titulo": "Electronegatividad",
+      "puntos": [
+        {
+          "texto": "La «electronegatividad» es la capacidad de atraer electrones de un enlace.",
+          "explicacion": "Mide qué tan fuerte atrae un átomo el par de electrones que comparte con otro. Al combinarse dos átomos, el más electronegativo se queda con la mayor parte de la densidad electrónica."
+        },
+        {
+          "texto": "La electronegatividad se mide en la escala de Pauling.",
+          "explicacion": "Linus Pauling asignó valores arbitrarios a cada elemento a partir de datos de energía. Son números sin unidades que sirven para comparar."
+        },
+        {
+          "texto": "La electronegatividad aumenta en un período.",
+          "explicacion": "Los átomos de la derecha son más pequeños y de mayor carga efectiva, así que atraen con más fuerza los electrones del enlace."
+        },
+        {
+          "texto": "La electronegatividad disminuye en un grupo.",
+          "explicacion": "Al bajar, el núcleo está más lejos del par de enlace y lo atrae con menos fuerza."
+        },
+        {
+          "texto": "El flúor es el elemento más electronegativo.",
+          "explicacion": "Se encuentra arriba a la derecha de la tabla, sin contar los gases nobles. Su valor en la escala de Pauling es 4,0."
+        },
+        {
+          "texto": "El francio es el elemento menos electronegativo.",
+          "explicacion": "Está abajo a la izquierda y su valor en la escala de Pauling es 0,7. Retiene muy poco los electrones de un enlace."
+        },
+        {
+          "texto": "Los gases nobles casi no tienen valores de electronegatividad.",
+          "explicacion": "Como casi no forman enlaces, la propiedad no suele asignarse. Por eso las comparaciones se hacen entre los otros elementos."
+        },
+        {
+          "texto": "A mayor energía de ionización y afinidad electrónica, mayor electronegatividad.",
+          "explicacion": "Un átomo que retiene con fuerza sus propios electrones y atrae los ajenos tiende a atraer también los del enlace."
+        },
+        {
+          "texto": "Los no metales son los más electronegativos y forman aniones.",
+          "explicacion": "Se ubican en la parte superior derecha de la tabla. Atraen electrones con facilidad, y los ganan frente a átomos menos electronegativos."
+        },
+        {
+          "texto": "La diferencia de electronegatividad indica cuán polar es un enlace.",
+          "explicacion": "Un enlace polar tiene reparto desigual de electrones. Mientras mayor es la diferencia entre los dos átomos, más desigual es el reparto. El tipo de enlace se estudia en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Carácter metálico",
+      "puntos": [
+        {
+          "texto": "El «carácter metálico» es la facilidad de un átomo para perder electrones.",
+          "explicacion": "Un átomo que pierde electrones con facilidad forma cationes, que es lo característico de los metales."
+        },
+        {
+          "texto": "El carácter metálico aumenta en un grupo.",
+          "explicacion": "Al bajar, el electrón externo está más lejos del núcleo y más apantallado, así que se pierde con más facilidad."
+        },
+        {
+          "texto": "En un grupo, la causa es la menor energía de ionización.",
+          "explicacion": "Perder un electrón cuesta menos energía, y esa facilidad es justamente el carácter metálico."
+        },
+        {
+          "texto": "El carácter metálico disminuye en un período.",
+          "explicacion": "Al avanzar a la derecha, los átomos retienen mejor sus electrones y pasan de metales a no metales."
+        },
+        {
+          "texto": "En un período, la causa es la mayor energía de ionización.",
+          "explicacion": "Arrancar un electrón requiere más energía, así que el átomo pierde electrones con menos facilidad."
+        },
+        {
+          "texto": "El carácter metálico es mayor abajo a la izquierda.",
+          "explicacion": "Allí están los átomos con menor energía de ionización, como los alcalinos más pesados."
+        },
+        {
+          "texto": "El carácter no metálico varía de forma inversa al metálico.",
+          "explicacion": "Es la facilidad para ganar electrones, y aumenta hacia la derecha y hacia arriba. Es mayor en los elementos más electronegativos."
         }
       ]
     }
