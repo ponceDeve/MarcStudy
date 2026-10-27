@@ -226,6 +226,17 @@
   white-space: normal;
   padding: 0 6px;
 }
+/* Pista sutil de que se puede tocar: solo al pasar el mouse o presionar. */
+@media (hover: hover) {
+  .glossary-term:not(.glossary-term--simbolo):hover {
+    background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+    text-decoration-style: solid;
+  }
+}
+.glossary-term:not(.glossary-term--simbolo):active {
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent);
+  text-decoration-style: solid;
+}
 /* Símbolos matemáticos/científicos (=, +, ≠, ≈, ↑, ↓, etc.) del
    glosario: mismo trato (subrayado, tooltip) pero con un color
    distinto al de las palabras normales, para diferenciar "notación"
@@ -268,6 +279,11 @@
   word-break: normal;
   pointer-events: none;
   animation: glossary-tooltip-in 0.2s ease-out;
+}
+/* Desvanecimiento antes del autocierre (duración desde Glossarytext.jsx). */
+.glossary-tooltip--saliendo {
+  opacity: 0;
+  transition: opacity var(--glossary-fade, 0.4s) ease;
 }
 /* Punta de la nube: dos triángulos fijos (borde azul y relleno blanco).
    La unión con el borde queda definida por la forma y no por medidas
@@ -345,5 +361,8 @@
 @media (prefers-reduced-motion: reduce) {
   .glossary-tooltip {
     animation: none;
+  }
+  .glossary-tooltip--saliendo {
+    transition: none;
   }
 }

@@ -10,6 +10,34 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
 import { SIMBOLOS_NOTACION } from "../../lib/simbolosNotacion";
+/* ============================================================
+   AJUSTES DEL GLOSARIO (cambia aquí los tiempos)
+   ============================================================ */
+// Segundos que la nube se queda visible antes de empezar a desvanecerse.
+const MS_VISIBLE = 6000;
+// Duración del desvanecimiento (el CSS lo toma de --glossary-fade).
+const MS_DESVANECER = 400;
+// Tras el autocierre no se puede volver a abrir durante este tiempo.
+const MS_BLOQUEO = 800;
+// Clics seguidos sobre la misma palabra para mandarla a ChatGPT...
+const CLICS_PARA_CHATGPT = 5;
+// ...y tiempo máximo entre un clic y el siguiente para que cuenten juntos.
+const MS_ENTRE_CLICS = 500;
+// Abrir la nube al pasar el mouse (desactivado: solo se abre con clic).
+const ABRIR_POR_HOVER = false;
+// Un clic extra sobre la palabra ya abierta la cierra (desactivado).
+const CLIC_REPETIDO_CIERRA = false;
+function preguntarAChatGPT(palabra, significado) {
+  const base = `Explícame qué significa «${palabra}» de forma clara y breve, con un ejemplo corto. Estoy preparando el examen de admisión a la universidad. Que no me quede con dudas, pero sin rodeos.`;
+  const contexto = significado
+    ? ` En mi glosario aparece así: ${significado}`
+    : "";
+  window.open(
+    `https://chatgpt.com/?q=${encodeURIComponent(base + contexto)}`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -362,6 +390,12 @@ export default function GlossaryText({
   const [activo, setActivo] = useState(null);
   // fijado: abierta con clic/toque (no se cierra al salir con el mouse).
   const [fijado, setFijado] = useState(false);
+  // saliendo: la nube ya empezó a desvanecerse (autocierre).
+  const [saliendo, setSaliendo] = useState(false);
+  // Hasta cuándo no se deja abrir (bloqueo posterior al autocierre).
+  const bloqueoHasta = useRef(0);
+  // Conteo de clics rápidos sobre una misma palabra.
+  const clics = useRef({ i: null, n: 0, t: 0 });
   const triggerRefs = useRef({});
   const tooltipRefs = useRef({});
   const {
@@ -389,6 +423,7 @@ export default function GlossaryText({
       setFijado(porClic);
       return;
     }
+    setSaliendo(false);
     setActivo(i);
     setFijado(porClic);
     mostrarEn();
@@ -396,6 +431,7 @@ export default function GlossaryText({
   const ocultarTooltip = () => {
     setActivo(null);
     setFijado(false);
+    setSaliendo(false);
     ocultar();
   };
   // Se posiciona DESPUÉS de que la nube existe en el DOM (antes se
@@ -459,6 +495,25 @@ export default function GlossaryText({
       window.removeEventListener("scroll", alScroll, true);
     };
   }, [activo, ajustarPosicion, ocultar]);
+  // Autocierre: pasado MS_VISIBLE empieza el desvanecimiento.
+  useEffect(() => {
+    if (activo === null) return;
+    const t = setTimeout(() => setSaliendo(true), MS_VISIBLE);
+    return () => clearTimeout(t);
+  }, [activo]);
+  // Al terminar el desvanecimiento se cierra y se bloquea un momento.
+  useEffect(() => {
+    if (activo === null || !saliendo) return;
+    const t = setTimeout(() => {
+      bloqueoHasta.current = Date.now() + MS_BLOQUEO;
+      clics.current = { i: null, n: 0, t: 0 };
+      setActivo(null);
+      setFijado(false);
+      setSaliendo(false);
+      ocultar();
+    }, MS_DESVANECER);
+    return () => clearTimeout(t);
+  }, [activo, saliendo, ocultar]);
   return (
     <span
       onClick={() => {
@@ -480,41 +535,69 @@ export default function GlossaryText({
         }
         const esVisible = visible && activo === i;
         const simbolo = esSimbolo(parte.valor);
+        // Hover: se conserva el código, pero solo se conecta si
+        // ABRIR_POR_HOVER es true.
+        const eventosHover = ABRIR_POR_HOVER
+          ? {
+              onMouseEnter: () => {
+                // Pasar el mouse muestra la nube, también si antes se dejó
+                // otra abierta con clic.
+                if (!(fijado && activo === i)) {
+                  mostrarTooltip(i, false);
+                }
+              },
+              onMouseOver: () => {
+                // Respaldo: si el navegador no envía "entrar", el movimiento
+                // sobre la palabra también la muestra.
+                if (activo !== i && !(fijado && activo === i)) {
+                  mostrarTooltip(i, false);
+                }
+              },
+              onMouseLeave: () => {
+                if (activo === i && !fijado) {
+                  ocultarTooltip();
+                }
+              }
+            }
+          : {};
         return (
           <span
             key={i}
             className="glossary-term-wrap"
-            onMouseEnter={() => {
-              // Pasar el mouse muestra la nube, también si antes se dejó
-              // otra abierta con clic.
-              if (!(fijado && activo === i)) {
-                mostrarTooltip(i, false);
-              }
-            }}
-            onMouseOver={() => {
-              // Respaldo: si el navegador no envía "entrar", el movimiento
-              // sobre la palabra también la muestra.
-              if (activo !== i && !(fijado && activo === i)) {
-                mostrarTooltip(i, false);
-              }
-            }}
-            onMouseLeave={() => {
-              if (activo === i && !fijado) {
-                ocultarTooltip();
-              }
-            }}
+            {...eventosHover}
             onClick={(e) => {
               e.stopPropagation();
               // En la teoría la palabra está dentro de un <label>: sin esto,
               // el clic marca el checkbox del punto y vuelve a dibujarlo.
               e.preventDefault();
-              // Un solo clic/toque: abre y deja fija la nube;
-              // otro clic sobre la misma palabra la cierra.
-              if (activo === i && fijado) {
-                ocultarTooltip();
+              const ahora = Date.now();
+              // Justo después del autocierre no se deja abrir de nuevo.
+              if (ahora < bloqueoHasta.current) return;
+              // Cuenta de clics rápidos sobre la misma palabra.
+              const c = clics.current;
+              if (c.i === i && ahora - c.t <= MS_ENTRE_CLICS) {
+                c.n += 1;
               } else {
-                mostrarTooltip(i, true);
+                c.i = i;
+                c.n = 1;
               }
+              c.t = ahora;
+              if (c.n >= CLICS_PARA_CHATGPT) {
+                clics.current = { i: null, n: 0, t: 0 };
+                ocultarTooltip();
+                preguntarAChatGPT(
+                  parte.valor,
+                  glosarioCombinado[parte.key]
+                );
+                return;
+              }
+              // Si ya está abierta no se cierra ni se reabre:
+              // el clic solo suma al conteo.
+              if (activo === i) {
+                if (CLIC_REPETIDO_CIERRA && fijado) ocultarTooltip();
+                return;
+              }
+              mostrarTooltip(i, true);
             }}
           >
             <span
@@ -535,11 +618,12 @@ export default function GlossaryText({
                   }}
                   className={`glossary-tooltip${
                     pos.below ? " glossary-tooltip--below" : ""
-                  }`}
+                  }${saliendo ? " glossary-tooltip--saliendo" : ""}`}
                   style={{
                     left: `${pos.left}px`,
                     top: `${pos.top}px`,
-                    "--tt-arrow": `${pos.arrow}px`
+                    "--tt-arrow": `${pos.arrow}px`,
+                    "--glossary-fade": `${MS_DESVANECER}ms`
                   }}
                 >
                   <span className="glossary-tooltip__arrow" />
