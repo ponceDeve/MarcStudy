@@ -219,10 +219,165 @@ function obtenerRecomendacionesParaDiaRotacion(
     })
     .filter((r) => r.temas.length > 0);
 }
+/* ============================================================
+   RECOMENDADOS BALANCEADOS (reemplaza a la rotación fija en "hoy")
+   Cada plan trae 3 cursos, uno de cada categoría (letras,
+   matemática y ciencias). Dentro de cada categoría se elige el curso
+   con más temas pendientes (los más cargados primero) y se evita
+   repetir el curso del plan anterior. Si una categoría ya terminó,
+   su lugar lo ocupa el curso con más pendientes que quede.
+   ============================================================ */
+export const CATEGORIAS_ROTACION = {
+  letras: [
+    "Habilidad Verbal",
+    "Lenguaje",
+    "Literatura",
+    "Historia Universal",
+    "Historia del Perú",
+    "Filosofía"
+  ],
+  ciencias: [
+    "Biología",
+    "Física",
+    "Química",
+    "Geografía",
+    "Educación Cívica",
+    "Psicología"
+  ],
+  matematica: [
+    "Habilidad Lógico Matemático",
+    "Aritmética",
+    "Álgebra",
+    "Geometría",
+    "Trigonometría",
+    "Economía"
+  ]
+};
+// Temas que se recomiendan por curso en cada plan.
+export const TEMAS_POR_CURSO_PLAN = 3;
+const CLAVE_PLAN_RECOMENDADO = "mi_estudio_plan_recomendado";
+function temaYaVisto(log, curso, { tema, semana }) {
+  return log.some(
+    (entrada) =>
+      entrada.subject === curso &&
+      entrada.tema === tema &&
+      (!entrada.day || entrada.day === `Semana ${semana}`)
+  );
+}
+function leerPlanGuardado() {
+  try {
+    const raw = localStorage.getItem(CLAVE_PLAN_RECOMENDADO);
+    const plan = raw ? JSON.parse(raw) : null;
+    if (!plan || !Array.isArray(plan.items)) return null;
+    const valido = plan.items.every(
+      (item) =>
+        temarioSesiones[item.curso] && Array.isArray(item.temas)
+    );
+    return valido ? plan : null;
+  } catch (e) {
+    console.error("Error leyendo plan recomendado:", e);
+    return null;
+  }
+}
+function guardarPlan(plan) {
+  try {
+    localStorage.setItem(
+      CLAVE_PLAN_RECOMENDADO,
+      JSON.stringify(plan)
+    );
+  } catch (e) {
+    console.error("Error guardando plan recomendado:", e);
+  }
+}
+function generarPlanBalanceado(log, cursosPlanAnterior) {
+  const cursos = Object.keys(temarioSesiones);
+  const pendientes = {};
+  cursos.forEach((curso) => {
+    pendientes[curso] = listaTemasDelCurso(curso).filter(
+      (t) => !temaYaVisto(log, curso, t)
+    );
+  });
+  const elegidos = [];
+  // El de más pendientes primero; los del plan anterior van al final.
+  const mejorDe = (candidatos) =>
+    candidatos
+      .filter(
+        (c) =>
+          pendientes[c] &&
+          pendientes[c].length > 0 &&
+          !elegidos.includes(c)
+      )
+      .sort((a, b) => {
+        const prevA = cursosPlanAnterior.includes(a) ? 1 : 0;
+        const prevB = cursosPlanAnterior.includes(b) ? 1 : 0;
+        if (prevA !== prevB) return prevA - prevB;
+        return pendientes[b].length - pendientes[a].length;
+      })[0];
+  Object.values(CATEGORIAS_ROTACION).forEach((cursosCategoria) => {
+    const curso = mejorDe(cursosCategoria);
+    if (curso) elegidos.push(curso);
+  });
+  // Categoría terminada: su lugar lo toma el curso con más pendientes.
+  while (elegidos.length < Object.keys(CATEGORIAS_ROTACION).length) {
+    const curso = mejorDe(cursos);
+    if (!curso) break;
+    elegidos.push(curso);
+  }
+  return {
+    items: elegidos.map((curso) => {
+      const total = listaTemasDelCurso(curso).length;
+      return {
+        curso,
+        turno:
+          Math.floor(
+            (total - pendientes[curso].length) /
+              TEMAS_POR_CURSO_PLAN
+          ) + 1,
+        temas: pendientes[curso].slice(0, TEMAS_POR_CURSO_PLAN)
+      };
+    })
+  };
+}
+function planAResultado(plan, log) {
+  return plan.items
+    .map((item) => ({
+      curso: item.curso,
+      turno: item.turno,
+      temas: item.temas
+        .filter((t) => !temaYaVisto(log, item.curso, t))
+        .map((t) => t.tema),
+      sesionesPendientesEnCurso: Math.ceil(
+        listaTemasDelCurso(item.curso).filter(
+          (t) => !temaYaVisto(log, item.curso, t)
+        ).length / TEMAS_POR_CURSO_PLAN
+      )
+    }))
+    .filter((r) => r.temas.length > 0);
+}
+// El plan se mantiene hasta completar todos sus temas; entonces se
+// genera el siguiente con lo que falte.
+function obtenerRecomendacionesBalanceadas() {
+  const log = [...leerLog(), ...leerHistorialRotacion()];
+  const guardado = leerPlanGuardado();
+  let resultado = guardado ? planAResultado(guardado, log) : [];
+  if (resultado.length === 0) {
+    const plan = generarPlanBalanceado(
+      log,
+      guardado ? guardado.items.map((i) => i.curso) : []
+    );
+    guardarPlan(plan);
+    resultado = planAResultado(plan, log);
+  }
+  return resultado;
+}
 export function obtenerRecomendacionesDia(
   desplazamiento = 0,
   fecha = new Date()
 ) {
+  // Hoy usa el plan balanceado; otros días siguen con la rotación fija.
+  if (desplazamiento === 0) {
+    return obtenerRecomendacionesBalanceadas();
+  }
   const estado = calcularEstadoRotacion();
   return obtenerRecomendacionesParaDiaRotacion(
     estado.dia,
