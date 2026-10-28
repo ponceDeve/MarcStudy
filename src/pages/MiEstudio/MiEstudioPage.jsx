@@ -65,6 +65,20 @@ function normalizarTexto(texto) {
     .toLowerCase()
     .trim();
 }
+// Busca en el manifest el tema recomendado (por curso y nombre, sin
+// importar mayúsculas ni tildes) para poder abrirlo desde el inicio.
+function buscarTemaRecomendado(curso, tema) {
+  const limpiar = (t) => normalizarTexto(t).replace(/\s+/g, " ");
+  const objetivo = limpiar(tema);
+  return (
+    OPCIONES_BUSQUEDA.find(
+      (o) =>
+        o.type === "tema" &&
+        o.curso === curso &&
+        limpiar(o.tema) === objetivo
+    ) || null
+  );
+}
 function adaptarEjerciciosAparte(data) {
   if (!data || !Array.isArray(data.ejercicios) || data.ejercicios.length === 0) {
     return data;
@@ -3132,9 +3146,29 @@ export default function MiEstudioPage() {
                           {r.curso}
                         </span>
                         <ul className="mi-estudio__recomendados-temas">
-                          {r.temas.map((tema, i) => (
-                            <li key={`${tema}-${i}`}>{tema}</li>
-                          ))}
+                          {r.temas.map((tema, i) => {
+                            const itemTema = buscarTemaRecomendado(
+                              r.curso,
+                              tema
+                            );
+                            return (
+                              <li key={`${tema}-${i}`}>
+                                {itemTema ? (
+                                  <button
+                                    type="button"
+                                    className="mi-estudio__recomendados-tema-btn"
+                                    onClick={() =>
+                                      seleccionarItem(itemTema)
+                                    }
+                                  >
+                                    {tema}
+                                  </button>
+                                ) : (
+                                  tema
+                                )}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     ))}
