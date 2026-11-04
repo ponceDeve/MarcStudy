@@ -1034,7 +1034,9 @@ export default function MiEstudioPage() {
           itemsVinculadosTeoria.length > 0
             ? itemsVinculadosTeoria
             : itemsPuntos.filter(
-              (p) => p.pregunta
+              (p) =>
+                p.pregunta &&
+                p.titulo !== "Ejercicios"
             );
         preguntasFinales = itemsFinales.map(
           (p) => p.pregunta
@@ -1052,7 +1054,11 @@ export default function MiEstudioPage() {
             pregunta: originalExamen[i],
             titulo: p.seccionTitulo
           }))
-          .filter((p) => p.pregunta);
+          .filter(
+            (p) =>
+              p.pregunta &&
+              p.titulo !== "Ejercicios"
+          );
         preguntasFinales = itemsFinales.map(
           (p) => p.pregunta
         );
