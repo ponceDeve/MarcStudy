@@ -751,6 +751,28 @@ export default function MiEstudioPage() {
       construirPromptChatGpt(tipo)
     );
   }
+  // Junta toda la teoría del tema (textos y explicaciones) en texto normal,
+  // la copia junto con un pedido y abre ChatGPT para ordenarla en el cuaderno.
+  function copiarTeoriaParaCuaderno() {
+    if (!topicData) return;
+    const bloques = seccionesAgrupadas
+      .filter((sec) => sec.titulo !== "Ejercicios")
+      .map((sec) => {
+        const lineas = sec.puntos.map((p) =>
+          [p.texto, p.explicacion].filter(Boolean).join("\n")
+        );
+        return `${sec.titulo}\n${lineas.join("\n\n")}`;
+      });
+    const prompt = `Ayúdame a ordenar la siguiente teoría para escribirla en mi cuaderno. Organízala por secciones, con títulos claros y las ideas principales en orden, sin inventar información ni quitar contenido importante.
+
+CURSO: ${topicData.curso || ""}
+TEMA: ${topicData.tema || ""}
+
+TEORÍA:
+
+${bloques.join("\n\n\n")}`;
+    abrirChatGptConPrompt(prompt);
+  }
   function pedirAbrirTema(item) {
     const hayCambiosSinGuardar =
       stage === "theory" &&
@@ -3538,29 +3560,22 @@ export default function MiEstudioPage() {
                               </div>
                             )
                           )}
-                          <div className="teoria-nav-botones">
-                            <button
-                              type="button"
-                              className="teoria-nav-btn"
-                              onClick={() =>
-                                setTeoriaVistaIndex(
-                                  (i) =>
-                                    Math.max(
-                                      0,
-                                      i - 1
-                                    )
-                                )
-                              }
-                              disabled={
-                                teoriaVistaIndex ===
-                                0
-                              }
-                              title="Anterior"
-                              aria-label="Sección anterior"
-                            >
-                              <i className="fa-solid fa-arrow-left" />
-                            </button>
-                            <button
+                          <div className="teoria-nav-botones teoria-nav-botones--entre">
+                            <div className="teoria-nav-botones__grupo">
+                              <button
+                                type="button"
+                                className="examen-page__nav-btn"
+                                onClick={() =>
+                                  setTeoriaVistaIndex((i) => Math.max(0, i - 1))
+                                }
+                                disabled={teoriaVistaIndex === 0}
+                                title="Anterior"
+                                aria-label="Sección anterior"
+                              >
+                                <i className="fas fa-arrow-left" />
+                                Ant.
+                              </button>
+                              <button
                               type="button"
                               className="teoria-nav-btn teoria-nav-btn--game"
                               onClick={() =>
@@ -3580,28 +3595,33 @@ export default function MiEstudioPage() {
                             >
                               <i className="fa-solid fa-gamepad" />
                             </button>
+                              <button
+                                type="button"
+                                className="examen-page__nav-btn"
+                                onClick={() =>
+                                  setTeoriaVistaIndex((i) =>
+                                    Math.min(seccionesAgrupadas.length - 1, i + 1)
+                                  )
+                                }
+                                disabled={
+                                  teoriaVistaIndex === seccionesAgrupadas.length - 1
+                                }
+                                title="Siguiente"
+                                aria-label="Sección siguiente"
+                              >
+                                Sig.
+                                <i className="fas fa-arrow-right" />
+                              </button>
+                            </div>
                             <button
                               type="button"
-                              className="teoria-nav-btn"
-                              onClick={() =>
-                                setTeoriaVistaIndex(
-                                  (i) =>
-                                    Math.min(
-                                      seccionesAgrupadas.length -
-                                      1,
-                                      i + 1
-                                    )
-                                )
-                              }
-                              disabled={
-                                teoriaVistaIndex ===
-                                seccionesAgrupadas.length -
-                                1
-                              }
-                              title="Siguiente"
-                              aria-label="Sección siguiente"
+                              className="examen-page__nav-btn"
+                              onClick={copiarTeoriaParaCuaderno}
+                              title="Copiar la teoría y abrir ChatGPT para ordenarla"
+                              aria-label="Copiar la teoría y abrir ChatGPT"
                             >
-                              <i className="fa-solid fa-arrow-right" />
+                              <i className="fas fa-copy" />
+                              Copiar
                             </button>
                           </div>
                         </>

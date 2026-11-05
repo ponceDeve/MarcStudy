@@ -2253,6 +2253,7 @@
   max-width: 400px;
   background: var(--primary);
   border: none;
+  border-bottom: 0.25rem solid var(--primary-dark);
   border-radius: var(--radius-full);
   font-family: var(--font-display);
   font-size: var(--fs-md);
@@ -2264,7 +2265,7 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-md);
   transition: background-color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
-  border-bottom: 0.25rem solid var(--primary);
+  border-bottom: 0.25rem solid var(--primary-dark);
 
 
   &:hover {
@@ -2288,6 +2289,7 @@
 
 .teoria-boton-completar {
   background: var(--success);
+  border-bottom: 0.25rem solid var(--success-dark);
 
   &:hover {
     background: var(--success);
@@ -2362,6 +2364,12 @@
   @media (max-width: 1024px) {
     padding: var(--space-3);
   }
+}
+
+/* La cuadrícula de fondo es solo decorativa: no debe tapar el texto ni
+   interceptar los clics (marcar cada punto, cursor de mano). */
+.teoria-card-unica .arcade-grid {
+  pointer-events: none;
 }
 
 /* La palabra encontrada NO se pinta: solo se pinta la tarjeta */
@@ -2524,6 +2532,25 @@ span.teoria-busqueda-resaltado {
   width: 2rem;
   height: 2rem;
   font-size: 0.85rem;
+}
+
+/* Botones de teoría de Mi Estudio: Ant./juego/Sig. a la izquierda y
+   Copiar a la derecha (InglesLeccion sigue usando .teoria-nav-botones solo). */
+.teoria-nav-botones--entre {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.teoria-nav-botones__grupo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Evita el ancho 50% que .examen-page__nav-btn tiene en pantallas chicas. */
+.teoria-nav-botones .examen-page__nav-btn {
+  flex: 0 0 auto;
+  width: auto;
 }
 
 /* ============================================================
