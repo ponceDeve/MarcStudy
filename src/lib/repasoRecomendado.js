@@ -370,6 +370,15 @@ function obtenerRecomendacionesBalanceadas() {
   }
   return resultado;
 }
+// Los 3 cursos del plan actual, en orden, incluidos los que ya terminaron
+// sus temas mientras el plan siga vigente. Se llama primero a
+// obtenerRecomendacionesBalanceadas() para que, si el plan quedó completo,
+// ya se haya generado el siguiente antes de leerlo.
+export function cursosDelPlanActual() {
+  obtenerRecomendacionesBalanceadas();
+  const plan = leerPlanGuardado();
+  return plan ? plan.items.map((item) => item.curso) : [];
+}
 export function obtenerRecomendacionesDia(
   desplazamiento = 0,
   fecha = new Date()

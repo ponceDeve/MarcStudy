@@ -1,3 +1,4 @@
+import { cursosDelPlanActual } from "./repasoRecomendado";
 // ─────────────────────────────────────────────────────────────────────────
 // Avanza el progreso de un curso del Horario cuando un pomodoro termina
 // de verdad (llega a 0). Vive fuera de HorarioPage a propósito: desde que
@@ -59,6 +60,10 @@ const BLOQUE_DOMINGO = ["Economía", "Química", "Física"];
 // (uno por día, en orden); domingo usa BLOQUE_DOMINGO. Son 7
 // rotaciones en total, sin depender de avance ni de fechas.
 export function grupoFijoDelDia(day) {
+  // Los cursos de Pomodoro son los 3 del plan recomendado actual (no
+  // dependen del día). Si no hubiera plan, quedan los grupos fijos.
+  const plan = cursosDelPlanActual();
+  if (plan.length > 0) return plan;
   if (day === "domingo") return BLOQUE_DOMINGO;
   const idx = DIAS_SEMANA.indexOf(day);
   if (idx === -1 || idx >= GRUPOS_ROTACION.length) return [];

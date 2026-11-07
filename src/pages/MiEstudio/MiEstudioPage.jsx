@@ -3560,22 +3560,29 @@ ${bloques.join("\n\n\n")}`;
                               </div>
                             )
                           )}
-                          <div className="teoria-nav-botones teoria-nav-botones--entre">
-                            <div className="teoria-nav-botones__grupo">
-                              <button
-                                type="button"
-                                className="examen-page__nav-btn"
-                                onClick={() =>
-                                  setTeoriaVistaIndex((i) => Math.max(0, i - 1))
-                                }
-                                disabled={teoriaVistaIndex === 0}
-                                title="Anterior"
-                                aria-label="Sección anterior"
-                              >
-                                <i className="fas fa-arrow-left" />
-                                Ant.
-                              </button>
-                              <button
+                          <div className="teoria-nav-botones">
+                            <button
+                              type="button"
+                              className="teoria-nav-btn"
+                              onClick={() =>
+                                setTeoriaVistaIndex(
+                                  (i) =>
+                                    Math.max(
+                                      0,
+                                      i - 1
+                                    )
+                                )
+                              }
+                              disabled={
+                                teoriaVistaIndex ===
+                                0
+                              }
+                              title="Anterior"
+                              aria-label="Sección anterior"
+                            >
+                              <i className="fa-solid fa-arrow-left" />
+                            </button>
+                            <button
                               type="button"
                               className="teoria-nav-btn teoria-nav-btn--game"
                               onClick={() =>
@@ -3595,33 +3602,28 @@ ${bloques.join("\n\n\n")}`;
                             >
                               <i className="fa-solid fa-gamepad" />
                             </button>
-                              <button
-                                type="button"
-                                className="examen-page__nav-btn"
-                                onClick={() =>
-                                  setTeoriaVistaIndex((i) =>
-                                    Math.min(seccionesAgrupadas.length - 1, i + 1)
-                                  )
-                                }
-                                disabled={
-                                  teoriaVistaIndex === seccionesAgrupadas.length - 1
-                                }
-                                title="Siguiente"
-                                aria-label="Sección siguiente"
-                              >
-                                Sig.
-                                <i className="fas fa-arrow-right" />
-                              </button>
-                            </div>
                             <button
                               type="button"
-                              className="examen-page__nav-btn"
-                              onClick={copiarTeoriaParaCuaderno}
-                              title="Copiar la teoría y abrir ChatGPT para ordenarla"
-                              aria-label="Copiar la teoría y abrir ChatGPT"
+                              className="teoria-nav-btn"
+                              onClick={() =>
+                                setTeoriaVistaIndex(
+                                  (i) =>
+                                    Math.min(
+                                      seccionesAgrupadas.length -
+                                      1,
+                                      i + 1
+                                    )
+                                )
+                              }
+                              disabled={
+                                teoriaVistaIndex ===
+                                seccionesAgrupadas.length -
+                                1
+                              }
+                              title="Siguiente"
+                              aria-label="Sección siguiente"
                             >
-                              <i className="fas fa-copy" />
-                              Copiar
+                              <i className="fa-solid fa-arrow-right" />
                             </button>
                           </div>
                         </>

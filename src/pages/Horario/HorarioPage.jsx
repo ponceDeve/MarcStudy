@@ -29,6 +29,9 @@ import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
 import { RelojFlip } from "../../components/RelojPared";
 import SearchModal from "../../components/SearchModal";
+// Los cursos salen del plan recomendado, no del día: el selector de días
+// (Lun–Dom) y el título con el nombre del día quedan ocultos.
+const MOSTRAR_SELECTOR_DIAS = false;
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
 const DURACIONES_DESCANSO = [5, 10, 15, 20, 25, 30, 35, 40];
@@ -121,7 +124,7 @@ export default function HorarioPage() {
   }
   const courses = useMemo(
     () => cursosDelDia(selectedDay),
-    [selectedDay, pares]
+    [selectedDay, pares, completados]
   );
   const activeCourse =
     activeCourseIdx !== null ? courses[activeCourseIdx] : null;
@@ -754,24 +757,26 @@ export default function HorarioPage() {
       />
       <main className="horario__main">
         <section className="horario__timer-section">
-          <div className="horario__day-tabs">
-            <div className="horario__day-row">
-              {DIAS_SEMANA.map((dia) => (
-                <button
-                  key={dia}
-                  onClick={() => {
-                    setSelectedDay(dia);
-                    setActiveCourseIdx(null);
-                  }}
-                  className={`horario__day-btn ${
-                    selectedDay === dia ? "is-active" : ""
-                  }`}
-                >
-                  {DIA_LABELS[dia]}
-                </button>
-              ))}
+          {MOSTRAR_SELECTOR_DIAS && (
+            <div className="horario__day-tabs">
+              <div className="horario__day-row">
+                {DIAS_SEMANA.map((dia) => (
+                  <button
+                    key={dia}
+                    onClick={() => {
+                      setSelectedDay(dia);
+                      setActiveCourseIdx(null);
+                    }}
+                    className={`horario__day-btn ${
+                      selectedDay === dia ? "is-active" : ""
+                    }`}
+                  >
+                    {DIA_LABELS[dia]}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
           <div className="horario__timer-card">
             <div className="horario__timer-center">
               {!activeCourse && manualBreak && (
@@ -821,23 +826,27 @@ export default function HorarioPage() {
         </section>
         <section className="horario__side-section">
           <div className="horario__courses-card">
-            <div className="horario__courses-header">
-              <div className="horario__courses-header-left">
-                {activeCourse && (
-                  <button
-                    onClick={() => setActiveCourseIdx(null)}
-                    className="horario__back-course"
-                  >
-                    <i className="fas fa-arrow-left" />
-                  </button>
-                )}
-                <div>
-                  <h3 className="horario__day-title">
-                    {NOMBRE_DIA[selectedDay]}
-                  </h3>
+            {(MOSTRAR_SELECTOR_DIAS || activeCourse) && (
+              <div className="horario__courses-header">
+                <div className="horario__courses-header-left">
+                  {activeCourse && (
+                    <button
+                      onClick={() => setActiveCourseIdx(null)}
+                      className="horario__back-course"
+                    >
+                      <i className="fas fa-arrow-left" />
+                    </button>
+                  )}
+                  {MOSTRAR_SELECTOR_DIAS && (
+                    <div>
+                      <h3 className="horario__day-title">
+                        {NOMBRE_DIA[selectedDay]}
+                      </h3>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            )}
             {!activeCourse && (
               <div className="horario__course-list">
                 {courses.map((c, idx) => {
