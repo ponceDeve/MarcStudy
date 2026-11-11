@@ -126,7 +126,7 @@
   justify-content: center;
   border: none;
   border-radius: 50%;
-  background: var(--secondary);
+  background: var(--secondary-dark);
   color: var(--ink-on-primary);
   padding: 0;
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -444,11 +444,11 @@
     transform .1s linear;
   &:hover,
   &.is-focused {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: var(--wash);
     color: var(--ink);
   }
   &:focus-visible {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: var(--wash);
     outline: none;
   }
   &:active {
@@ -489,7 +489,7 @@
    COINCIDENCIA
    ============================================================ */
 .search-match {
-  color: var(--accent);
+  color: var(--ink);
   border-radius: 2px;
 }
 .search-result-item.is-curso .search-match {
@@ -660,7 +660,7 @@
     font-family: var(--font-body);
     font-size: 1rem;
     color: var(--ink);
-    background-color: rgba(0, 0, 0, .1);
+    background-color: var(--wash);
     border: 2px solid var(--border);
     border-radius: var(--radius-md);
     outline: none;
@@ -748,7 +748,7 @@
    NÚMERO DEL NIVEL
    ============================================================ */
 .home-search-result__num {
-  opacity: .6;
+  opacity: 1;
   margin-right: 8px;
 }
 /* ============================================================

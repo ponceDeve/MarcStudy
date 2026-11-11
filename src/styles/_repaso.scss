@@ -248,7 +248,8 @@
   background: var(--secondary);
 }
 .repaso__badge.interval-2 {
-  background: var(--accent-dark);
+  background: var(--accent);
+  color: var(--ink);
 }
 .repaso__badge.interval-3 {
   background: var(--danger);
@@ -260,7 +261,7 @@
   font-size: 16px;
   font-weight: 600;
   color: var(--ink);
-  opacity: 0.7;
+  opacity: 1;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -289,7 +290,7 @@
   margin: 2px 0 0;
   font-size: 18px;
   color: var(--ink);
-  opacity: 0.85;
+  opacity: 1;
 }
 /* ============================================================
    INFORMACIÓN DEL REPASO
@@ -298,7 +299,7 @@
   margin: 4px 0 0;
   font-size: 15px;
   color: var(--ink);
-  opacity: 0.85;
+  opacity: 1;
 }
 /* ============================================================
    BOTÓN REPASAR
@@ -312,7 +313,7 @@
   border: 1px solid var(--primary);
   border-radius: var(--radius-full);
   background: var(--primary);
-  color: var(--bg);
+  color: var(--ink-on-primary);
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
@@ -354,7 +355,7 @@
 }
 .repaso__check:hover {
   border-color: var(--secondary);
-  background: var(--secondary);
+  background: var(--secondary-dark);
   color: var(--ink-on-primary);
 }
 .repaso__check:disabled {
@@ -492,7 +493,7 @@
   background: var(--secondary);
 }
 .repaso__dot.interval-2 {
-  background: var(--accent-dark);
+  background: var(--accent);
 }
 .repaso__dot.interval-3 {
   background: var(--danger);
@@ -785,7 +786,7 @@
    ============================================================ */
 .repaso__temario-search-highlight {
   font-weight: var(--fw-bold);
-  color: var(--accent);
+  color: var(--ink);
   padding: 0;
   background-color: transparent;
 }
@@ -956,7 +957,7 @@
    ============================================================ */
 .repaso__temario-grupo-nombre {
   margin: var(--space-3) 0;
-  color: var(--warning);
+  color: var(--ink);
   font-weight: var(--fw-bold);
   font-size: var(--fs-md);
 }

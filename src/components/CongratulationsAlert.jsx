@@ -27,7 +27,7 @@ function crearConfeti() {
       vx: Math.cos(angulo) * velocidad,
       vy: Math.sin(angulo) * velocidad,
       size: Math.random() * 6 + 4,
-      color: ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f9ca24", "#6c5ce7"][
+      color: ["#527A9B", "#78958A", "#D6B875", "#8FADC4", "#B8C9BF"][
         Math.floor(Math.random() * 5)
       ],
     });

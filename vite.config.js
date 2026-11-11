@@ -36,8 +36,8 @@ export default defineConfig({
         short_name: "MarcStudy",
         description:
           "Aplicación de estudio para preparar el examen de admisión de la UNMSM",
-        theme_color: "#1a1815",
-        background_color: "#1a1815",
+        theme_color: "#F3F4F1",
+        background_color: "#F3F4F1",
         display: "standalone",
         start_url: "/MarcStudy/",
         scope: "/MarcStudy/",

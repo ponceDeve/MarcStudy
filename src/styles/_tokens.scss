@@ -1,76 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 :root {
+  color-scheme: light;
   /* ============================================================
      FONDOS Y SUPERFICIES
      ============================================================ */
-  --bg: #eef1f6;
+  --bg: #eef3ef;
   --ink-on-primary: #ffffff;
-  --surface: #ffffff;
-  --surface-alt: #f5f7fa;
-  --surface-hover: #e2e7ee;
-  --surface-ts: #ffffff;
-  --border: #dfe5ec;
-  --border-strong: #c5ced9;
+  --surface: #fafcfa;
+  --surface-alt: #f3f7f4;
+  --surface-hover: #e6ede8;
+  --surface-ts: #fafcfa;
+  --surface-soft: #e9f0eb;
+  --border: #d3ddd6;
+  --border-strong: #bcc9c0;
   /* ============================================================
      TEXTOS
      ============================================================ */
-  --ink: #18212d;
-  --ink-soft: #465365;
-  --ink-faint: #718096;
+  --ink: #1f2a37;
+  --ink-soft: #44525f;
+  --ink-faint: #596774;
   /* ============================================================
      PRIMARY
      Azul de acción principal.
      CTA, progreso, elementos activos.
      ============================================================ */
-  --primary: #2563eb;
-  --primary-dark: #1742b6;
-  --primary-light: #60a5fa;
-  --primary-bg: rgba(37, 99, 235, 0.10);
+  --primary: #2a6f9e;
+  --primary-dark: #1f5a83;
+  --primary-light: #7fafd0;
+  --primary-bg: rgba(42, 111, 158, 0.10);
   /* ============================================================
      BRAND
-     Violeta de navegación / identidad secundaria.
+     Navegación / identidad (comparte el azul primario).
      ============================================================ */
-  --brand: #7c3aed;
-  --brand-dark: #6d28d9;
-  --brand-light: #a78bfa;
-  --brand-bg: rgba(124, 58, 237, 0.10);
+  --brand: #2a6f9e;
+  --brand-dark: #1f5a83;
+  --brand-light: #7fafd0;
+  --brand-bg: rgba(42, 111, 158, 0.10);
   /* ============================================================
      SECONDARY
-     Gris neutro.
+     Verde salvia suave.
      ============================================================ */
-  --secondary: #64748b;
-  --secondary-dark: #475569;
-  --secondary-hover: #e2e8f0;
-  --secondary-bg: rgba(100, 116, 139, 0.10);
+  --secondary: #2f8571;
+  --secondary-dark: #256b5b;
+  --secondary-hover: #dcebe5;
+  --secondary-bg: rgba(47, 133, 113, 0.12);
   /* ============================================================
      ACCENT
-     Rosa/coral.
+     Dorado suave (resaltados).
      Avisos suaves, recordatorios y atención no crítica.
      ============================================================ */
-  --accent: #e11d48;
-  --accent-dark: #be123c;
-  --accent-bg: rgba(225, 29, 72, 0.09);
+  --accent: #e9b949;
+  --accent-dark: #c99a2e;
+  --accent-bg: rgba(233, 185, 73, 0.20);
   /* ============================================================
      DANGER
      Exclusivamente errores / acciones destructivas.
      ============================================================ */
-  --danger: #dc2626;
-  --danger-dark: #b91c1c;
-  --danger-bg: rgba(220, 38, 38, 0.09);
+  --danger: #a94a44;
+  --danger-dark: #8c3b36;
+  --danger-bg: rgba(169, 74, 68, 0.10);
   /* ============================================================
      SUCCESS
      Exclusivamente correcto / completado / progreso positivo.
      ============================================================ */
-  --success: #16a34a;
-  --success-dark: #15803d;
-  --success-bg: rgba(22, 163, 74, 0.09);
+  --success: #357a4b;
+  --success-dark: #2a613b;
+  --success-bg: rgba(53, 122, 75, 0.12);
   /* ============================================================
      WARNING
      Advertencias reales.
      ============================================================ */
-  --warning: #d97706;
-  --warning-dark: #b45309;
-  --warning-bg: rgba(217, 119, 6, 0.10);
+  --warning: #e0b13f;
+  --warning-dark: #c79a2e;
+  --warning-text: #1f2a37;
+  --warning-bg: #f8e7b4;
   /* ============================================================
      HEADER
      ============================================================ */
@@ -79,14 +82,20 @@
      BORDERS / OVERLAYS
      ============================================================ */
   --nested-border: 1px solid var(--border-strong);
-  --overlay: rgba(15, 23, 42, 0.50);
-  --overlay-strong: rgba(15, 23, 42, 0.76);
+  --wash: rgba(31, 42, 55, 0.08);
+  --pair-1: #2a6f9e;
+  --pair-2: #2f8571;
+  --pair-3: #8f6808;
+  --pair-4: #7e6395;
+  --pair-5: #1f2a37;
+  --overlay: rgba(31, 42, 55, 0.45);
+  --overlay-strong: rgba(31, 42, 55, 0.72);
   /* ============================================================
      SHADOWS
      ============================================================ */
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 1px 2px rgba(31, 42, 55, 0.06);
+  --shadow-md: 0 6px 16px rgba(31, 42, 55, 0.08);
+  --shadow-lg: 0 14px 32px rgba(31, 42, 55, 0.12);
   /* ============================================================
      BORDER RADIUS
      ============================================================ */
@@ -181,4 +190,57 @@ $bp-xl: 90rem; // 1440px
       @content;
     }
   }
+}
+
+/* Modo oscuro: se activa con data-theme="dark" en <html> (selector del header). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1b222c;
+  --surface: #252e3a;
+  --surface-alt: #202935;
+  --surface-hover: #2e3947;
+  --surface-ts: #252e3a;
+  --surface-soft: #2a3441;
+  --border: #364252;
+  --border-strong: #46546a;
+  --ink: #e6ebf0;
+  --ink-soft: #c3cdd7;
+  --ink-faint: #9ba8b5;
+  --ink-on-primary: #1b222c;
+  --primary: #7db8e6;
+  --primary-dark: #9ccbf0;
+  --primary-light: #4f8cb8;
+  --primary-bg: rgba(125, 184, 230, 0.16);
+  --brand: #7db8e6;
+  --brand-dark: #9ccbf0;
+  --brand-light: #4f8cb8;
+  --brand-bg: rgba(125, 184, 230, 0.16);
+  --secondary: #6fc2a9;
+  --secondary-dark: #5fb89d;
+  --secondary-hover: #2b3a39;
+  --secondary-bg: rgba(111, 194, 169, 0.15);
+  --accent: #e8c46a;
+  --accent-dark: #d9b35a;
+  --accent-bg: rgba(232, 196, 106, 0.18);
+  --danger: #e8918b;
+  --danger-dark: #f0a6a1;
+  --danger-bg: rgba(232, 145, 139, 0.14);
+  --success: #7bc596;
+  --success-dark: #93d3aa;
+  --success-bg: rgba(123, 197, 150, 0.14);
+  --warning: #e8c46a;
+  --warning-dark: #d9b35a;
+  --warning-text: #f0d88a;
+  --warning-bg: rgba(232, 196, 106, 0.18);
+  --overlay: rgba(0, 0, 0, 0.55);
+  --overlay-strong: rgba(0, 0, 0, 0.78);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.50);
+  --wash: rgba(255, 255, 255, 0.08);
+  --pair-1: #7db8e6;
+  --pair-2: #6fc2a9;
+  --pair-3: #e8c46a;
+  --pair-4: #b9a3d4;
+  --pair-5: #e6ebf0;
 }

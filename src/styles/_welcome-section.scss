@@ -27,7 +27,7 @@
 }
 
 .mi-estudio__intro-background {   
-  background-color: var(--ink-on-primary);
+  background-color: var(--surface);
   display: flex;
   align-items: center;
   width: 100%;
@@ -156,6 +156,9 @@
   margin: -8px 0 -14px;
   box-sizing: border-box;
   isolation: isolate;
+  /* Recorta a los lados justo en el contenido: el padding de 6px dejaba
+     asomar el borde de la tarjeta de la categoría vecina. */
+  clip-path: inset(0 6px);
   transition: height 0.45s cubic-bezier(0.22, 0.8, 0.25, 1);
 }
 
@@ -250,10 +253,11 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: none;
+  border: 1px solid var(--border);
   border-top: 3px solid color-mix(in srgb, var(--success), transparent 65%);
   border-radius: 14px;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   padding: 18px 16px;
   transition: background 0.2s linear, box-shadow 0.2s linear, transform 0.2s linear !important;
   z-index: 1;
@@ -264,7 +268,7 @@
   border-top-width: 3px;
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  background: var(--ink-on-primary);
+  background: var(--surface);
 }
 
 .welcome-section__curso-top {

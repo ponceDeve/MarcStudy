@@ -193,7 +193,7 @@
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--primary);
 }
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
@@ -292,7 +292,7 @@
 .question-card__options--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--primary);
 }
 /* ============================================================
    CORTAS DESPUÉS DE SELECCIONAR
@@ -307,7 +307,7 @@
 .question-card__options--relacionar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--primary);
 }
 .question-card__options--completar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text,
 .question-card__options--relacionar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
@@ -389,7 +389,7 @@
 .question-card__input {
   width: 100%;
   max-width: 28rem;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--wash);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 10px 16px;
@@ -515,37 +515,37 @@
    elemento de la columna B que le corresponde, para unir ambas relaciones.
    El fondo no cambia. */
 .question-card__match-col li.is-color-0 {
-  border-left: 4px solid #c026d3;
+  border-left: 4px solid var(--pair-1);
 }
 .question-card__match-col li.is-color-1 {
-  border-left: 4px solid #0891b2;
+  border-left: 4px solid var(--pair-2);
 }
 .question-card__match-col li.is-color-2 {
-  border-left: 4px solid #8b5a2b;
+  border-left: 4px solid var(--pair-3);
 }
 .question-card__match-col li.is-color-3 {
-  border-left: 4px solid #64748b;
+  border-left: 4px solid var(--pair-4);
 }
 .question-card__match-col li.is-color-4 {
-  border-left: 4px solid #701a75;
+  border-left: 4px solid var(--pair-5);
 }
 .question-card__match-letra {
   margin-right: 8px;
 }
 .question-card__match-col li.is-color-0 .question-card__match-letra {
-  color: #c026d3;
+  color: var(--pair-1);
 }
 .question-card__match-col li.is-color-1 .question-card__match-letra {
-  color: #0891b2;
+  color: var(--pair-2);
 }
 .question-card__match-col li.is-color-2 .question-card__match-letra {
-  color: #8b5a2b;
+  color: var(--pair-3);
 }
 .question-card__match-col li.is-color-3 .question-card__match-letra {
-  color: #64748b;
+  color: var(--pair-4);
 }
 .question-card__match-col li.is-color-4 .question-card__match-letra {
-  color: #701a75;
+  color: var(--pair-5);
 }
 .question-card__vf-texto {
   flex: 1 1 200px;
@@ -575,7 +575,7 @@
 .question-card__vf-btn:hover:not(:disabled) {
   border-color: var(--primary-light);
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--primary);
 }
 .question-card__vf-btn.is-selected,
 .question-card__vf-btn.is-selected:hover {
@@ -692,7 +692,7 @@
    SELECCIONADA
    ============================================================ */
 .question-card__cloze-input.has-value {
-  color: var(--primary-light);
+  color: var(--primary);
 }
 .question-card__cloze-input.has-value::after {
   opacity: 0;
@@ -908,7 +908,7 @@
   color: var(--border-strong);
 }
 .leccion__estrellas .is-on {
-  color: var(--warning);
+  color: var(--accent);
 }
 .leccion__pie {
   padding: 16px 20px;

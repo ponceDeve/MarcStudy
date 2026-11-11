@@ -29,7 +29,7 @@
   font-size: clamp(25px, 7vw, 38px);
   font-weight: 700;
   line-height: 1;
-  color: #34322e;
+  color: var(--ink);
   transform: translateY(-1px);
 }
 /* ------------------------------------------------------------
@@ -45,7 +45,7 @@
   height: clamp(52px, 14vw, 76px);
   perspective: 300px;
   border-radius: 6px;
-  background: #252421;
+  background: #29323c;
   box-shadow:
     0 5px 10px rgba(0, 0, 0, 0.22),
     inset 0 -1px 0 rgba(0, 0, 0, 0.35);
@@ -73,9 +73,9 @@
   width: 100%;
   height: 50%;
   overflow: hidden;
-  background: #302e2a;
+  background: #303a46;
   backface-visibility: hidden;
-  color: #e5e0d5;
+  color: #f3f4f1;
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: clamp(29px, 8vw, 43px);
   font-weight: 700;
@@ -195,7 +195,7 @@
   font-size: clamp(7px, 1.8vw, 9px);
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #77736b;
+  color: var(--ink-faint);
   text-align: center;
 }
 /* ------------------------------------------------------------
@@ -257,7 +257,7 @@
 }
 /* Reloj regresivo del simulacro: últimos minutos en rojo. */
 .reloj-pared--urgente .reloj-flap__mitad {
-  color: #f87171;
+  color: #d9908a;
 }
 /* El header recorta lo que se sale de su caja; con el reloj dejamos
    que la hoja pueda sobresalir un poco mientras gira. */
@@ -290,7 +290,7 @@
   gap: 6px;
   white-space: nowrap;
   font-size: var(--fs-sm, 14px);
-  color: var(--ink-faint, #8a8a8a);
+  color: var(--ink-faint, #737d87);
   opacity: 1;
   pointer-events: none;
   transition: opacity 0.3s ease;

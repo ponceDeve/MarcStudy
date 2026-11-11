@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
 import { useMusicaFondo } from "../lib/musicaFondo";
+import { useTema } from "../lib/tema";
 import EditarNombreModal from "./EditarNombreModal";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -67,6 +68,7 @@ export default function AppHeader({
   });
   const headerRef = useRef(null);
   const { musicaOn, alternarMusica } = useMusicaFondo();
+  const { esOscuro, alternarTema } = useTema();
   const [pantallaCompleta, setPantallaCompleta] = useState(
     () => !!document.fullscreenElement
   );
@@ -106,6 +108,13 @@ export default function AppHeader({
         ? "fa-solid fa-volume-high"
         : "fa-solid fa-volume-xmark",
       onClick: alternarMusica
+    },
+    {
+      key: "tema",
+      label: esOscuro ? "Modo claro" : "Modo oscuro",
+      atajo: null,
+      icon: esOscuro ? "fa-solid fa-sun" : "fa-solid fa-moon",
+      onClick: alternarTema
     }
   ];
   const location = useLocation();
@@ -467,8 +476,8 @@ export default function AppHeader({
                 type="button"
                 className="topbar__control-btn topbar__control-btn--media"
                 onClick={c.onClick}
-                title={`${c.label} (tecla ${c.atajo})`}
-                aria-label={`${c.label} (tecla ${c.atajo})`}
+                title={c.atajo ? `${c.label} (tecla ${c.atajo})` : c.label}
+                aria-label={c.atajo ? `${c.label} (tecla ${c.atajo})` : c.label}
               >
                 <i className={c.icon} />
               </button>
@@ -527,7 +536,7 @@ export default function AppHeader({
             >
               <span className="topbar__drawer-item-label">
                 {c.label}
-                <kbd className="topbar__atajo">{c.atajo}</kbd>
+                {c.atajo && <kbd className="topbar__atajo">{c.atajo}</kbd>}
               </span>
               <i className={`${c.icon} topbar__drawer-item-icon`} />
             </button>

@@ -29,6 +29,8 @@ const CATEGORIAS = [
 
 const UMBRAL_CAMBIO = 0.18;
 const DISTANCIA_ARRASTRE = 6;
+// Debe coincidir con la transición de la pista en _welcome-section.scss (0.45s).
+const TRANSICION_MS = 480;
 
 function FlechaDerecha() {
   return (
@@ -57,8 +59,10 @@ export default function WelcomeSection({
   const bloquearClickRef = useRef(false);
 
   const total = CATEGORIAS.length;
-  const indiceRef = useRef(0);
-  indiceRef.current = indice;
+  // Posición real de la pista: 0 y total+1 son copias (última y primera categoría)
+  // que permiten girar sin fin; 1..total son las categorías reales.
+  const posRef = useRef(1);
+  const temporizadorRef = useRef(null);
 
   function anchoSlide() {
     const track = trackRef.current;
@@ -80,7 +84,7 @@ export default function WelcomeSection({
   // Ajusta la altura de la ventana a la diapositiva activa.
   function ajustarAltura() {
     const viewport = viewportRef.current;
-    const slide = trackRef.current?.children[indiceRef.current];
+    const slide = trackRef.current?.children[posRef.current];
 
     if (!viewport || !slide) {
       return;
@@ -93,17 +97,19 @@ export default function WelcomeSection({
     viewport.style.height = `${slide.offsetHeight + padding}px`;
   }
 
-  useEffect(() => {
-    posicionar(indice);
-  }, [indice]);
+  useLayoutEffect(() => {
+    posicionar(posRef.current, 0, false);
+  }, []);
 
   useLayoutEffect(() => {
     ajustarAltura();
   }, [indice]);
 
+  useEffect(() => () => clearTimeout(temporizadorRef.current), []);
+
   useEffect(() => {
     const alCambiarTamano = () => {
-      posicionar(indiceRef.current, 0, false);
+      posicionar(posRef.current, 0, false);
       ajustarAltura();
     };
 
@@ -173,16 +179,52 @@ export default function WelcomeSection({
     onSelectTema?.({ type: "curso", nombre: curso.nombre });
   }
 
+  // Categoría real (0..total-1) que corresponde a una posición de la pista.
+  function realDe(pos) {
+    return (pos - 1 + total) % total;
+  }
+
+  // Si la pista quedó sobre una copia, salta sin animación a la categoría real.
+  function normalizar() {
+    clearTimeout(temporizadorRef.current);
+
+    if (posRef.current === 0) {
+      posRef.current = total;
+    } else if (posRef.current === total + 1) {
+      posRef.current = 1;
+    } else {
+      return;
+    }
+
+    posicionar(posRef.current, 0, false);
+  }
+
+  // Mueve la pista a una posición (con animación) y actualiza la categoría activa.
+  function irA(destino) {
+    const pos = Math.max(0, Math.min(total + 1, destino));
+
+    clearTimeout(temporizadorRef.current);
+    posRef.current = pos;
+    posicionar(pos, 0, true);
+    setIndice(realDe(pos));
+
+    if (pos === 0 || pos === total + 1) {
+      temporizadorRef.current = setTimeout(normalizar, TRANSICION_MS);
+    }
+  }
+
   // Gesto de arrastre con mouse o pantalla táctil.
   function manejarPointerDown(e) {
     if (e.pointerType === "mouse" && e.button !== 0) {
       return;
     }
 
+    normalizar();
+
     gestoRef.current = {
       id: e.pointerId,
       x: e.clientX,
-      base: indiceRef.current,
+      base: posRef.current,
       movido: false
     };
   }
@@ -205,11 +247,7 @@ export default function WelcomeSection({
       e.currentTarget.setPointerCapture?.(e.pointerId);
     }
 
-    const enBorde =
-      (gesto.base === 0 && dx > 0) ||
-      (gesto.base === total - 1 && dx < 0);
-
-    posicionar(gesto.base, enBorde ? dx * 0.35 : dx, false);
+    posicionar(gesto.base, dx, false);
   }
 
   function finalizarGesto(e, cancelado) {
@@ -236,10 +274,7 @@ export default function WelcomeSection({
       siguiente = gesto.base - 1;
     }
 
-    siguiente = Math.max(0, Math.min(total - 1, siguiente));
-
-    setIndice(siguiente);
-    posicionar(siguiente, 0, true);
+    irA(siguiente);
 
     bloquearClickRef.current = true;
 
@@ -253,7 +288,19 @@ export default function WelcomeSection({
       return;
     }
 
-    setIndice(i);
+    normalizar();
+
+    // Entre la primera y la última se toma el camino corto, pasando por la copia.
+    const actual = realDe(posRef.current);
+    let destino = i + 1;
+
+    if (actual === 0 && i === total - 1) {
+      destino = 0;
+    } else if (actual === total - 1 && i === 0) {
+      destino = total + 1;
+    }
+
+    irA(destino);
   }
 
   function renderCurso(curso) {
@@ -306,15 +353,15 @@ export default function WelcomeSection({
     );
   }
 
-  function renderCategoria(categoria, posicion) {
+  function renderCategoria(categoria, clave, esClon) {
     const cursosCategoria = cursosPorCategoria[categoria.id] || [];
 
     return (
       <section
-        key={categoria.id}
+        key={clave}
         className={`welcome-section__slide welcome-section__category welcome-section__category--${categoria.id}`}
-        style={{ flex: `0 0 ${100 / total}%` }}
-        aria-hidden={posicion !== indice}
+        style={{ flex: `0 0 ${100 / (total + 2)}%` }}
+        aria-hidden={esClon || CATEGORIAS[indice]?.id !== categoria.id}
       >
         <h3 className="welcome-section__category-title">
           <i
@@ -363,10 +410,10 @@ export default function WelcomeSection({
                       x2="100%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#FFE066" />
-                      <stop offset="30%" stopColor="#F5B041" />
-                      <stop offset="70%" stopColor="#D4AF37" />
-                      <stop offset="100%" stopColor="#9A7D0A" />
+                      <stop offset="0%" stopColor="#EBD9A8" />
+                      <stop offset="30%" stopColor="#D6B875" />
+                      <stop offset="70%" stopColor="#C9AA62" />
+                      <stop offset="100%" stopColor="#9C8444" />
                     </linearGradient>
 
                     <linearGradient
@@ -376,9 +423,9 @@ export default function WelcomeSection({
                       x2="0%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#FFF5CC" />
-                      <stop offset="50%" stopColor="#F5B041" />
-                      <stop offset="100%" stopColor="#7D6608" />
+                      <stop offset="0%" stopColor="#F5ECD2" />
+                      <stop offset="50%" stopColor="#D6B875" />
+                      <stop offset="100%" stopColor="#8A7438" />
                     </linearGradient>
 
                     <linearGradient
@@ -388,8 +435,8 @@ export default function WelcomeSection({
                       x2="0%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#2C3E50" />
-                      <stop offset="100%" stopColor="#1A252F" />
+                      <stop offset="0%" stopColor="#3E4A58" />
+                      <stop offset="100%" stopColor="#303A46" />
                     </linearGradient>
 
                     <filter
@@ -436,7 +483,7 @@ export default function WelcomeSection({
                       cy="110"
                       rx="96"
                       ry="15"
-                      fill="#7D6608"
+                      fill="#8A7438"
                     />
 
                     <ellipse
@@ -472,7 +519,7 @@ export default function WelcomeSection({
                       width="192"
                       height="20"
                       rx="5"
-                      fill="#111"
+                      fill="#303A46"
                     />
 
                     <rect
@@ -489,7 +536,7 @@ export default function WelcomeSection({
                       y1="392"
                       x2="286"
                       y2="392"
-                      stroke="#7D6608"
+                      stroke="#8A7438"
                       strokeWidth="3"
                       strokeLinecap="round"
                     />
@@ -534,10 +581,22 @@ export default function WelcomeSection({
               <div
                 className="welcome-section__track"
                 ref={trackRef}
-                style={{ width: `${total * 100}%` }}
+                style={{ width: `${(total + 2) * 100}%` }}
               >
-                {CATEGORIAS.map((categoria, posicion) =>
-                  renderCategoria(categoria, posicion)
+                {renderCategoria(
+                  CATEGORIAS[total - 1],
+                  `${CATEGORIAS[total - 1].id}-copia-inicio`,
+                  true
+                )}
+
+                {CATEGORIAS.map((categoria) =>
+                  renderCategoria(categoria, categoria.id, false)
+                )}
+
+                {renderCategoria(
+                  CATEGORIAS[0],
+                  `${CATEGORIAS[0].id}-copia-final`,
+                  true
                 )}
               </div>
             </div>
