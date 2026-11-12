@@ -24,7 +24,7 @@
   background: var(--ink);
   color: var(--bg);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   line-height: 1.2;
   white-space: nowrap;
   text-align: center;
@@ -73,7 +73,7 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  font-family: var(--font-body);
+  font-family: var(--font);
   color: var(--ink);
   user-select: none;
   opacity: 1;
@@ -108,7 +108,7 @@
   touch-action: none;
   cursor: grab;
   i {
-    font-size: 24px;
+    font-size: var(--fs-xl);
   }
 }
 .pomo-widget__header {
@@ -117,7 +117,7 @@
   cursor: grab;
   touch-action: none;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--ink-soft);
@@ -137,7 +137,7 @@
   opacity: 0.8;
 }
 .pomo-widget__header-icon--close {
-  font-size: 16px;
+  font-size: var(--fs-body);
 }
 .pomo-widget__body {
   padding: 10px;
@@ -150,10 +150,10 @@
 .pomo-widget__time {
   font-size: var(--fs-lg);
   padding: 0;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   font-variant-numeric: tabular-nums;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 .pomo-widget__grid {
   display: grid;
@@ -163,7 +163,7 @@
 }
 .pomo-widget__min-btn {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   border-radius: 6px;
   padding: 4px 0;
   border: 1px solid var(--border-strong);
@@ -201,7 +201,7 @@
   background: var(--surface-hover);
 }
 .pomo-widget__icon-btn.is-disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 .pomo-widget__icon-btn i {
@@ -271,9 +271,9 @@
   border: 1px solid var(--primary);
   border-radius: 14px;
   box-shadow: var(--shadow-md);
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-size: 0.92rem;
-  font-weight: 400;
+  font-weight: var(--fw-normal);
   line-height: 1.3;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -326,7 +326,7 @@
 .glossary-tooltip .katex {
   color: var(--ink);
   font-size: 1em;
-  font-weight: 400;
+  font-weight: var(--fw-normal);
   white-space: normal;
 }
 .glossary-tooltip .katex-display {

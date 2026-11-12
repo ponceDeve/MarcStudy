@@ -61,7 +61,7 @@ body.modal-open {
   border-radius: 50%;
   background: transparent;
   color: var(--danger);
-  font-size: 1.5rem;
+  font-size: var(--fs-xl);
   cursor: pointer;
   z-index: 2;
   display: flex;
@@ -87,8 +87,8 @@ body.modal-open {
 .tema-modal-title {
   margin: 0;
   color: var(--ink);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
 }
 .tema-modal-skull-icon {
   width: 54px;
@@ -140,7 +140,7 @@ body.modal-open {
   border-radius: var(--radius-md);
   font-family: inherit;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   transition:
     background 0.2s,
@@ -242,7 +242,7 @@ body.modal-open {
   margin: 0;
   color: var(--ink);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   line-height: 1.25;
   margin: var(--space-3) 0;
 }
@@ -274,7 +274,7 @@ body.modal-open {
   color: var(--ink);
   font-family: inherit;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   transition:
     background 0.2s,
@@ -300,7 +300,7 @@ body.modal-open {
   filter: brightness(0.96);
 }
 .welcome-btn.is-next:disabled {
-  opacity: 0.45;
+  opacity: 0.7;
   cursor: not-allowed;
   filter: none;
 }
@@ -393,7 +393,7 @@ body.modal-open {
   margin: 0 0 var(--space-4);
   color: var(--ink);
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 .pomo-alarm-label {
   margin: 0 0 var(--space-3);
@@ -409,7 +409,7 @@ body.modal-open {
   color: var(--ink-on-primary);
   font-family: inherit;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   transition:
     background 0.2s,
@@ -469,7 +469,13 @@ body.modal-open {
   margin: 0;
   color: var(--ink);
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
+}
+.modo-estudio-texto {
+  margin: var(--space-2) 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .modo-estudio-nav {
   display: flex;
@@ -486,7 +492,7 @@ body.modal-open {
   color: var(--ink-on-primary);
   font-family: inherit;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
 }
 .modo-estudio-btn.is-omitir {
@@ -569,7 +575,7 @@ body.modal-open {
   border-radius: 50%;
   background: var(--primary);
   color: var(--ink-on-primary);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   border: 2px solid var(--surface);
 }
 .editar-nombre-foto__quitar {
@@ -579,7 +585,7 @@ body.modal-open {
   background: transparent;
   color: var(--muted);
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   cursor: pointer;
 }
 .editar-nombre-foto__quitar:hover {

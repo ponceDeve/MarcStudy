@@ -78,7 +78,7 @@ body.is-header-oculto .topbar-wrapper {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: clamp(0.75rem, 1vw, 1.25rem);
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     text-decoration: none;
     &--clickable {
       cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -112,8 +112,8 @@ body.is-header-oculto .topbar-wrapper {
     text-align: left;
     overflow: hidden;
     text-decoration: none;
-    font-family: var(--font-body);
-    font-weight: 700;
+    font-family: var(--font);
+    font-weight: var(--fw-bold);
     padding: 0 10px;
     box-sizing: border-box;
     transition:
@@ -146,8 +146,8 @@ body.is-header-oculto .topbar-wrapper {
     border-radius: 6px;
     color: var(--ink);
     cursor: url("/cursor_pointer.webp"), pointer !important;
-    font-family: var(--font-body);
-    font-weight: 700;
+    font-family: var(--font);
+    font-weight: var(--fw-bold);
     transition:
       background 0.2s linear,
       transform 0.15s linear;
@@ -159,7 +159,7 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
   &__volver-icon {
-    font-size: 1rem;
+    font-size: var(--fs-body);
   }
   &__volver-label {
     white-space: nowrap;
@@ -214,8 +214,8 @@ body.is-header-oculto .topbar-wrapper {
     width: max-content;
     min-width: 0;
     flex-shrink: 0;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     color: var(--ink);
     white-space: nowrap;
     > span {
@@ -347,7 +347,7 @@ body.is-header-oculto .topbar-wrapper {
   }
   &__btn-icon {
     display: block;
-    font-size: 18px;
+    font-size: var(--fs-md);
     line-height: 1;
     color: inherit;
   }
@@ -360,10 +360,10 @@ body.is-header-oculto .topbar-wrapper {
   }
   &__btn-title {
     display: block;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
     line-height: 1.1;
-    font-family: var(--font-display);
+    font-family: var(--font);
     color: inherit;
     text-align: center;
   }
@@ -397,7 +397,7 @@ body.is-header-oculto .topbar-wrapper {
     border-radius: var(--radius-full);
     color: var(--ink);
     cursor: text !important;
-    font-family: var(--font-body);
+    font-family: var(--font);
     transition:
       background 0.2s linear,
       border-color 0.2s linear,
@@ -412,7 +412,7 @@ body.is-header-oculto .topbar-wrapper {
   }
   &__search-icon {
     flex: 0 0 auto;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: var(--primary);
   }
   &__search-placeholder {
@@ -423,13 +423,13 @@ body.is-header-oculto .topbar-wrapper {
     text-overflow: ellipsis;
     text-align: left;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
     color: var(--ink);
   }
   &__search-kbd {
     flex: 0 0 auto;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     padding: 2px 6px;
     border-radius: 6px;
     background: var(--surface-alt);
@@ -464,7 +464,7 @@ body.is-header-oculto .topbar-wrapper {
       transform: scale(0.93);
     }
     i {
-      font-size: 18px;
+      font-size: var(--fs-md);
       color: inherit;
     }
   }
@@ -473,7 +473,7 @@ body.is-header-oculto .topbar-wrapper {
     flex-shrink: 0;
   }
   &__help-btn {
-    font-size: 16px;
+    font-size: var(--fs-body);
     color: var(--ink-soft);
   }
   &__help-menu {
@@ -509,7 +509,7 @@ body.is-header-oculto .topbar-wrapper {
   &__help-menu-label {
     flex: 0 0 auto;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     color: var(--ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.4px;
@@ -612,7 +612,7 @@ body.is-header-oculto .topbar-wrapper {
     margin: 0;
     color: var(--ink-on-primary) !important;
     font-size: 22px;
-    font-family: var(--font-display);
+    font-family: var(--font);
     user-select: none;
   }
   &__drawer-close {
@@ -625,7 +625,7 @@ body.is-header-oculto .topbar-wrapper {
     background: transparent;
     border: none;
     color: var(--ink-on-primary) !important;
-    font-size: 20px;
+    font-size: var(--fs-lg);
     cursor: url("/cursor_pointer.webp"), pointer !important;
     border-radius: var(--radius-full);
     transition:
@@ -689,8 +689,8 @@ body.is-header-oculto .topbar-wrapper {
     background: var(--surface) !important;
     border: none;
     color: var(--ink) !important;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
     text-decoration: none;
     cursor: url("/cursor_pointer.webp"), pointer !important;
     text-align: left;
@@ -728,7 +728,7 @@ body.is-header-oculto .topbar-wrapper {
   }
   &__drawer-item-icon {
     color: var(--ink-soft) !important;
-    font-size: 18px;
+    font-size: var(--fs-md);
     flex: none;
     transition:
       color 0.3s linear,
@@ -755,7 +755,7 @@ body.is-header-oculto .topbar-wrapper {
       flex: 0 0 auto !important;
       padding: 8px 18px 7px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: var(--fw-bold);
       line-height: 1.2;
       color: var(--ink-soft) !important;
       text-transform: uppercase;
@@ -776,9 +776,9 @@ body.is-header-oculto .topbar-wrapper {
       border: none;
       border-radius: 0;
       color: var(--ink) !important;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
+      font-family: var(--font);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-medium);
       line-height: 1.35;
       text-align: left;
       white-space: normal;
@@ -891,7 +891,7 @@ body.is-header-oculto .topbar-wrapper {
       gap: 4px;
       i {
         flex: 0 0 auto;
-        font-size: 12px;
+        font-size: var(--fs-xs);
       }
     }
     &__tema {
@@ -1045,7 +1045,7 @@ body.is-header-oculto .topbar-wrapper {
       }
     }
     &__tema {
-      font-size: 12px;
+      font-size: var(--fs-xs);
       > span {
         padding-right: 24px;
       }
@@ -1061,7 +1061,7 @@ body.is-header-oculto .topbar-wrapper {
       width: 40px;
       height: 40px;
       i {
-        font-size: 16px;
+        font-size: var(--fs-body);
       }
     }
     &__search-placeholder {
@@ -1076,7 +1076,7 @@ body.is-header-oculto .topbar-wrapper {
       margin: 0 4px;
     }
     &__search-icon {
-      font-size: 14px;
+      font-size: var(--fs-sm);
     }
     &__nav--question {
       display: flex !important;
@@ -1091,7 +1091,7 @@ body.is-header-oculto .topbar-wrapper {
       border-radius: 50%;
     }
     &__nav-btn--abandonar .topbar__btn-icon {
-      font-size: 16px;
+      font-size: var(--fs-body);
     }
     &__hamburger {
       width: 40px;
@@ -1110,7 +1110,7 @@ body.is-header-oculto .topbar-wrapper {
       background: var(--primary) !important;
     }
     &__drawer-title {
-      font-size: 20px;
+      font-size: var(--fs-lg);
     }
     &__drawer-close {
       width: 34px;
@@ -1163,25 +1163,25 @@ body.is-header-oculto .topbar-wrapper {
     }
     &__search-placeholder,
     &__search-icon {
-      font-size: 14px;
+      font-size: var(--fs-sm);
     }
     &__nav {
       display: flex !important;
       flex-direction: row;
       align-items: stretch;
-      gap: 16px;
+      gap: 10px;
     }
     &__nav-btn {
-      padding: 5px 10px;
+      padding: 3px 6px;
     }
     &__nav-btn--abandonar {
       padding: 6px 12px;
     }
     &__btn-icon {
-      font-size: 20px;
+      font-size: var(--fs-body);
     }
     &__btn-title {
-      font-size: 14px;
+      font-size: var(--fs-xs);
     }
     &__controls {
       gap: 12px;
@@ -1221,22 +1221,22 @@ body.is-header-oculto .topbar-wrapper {
   .topbar {
     padding: 0 22px;
     &__tema {
-      font-size: 16px;
+      font-size: var(--fs-body);
     }
     &__nav {
-      gap: 24px;
+      gap: 10px;
     }
     &__nav-btn {
-      padding: 6px 12px;
+      padding: 3px 6px;
     }
     &__nav-btn--abandonar {
       padding: 7px 14px;
     }
     &__btn-icon {
-      font-size: 22px;
+      font-size: var(--fs-body);
     }
     &__btn-title {
-      font-size: 15px;
+      font-size: var(--fs-xs);
     }
     &__controls {
       gap: 18px;
@@ -1298,7 +1298,7 @@ body.is-header-oculto .topbar-wrapper {
   border: 1px solid var(--border);
   border-radius: 6px;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   line-height: 1.4;
   color: var(--ink-soft);
 }

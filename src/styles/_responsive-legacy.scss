@@ -9,7 +9,7 @@
     font-size: 17px;
   }
   .mi-estudio__theory-badge {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .mi-estudio__theory-text {
     font-size: 23px;
@@ -22,41 +22,43 @@
     font-size: 30px;
   }
   .mi-estudio__finished-sub {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .mi-estudio__finished-btn {
-    font-size: 16px;
+    font-size: var(--fs-body);
     padding: 16px 36px;
   }
   .question-card__q {
-    font-size: 21px;
+    font-size: var(--fs-md);
   }
-  .question-card__input,
+  .question-card__input {
+    font-size: var(--fs-sm);
+  }
   .question-card__submit {
-    font-size: 15px;
+    font-size: var(--fs-sm);
   }
   .explanation-panel__title {
-    font-size: 19px;
+    font-size: var(--fs-body);
   }
   .explanation-panel__answer {
-    font-size: 16px;
+    font-size: var(--fs-sm);
   }
   .explanation-panel__btn {
-    font-size: 15px;
+    font-size: var(--fs-sm);
   }
   .hud {
     font-size: 15px;
   }
   .topbar__tema {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .topbar__curso {
     font-size: 13px;
   }
   .topbar__nav-btn span {
-    font-size: 14px;
-    font-family: var(--font-body);
-    font-weight: 100;
+    font-size: var(--fs-sm);
+    font-family: var(--font);
+    font-weight: var(--fw-light);
   }
   .search-input,
   .home-search-input {
@@ -64,7 +66,7 @@
   }
   .search-result-item__tema,
   .home-search-result p:first-child {
-    font-size: 20px;
+    font-size: var(--fs-lg);
   }
   .search-result-item__curso,
   .home-search-result p:last-child {
@@ -72,7 +74,7 @@
   }
   /* Horario / Pomodoro */
   .horario__timer-label {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .horario__btn {
     font-size: 15px;
@@ -87,7 +89,7 @@
     font-size: 11px;
   }
   .horario__course-count {
-    font-size: 12px;
+    font-size: var(--fs-xs);
   }
   .horario__course-status {
     font-size: 12.5px;
@@ -109,7 +111,7 @@
   }
   .horario__complete-sub,
   .horario__complete-msg {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   /* Repaso */
   .repaso__title {
@@ -134,10 +136,10 @@
     font-size: 13px;
   }
   .repaso__empty-title {
-    font-size: 18px;
+    font-size: var(--fs-md);
   }
   .repaso__empty-sub {
-    font-size: 14px;
+    font-size: var(--fs-sm);
   }
   .btn-outline,
   .btn-solid {

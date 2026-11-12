@@ -425,6 +425,16 @@ export default function MiEstudioPage() {
     }
     pomodoroEstuvoCorriendoRef.current = false;
   }, [pomodoro.isRunning, pomodoro.secondsLeft, pomodoro.label]);
+  // Desde el aviso al abrir un tema: ir a Pomodoro con este curso y tema.
+  function irAPomodoroDesdeTema() {
+    setPreguntaModoAbierta(false);
+    if (!topicData?.curso || !topicData?.tema) return;
+    navigate(
+      `/pomodoro?curso=${encodeURIComponent(
+        topicData.curso
+      )}&tema=${encodeURIComponent(topicData.tema)}`
+    );
+  }
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
     limpiarPomodoroCompartido();
@@ -678,15 +688,17 @@ export default function MiEstudioPage() {
       setMostrarModalRendirse(false);
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
-      // Inglés (niveles con secciones/leccion) no pregunta si mostrar la teoría.
-      // Sin examen ni ejercicios tampoco hay nada que elegir: se muestra la teoría.
-      const tienePreguntas =
-        (data.examen?.length ?? 0) > 0 ||
-        (data.ejercicios?.length ?? 0) > 0;
+      // Avisa que se puede cronometrar el tema con Pomodoro. Inglés (niveles
+      // con secciones/leccion) no lo muestra, ni tampoco si se llegó desde
+      // Pomodoro o ya hay un pomodoro corriendo de este mismo curso.
+      const pomodoroDeEsteCurso =
+        pomodoro.isRunning &&
+        normalizarTexto(pomodoro.subject || "") ===
+          normalizarTexto(item.curso || "");
       setPreguntaModoAbierta(
         !omitirModoEstudio &&
-        !(data.secciones || data.leccion) &&
-        tienePreguntas
+        !pomodoroDeEsteCurso &&
+        !(data.secciones || data.leccion)
       );
     } catch (e) {
       console.error("Error en abrirTema:", e);
@@ -931,7 +943,7 @@ ${bloques.join("\n\n\n")}`;
       return;
     }
     contenidoPendienteRef.current = null;
-    // Se vino a ver una parte concreta: no preguntar "teoría u omitir".
+    // Se vino a ver una parte concreta: no mostrar el aviso de Pomodoro.
     setPreguntaModoAbierta(false);
     seleccionarItem({
       type: "contenido",
@@ -1174,6 +1186,17 @@ ${bloques.join("\n\n\n")}`;
     useState(false);
   useEffect(() => {
     let q = searchParams.get("q");
+    // "Inicio" del encabezado: se quiere la pantalla de inicio, no volver
+    // al tema pendiente de Pomodoro.
+    if (!q && searchParams.get("inicio")) {
+      leerYLimpiarRetorno();
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname
+      );
+      return;
+    }
     if (!q) {
       const temaPendiente =
         leerYLimpiarRetorno();
@@ -2674,7 +2697,8 @@ ${bloques.join("\n\n\n")}`;
       )}
       <ModoEstudioModal
         open={preguntaModoAbierta}
-        onElegir={elegirModoEstudio}
+        onIrAPomodoro={irAPomodoroDesdeTema}
+        onCerrar={() => setPreguntaModoAbierta(false)}
       />
       <PomodoroAlarmModal
         open={pomodoroAlarmaAbierta}
@@ -3288,9 +3312,6 @@ ${bloques.join("\n\n\n")}`;
                       correct={score}
                       wrong={wrongCount}
                       vidas={vidas}
-                      estrellas={
-                        estrellasJuegoActuales
-                      }
                       onRendirse={() =>
                         setMostrarModalRendirse(
                           true

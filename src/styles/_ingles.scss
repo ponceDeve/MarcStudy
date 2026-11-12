@@ -147,7 +147,7 @@
   position: absolute;
   top: 3px;
   right: 6px;
-  font-size: .75rem;
+  font-size: var(--fs-xs);
   font-weight: var(--fw-extrabold);
 }
 
@@ -226,7 +226,7 @@
   color: var(--ink);
   border-radius: var(--radius-md);
   padding: 10px 16px;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: .95rem;
   cursor: pointer;
   font-family: var(--font);
@@ -245,7 +245,7 @@
 }
 
 .ing-btn--principal:disabled {
-  opacity: .5;
+  opacity: .7;
   cursor: not-allowed !important;
 }
 
@@ -287,12 +287,12 @@
 
 .niv__nombre {
   flex: 1;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 
 .niv__pos {
   color: var(--ink-faint);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .niv__barra {
@@ -331,7 +331,7 @@
 }
 
 .ses__teoria {
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   line-height: 1.6;
 }
 
@@ -345,7 +345,7 @@
 
 .ses__trad {
   color: var(--ink-soft);
-  font-size: 1rem;
+  font-size: var(--fs-body);
 }
 
 /* ---------- Inicio: teoría + botón ---------- */
@@ -378,7 +378,7 @@
 .ses__cuenta {
   margin: 0 0 12px;
   color: var(--ink-faint);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: .85rem;
 }
 
@@ -409,8 +409,8 @@
 }
 
 .ses__enun {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
   margin: 0 0 20px;
 }
 
@@ -489,7 +489,7 @@
   margin-top: 20px;
   padding: 12px 14px;
   border-radius: var(--radius-md);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .ses__fb.ok {
@@ -503,14 +503,14 @@
 }
 
 .ses__err {
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   color: var(--ink-soft);
   margin-top: 8px;
 }
 
 .ses__nota {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: var(--fs-title);
+  font-weight: var(--fw-extrabold);
   margin: 4px 0 0;
 }
 
@@ -526,7 +526,7 @@
 .ses__consigna {
   margin: 0 0 14px;
   font-size: .85rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: .03em;
@@ -541,7 +541,7 @@
 
 .ses__opcion {
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: 1.05rem;
   padding: 14px 10px;
   color: var(--ink);
@@ -573,7 +573,7 @@
 .ses__en {
   position: relative;
   font: inherit;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--ink);
   border: 0;
   padding: 0 6px;
@@ -589,7 +589,7 @@
   transform: translateX(-50%);
   padding: 6px 11px;
   font-size: var(--fs-md);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   line-height: 1.2;
   color: var(--ink);
   background: var(--surface);
@@ -642,7 +642,7 @@
 
 .ses__espera-num {
   margin: 12px 0 0;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   line-height: 1;
   font-variant-numeric: tabular-nums;
   color: var(--primary);
@@ -654,7 +654,7 @@
   display: inline-block;
   min-width: 6ch;
   text-align: center;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   margin: 0 4px;
 }
 
@@ -676,7 +676,7 @@
 
 /* ---------- Ejercicios de significado ---------- */
 .ses__marca {
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--primary-dark);
   background: var(--primary-bg);
   border-bottom: 2px solid var(--primary);
@@ -726,7 +726,7 @@
   }
 
   .ses__enun {
-    font-size: 1.25rem;
+    font-size: var(--fs-lg);
     margin-bottom: 18px;
   }
 
@@ -758,7 +758,7 @@
 /* ---------- Teoría con estilo de tema normal ---------- */
 .ses__teoria-arcade {
   margin-bottom: 0;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   line-height: 1.6;
 }
 
@@ -811,7 +811,7 @@
 
 .ses__ficha {
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: 1.05rem;
   padding: 10px 14px;
   color: var(--ink);
@@ -832,7 +832,7 @@
 .ses__correcta {
   margin: 14px 0 0;
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--ink);
 }
 
@@ -851,7 +851,7 @@
 
 .ses__par {
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: 1.05rem;
   padding: 14px 8px;
   color: var(--ink);

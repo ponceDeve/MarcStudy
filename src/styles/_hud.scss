@@ -28,12 +28,12 @@
 
 .hud__correct {
   color: var(--secondary-dark);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .hud__wrong {
   color: var(--danger);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .hud__vidas {
@@ -113,7 +113,7 @@
   box-sizing: border-box;
   border-radius: var(--radius-md);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -129,7 +129,7 @@
 }
 
 .repaso-toast i {
-  font-size: 18px;
+  font-size: var(--fs-md);
   flex-shrink: 0;
 }
 

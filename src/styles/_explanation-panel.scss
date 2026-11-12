@@ -23,8 +23,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 700;
-  font-size: 17px;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
   margin: 0;
 }
 
@@ -38,7 +38,7 @@
 
 .explanation-panel__answer {
   margin: 10px 0;
-  font-size: 14.5px;
+  font-size: var(--fs-sm);
   color: var(--ink);
 }
 
@@ -49,12 +49,12 @@
 .explanation-panel__text {
   border-top: 1px solid var(--border);
   padding-top: 10px;
-  font-size: 18px;
+  font-size: var(--fs-sm);
 }
 
 .explanation-panel__text i {
   color: var(--danger);
-  font-size: 20px !important;
+  font-size: var(--fs-lg) !important;
 }
 
 .explanation-panel__text--rendirse {
@@ -62,7 +62,7 @@
   padding-top: 0;
   padding-bottom: 12px;
   margin-bottom: 12px;
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   color: var(--danger);
   border-bottom: 1px solid var(--border);
 }
@@ -76,7 +76,7 @@
 
 .explanation-panel__btn {
   padding: 8px 18px;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   border: none;
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -102,7 +102,7 @@
 
 .explanation-panel__btn span {
   opacity: 1;
-  font-weight: 400;
+  font-weight: var(--fw-normal);
 }
 
 /* ============================================================
@@ -151,9 +151,9 @@
   z-index: 1;
   margin: 0 0 14px;
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--font);
   font-size: 30px;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -164,9 +164,9 @@
   max-width: 360px;
   margin: 0 auto 28px;
   color: rgba(255, 255, 255, 0.78);
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-size: 17px;
-  font-weight: 400;
+  font-weight: var(--fw-normal);
   line-height: 1.6;
   color: var(--ink);
 }
@@ -200,9 +200,9 @@
   min-height: 50px;
   padding: 11px 18px;
   border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 800;
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-extrabold);
   letter-spacing: 0.4px;
   text-transform: uppercase;
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -307,7 +307,7 @@
   }
 
   .rendirse-modal__text {
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.55;
     margin-bottom: 24px;
   }

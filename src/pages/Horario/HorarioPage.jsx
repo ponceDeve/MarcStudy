@@ -729,6 +729,9 @@ export default function HorarioPage() {
           if (temaParam) {
             guardarRetorno(temaParam);
             setRetornoTema(temaParam);
+            // Recordar el tema de este curso para hoy: así, al salir con la
+            // flecha y volver a entrar, no se pide elegir el tema otra vez.
+            guardarTemaCurso(dia, lista[idx].subject, temaParam);
           }
         }
         const mismoCursoCorriendo =
@@ -961,16 +964,6 @@ export default function HorarioPage() {
             )}
             {activeCourse && (
               <>
-                {retornoTema && (
-                  <button
-                    type="button"
-                    onClick={volverAlTema}
-                    className="horario__btn-volver-tema"
-                  >
-                    <i className="fas fa-arrow-left" />{" "}
-                    Regresar a: "{retornoTema}"
-                  </button>
-                )}
                 <div className="horario__task-list">
                   {activeTasks.map((task, index) => {
                     const isActive =
@@ -1110,6 +1103,15 @@ export default function HorarioPage() {
                     </button>
                   </div>
                 </div>
+                {retornoTema && (
+                  <button
+                    type="button"
+                    onClick={volverAlTema}
+                    className="horario__btn-volver-tema"
+                  >
+                    Regresar a: "{retornoTema}"
+                  </button>
+                )}
               </>
             )}
           </div>

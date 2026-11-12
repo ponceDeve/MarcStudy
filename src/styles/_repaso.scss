@@ -35,7 +35,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--ink-soft);
   background: transparent;
   padding: 6px 12px;
@@ -60,13 +60,13 @@
 .repaso__title {
   margin: 0;
   font-size: 26px;
-  font-weight: 700;
-  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-family: var(--font);
   color: var(--ink);
 }
 .repaso__date {
   margin: 4px 0 0;
-  font-size: 18px;
+  font-size: var(--fs-md);
   color: var(--ink-soft);
 }
 /* ============================================================
@@ -94,12 +94,12 @@
   justify-content: center;
   background-color: var(--surface);
   color: var(--primary);
-  font-size: 18px;
+  font-size: var(--fs-md);
   border-radius: var(--radius-full);
 }
 .repaso__instruction p {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--fs-md);
   line-height: 1.5;
 }
 .repaso__instruction strong {
@@ -237,7 +237,7 @@
 .repaso__badge {
   padding: 2px 8px;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   border-radius: 6px;
   color: var(--ink-on-primary);
 }
@@ -258,8 +258,8 @@
    DÍA
    ============================================================ */
 .repaso__item-day {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
   color: var(--ink);
   opacity: 1;
   text-transform: uppercase;
@@ -269,8 +269,8 @@
    VENCIDO
    ============================================================ */
 .repaso__item-overdue {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
   color: var(--danger);
 }
 /* ============================================================
@@ -278,8 +278,8 @@
    ============================================================ */
 .repaso__item-subject {
   margin: 0;
-  font-size: 18px;
-  font-weight: 800;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-extrabold);
   line-height: 1.2;
   color: var(--ink);
 }
@@ -288,7 +288,7 @@
    ============================================================ */
 .repaso__item-tema {
   margin: 2px 0 0;
-  font-size: 18px;
+  font-size: var(--fs-md);
   color: var(--ink);
   opacity: 1;
 }
@@ -315,7 +315,7 @@
   background: var(--primary);
   color: var(--ink-on-primary);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   text-decoration: none;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
@@ -359,7 +359,7 @@
   color: var(--ink-on-primary);
 }
 .repaso__check:disabled {
-  opacity: 0.4;
+  opacity: 0.7;
   cursor: not-allowed !important;
   pointer-events: none;
 }
@@ -409,13 +409,13 @@
 }
 .repaso__empty-title {
   margin: 0;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
   color: var(--ink);
 }
 .repaso__empty-sub {
   margin: 4px 0 0;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-soft);
 }
 /* ============================================================
@@ -424,13 +424,13 @@
 .repaso__proximos-title {
   margin: 0 0 12px;
   font-size: 22px;
-  font-weight: 700;
-  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-family: var(--font);
   color: var(--ink);
 }
 .repaso__proximos-empty {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--fs-md);
   color: var(--ink-soft);
 }
 .repaso__proximos-list {
@@ -452,12 +452,12 @@
   border-bottom: 1px solid var(--border);
 }
 .repaso__proximos-fecha {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   color: var(--ink);
 }
 .repaso__proximos-etiqueta {
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-faint);
 }
 .repaso__proximos-row {
@@ -502,8 +502,8 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   color: var(--ink);
 }
 .repaso__proximos-tema {
@@ -565,7 +565,7 @@
   background: var(--surface-hover);
 }
 .repaso__categoria-tab:disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: not-allowed !important;
 }
 .repaso__categoria-tab--active {
@@ -663,7 +663,7 @@
   color: var(--ink);
 }
 .repaso__select-back i {
-  font-size: 12px;
+  font-size: var(--fs-xs);
 }
 /* ============================================================
    BUSCADOR DEL TEMARIO
@@ -767,11 +767,11 @@
   border-bottom: 0;
 }
 .repaso__temario-search-result-tema {
-  font-size: 18px;
+  font-size: var(--fs-md);
   line-height: 1.25;
 }
 .repaso__temario-search-result-meta {
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-muted);
 }
 .repaso__temario-search-result--active {
@@ -779,7 +779,7 @@
 }
 .repaso__temario-search-empty {
   padding: 9px 10px;
-  font-size: 12px;
+  font-size: var(--fs-xs);
 }
 /* ============================================================
    RESALTADO DE TEXTO ENCONTRADO
@@ -1016,7 +1016,7 @@
   border-radius: 50%;
   background: var(--primary-bg);
   color: var(--ink);
-  font-size: 16px;
+  font-size: var(--fs-body);
 }
 .repaso__confirm-toast-info > div {
   min-width: 0;
@@ -1025,13 +1025,13 @@
   gap: 2px;
 }
 .repaso__confirm-toast-info strong {
-  font-size: 16px;
+  font-size: var(--fs-body);
   font-weight: var(--fw-bold);
 }
 .repaso__confirm-toast-info span {
   overflow: hidden;
   color: var(--ink-soft);
-  font-size: 16px;
+  font-size: var(--fs-body);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1095,7 +1095,7 @@
 }
 .delete-modal-icon {
   margin-bottom: 12px;
-  font-size: 2rem;
+  font-size: var(--fs-title);
   color: var(--danger);
 }
 .delete-modal-title {
@@ -1123,7 +1123,7 @@
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--danger);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     background 0.2s linear,
@@ -1141,7 +1141,7 @@
   border-radius: var(--radius-md);
   background: var(--primary);
   color: var(--ink-on-primary);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     background 0.2s linear,
@@ -1162,7 +1162,7 @@
     align-items: flex-start;
   }
   .repaso__instruction p {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .repaso__item {
     align-items: flex-start;
@@ -1171,7 +1171,7 @@
     font-size: 17px;
   }
   .repaso__item-tema {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   .repaso__proximos-group-header {
     gap: 10px;
@@ -1193,7 +1193,7 @@
   }
   .repaso__categoria-tab {
     padding: 7px 10px;
-    font-size: 12px;
+    font-size: var(--fs-xs);
   }
   .repaso__select {
     max-width: calc(100vw - 32px);
@@ -1275,13 +1275,13 @@
 }
 .repaso__temario-hint {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-soft);
 }
 .repaso__temario-titulo {
   margin: 0;
-  font-size: 20px;
-  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-family: var(--font);
   color: var(--ink);
 }
 .repaso__temario-lista {
@@ -1296,8 +1296,8 @@
 }
 .repaso__temario-semana-titulo {
   margin: 8px 0 0;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   color: var(--ink-soft);
 }
 .repaso__temario-item {
@@ -1321,7 +1321,7 @@
   color: var(--ink);
 }
 .repaso__temario-curso-tag {
-  font-size: 12px;
+  font-size: var(--fs-xs);
   color: var(--ink-soft);
 }
 .repaso__temario-acciones {
@@ -1332,7 +1332,7 @@
 .repaso__temario-btn {
   font: inherit;
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--ink-soft);
   background: transparent;
   border: 1px solid var(--border);
@@ -1371,7 +1371,7 @@
   border-color: var(--primary);
 }
 .repaso__temario-recomendado-curso {
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 .repaso__temario-recomendado-temas {
   font-size: 12.5px;
@@ -1391,7 +1391,7 @@
   gap: 8px;
   font: inherit;
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--ink);
   background: transparent;
   border: 1px solid var(--border);
@@ -1407,10 +1407,10 @@
 }
 .selp__placeholder {
   color: var(--ink-soft);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 .selp__flecha {
-  font-size: 12px;
+  font-size: var(--fs-xs);
   color: var(--ink-soft);
 }
 .selp__menu {
@@ -1441,12 +1441,12 @@
 }
 .selp__opcion--activa {
   color: var(--primary);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 /* Select deshabilitado (Curso sin categoría, Semana sin curso) */
 .selp__disparador:disabled {
-  opacity: 0.45;
+  opacity: 0.7;
   cursor: not-allowed!important;
   border-color: var(--border);
   color: var(--ink-soft);
@@ -1579,7 +1579,7 @@
 /* Pasos copiados (verde) y temas con algún paso copiado (van al final de la lista) */
 .selp__opcion--copiado {
   color: var(--success-dark);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 /* Tema con paso 1 copiado (success) y aviso temporal de copiado */
@@ -1590,11 +1590,11 @@
 .selp__disparador--ok {
   border-color: var(--success);
   color: var(--success-dark);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 .selp__disparador--ok .selp__placeholder {
   color: var(--success-dark);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 /* Contraste entre cajas (tokens): fondo de página, sección, filas y controles */

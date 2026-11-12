@@ -25,9 +25,9 @@
   align-items: center;
   justify-content: center;
   margin: 0 clamp(1px, 0.4vw, 3px);
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font);
   font-size: clamp(25px, 7vw, 38px);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   line-height: 1;
   color: var(--ink);
   transform: translateY(-1px);
@@ -78,7 +78,7 @@
   color: #f3f4f1;
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: clamp(29px, 8vw, 43px);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   line-height: 1;
   text-align: center;
 }
@@ -191,9 +191,9 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   width: 100%;
   margin-top: 7px;
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font);
   font-size: clamp(7px, 1.8vw, 9px);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   letter-spacing: 0.08em;
   color: var(--ink-faint);
   text-align: center;
@@ -289,7 +289,7 @@
   justify-content: center;
   gap: 6px;
   white-space: nowrap;
-  font-size: var(--fs-sm, 14px);
+  font-size: var(--fs-sm);
   color: var(--ink-faint, #737d87);
   opacity: 1;
   pointer-events: none;

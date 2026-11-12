@@ -57,10 +57,10 @@
   align-items: center;
   gap: 4px;
   font-size: clamp(26px, 6vw, 38px);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--ink-on-primary);
   &__nombre {
-    font-weight: 800;
+    font-weight: var(--fw-extrabold);
   }
 }
 /* ============================================================
@@ -97,8 +97,8 @@
   border: none;
   outline: none;
   padding: 14px 112px 14px 56px;
-  font-family: var(--font-body);
-  font-size: 16px;
+  font-family: var(--font);
+  font-size: var(--fs-body);
   &:focus {
     outline: none;
     box-shadow: none;
@@ -163,7 +163,7 @@
   transition: color .15s linear, transform .1s linear;
   i {
     color: inherit;
-    font-size: 18px;
+    font-size: var(--fs-md);
     line-height: 1;
   }
   &:hover {
@@ -196,7 +196,7 @@
   transition: color .15s linear, transform .1s linear;
   i {
     color: inherit;
-    font-size: 20px;
+    font-size: var(--fs-lg);
     line-height: 1;
   }
   &:hover {
@@ -215,16 +215,16 @@
   margin: 0;
   padding: 10px 16px 4px;
   color: var(--ink-faint);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
   letter-spacing: .04em;
 }
 .search-result-item__seccion {
   margin: 0 0 2px;
   color: var(--ink-faint);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
 }
 .search-results {
   width: 100%;
@@ -323,7 +323,7 @@
   background: transparent;
   margin: 0;
   border-radius: 0;
-  font-family: var(--font-body);
+  font-family: var(--font);
   transition:
     background-color .15s linear,
     color .15s linear,
@@ -349,8 +349,8 @@
   gap: var(--space-4);
   user-select: none;
   color: var(--ink);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
   padding: var(--space-2) var(--space-3);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   background: transparent;
@@ -408,7 +408,7 @@
     color .15s linear,
     transform .1s linear;
   i {
-    font-size: 20px;
+    font-size: var(--fs-lg);
     line-height: 1;
   }
   &:hover {
@@ -464,17 +464,17 @@
   line-height: 1;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   display: inline;
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-lg);
   display: flex;
 }
 .search-topic-number {
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--ink-faint);
   margin-right: 4px;
 }
 .search-result-item__curso {
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-soft);
   margin: 0;
 }
@@ -523,8 +523,8 @@
   }
   .search-result-item__tema::before {
     content: "Buscando";
-    font-size: 14px;
-    font-weight: 500;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
   }
   .search-result-item__tema::after {
     content: "";
@@ -581,7 +581,7 @@
   margin: 8px 0 0;
   padding: 14px 16px;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   text-align: center;
   border-radius: var(--radius-md);
   overflow-wrap: anywhere;
@@ -657,8 +657,8 @@
     width: 100%;
     box-sizing: border-box;
     padding: 11px 16px;
-    font-family: var(--font-body);
-    font-size: 1rem;
+    font-family: var(--font);
+    font-size: var(--fs-body);
     color: var(--ink);
     background-color: var(--wash);
     border: 2px solid var(--border);
@@ -718,7 +718,7 @@
   padding: 9px 14px;
   border-radius: var(--radius-sm);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  font-family: var(--font-body);
+  font-family: var(--font);
   color: var(--ink);
   transition:
     background-color .15s linear,
@@ -739,7 +739,7 @@
   p {
     margin: 0;
     font-size: .95rem;
-    font-weight: 500;
+    font-weight: var(--fw-medium);
     display: flex;
     align-items: center;
   }
@@ -778,7 +778,7 @@
     width: 32px;
     height: 32px;
     i {
-      font-size: 16px;
+      font-size: var(--fs-body);
     }
   }
   .search-input-clear {
@@ -786,7 +786,7 @@
     width: 34px;
     height: 34px;
     i {
-      font-size: 18px;
+      font-size: var(--fs-md);
     }
   }
   .search-input-lupa {
@@ -807,7 +807,7 @@
   }
   .search-result-item__tema,
   .search-topic-number {
-    font-size: 16px;
+    font-size: var(--fs-body);
   }
   @media (max-width: 400px) {
     .search-result-item.is-curso,

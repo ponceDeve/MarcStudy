@@ -1,4 +1,3 @@
-
 import { useMemo, useState, useRef, useEffect, useLayoutEffect } from "react";
 import manifest from "../../data/manifest.json";
 
@@ -31,21 +30,6 @@ const UMBRAL_CAMBIO = 0.18;
 const DISTANCIA_ARRASTRE = 6;
 // Debe coincidir con la transición de la pista en _welcome-section.scss (0.45s).
 const TRANSICION_MS = 480;
-
-function FlechaDerecha() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path
-        d="M9.5 5L16 12L9.5 19"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export default function WelcomeSection({
   onSelectTema,
@@ -179,6 +163,34 @@ export default function WelcomeSection({
     onSelectTema?.({ type: "curso", nombre: curso.nombre });
   }
 
+  function idTema(curso, tema) {
+    return `${curso.nombre}_${tema.tema}`;
+  }
+
+  // Primer tema del curso que aún no está completado (null si ya los hizo todos).
+  function siguienteTema(curso) {
+    return (
+      curso.temas.find(
+        (tema) => !temasCompletadosLista.includes(idTema(curso, tema))
+      ) || null
+    );
+  }
+
+  function empezarCurso(curso) {
+    const tema = siguienteTema(curso) || curso.temas[0];
+
+    if (!tema) {
+      return;
+    }
+
+    onSelectTema?.({
+      type: "tema",
+      curso: curso.nombre,
+      tema: tema.tema,
+      archivo: tema.archivo
+    });
+  }
+
   // Categoría real (0..total-1) que corresponde a una posición de la pista.
   function realDe(pos) {
     return (pos - 1 + total) % total;
@@ -304,6 +316,18 @@ export default function WelcomeSection({
   }
 
   function renderCurso(curso) {
+    const total = curso.temas.length;
+    const hechos = logrosDelCurso(curso);
+    const porcentaje = total > 0 ? Math.min(100, (hechos / total) * 100) : 0;
+
+    let textoBoton = "Empezar";
+
+    if (total > 0 && hechos >= total) {
+      textoBoton = "Repasar";
+    } else if (hechos > 0) {
+      textoBoton = "Continuar";
+    }
+
     return (
       <article
         key={curso.codigo}
@@ -317,8 +341,7 @@ export default function WelcomeSection({
 
             <div className="box-nombre-logros">
               <span className="welcome-section__curso-count">
-                {curso.temas.length} tema
-                {curso.temas.length !== 1 ? "s" : ""}
+                {total} tema{total !== 1 ? "s" : ""}
               </span>
 
               <span className="welcome-section__curso-logros">
@@ -326,28 +349,46 @@ export default function WelcomeSection({
                   className="welcome-section__trophy"
                   aria-hidden="true"
                 >
-                  <i className="bi bi-trophy" />
+                  <i className="bi bi-trophy-fill" />
                 </span>
 
-                {logrosDelCurso(curso)}/{curso.temas.length}
+                {hechos}/{total}
               </span>
             </div>
           </div>
 
-          <button
-            type="button"
-            className="welcome-section__ver-temas"
-            onClick={() => abrirMapaDeTemas(curso)}
+          <div
+            className="welcome-section__progreso"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={total}
+            aria-valuenow={hechos}
+            aria-label={`Progreso de ${curso.nombre}`}
           >
-            <span>Ver temas</span>
+            <div
+              className="welcome-section__progreso-barra"
+              style={{ width: `${porcentaje}%` }}
+            />
+          </div>
 
-            <span
-              className="welcome-section__ver-temas-icon"
-              aria-hidden="true"
+          <div className="welcome-section__curso-acciones">
+            <button
+              type="button"
+              className="welcome-section__ver-temas"
+              onClick={() => abrirMapaDeTemas(curso)}
             >
-              <FlechaDerecha />
-            </span>
-          </button>
+              <span>Ver temas</span>
+            </button>
+
+            <button
+              type="button"
+              className="welcome-section__empezar"
+              onClick={() => empezarCurso(curso)}
+              disabled={total === 0}
+            >
+              {textoBoton}
+            </button>
+          </div>
         </div>
       </article>
     );
@@ -397,151 +438,10 @@ export default function WelcomeSection({
               </h2>
 
               <div className="welcome-section__logros">
-                <svg
-                  className="welcome-section__logros-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <defs>
-                    <linearGradient
-                      id="oroBrillante"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#EBD9A8" />
-                      <stop offset="30%" stopColor="#D6B875" />
-                      <stop offset="70%" stopColor="#C9AA62" />
-                      <stop offset="100%" stopColor="#9C8444" />
-                    </linearGradient>
-
-                    <linearGradient
-                      id="oroReflejo"
-                      x1="100%"
-                      y1="0%"
-                      x2="0%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#F5ECD2" />
-                      <stop offset="50%" stopColor="#D6B875" />
-                      <stop offset="100%" stopColor="#8A7438" />
-                    </linearGradient>
-
-                    <linearGradient
-                      id="baseDegradado"
-                      x1="0%"
-                      y1="0%"
-                      x2="0%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#3E4A58" />
-                      <stop offset="100%" stopColor="#303A46" />
-                    </linearGradient>
-
-                    <filter
-                      id="sombraPremium"
-                      x="-10%"
-                      y="-10%"
-                      width="130%"
-                      height="130%"
-                    >
-                      <feDropShadow
-                        dx="0"
-                        dy="8"
-                        stdDeviation="6"
-                        floodColor="#000"
-                        floodOpacity="0.25"
-                      />
-                    </filter>
-                  </defs>
-
-                  <g filter="url(#sombraPremium)">
-                    <path
-                      d="M160,140 C90,140 80,240 160,260 C140,220 140,180 160,140 Z"
-                      fill="url(#oroReflejo)"
-                    />
-
-                    <path
-                      d="M352,140 C422,140 432,240 352,260 C372,220 372,180 352,140 Z"
-                      fill="url(#oroBrillante)"
-                    />
-
-                    <path
-                      d="M160,110 L352,110 C352,240 320,290 256,290 C192,290 160,240 160,110 Z"
-                      fill="url(#oroBrillante)"
-                    />
-
-                    <path
-                      d="M180,120 L240,120 C220,190 200,240 256,275 C200,260 180,210 180,120 Z"
-                      fill="url(#oroReflejo)"
-                      opacity="0.4"
-                    />
-
-                    <ellipse
-                      cx="256"
-                      cy="110"
-                      rx="96"
-                      ry="15"
-                      fill="#8A7438"
-                    />
-
-                    <ellipse
-                      cx="256"
-                      cy="107"
-                      rx="92"
-                      ry="12"
-                      fill="url(#oroReflejo)"
-                      opacity="0.8"
-                    />
-
-                    <path
-                      d="M236,285 L276,285 L286,360 L226,360 Z"
-                      fill="url(#oroBrillante)"
-                    />
-
-                    <ellipse
-                      cx="256"
-                      cy="330"
-                      rx="35"
-                      ry="10"
-                      fill="url(#oroReflejo)"
-                    />
-
-                    <path
-                      d="M200,360 L312,360 L332,420 L180,420 Z"
-                      fill="url(#baseDegradado)"
-                    />
-
-                    <rect
-                      x="160"
-                      y="420"
-                      width="192"
-                      height="20"
-                      rx="5"
-                      fill="#303A46"
-                    />
-
-                    <rect
-                      x="216"
-                      y="380"
-                      width="80"
-                      height="25"
-                      rx="2"
-                      fill="url(#oroBrillante)"
-                    />
-
-                    <line
-                      x1="226"
-                      y1="392"
-                      x2="286"
-                      y2="392"
-                      stroke="#8A7438"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </g>
-                </svg>
+                <i
+                  className="bi bi-trophy-fill welcome-section__logros-icon"
+                  aria-hidden="true"
+                />
 
                 <div className="welcome-section__logros-text">
                   <span className="welcome-section__logros-num">

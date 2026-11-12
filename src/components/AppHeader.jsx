@@ -157,7 +157,7 @@ export default function AppHeader({
           label: "Inicio",
           fullLabel: "Ir a Inicio",
           icon: "fa-solid fa-house",
-          to: "/",
+          to: "/?inicio=1",
         },
         ...(onAbrirBuscador
           ? [
@@ -196,7 +196,7 @@ export default function AppHeader({
               label: "Inicio",
               fullLabel: "Ir a Inicio",
               icon: "fa-solid fa-house",
-              to: "/",
+              to: "/?inicio=1",
             },
           ]
           : []),
@@ -287,7 +287,7 @@ export default function AppHeader({
   // ============================================================
   const esActivo = (b) => {
     if (!b.to) return false;
-    if (b.to === "/") {
+    if (b.to === "/" || b.to === "/?inicio=1") {
       return location.pathname === "/";
     }
     return (
