@@ -1302,3 +1302,75 @@ body.is-header-oculto .topbar-wrapper {
   line-height: 1.4;
   color: var(--ink-soft);
 }
+
+/* ============================================================
+   AJUSTES (desplegable)
+   Agrupa pantalla completa, música y modo claro/oscuro. Va junto
+   al botón del menú en pantallas chicas y en la barra en grandes.
+   ============================================================ */
+.ajustes-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+.ajustes-menu__btn[aria-expanded="true"] {
+  background: var(--surface-hover);
+}
+.ajustes-menu__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 200;
+  min-width: 230px;
+  max-width: calc(100vw - 24px);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+.ajustes-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-align: left;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
+  &:hover,
+  &:focus-visible {
+    background: var(--primary-bg);
+    color: var(--primary);
+    outline: none;
+    .ajustes-menu__icon {
+      color: var(--primary);
+    }
+  }
+  .topbar__atajo {
+    margin-left: auto;
+  }
+}
+.ajustes-menu__icon {
+  width: 18px;
+  flex: none;
+  text-align: center;
+  color: var(--ink-soft);
+  transition: color 0.2s linear;
+}
+.ajustes-menu__label {
+  flex: 1;
+  min-width: 0;
+}

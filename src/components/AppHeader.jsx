@@ -5,6 +5,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
 import { useMusicaFondo } from "../lib/musicaFondo";
 import { useTema } from "../lib/tema";
+import AjustesMenu from "./AjustesMenu";
 import EditarNombreModal from "./EditarNombreModal";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -93,7 +94,7 @@ export default function AppHeader({
   const controlesMedia = [
     {
       key: "pantalla",
-      label: pantallaCompleta ? "Minimizar" : "Pantalla completa",
+      label: pantallaCompleta ? "Minimizar" : "Maximizar",
       atajo: "F",
       icon: pantallaCompleta
         ? "fa-solid fa-compress"
@@ -470,6 +471,8 @@ export default function AppHeader({
                   "topbar__nav-btn topbar__nav-btn--resultados-buscar"
                 )}
             </div>
+            <AjustesMenu controles={controlesMedia} />
+            {/* Botones sueltos anteriores (ahora van dentro de AjustesMenu):
             {controlesMedia.map((c) => (
               <button
                 key={c.key}
@@ -482,6 +485,7 @@ export default function AppHeader({
                 <i className={c.icon} />
               </button>
             ))}
+            */}
             {/* =================================================
                 MENÚ HAMBURGUESA
                 ================================================= */}
@@ -524,6 +528,7 @@ export default function AppHeader({
                 }
               )
             )}
+          {/* Filas anteriores del menú lateral (ahora van dentro de AjustesMenu):
           {controlesMedia.map((c) => (
             <button
               key={c.key}
@@ -541,6 +546,7 @@ export default function AppHeader({
               <i className={`${c.icon} topbar__drawer-item-icon`} />
             </button>
           ))}
+          */}
         </SideDrawer>
       </div>
       {/* ======================================================

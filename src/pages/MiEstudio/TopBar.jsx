@@ -3,6 +3,8 @@ import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
 import { useMusicaFondo } from "../../lib/musicaFondo";
+import { useTema } from "../../lib/tema";
+import AjustesMenu from "../../components/AjustesMenu";
 import { Cronometro } from "../../components/RelojPared";
 import RelojOculto from "../../components/RelojOculto";
 function SideDrawer({ title, isOpen, onClose, children }) {
@@ -58,6 +60,7 @@ export default function TopBar({
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   useAutoHideHeader(menuMobileOpen);
   const { musicaOn, alternarMusica } = useMusicaFondo();
+  const { esOscuro, alternarTema } = useTema();
   const [pantallaCompleta, setPantallaCompleta] = useState(
     () => !!document.fullscreenElement
   );
@@ -82,7 +85,7 @@ export default function TopBar({
   const controlesMedia = [
     {
       key: "pantalla",
-      label: pantallaCompleta ? "Minimizar" : "Pantalla completa",
+      label: pantallaCompleta ? "Minimizar" : "Maximizar",
       atajo: "F",
       icon: pantallaCompleta
         ? "fa-solid fa-compress"
@@ -97,6 +100,13 @@ export default function TopBar({
         ? "fa-solid fa-volume-high"
         : "fa-solid fa-volume-xmark",
       onClick: alternarMusica
+    },
+    {
+      key: "tema",
+      label: esOscuro ? "Modo claro" : "Modo oscuro",
+      atajo: null,
+      icon: esOscuro ? "fa-solid fa-sun" : "fa-solid fa-moon",
+      onClick: alternarTema
     }
   ];
   const topbarRef = useRef(null);
@@ -370,6 +380,8 @@ export default function TopBar({
                 )}
               </div>
             )}
+            <AjustesMenu controles={controlesMedia} />
+            {/* Botones sueltos anteriores (ahora van dentro de AjustesMenu):
             {controlesMedia.map((c) => (
               <button
                 key={c.key}
@@ -382,6 +394,7 @@ export default function TopBar({
                 <i className={c.icon} />
               </button>
             ))}
+            */}
             {(
               <button
                 type="button"
@@ -410,6 +423,7 @@ export default function TopBar({
                 setMenuMobileOpen(false)
             )
           )}
+          {/* Filas anteriores del menú lateral (ahora van dentro de AjustesMenu):
           {controlesMedia.map((c) => (
             <button
               key={c.key}
@@ -427,6 +441,7 @@ export default function TopBar({
               <i className={`${c.icon} topbar__drawer-item-icon`} />
             </button>
           ))}
+          */}
         </SideDrawer>
       </div>
     </div>
