@@ -497,7 +497,7 @@ export default function AppHeader({
               title="Menú"
               className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
             >
-              <i className="fa-solid fa-bars" />
+              <i className="fa-solid fa-gear" />
             </button>
           </div>
         </div>

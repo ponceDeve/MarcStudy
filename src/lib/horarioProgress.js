@@ -259,7 +259,14 @@ export function avanzarProgresoPomodoro({ day, subject }) {
     ...progress,
     [key]: nextIdx,
   });
+  // Terminó el ÚLTIMO pomodoro planeado: el índice quedó justo en el
+  // descanso final. Sirve para preguntar si se quiere añadir otro.
+  const ultimoPomodoroPlaneado =
+    nextIdx > currentIdx &&
+    nextIdx % 2 === 1 &&
+    nextIdx === tasks.length - 1;
   return {
     completado: false,
+    ultimoPomodoroPlaneado,
   };
 }

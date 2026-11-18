@@ -425,11 +425,32 @@ export default function MiEstudioPage() {
     }
     pomodoroEstuvoCorriendoRef.current = false;
   }, [pomodoro.isRunning, pomodoro.secondsLeft, pomodoro.label]);
+  // Mientras este aviso está abierto, la pregunta "¿añadir otro pomodoro?"
+  // espera; sale cuando lo cierras (u omites, o vas al Pomodoro).
+  useEffect(() => {
+    pomodoro.setAvisoFinAbierto(pomodoroAlarmaAbierta);
+    return () => pomodoro.setAvisoFinAbierto(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pomodoroAlarmaAbierta]);
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
     limpiarPomodoroCompartido();
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
+  }
+  function irAPomodoroDesdeModoEstudio() {
+    setPreguntaModoAbierta(false);
+    pomodoro.reiniciar(25);
+    if (topicData?.tema) guardarRetorno(topicData.tema);
+    // Mismo enlace que usa el menú de la TopBar: Pomodoro entra directo al
+    // curso del tema para poder iniciar.
+    navigate(
+      topicData?.curso
+        ? `/pomodoro?curso=${encodeURIComponent(
+            topicData.curso
+          )}&tema=${encodeURIComponent(topicData.tema || "")}`
+        : "/pomodoro"
+    );
   }
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
   const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] =
@@ -1174,6 +1195,11 @@ ${bloques.join("\n\n\n")}`;
     useState(false);
   useEffect(() => {
     let q = searchParams.get("q");
+    if (!q && searchParams.get("inicio")) {
+      // Se pidió ir a Inicio de verdad: no reabrir el tema guardado de Pomodoro.
+      guardarRetorno("");
+      return;
+    }
     if (!q) {
       const temaPendiente =
         leerYLimpiarRetorno();
@@ -2675,6 +2701,8 @@ ${bloques.join("\n\n\n")}`;
       <ModoEstudioModal
         open={preguntaModoAbierta}
         onElegir={elegirModoEstudio}
+        onCerrar={() => elegirModoEstudio("teoria")}
+        onIrAPomodoro={irAPomodoroDesdeModoEstudio}
       />
       <PomodoroAlarmModal
         open={pomodoroAlarmaAbierta}

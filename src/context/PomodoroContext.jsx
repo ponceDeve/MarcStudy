@@ -31,6 +31,13 @@ export function PomodoroProvider({ children }) {
   const [subject, setSubject] = useState("");
   const [day, setDay] = useState("");
   const [fecha, setFecha] = useState("");
+  // { day, subject } cuando acaba de terminar el último pomodoro planeado
+  // de un curso y falta responder si se quiere añadir otro. Vive aquí (y
+  // no en HorarioPage) para que salga desde cualquier sección.
+  const [preguntaAgregar, setPreguntaAgregar] = useState(null);
+  // true mientras Mi Estudio muestra su aviso "¡Se acabó el tiempo!": la
+  // pregunta de añadir otro pomodoro espera a que ese aviso se cierre.
+  const [avisoFinAbierto, setAvisoFinAbierto] = useState(false);
   const intervalRef = useRef(null);
   const subjectRef = useRef("");
   const dayRef = useRef("");
@@ -85,6 +92,12 @@ export function PomodoroProvider({ children }) {
               subject: subjectRef.current,
             })
           : null;
+        if (resultado?.ultimoPomodoroPlaneado) {
+          setPreguntaAgregar({
+            day: dayRef.current,
+            subject: subjectRef.current,
+          });
+        }
         if (onCompleteRef.current) {
           onCompleteRef.current({
             day: dayRef.current,
@@ -237,6 +250,9 @@ export function PomodoroProvider({ children }) {
     },
     [clearTick, totalSeconds]
   );
+  const cerrarPreguntaAgregar = useCallback(() => {
+    setPreguntaAgregar(null);
+  }, []);
   const mm = String(
     Math.floor(secondsLeft / 60)
   ).padStart(2, "0");
@@ -256,6 +272,10 @@ export function PomodoroProvider({ children }) {
     pausar,
     reiniciar,
     registrarOnComplete,
+    preguntaAgregar,
+    cerrarPreguntaAgregar,
+    avisoFinAbierto,
+    setAvisoFinAbierto,
   };
   return (
     <PomodoroContext.Provider value={value}>

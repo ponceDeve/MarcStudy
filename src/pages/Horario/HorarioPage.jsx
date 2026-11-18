@@ -29,6 +29,7 @@ import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
 import { RelojFlip } from "../../components/RelojPared";
 import SearchModal from "../../components/SearchModal";
+import PreguntaAgregarPomodoro from "../../components/PreguntaAgregarPomodoro";
 // Los cursos salen del plan recomendado, no del día: el selector de días
 // (Lun–Dom) y el título con el nombre del día quedan ocultos.
 const MOSTRAR_SELECTOR_DIAS = false;
@@ -61,6 +62,95 @@ function buildCourseTasks(course) {
 }
 function progressKey(day, subject) {
   return `${day}::${subject}`;
+}
+// ─────────────────────────────────────────────────────────────────────────
+// Borde de la tarjeta de un curso "En curso": un solo trazo continuo que
+// se va llenando con el avance del pomodoro que está corriendo (`progreso`,
+// de 0 a 1). Cuando empieza el siguiente pomodoro vuelve a vaciarse.
+//
+// Es un SVG que se mide contra la tarjeta (ResizeObserver) y usa
+// pathLength=100 para que el avance sea un porcentaje del perímetro sin
+// importar el ancho de la tarjeta.
+// ─────────────────────────────────────────────────────────────────────────
+const ANILLO_GROSOR = 3;
+function AnilloPomodoros({ progreso = 0 }) {
+  const ref = useRef(null);
+  const [caja, setCaja] = useState({ w: 0, h: 0, r: 12 });
+  useEffect(() => {
+    const tarjeta = ref.current ? ref.current.parentElement : null;
+    if (!tarjeta) return undefined;
+    const medir = () => {
+      const radio = parseFloat(
+        getComputedStyle(tarjeta).borderTopLeftRadius
+      );
+      setCaja({
+        w: tarjeta.offsetWidth,
+        h: tarjeta.offsetHeight,
+        r: Number.isFinite(radio) ? radio : 12,
+      });
+    };
+    medir();
+    const ro = new ResizeObserver(medir);
+    ro.observe(tarjeta);
+    return () => ro.disconnect();
+  }, []);
+  const p = Math.min(1, Math.max(0, progreso));
+  const largo = p * 100;
+  const mitad = ANILLO_GROSOR / 2;
+  const rect = {
+    x: mitad,
+    y: mitad,
+    width: Math.max(0, caja.w - ANILLO_GROSOR),
+    height: Math.max(0, caja.h - ANILLO_GROSOR),
+    rx: Math.max(0, caja.r - mitad),
+    pathLength: 100,
+    fill: "none",
+    strokeWidth: ANILLO_GROSOR,
+  };
+  // El trazo de un <rect> SVG arranca arriba a la izquierda y va en sentido
+  // horario. Se desplaza el inicio al comienzo de la esquina inferior
+  // izquierda: el borde se llena subiendo por la izquierda, luego arriba,
+  // derecha y abajo.
+  const rx = rect.rx;
+  const rectoAncho = Math.max(0, rect.width - 2 * rx);
+  const rectoAlto = Math.max(0, rect.height - 2 * rx);
+  const perimetro = 2 * rectoAncho + 2 * rectoAlto + 2 * Math.PI * rx;
+  const inicio =
+    perimetro > 0
+      ? (((perimetro - Math.PI * rx - rectoAlto) / perimetro) * 100) % 100
+      : 0;
+  const dash = `${largo} ${100 - largo}`;
+  return (
+    <svg
+      ref={ref}
+      className="horario__anillo"
+      width={caja.w}
+      height={caja.h}
+      aria-hidden="true"
+    >
+      {caja.w > 0 && (
+        <>
+          <rect className="horario__anillo-track" {...rect} />
+          {p > 0 && (
+            <rect
+              className="horario__anillo-fill"
+              {...rect}
+              strokeDasharray={dash}
+              strokeDashoffset={-inicio}
+            />
+          )}
+          {p > 0 && inicio + largo > 100 + 1e-6 && (
+            <rect
+              className="horario__anillo-fill"
+              {...rect}
+              strokeDasharray={dash}
+              strokeDashoffset={100 - inicio}
+            />
+          )}
+        </>
+      )}
+    </svg>
+  );
 }
 export default function HorarioPage() {
   const [searchParams] = useSearchParams();
@@ -196,6 +286,9 @@ export default function HorarioPage() {
       .length;
   }
   const pomodoro = usePomodoro();
+  // La pregunta "¿añadir otro pomodoro?" la decide PomodoroContext (así
+  // también sale desde otras secciones); aquí solo se muestra y se responde.
+  const preguntaAgregar = pomodoro.preguntaAgregar;
   const {
     secondsLeft,
     totalSeconds,
@@ -314,7 +407,8 @@ export default function HorarioPage() {
         eligiendoTemaIdx !== null ||
         cursoRapidoDia ||
         temaModalOpen ||
-        courseCompleteOpen
+        courseCompleteOpen ||
+        preguntaAgregar
       ) {
         return;
       }
@@ -352,6 +446,7 @@ export default function HorarioPage() {
     cursoRapidoDia,
     temaModalOpen,
     courseCompleteOpen,
+    preguntaAgregar,
   ]);
   function handleTaskComplete({
     day,
@@ -364,10 +459,11 @@ export default function HorarioPage() {
       audio.muted = false;
       audio.volume = 1.0;
       audio.currentTime = 0;
-      audio
-        .play()
-        .then(() => setAlarmActive(true))
-        .catch(() => setAlarmActive(false));
+      // Se marca activa de inmediato (y no cuando play() resuelve) para que
+      // la pregunta de "añadir otro pomodoro" espere desde el primer
+      // instante a que apagues la alarma.
+      setAlarmActive(true);
+      audio.play().catch(() => setAlarmActive(false));
     }
     if (!subject) {
       setManualBreak(null);
@@ -450,7 +546,17 @@ export default function HorarioPage() {
     const temaGuardado = course
       ? leerTemaCurso(selectedDay, course.subject)
       : null;
-    if (isComplete || temaGuardado) {
+    // Hay un pomodoro en marcha (corriendo o a medias) de OTRO curso: aunque
+    // este curso ya tenga tema guardado, se pide el tema de nuevo. Al aceptar,
+    // el cronómetro se detiene y se reinicia con la duración de este curso.
+    const otroCursoEnMarcha =
+      !!pomodoro.subject &&
+      normalizarTexto(pomodoro.subject) !==
+        normalizarTexto(course?.subject || "") &&
+      (isRunning ||
+        (pomodoro.secondsLeft > 0 &&
+          pomodoro.secondsLeft < pomodoro.totalSeconds));
+    if (isComplete || (temaGuardado && !otroCursoEnMarcha)) {
       abrirCurso(idx);
       return;
     }
@@ -624,6 +730,15 @@ export default function HorarioPage() {
         (prev[progressKey(day, subject)] || 1) + 1,
     }));
   }
+  function responderAgregarPomodoro(agregar) {
+    if (agregar && preguntaAgregar) {
+      agregarPomodoroCurso(
+        preguntaAgregar.day,
+        preguntaAgregar.subject
+      );
+    }
+    pomodoro.cerrarPreguntaAgregar();
+  }
   function completarCurso(day, subject) {
     setPendingCompletarCurso(null);
     setMostrarConfirmacionCompletar(false);
@@ -711,7 +826,19 @@ export default function HorarioPage() {
     const cursoObjetivo =
       cursoParam || (isRunning ? pomodoro.subject : null);
     if (!cursoObjetivo) return;
-    for (const dia of DIAS_SEMANA) {
+    // Como los cursos salen del plan (iguales todos los días), recorrer
+    // DIAS_SEMANA desde "lunes" elegía siempre "lunes". El cronómetro
+    // guarda el día real con el que arrancó, y al terminar se compara con
+    // selectedDay: si no coincidían, no se iniciaba el descanso ni se leía
+    // el progreso correcto. Se prueba primero el día del cronómetro (si
+    // está corriendo) o el día actual.
+    const diaPreferido =
+      isRunning && pomodoro.day ? pomodoro.day : selectedDay;
+    const diasOrdenados = [
+      diaPreferido,
+      ...DIAS_SEMANA.filter((d) => d !== diaPreferido),
+    ];
+    for (const dia of diasOrdenados) {
       const lista = cursosDelDia(dia);
       const idx = lista.findIndex(
         (c) =>
@@ -781,6 +908,18 @@ export default function HorarioPage() {
             </div>
           )}
           <div className="horario__timer-card">
+            {activeCourse && retornoTema && (
+              <button
+                type="button"
+                onClick={volverAlTema}
+                className="horario__btn-volver-tema horario__btn-volver-tema--timer"
+              >
+                <i className="fas fa-arrow-left" />
+                <span className="horario__btn-volver-tema-texto">
+                  Regresar a: "{retornoTema}"
+                </span>
+              </button>
+            )}
             <div className="horario__timer-center">
               {!activeCourse && manualBreak && (
                 <p className="horario__timer-label">
@@ -840,6 +979,11 @@ export default function HorarioPage() {
                       <i className="fas fa-arrow-left" />
                     </button>
                   )}
+                  {activeCourse && (
+                    <h3 className="horario__active-course-name">
+                      {activeCourse.subject}
+                    </h3>
+                  )}
                   {MOSTRAR_SELECTOR_DIAS && (
                     <div>
                       <h3 className="horario__day-title">
@@ -865,14 +1009,38 @@ export default function HorarioPage() {
                         c.subject
                       )
                     ];
-                  const pct = Math.round(
-                    (done / c.pomodoros) * 100
-                  );
+                  // Un curso ya iniciado (cronómetro corriendo o con tiempo
+                  // avanzado) cuenta como "En curso" aunque todavía no haya
+                  // terminado su primer pomodoro.
+                  const cursoEnMarcha =
+                    normalizarTexto(pomodoro.subject || "") ===
+                      normalizarTexto(c.subject) &&
+                    pomodoro.day === selectedDay &&
+                    (isRunning ||
+                      pomodoro.secondsLeft < pomodoro.totalSeconds);
+                  const enCurso =
+                    !isComplete && (done > 0 || cursoEnMarcha);
                   const statusText = isComplete
                     ? "Completado"
-                    : done > 0
+                    : enCurso
                       ? "En curso"
                       : "No iniciado";
+                  // Índice de tarea par = pomodoro; impar = descanso. Solo
+                  // el pomodoro (no el descanso) llena el borde en vivo.
+                  const enPomodoro =
+                    cursoEnMarcha &&
+                    getTaskIndex(selectedDay, c.subject) % 2 === 0;
+                  const parcial =
+                    enPomodoro && totalSeconds > 0
+                      ? Math.min(
+                          1,
+                          Math.max(
+                            0,
+                            (totalSeconds - secondsLeft) /
+                              totalSeconds
+                          )
+                        )
+                      : 0;
                   return (
                     <div
                       key={idx}
@@ -892,8 +1060,13 @@ export default function HorarioPage() {
                       }}
                       className={`horario__course-item ${
                         isComplete ? "is-complete" : ""
+                      } ${enCurso ? "is-active" : ""} ${
+                        cursoEnMarcha && isRunning ? "is-running" : ""
                       }`}
                     >
+                      {enCurso && (
+                        <AnilloPomodoros progreso={parcial} />
+                      )}
                       <div className="horario__course-top">
                         <div className="horario__course-tags">
                           <h4 className="horario__course-name">
@@ -909,13 +1082,31 @@ export default function HorarioPage() {
                         </div>
                       </div>
                       <div className="horario__course-progress">
-                        <div className="horario__mini-track">
-                          <div
-                            className="horario__mini-fill"
-                            style={{
-                              width: `${pct}%`,
-                            }}
-                          />
+                        <div className="horario__mini-track horario__mini-track--tramos">
+                          {Array.from(
+                            { length: c.pomodoros },
+                            (_, i) => {
+                              const llenado =
+                                i < done
+                                  ? 1
+                                  : i === done
+                                    ? parcial
+                                    : 0;
+                              return (
+                                <div
+                                  key={i}
+                                  className="horario__mini-tramo"
+                                >
+                                  <div
+                                    className="horario__mini-fill"
+                                    style={{
+                                      width: `${llenado * 100}%`,
+                                    }}
+                                  />
+                                </div>
+                              );
+                            }
+                          )}
                         </div>
                         <span className="horario__course-count">
                           {done}/{c.pomodoros} 🍅
@@ -1103,15 +1294,6 @@ export default function HorarioPage() {
                     </button>
                   </div>
                 </div>
-                {retornoTema && (
-                  <button
-                    type="button"
-                    onClick={volverAlTema}
-                    className="horario__btn-volver-tema"
-                  >
-                    Regresar a: "{retornoTema}"
-                  </button>
-                )}
               </>
             )}
           </div>
@@ -1144,6 +1326,12 @@ export default function HorarioPage() {
             Apagar alarma
           </button>
         </div>
+      )}
+      {preguntaAgregar && !alarmActive && (
+        <PreguntaAgregarPomodoro
+          subject={preguntaAgregar.subject}
+          onResponder={responderAgregarPomodoro}
+        />
       )}
       {mostrarConfirmacionCompletar &&
         pendingCompletarCurso && (

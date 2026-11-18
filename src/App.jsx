@@ -11,6 +11,7 @@ import {
   useFooterVisibility,
 } from "./context/FooterVisibilityContext";
 import AppFooter from "./components/AppFooter";
+import { PreguntaAgregarPomodoroGlobal } from "./components/PreguntaAgregarPomodoro";
 import { useAtajosGlobales } from "./hooks/useAtajosGlobales";
 function AppFooterGate() {
   const { footerHidden } = useFooterVisibility();
@@ -36,6 +37,7 @@ export default function App() {
             </Routes>
           </Suspense>
           <AppFooterGate />
+          <PreguntaAgregarPomodoroGlobal />
         </FooterVisibilityProvider>
       </PomodoroProvider>
     </BrowserRouter>

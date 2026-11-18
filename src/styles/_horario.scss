@@ -167,7 +167,7 @@
   transition: width 0.3s linear;
 }
 .horario__timer-controls {
-  padding-top: 18px;
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .horario__timer-btn-row {
@@ -327,7 +327,7 @@
 .horario__course-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-4);
 }
 .horario__course-item {
   padding: 16px;
@@ -338,8 +338,75 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.3s linear;
 }
+.horario__course-item {
+  position: relative;
+}
 .horario__course-item.is-complete {
   opacity: 0.65;
+}
+/* ── Curso "En curso": resalta y muestra el borde que se llena con el pomodoro ── */
+.horario__course-item.is-active {
+  background:
+    linear-gradient(var(--primary-bg), var(--primary-bg)), var(--surface);
+  border-color: transparent; /* el borde lo dibuja el anillo SVG */
+  box-shadow: 0 8px 22px -10px
+    color-mix(in srgb, var(--primary) 55%, transparent);
+}
+.horario__course-item.is-active .horario__course-name {
+  color: var(--primary-dark);
+}
+.horario__course-item.is-active .horario__course-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+}
+.horario__course-item.is-active .horario__course-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.horario__course-item.is-running .horario__course-status::before {
+  animation: horario-latido 1.4s ease-in-out infinite;
+}
+@keyframes horario-latido {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .horario__course-item.is-running .horario__course-status::before {
+    animation: none;
+  }
+}
+.horario__anillo {
+  position: absolute;
+  top: -1px; /* cubre el borde de 1px de la tarjeta */
+  left: -1px;
+  pointer-events: none;
+  overflow: visible;
+}
+.horario__anillo-track {
+  /* Borde completo en azul pálido; el trazo fuerte lo va llenando. */
+  stroke: var(--primary);
+  opacity: 0.22;
+}
+.horario__anillo-fill {
+  stroke: var(--primary);
+  transition: stroke-dasharray 0.4s linear;
 }
 .horario__course-top {
   display: flex;
@@ -369,6 +436,20 @@
 .horario__mini-track {
   flex: 1;
   height: 6px;
+  overflow: hidden;
+  background: var(--wash);
+  border-radius: var(--radius-full);
+}
+/* Barra dividida: un tramo por pomodoro del curso */
+.horario__mini-track--tramos {
+  display: flex;
+  gap: 4px;
+  overflow: visible;
+  background: transparent;
+}
+.horario__mini-tramo {
+  flex: 1;
+  height: 100%;
   overflow: hidden;
   background: var(--wash);
   border-radius: var(--radius-full);
@@ -785,6 +866,196 @@
   100% {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+/* ============================================================
+   TOAST DE ALARMA (suena al terminar un pomodoro / descanso)
+   Arriba y centrado, con botón para apagar el sonido.
+   ============================================================ */
+.horario__alarm-toast {
+  position: fixed;
+  top: var(--space-3);
+  left: 50%;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(460px, calc(100vw - 28px));
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--danger);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+  animation: horario-confirm-toast-in 0.2s ease-out both;
+}
+.horario__alarm-toast-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: var(--ink-on-primary);
+  font-size: 17px;
+  animation: horario-alarm-toast-ring 0.9s ease-in-out infinite;
+}
+.horario__alarm-toast-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.horario__alarm-toast-content strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.25;
+}
+.horario__alarm-toast-content span {
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+}
+.horario__alarm-toast-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--danger);
+  color: var(--ink-on-primary);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: background 0.2s linear;
+}
+@keyframes horario-alarm-toast-ring {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-14deg);
+  }
+  40% {
+    transform: rotate(12deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .horario__alarm-toast-icon {
+    animation: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .horario__alarm-toast-btn:hover {
+    background: var(--danger-dark);
+  }
+}
+/* ============================================================
+   PREGUNTA: ¿AÑADIR OTRO POMODORO? (al terminar el último planeado)
+   Por debajo del toast de alarma para poder apagar el sonido.
+   ============================================================ */
+.horario__agregar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  animation: horario-agregar-in 0.2s ease-out both;
+}
+.horario__agregar-card {
+  width: min(380px, 100%);
+  padding: 24px 22px 20px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.horario__agregar-icono {
+  color: var(--success);
+  font-size: 30px;
+}
+.horario__agregar-titulo {
+  margin: 10px 0 6px;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-extrabold);
+}
+.horario__agregar-texto {
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.horario__agregar-texto strong {
+  color: var(--ink);
+}
+.horario__agregar-acciones {
+  display: flex;
+  gap: 10px;
+}
+.horario__agregar-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: var(--fw-bold);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear;
+}
+.horario__agregar-btn.is-secundario {
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+.horario__agregar-btn.is-primario {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--ink-on-primary);
+}
+@keyframes horario-agregar-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .horario__agregar-btn.is-secundario:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+  }
+  .horario__agregar-btn.is-primario:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
   }
 }
 /* ============================================================
@@ -1601,6 +1872,10 @@
     top: calc(var(--header-h) + 8px);
     width: min(440px, calc(100vw - 24px));
   }
+  .horario__alarm-toast {
+    top: calc(var(--header-h) + 8px);
+    width: min(460px, calc(100vw - 24px));
+  }
   .horario__felicitacion-content {
     width: 92vw;
     padding: 28px 22px;
@@ -1728,6 +2003,11 @@
     border-color: var(--ink);
   }
 
+  .horario__course-item.is-active:hover {
+    border-color: transparent;
+    background-color: var(--surface);
+  }
+
   .horario__add-pomodoro-btn:hover {
     background: var(--surface-hover);
     border-color: var(--ink);
@@ -1829,5 +2109,44 @@
   .setup-pomo-btn:hover {
     background: var(--primary-bg);
     border-color: var(--primary);
+  }
+}
+
+/* Nombre del curso a la derecha de la flecha (dentro de un curso) */
+.horario__active-course-name {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* "Regresar a: tema" arriba del cronómetro, dentro de su caja */
+.horario__btn-volver-tema--timer {
+  margin-bottom: var(--space-4);
+  padding: 8px 14px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--primary);
+  background: var(--primary-bg);
+  border: 1px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  i {
+    flex-shrink: 0;
+  }
+}
+.horario__btn-volver-tema-texto {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (hover: hover) and (pointer: fine) {
+  .horario__btn-volver-tema.horario__btn-volver-tema--timer:hover {
+    background: var(--primary);
+    color: var(--ink-on-primary);
+    border-color: var(--primary-dark);
   }
 }
