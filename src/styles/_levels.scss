@@ -2,56 +2,8 @@
    LevelsModal
    ============================================================ */
 .levels-modal {
-  /* El mapa es siempre oscuro, sin importar el tema de la app. */
-  color-scheme: dark;
-  --bg: #1b222c;
-  --surface: #252e3a;
-  --surface-alt: #202935;
-  --surface-hover: #2e3947;
-  --surface-ts: #252e3a;
-  --surface-soft: #2a3441;
-  --border: #364252;
-  --border-strong: #46546a;
-  --ink: #e6ebf0;
-  --ink-soft: #c3cdd7;
-  --ink-faint: #9ba8b5;
-  --ink-on-primary: #1b222c;
-  --primary: #7db8e6;
-  --primary-dark: #9ccbf0;
-  --primary-light: #4f8cb8;
-  --primary-bg: rgba(125, 184, 230, 0.16);
-  --brand: #7db8e6;
-  --brand-dark: #9ccbf0;
-  --brand-light: #4f8cb8;
-  --brand-bg: rgba(125, 184, 230, 0.16);
-  --secondary: #6fc2a9;
-  --secondary-dark: #5fb89d;
-  --secondary-hover: #2b3a39;
-  --secondary-bg: rgba(111, 194, 169, 0.15);
-  --accent: #e8c46a;
-  --accent-dark: #d9b35a;
-  --accent-bg: rgba(232, 196, 106, 0.18);
-  --danger: #e8918b;
-  --danger-dark: #f0a6a1;
-  --danger-bg: rgba(232, 145, 139, 0.14);
-  --success: #7bc596;
-  --success-dark: #93d3aa;
-  --success-bg: rgba(123, 197, 150, 0.14);
-  --warning: #e8c46a;
-  --warning-dark: #d9b35a;
-  --warning-text: #f0d88a;
-  --warning-bg: rgba(232, 196, 106, 0.18);
-  --overlay: rgba(0, 0, 0, 0.55);
-  --overlay-strong: rgba(0, 0, 0, 0.78);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.40);
-  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.50);
-  --wash: rgba(255, 255, 255, 0.08);
-  --pair-1: #7db8e6;
-  --pair-2: #6fc2a9;
-  --pair-3: #e8c46a;
-  --pair-4: #b9a3d4;
-  --pair-5: #e6ebf0;
+  /* Usa los colores de la app (claro u oscuro según el tema). */
+  --ink-on-accent: color-mix(in srgb, var(--accent) 18%, black);
   position: fixed;
   inset: 0;
   background: var(--bg);
@@ -374,60 +326,112 @@
   border: 1px solid transparent;
 }
 
-.levels-modal__flecha {
-  position: relative;
-  display: block;
-  width: 36px;
-  height: 28px;
-  flex: 0 0 36px;
-}
 
-.levels-modal__flecha-linea {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  width: 29px;
-  height: 7px;
-  background: currentColor;
-  border-radius: 4px;
-  transform: translateY(-50%);
-}
 
-.levels-modal__flecha-punta {
-  position: absolute;
-  top: 50%;
-  left: 3px;
-  z-index: 1;
-  width: 17px;
-  height: 17px;
-  box-sizing: border-box;
-  border-left: 7px solid currentColor;
-  border-bottom: 7px solid currentColor;
-  border-radius: 2px;
-  transform: translateY(-50%) rotate(45deg);
-}
 
-.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
-  animation: flecha-va-y-viene 0.3s ease-in-out infinite alternate;
-}
 
-@keyframes flecha-va-y-viene {
-  from {
-    left: 3px;
-  }
-
-  to {
-    left: -5px;
-  }
-}
 
 .levels-modal__volver:hover:not(:disabled) {
   background: var(--primary-bg);
-}
-
-.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
   color: var(--primary);
 }
+
+/* Tacho: la tapa se entreabre al pasar el cursor y al hacer clic se abre,
+   cae un papel y se cierra. */
+.levels-modal__basura {
+  width: 28px;
+  height: 31px;
+  overflow: visible;
+  fill: currentColor;
+}
+
+.levels-modal__basura-tapa {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  transition: transform 0.2s ease;
+}
+
+.levels-modal__basura-papel {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.levels-modal__volver:hover:not(:disabled) .levels-modal__basura-tapa {
+  transform: rotate(-18deg);
+}
+
+.levels-modal .levels-modal__volver.is-botando {
+  pointer-events: none;
+  opacity: 1;
+  color: var(--ink);
+}
+
+.levels-modal__volver.is-botando .levels-modal__basura {
+  animation: basura-golpe 0.7s ease-in-out;
+}
+
+.levels-modal__volver.is-botando .levels-modal__basura-tapa {
+  animation: basura-tapa 0.7s ease-in-out;
+}
+
+.levels-modal__volver.is-botando .levels-modal__basura-papel {
+  animation: basura-papel 0.7s ease-in;
+}
+
+@keyframes basura-tapa {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  18%,
+  78% {
+    transform: rotate(-42deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes basura-papel {
+  0%,
+  12% {
+    transform: translateY(-16px) rotate(-14deg);
+    opacity: 0;
+  }
+
+  22% {
+    opacity: 1;
+  }
+
+  68% {
+    transform: translateY(20px) rotate(10deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes basura-golpe {
+  0%,
+  64%,
+  82%,
+  100% {
+    transform: translateX(0);
+  }
+
+  70% {
+    transform: translateX(-1.5px);
+  }
+
+  76% {
+    transform: translateX(1.5px);
+  }
+}
+
 
 .levels-modal__volver:active:not(:disabled),
 .levels-modal__cerrar:active {
@@ -442,14 +446,7 @@
   cursor: not-allowed !important;
 }
 
-.levels-modal__volver:disabled .levels-modal__flecha-punta {
-  animation: none;
-  border-color: currentColor;
-}
 
-.levels-modal__volver:disabled .levels-modal__flecha-linea {
-  background: currentColor;
-}
 
 .levels-modal__volver:focus-visible,
 .levels-modal__cerrar:focus-visible {
@@ -462,14 +459,15 @@
   width: auto;
   max-width: none;
   min-width: 0;
-  color: var(--ink-on-primary);
-  background: var(--danger);
-  border: 1px solid var(--danger);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
 }
 
 .levels-modal__cerrar:hover {
-  background: var(--danger-dark);
-  border-color: var(--danger-dark);
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--ink-on-primary);
 }
 
 /* ============================================================
@@ -638,8 +636,8 @@
   --ty: 0;
   --rot: 0deg;
   --s: 1;
-  color: #e3e6e0;
-  text-shadow: 0 1px 2px rgba(48, 58, 70, 0.35);
+  color: var(--border-strong);
+  text-shadow: 0 1px 2px var(--wash);
   display: inline-block;
   transform: translateY(var(--ty)) rotate(var(--rot)) scale(var(--s));
   transition:
@@ -649,7 +647,7 @@
 
 .level-cell__estrellas span.is-activa {
   color: var(--accent);
-  text-shadow: 0 1px 2px rgba(48, 58, 70, 0.35);
+  text-shadow: 0 1px 2px rgba(31, 42, 55, 0.35);
   --s: 1.25;
 }
 
@@ -720,12 +718,12 @@
    ============================================================ */
 .level-btn {
   --grosor: 10px;
-  --cara: var(--surface);
-  --canto: color-mix(in srgb, var(--cara) 45%, black);
+  --cara: var(--primary);
+  --canto: color-mix(in srgb, var(--cara) 55%, black);
   width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--cara);
-  color: var(--ink-soft);
+  color: var(--ink-on-primary);
   font-weight: bolder;
   font-size: clamp(1.5rem, 5vw, 3rem);
   border: none;
@@ -744,7 +742,7 @@
   -webkit-tap-highlight-color: transparent;
   box-shadow:
     0 var(--grosor) 0 var(--canto),
-    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, 0.45);
+    0 calc(var(--grosor) + 6px) 10px var(--wash);
   transition:
     transform 0.1s linear,
     box-shadow 0.1s linear;
@@ -854,10 +852,15 @@
   color: var(--ink-on-primary);
 }
 
+/* Tema actual y tema tocado: todo el botón, con su borde de abajo, queda un
+   poco más arriba que los demás. Al pasar el cursor baja y al clic se hunde. */
+.level-btn.is-current,
 .level-btn.is-armado {
-  --cara: var(--brand);
-  --canto: color-mix(in srgb, var(--brand) 55%, black);
-  color: var(--ink-on-primary);
+  transform: translateY(-6px);
+}
+
+.level-cell:has(.level-btn.is-current, .level-btn.is-armado) .level-cell__estrellas {
+  transform: translateY(-6px);
 }
 
 .level-btn:disabled {
@@ -949,7 +952,7 @@
   top: 50%;
   width: var(--map-gap);
   height: 0;
-  border-top: var(--line-w) dashed var(--border-strong);
+  border-top: var(--line-w) dashed color-mix(in srgb, var(--ink) 35%, transparent);
   transform: translateY(-50%);
   z-index: 0;
 }
@@ -970,7 +973,7 @@
   left: calc(50% - var(--line-w) / 2);
   width: 0;
   height: calc(50% + var(--map-gap-y) - var(--libre-estrellas));
-  border-left: var(--line-w) dashed var(--border-strong);
+  border-left: var(--line-w) dashed color-mix(in srgb, var(--ink) 35%, transparent);
   z-index: 0;
 }
 
@@ -1014,7 +1017,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--accent);
-  color: var(--ink-on-primary);
+  color: var(--ink-on-accent);
   font-family: var(--font);
   font-size: 19px;
   font-weight: var(--fw-bold);
@@ -1083,8 +1086,8 @@
 }
 
 .levels-nav__btn:hover:not(.is-activa) {
-  background: var(--secondary-bg);
-  border-color: var(--secondary);
+  background: var(--primary-bg);
+  border-color: var(--primary);
   color: var(--ink);
 }
 
@@ -1093,8 +1096,8 @@
 }
 
 .levels-nav__btn.is-activa {
-  background: var(--secondary-bg);
-  border-color: var(--secondary);
+  background: var(--primary-bg);
+  border-color: var(--primary);
   color: var(--ink);
 }
 
@@ -1307,9 +1310,6 @@
     min-width: 58px;
   }
 
-  .levels-modal__flecha {
-    transform: scale(0.9);
-  }
 }
 
 /* ============================================================
@@ -1389,6 +1389,15 @@
 
 .level-btn.is-bloqueado {
   container-type: inline-size;
+  --cara: color-mix(in srgb, var(--border-strong) 80%, var(--surface));
+  color: var(--ink-faint);
+  box-shadow:
+    0 var(--grosor) 0 var(--canto),
+    0 calc(var(--grosor) + 6px) 10px var(--wash);
+}
+
+.level-btn.is-bloqueado .level-btn__numero {
+  visibility: hidden;
 }
 
 .level-btn__candado {
@@ -1397,9 +1406,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 70cqw;
+  font-size: 42cqw;
   line-height: 1;
-  color: var(--ink);
+  color: var(--ink-faint);
   opacity: 0.9;
 }
 
@@ -1414,7 +1423,7 @@
   padding: 8px 12px;
   border-radius: 10px;
   background: var(--accent);
-  color: var(--ink-on-primary);
+  color: var(--ink-on-accent);
   font-size: var(--fs-sm);
   font-weight: var(--fw-normal);
   text-align: center;
@@ -1448,7 +1457,7 @@
 }
 
 .levels-modal__aviso-estrella {
-  color: var(--ink-on-primary);
+  color: var(--ink-on-accent);
 }
 
 /* ============================================================

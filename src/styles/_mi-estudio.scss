@@ -210,14 +210,36 @@
 }
 
 .mi-estudio__recomendados-title {
-  margin: 0 0 10px;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 40px;
+  padding: var(--space-3) var(--space-4) var(--space-4);
   color: var(--secondary-dark);
   font-size: var(--fs-xl);
-  margin-bottom: var(--space-4);
   font-weight: var(--fw-extrabold);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: center;
+}
+
+/* Misma línea decorativa y espacio que los títulos de categoría */
+.mi-estudio__recomendados-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 24px);
+  width: 50%;
+  height: 5px;
+  transform: translateX(-50%);
+  background: var(--secondary-dark);
+  border-radius: var(--radius-full);
+}
+
+@media (min-width: 640px) {
+  .mi-estudio__recomendados-title {
+    margin-bottom: 46px;
+    padding: var(--space-4) var(--space-5) var(--space-4);
+  }
 }
 .mi-estudio__recomendados-curso {
   min-width: 0;
@@ -2729,6 +2751,11 @@ span.teoria-busqueda-resaltado {
   }
 
   &__title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: var(--fs-body);
     font-weight: var(--fw-semibold);
     color: var(--ink);
@@ -2796,6 +2823,19 @@ span.teoria-busqueda-resaltado {
         border-radius: 14px 14px 4px 14px;
         background: var(--primary);
         color: var(--ink-on-primary);
+      }
+
+      /* Mensaje de ayuda al entrar al chat (qué se puede hacer) */
+      &--ayuda {
+        font-size: var(--fs-sm);
+
+        p {
+          margin: 0;
+        }
+
+        p + p {
+          margin-top: 6px;
+        }
       }
     }
 
@@ -3910,4 +3950,209 @@ span.teoria-busqueda-resaltado {
   padding: 0 2px;
   font-size: 0.9rem;
   opacity: 1;
+}
+
+/* ============================================================
+   CHAT: entrada en secuencia
+   "escribiendo…" -> burbuja -> botones escalonados.
+   Con "reducir movimiento" activado todo aparece sin animación.
+   ============================================================ */
+@keyframes chat-aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes chat-punto {
+  0%,
+  80%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chat-escribiendo {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--surface-hover);
+
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink);
+    animation: chat-punto 1s ease-in-out infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+  }
+}
+
+.theory-search__burbuja--entra {
+  animation: chat-aparecer 0.25s ease both;
+}
+
+.theory-search__sugerencias--entrada .theory-search__sugerencia {
+  animation: chat-aparecer 0.25s ease both;
+  animation-delay: calc(0.65s + var(--i, 0) * 0.07s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-escribiendo {
+    display: none;
+  }
+
+  .theory-search__burbuja--entra,
+  .theory-search__sugerencias--entrada .theory-search__sugerencia {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   CHAT: jerarquía visual
+   - Burbuja = texto que explica (gris, no se toca).
+   - Ficha   = botón (borde azul, icono y relleno azul al pasar).
+   - Grupo   = etiqueta pequeña + botones de un mismo uso.
+   ============================================================ */
+.teoria-chat .theory-search__sugerencia.chat-ficha {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+  text-align: left;
+  transition:
+    background-color 0.15s linear,
+    border-color 0.15s linear,
+    color 0.15s linear;
+
+  .chat-ficha__icono {
+    flex: none;
+    font-size: 0.8em;
+    color: var(--primary);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--primary-bg);
+    border-color: var(--primary-dark);
+    color: var(--primary-dark);
+    outline: none;
+  }
+}
+
+/* Ficha de acción distinta (ver más / otro tema): borde punteado */
+.teoria-chat .theory-search__sugerencia.chat-ficha.chat-ficha--mas {
+  border-style: dashed;
+}
+
+.chat-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.chat-grupo + .chat-grupo {
+  margin-top: 6px;
+}
+
+.chat-grupo__etiqueta {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.theory-search__sugerencias--entrada .chat-grupo__etiqueta {
+  animation: chat-aparecer 0.25s ease both;
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theory-search__sugerencias--entrada .chat-grupo__etiqueta {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   RESULTADOS DEL BUSCADOR: íconos y palabras del glosario no reciben
+   clics ni hover; tocar cualquier parte de la tarjeta abre el punto.
+   ============================================================ */
+.theory-search__item {
+  .glossary-term-wrap,
+  .glossary-term {
+    pointer-events: none;
+  }
+}
+
+/* ============================================================
+   CHAT: más aire entre el mensaje y los botones
+   ============================================================ */
+.teoria-chat {
+  .theory-search__burbuja + .chat-grupo,
+  .theory-search__burbuja + .theory-search__sugerencias,
+  .chat-escribiendo + .chat-grupo {
+    margin-top: 12px;
+  }
+
+  .theory-search__sugerencias {
+    gap: 8px;
+  }
+}
+
+/* ============================================================
+   CHAT: los botones van a la derecha (como lo que escribe el usuario)
+   ============================================================ */
+.teoria-chat {
+  .theory-search__mensajes > .chat-grupo,
+  .theory-search__mensajes > .theory-search__sugerencias,
+  .theory-search__mensajes > .theory-search__sugerencia {
+    align-self: flex-end;
+  }
+
+  .chat-grupo,
+  .theory-search__sugerencias {
+    align-items: flex-end;
+  }
+}
+
+/* Con los botones a la derecha, el ícono va al final y el texto a la derecha */
+.teoria-chat .theory-search__sugerencia.chat-ficha {
+  flex-direction: row-reverse;
+  padding: 7px 12px 7px 14px;
+  text-align: right;
+}
+
+/* Botones del chat: esquinas suaves (no píldora) para que se vean bien en 2 líneas */
+.teoria-chat .theory-search__sugerencia.chat-ficha {
+  border-radius: 14px;
+  padding: 8px 12px 8px 14px;
 }

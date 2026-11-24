@@ -1,17 +1,18 @@
 // Lupa flotante para las secciones donde no hay un tema abierto.
 // Flujo: 1) elegir curso  2) elegir tema  3) buscar dentro del tema.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import manifest from "../../data/manifest.json";
 import TheorySearchBar from "./TheorySearchBar";
+import useEntradaChat from "../../hooks/useEntradaChat";
 import { filtrarLiteral, sugerirParecido } from "../../lib/buscarNombres";
 
 const CURSOS = manifest.cursos;
 const VISIBLES_POR_DEFECTO = 3;
 
 const TEXTO_PASO = {
-  curso: "Busca entre los cursos disponibles",
-  tema: "Busca entre los temas de este curso",
-  busqueda: "Escribe lo que buscas dentro de este tema"
+  curso: "¿Qué tema buscas? Primero elige el curso.",
+  tema: "Ahora elige el tema de este curso.",
+  busqueda: "Escribe un concepto de este tema, o toca una sección."
 };
 
 export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
@@ -24,6 +25,19 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
   const [query, setQuery] = useState("");
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const [encontrados, setEncontrados] = useState([]);
+  // Entrada en secuencia: "escribiendo…" -> burbuja -> botones escalonados.
+  const entrada = useEntradaChat(paso, abierto);
+  const mensajesRef = useRef(null);
+  useEffect(() => {
+    if (!abierto || paso === "busqueda") return undefined;
+    const bajar = () => {
+      const el = mensajesRef.current;
+      if (el) el.scrollTop = el.scrollHeight;
+    };
+    bajar();
+    const id = setTimeout(bajar, 700);
+    return () => clearTimeout(id);
+  }, [abierto, paso]);
 
   const temasDelCurso = useMemo(
     () =>
@@ -62,8 +76,8 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
 
   const listaVisible = q
     ? encontrados
-    : paso === "curso" && mostrarTodos
-      ? CURSOS
+    : mostrarTodos
+      ? items
       : items.slice(0, VISIBLES_POR_DEFECTO);
 
   function reiniciar() {
@@ -151,6 +165,28 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
         ? curso?.nombre
         : "Buscar";
 
+  // Mensaje actual: primero "escribiendo…" y luego la burbuja.
+  function renderPrompt(texto) {
+    if (entrada.escribiendo) {
+      return (
+        <div className="chat-escribiendo" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+      );
+    }
+    return (
+      <div
+        className={`theory-search__burbuja ${
+          entrada.entrando ? "theory-search__burbuja--entra" : ""
+        }`}
+      >
+        {texto}
+      </div>
+    );
+  }
+
   return (
     <div className="teoria-chat" role="dialog" aria-label="Buscar">
       <div className="teoria-chat__head">
@@ -165,7 +201,9 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
             <i className="fa-solid fa-arrow-left" />
           </button>
         )}
-        <span className="teoria-chat__title">{titulo}</span>
+        <span className="teoria-chat__title" title={titulo}>
+          {titulo}
+        </span>
         <button
           type="button"
           className="teoria-chat__close"
@@ -180,8 +218,13 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
         {paso === "busqueda" ? (
           <TheorySearchBar
             modoChat
+            animarEntrada
             encabezado={
-              <p className="buscador-flotante__hint">{TEXTO_PASO[paso]}</p>
+              /* <p className="buscador-flotante__hint">{TEXTO_PASO[paso]}</p> */
+              /* <div className="theory-search__burbuja">{TEXTO_PASO[paso]}</div> */
+              <>
+                {renderPrompt(TEXTO_PASO[paso])}
+              </>
             }
             flatPuntos={puntos}
             placeholder="Escribe aquí"
@@ -189,8 +232,10 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
           />
         ) : (
           <div className="theory-search theory-search--chat">
-            <div className="theory-search__mensajes">
-              <p className="buscador-flotante__hint">{TEXTO_PASO[paso]}</p>
+            <div className="theory-search__mensajes" ref={mensajesRef}>
+              {/* <p className="buscador-flotante__hint">{TEXTO_PASO[paso]}</p> */}
+              {/* <div className="theory-search__burbuja">{TEXTO_PASO[paso]}</div> */}
+              {renderPrompt(TEXTO_PASO[paso])}
               {q && listaVisible.length === 0 && !sugerencia && (
                 <div className="theory-search__burbuja">
                   {paso === "curso"
@@ -205,44 +250,64 @@ export default function BuscadorTemaFlotante({ cargarPuntos, onAbrirTema }) {
                   </span>
                   <button
                     type="button"
-                    className="theory-search__sugerencia"
+                    className="theory-search__sugerencia chat-ficha"
                     onClick={() =>
                       paso === "curso"
                         ? elegirCurso(sugerencia)
                         : elegirTema(sugerencia)
                     }
                   >
-                    {paso === "curso" ? sugerencia.nombre : sugerencia.tema}
+                    <i
+                      className={`fa-solid ${
+                        paso === "curso" ? "fa-book" : "fa-file-lines"
+                      } chat-ficha__icono`}
+                      aria-hidden="true"
+                    />
+                    <span>
+                      {paso === "curso" ? sugerencia.nombre : sugerencia.tema}
+                    </span>
                   </button>
                 </div>
               )}
               {listaVisible.length > 0 && (
-                <div className="theory-search__sugerencias">
-                  {listaVisible.map((it) => (
+                <div
+                  className={`theory-search__sugerencias ${
+                    entrada.entrando && !q
+                      ? "theory-search__sugerencias--entrada"
+                      : ""
+                  }`}
+                >
+                  {listaVisible.map((it, i) => (
                     <button
                       key={paso === "curso" ? it.nombre : it.archivo}
                       type="button"
-                      className="theory-search__sugerencia"
+                      className="theory-search__sugerencia chat-ficha"
+                      style={{ "--i": Math.min(i, 8) }}
                       onClick={() =>
                         paso === "curso" ? elegirCurso(it) : elegirTema(it)
                       }
                     >
-                      {paso === "curso" ? it.nombre : it.tema}
+                      <i
+                        className={`fa-solid ${
+                          paso === "curso" ? "fa-book" : "fa-file-lines"
+                        } chat-ficha__icono`}
+                        aria-hidden="true"
+                      />
+                      <span>{paso === "curso" ? it.nombre : it.tema}</span>
                     </button>
                   ))}
                 </div>
               )}
-              {paso === "curso" &&
-                !q &&
+              {!q &&
                 !mostrarTodos &&
-                CURSOS.length > VISIBLES_POR_DEFECTO && (
+                items.length > VISIBLES_POR_DEFECTO && (
                   <button
                     type="button"
-                    className="theory-search__sugerencia theory-search__sugerencia--secundaria"
+                    className="theory-search__sugerencia theory-search__sugerencia--secundaria chat-ficha chat-ficha--mas"
                     onClick={() => setMostrarTodos(true)}
                   >
                     <i className="fa-solid fa-plus" aria-hidden="true" />{" "}
-                    Más cursos
+                    {paso === "curso" ? "Más cursos" : "Más temas"}
                   </button>
                 )}
               {cargando && (

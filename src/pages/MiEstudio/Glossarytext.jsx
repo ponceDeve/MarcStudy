@@ -385,7 +385,9 @@ function construirPartes(texto, glosarioCombinado) {
 }
 export default function GlossaryText({
   text,
-  glosario = {}
+  glosario = {},
+  // false: solo muestra el texto (íconos/palabras sin clic ni nube).
+  interactivo = true
 }) {
   const [activo, setActivo] = useState(null);
   // fijado: abierta con clic/toque (no se cierra al salir con el mouse).
@@ -517,7 +519,7 @@ export default function GlossaryText({
   return (
     <span
       onClick={() => {
-        ocultarTooltip();
+        if (interactivo) ocultarTooltip();
       }}
     >
       {partes.map((parte, i) => {
@@ -529,6 +531,11 @@ export default function GlossaryText({
           );
         }
         if (parte.tipo === "texto") {
+          return (
+            <span key={i}>{renderLatex(parte.valor)}</span>
+          );
+        }
+        if (!interactivo) {
           return (
             <span key={i}>{renderLatex(parte.valor)}</span>
           );

@@ -153,7 +153,9 @@ export default function TopicsModal({
   const [mostrarNombreTema, setMostrarNombreTema] = useState(false);
   const [aviso, setAviso] = useState(null);
   const [nombreBloqueado, setNombreBloqueado] = useState(null);
+  const [botando, setBotando] = useState(false);
 
+  const timeoutBasura = useRef(null);
   const avisoRef = useRef(null);
   const avisoElRef = useRef(null);
   const avisoActivo = aviso !== null;
@@ -374,6 +376,19 @@ export default function TopicsModal({
     barraTemaRef.current?.limpiar?.();
     barraTemaRef.current?.reset?.();
   }
+
+  /* Hace lo mismo que antes (limpiar y volver al mapa) al instante; la
+     animación del tacho corre aparte y solo dura lo que tarda en cerrarse. */
+  function botarYVolver() {
+    if (botando) return;
+
+    volverAlMapa();
+    setBotando(true);
+
+    timeoutBasura.current = setTimeout(() => setBotando(false), 700);
+  }
+
+  useEffect(() => () => clearTimeout(timeoutBasura.current), []);
 
   const temasConIndice = listaTemas.map((item, index) => ({
     item,
@@ -860,20 +875,46 @@ export default function TopicsModal({
             type="button"
             className={`levels-modal__volver ${
               !puedeVolver ? "levels-modal__volver--deshabilitado" : ""
-            }`}
-            onClick={volverAlMapa}
+            } ${botando ? "is-botando" : ""}`}
+            onClick={botarYVolver}
             disabled={!puedeVolver}
-            aria-label="Volver al mapa completo"
+            aria-label="Limpiar y volver al mapa completo"
             title={
               puedeVolver
-                ? "Volver al mapa completo"
+                ? "Limpiar y volver al mapa completo"
                 : "Ya estás en el mapa completo"
             }
           >
-            <span className="levels-modal__flecha" aria-hidden="true">
-              <span className="levels-modal__flecha-punta" />
-              <span className="levels-modal__flecha-linea" />
-            </span>
+            <svg
+              className="levels-modal__basura"
+              viewBox="0 0 36 40"
+              aria-hidden="true"
+            >
+              <defs>
+                <clipPath id="levels-basura-boca">
+                  <rect x="0" y="-30" width="36" height="44" />
+                </clipPath>
+              </defs>
+              <path
+                className="levels-modal__basura-cuerpo"
+                fillRule="evenodd"
+                d="M7 14h22l-2 21a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3z M13 19h2v13h-2z M17 19h2v13h-2z M21 19h2v13h-2z"
+              />
+              <g className="levels-modal__basura-tapa">
+                <rect x="14" y="3" width="8" height="4" rx="1.5" />
+                <rect x="4" y="7" width="28" height="4.5" rx="2" />
+              </g>
+              <g clipPath="url(#levels-basura-boca)">
+                <rect
+                  className="levels-modal__basura-papel"
+                  x="13"
+                  y="-6"
+                  width="10"
+                  height="12"
+                  rx="2"
+                />
+              </g>
+            </svg>
           </button>
 
           <button

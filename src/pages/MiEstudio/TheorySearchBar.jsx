@@ -19,6 +19,7 @@ import {
   similitudCoseno,
 } from "../../lib/semantico";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
+import useEntradaChat from "../../hooks/useEntradaChat";
 import GlossaryText from "./GlossaryText";
 const MIN_LARGO_QUERY_TEXTO = 2;
 // Detecta si el texto pide examen, ejercicios o ambos.
@@ -52,6 +53,7 @@ export function ResaltarCoincidencia({
   query,
   match,
   glosario,
+  interactivo = true,
 }) {
   const textoOriginal = String(texto ?? "");
   if (
@@ -66,6 +68,7 @@ export function ResaltarCoincidencia({
       <GlossaryText
         text={textoOriginal}
         glosario={glosario}
+        interactivo={interactivo}
       />
     );
   }
@@ -76,6 +79,7 @@ export function ResaltarCoincidencia({
       <GlossaryText
         text={textoOriginal}
         glosario={glosario}
+        interactivo={interactivo}
       />
     );
   }
@@ -102,6 +106,7 @@ export function ResaltarCoincidencia({
       <GlossaryText
         text={textoOriginal}
         glosario={glosario}
+        interactivo={interactivo}
       />
     );
   }
@@ -114,18 +119,21 @@ export function ResaltarCoincidencia({
         <GlossaryText
           text={antes}
           glosario={glosario}
+        interactivo={interactivo}
         />
       )}
       <span className="search-match">
         <GlossaryText
           text={coincidencia}
           glosario={glosario}
+        interactivo={interactivo}
         />
       </span>
       {despues && (
         <GlossaryText
           text={despues}
           glosario={glosario}
+        interactivo={interactivo}
         />
       )}
     </>
@@ -141,11 +149,14 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     placeholder = "Buscar título, texto o explicación...",
     modoChat = false,
     encabezado = null,
+    ayudaInicial = false,
+    animarEntrada = false,
     onPedirExamen,
     glosario = {},
     temasDelCurso = null,
     temaActual = "",
     onCargarTema = null,
+    onVolverDisponible = null,
   },
   ref
 ) {
@@ -163,6 +174,25 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   });
   const idPeticionRef = useRef(0);
   const inputRef = useRef(null);
+  // Entrada en secuencia del chat (escribiendo… -> burbuja -> botones).
+  const mensajesRef = useRef(null);
+  // Pantalla inicial del chat: "inicio" (menú) o "secciones" (lista completa).
+  const [vista, setVista] = useState("inicio");
+  const [verTodasSecciones, setVerTodasSecciones] = useState(false);
+  // Sin "otros temas" (buscador del mapa) no hay menú: va directo a las secciones.
+  const hayMenu = !!(temasDelCurso && temasDelCurso.length > 0);
+  const vistaActual = hayMenu ? vista : "secciones";
+  const entrada = useEntradaChat("chat", animarEntrada);
+  useEffect(() => {
+    if (!animarEntrada) return undefined;
+    const bajar = () => {
+      const el = mensajesRef.current;
+      if (el) el.scrollTop = el.scrollHeight;
+    };
+    bajar();
+    const id = setTimeout(bajar, 700);
+    return () => clearTimeout(id);
+  }, [animarEntrada]);
   useEffect(() => {
     if (!modoChat) return undefined;
     const t = setTimeout(() => inputRef.current?.focus(), 50);
@@ -433,6 +463,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     try {
       const puntos = await onCargarTema(item);
       setTemaTemporal({ ...item, puntos });
+      setVista("inicio");
       setModoElegirTema(false);
       setTemasEncontrados([]);
       setTituloSeleccionado(null);
@@ -448,6 +479,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   }
   function volverTemaOriginal() {
     setTemaTemporal(null);
+    setVista("inicio");
     setTituloSeleccionado(null);
     setQuery("");
     setQueryBuscada("");
@@ -458,6 +490,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
      SELECCIONAR TÍTULO DEL CHAT
      ============================================================ */
   function seleccionarTitulo(titulo) {
+    setVista("inicio");
     setTituloSeleccionado(titulo);
     setQuery("");
     setResultadoSemantico(null);
@@ -623,6 +656,40 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   const mostrarMensajesChat =
     hayQuery && hayResultadosPendientes;
   /* ============================================================
+     BOTÓN VOLVER (lo dibuja quien contiene el chat, en su cabecera)
+     ============================================================ */
+  function limpiarBusqueda() {
+    setTituloSeleccionado(null);
+    setQuery("");
+    setQueryBuscada("");
+    setResultadoSemantico(null);
+    setBusquedaLista(false);
+  }
+  const volverAtrasRef = useRef(null);
+  volverAtrasRef.current = !modoChat
+    ? null
+    : modoElegirTema
+      ? () => {
+          setModoElegirTema(false);
+          setQuery("");
+        }
+      : mostrarMensajesChat
+        ? limpiarBusqueda
+        : vistaActual === "secciones" && hayMenu
+          ? () => setVista("inicio")
+          : temaTemporal
+            ? volverTemaOriginal
+            : null;
+  const hayVolver = !!volverAtrasRef.current;
+  const onVolverDisponibleRef = useRef(onVolverDisponible);
+  onVolverDisponibleRef.current = onVolverDisponible;
+  useEffect(() => {
+    const avisar = onVolverDisponibleRef.current;
+    if (!avisar) return undefined;
+    avisar(hayVolver ? () => volverAtrasRef.current?.() : null);
+    return () => avisar(null);
+  }, [hayVolver]);
+  /* ============================================================
      ITEMS — TEXTO Y EXPLICACIÓN COMPLETOS
      ============================================================ */
   function renderItems() {
@@ -670,6 +737,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                   query={queryBuscada}
                   match={matchTitulo}
                   glosario={glosario}
+                  interactivo={false}
                 />
               </strong>
             </span>
@@ -681,6 +749,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                 query={r.esSemantico ? "" : queryBuscada}
                 match={r.esSemantico ? null : matchTexto}
                 glosario={glosario}
+                  interactivo={false}
               />
             </span>
           )}
@@ -693,6 +762,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                   r.esSemantico ? null : matchExplicacionMostrado
                 }
                 glosario={glosario}
+                  interactivo={false}
               />
             </span>
           )}
@@ -775,7 +845,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   if (modoChat) {
     return (
       <div className="theory-search theory-search--chat">
-        <div className="theory-search__mensajes">
+        <div className="theory-search__mensajes" ref={mensajesRef}>
           {encabezado}
           {modoElegirTema ? (
             renderElegirTema()
@@ -799,6 +869,27 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
             </>
           ) : (
             <>
+              {ayudaInicial &&
+                vistaActual === "inicio" &&
+                (entrada.escribiendo ? (
+                  <div className="chat-escribiendo" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                ) : (
+                  <div
+                    className={`theory-search__burbuja ${
+                      entrada.entrando ? "theory-search__burbuja--entra" : ""
+                    }`}
+                  >
+                    Escribe un concepto de la teoría, o busca por sección
+                    {temasDelCurso && temasDelCurso.length > 0
+                      ? " u otro tema"
+                      : ""}
+                    .
+                  </div>
+                ))}
               {temaTemporal && (
                 <>
                   <p className="teoria-chat__hint">
@@ -815,13 +906,125 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                   </div>
                 </>
               )}
+              {vistaActual === "secciones" && sugerenciasTitulos.length > 0 ? (
+                <>
+                  {!encabezado && (
+                    <div className="theory-search__burbuja">
+                      Toca una sección o escribe un concepto relacionado.
+                    </div>
+                  )}
+                  <div
+                    className={`chat-grupo ${
+                      entrada.entrando
+                        ? "theory-search__sugerencias--entrada"
+                        : ""
+                    }`}
+                  >
+                    <div className="theory-search__sugerencias">
+                      {(verTodasSecciones
+                        ? sugerenciasTitulos
+                        : sugerenciasTitulos.slice(0, 3)
+                      ).map((titulo, i) => (
+                        <button
+                          key={titulo}
+                          type="button"
+                          className="theory-search__sugerencia chat-ficha"
+                          style={{ "--i": Math.min(i, 8) }}
+                          onClick={() => seleccionarTitulo(titulo)}
+                        >
+                          <i
+                            className="fa-solid fa-bookmark chat-ficha__icono"
+                            aria-hidden="true"
+                          />
+                          <span>{titulo}</span>
+                        </button>
+                      ))}
+                      {!verTodasSecciones &&
+                        sugerenciasTitulos.length > 3 && (
+                          <button
+                            type="button"
+                            className="theory-search__sugerencia chat-ficha chat-ficha--mas"
+                            style={{ "--i": 3 }}
+                            onClick={() => setVerTodasSecciones(true)}
+                          >
+                            <i
+                              className="fa-solid fa-chevron-down chat-ficha__icono"
+                              aria-hidden="true"
+                            />
+                            <span>
+                              Ver todas ({sugerenciasTitulos.length})
+                            </span>
+                          </button>
+                        )}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                (sugerenciasTitulos.length > 0 ||
+                  (temasDelCurso && temasDelCurso.length > 0)) && (
+                  <div
+                    className={`chat-grupo ${
+                      entrada.entrando
+                        ? "theory-search__sugerencias--entrada"
+                        : ""
+                    }`}
+                  >
+                    <div className="theory-search__sugerencias">
+                      {sugerenciasTitulos.length > 0 && (
+                        <button
+                          type="button"
+                          className="theory-search__sugerencia chat-ficha"
+                          style={{ "--i": 0 }}
+                          onClick={() => {
+                            setVerTodasSecciones(false);
+                            setVista("secciones");
+                          }}
+                        >
+                          <i
+                            className="fa-solid fa-bookmark chat-ficha__icono"
+                            aria-hidden="true"
+                          />
+                          <span>
+                            Secciones de este tema ({sugerenciasTitulos.length})
+                          </span>
+                        </button>
+                      )}
+                      {temasDelCurso && temasDelCurso.length > 0 && (
+                        <button
+                          type="button"
+                          className="theory-search__sugerencia chat-ficha chat-ficha--mas"
+                          style={{ "--i": 1 }}
+                          onClick={() => {
+                            setModoElegirTema(true);
+                            setQuery("");
+                          }}
+                        >
+                          <i
+                            className="fa-solid fa-book-open chat-ficha__icono"
+                            aria-hidden="true"
+                          />
+                          <span>Buscar en otro tema del curso</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )
+              )}
+              {/* Bloque anterior (títulos y "Otros temas" en una sola fila de botones):
               {sugerenciasTitulos.length > 0 && (
-                <div className="theory-search__sugerencias">
-                  {sugerenciasTitulos.slice(0, 3).map((titulo) => (
+                <div
+                  className={`theory-search__sugerencias ${
+                    entrada.entrando
+                      ? "theory-search__sugerencias--entrada"
+                      : ""
+                  }`}
+                >
+                  {sugerenciasTitulos.slice(0, 3).map((titulo, i) => (
                     <button
                       key={titulo}
                       type="button"
                       className="theory-search__sugerencia"
+                      style={{ "--i": i }}
                       onClick={() => seleccionarTitulo(titulo)}
                     >
                       {titulo}
@@ -831,6 +1034,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                     <button
                       type="button"
                       className="theory-search__sugerencia theory-search__sugerencia--secundaria"
+                      style={{ "--i": 3 }}
                       onClick={() => {
                         setModoElegirTema(true);
                         setQuery("");
@@ -841,6 +1045,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                   )}
                 </div>
               )}
+              */}
             </>
           )}
         </div>

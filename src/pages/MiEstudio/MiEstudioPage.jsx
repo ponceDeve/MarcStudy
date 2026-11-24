@@ -110,6 +110,18 @@ function adaptarEjerciciosAparte(data) {
     examen: [...examenTeoria, ...ejercicios]
   };
 }
+// Temas de inglés: su contenido está en data.secciones (teoria + ejemplos),
+// no en data.theory. Solo para el buscador: un punto por sección.
+function aplanarSeccionesIngles(data) {
+  return (data?.secciones || []).map((sec, i) => ({
+    id: `${i}-0`,
+    seccionTitulo: sec.titulo,
+    texto: String(sec.teoria || "").replace(/\*\*/g, ""),
+    explicacion: (sec.ejemplos || [])
+      .map((e) => `${e.en} — ${e.es}`)
+      .join(" · ")
+  }));
+}
 // Convierte data.theory en una lista plana de puntos con id estable
 // "idxSeccion-idxPunto" y el título de su sección.
 function aplanarTeoria(data) {
@@ -191,6 +203,8 @@ export default function MiEstudioPage() {
   const [temaProximoSalida, setTemaProximoSalida] = useState(null);
   const [destinoSalida, setDestinoSalida] = useState("tema");
   const [mostrarBarraTeoria, setMostrarBarraTeoria] = useState(false);
+  // Función del botón "volver" de la cabecera del chat (null = no se muestra).
+  const [volverChat, setVolverChat] = useState(null);
   const barraTeoriaRef = useRef(null);
   const { setFooterHidden } = useFooterVisibility();
   useEffect(() => {
@@ -584,6 +598,9 @@ export default function MiEstudioPage() {
       throw new Error("No se encontró el archivo del tema");
     }
     const data = adaptarEjerciciosAparte(await res.json());
+    if (data?.secciones && !data?.theory) {
+      return aplanarSeccionesIngles(data);
+    }
     return aplanarTeoria(data).filter(
       (p) => p.seccionTitulo !== "Ejercicios"
     );
@@ -910,9 +927,12 @@ ${bloques.join("\n\n\n")}`;
       throw new Error("No se encontró el archivo del tema");
     }
     const data = adaptarEjerciciosAparte(await res.json());
-    const puntos = aplanarTeoria(data).filter(
-      (p) => p.seccionTitulo !== "Ejercicios"
-    );
+    const puntos =
+      data?.secciones && !data?.theory
+        ? aplanarSeccionesIngles(data)
+        : aplanarTeoria(data).filter(
+          (p) => p.seccionTitulo !== "Ejercicios"
+        );
     cache.set(item.archivo, puntos);
     return puntos;
   }
@@ -3338,6 +3358,17 @@ ${bloques.join("\n\n\n")}`;
                           aria-label="Buscar en la teoría"
                         >
                           <div className="teoria-chat__head">
+                            {volverChat && (
+                              <button
+                                type="button"
+                                className="teoria-chat__close"
+                                onClick={volverChat}
+                                aria-label="Volver"
+                                title="Volver"
+                              >
+                                <i className="fa-solid fa-arrow-left" />
+                              </button>
+                            )}
                             <span className="teoria-chat__title">
                               Buscar en la teoría
                             </span>
@@ -3358,6 +3389,11 @@ ${bloques.join("\n\n\n")}`;
                           <div className="teoria-chat__body">
                             <TheorySearchBar
                               modoChat
+                              ayudaInicial
+                              animarEntrada
+                              onVolverDisponible={(fn) =>
+                                setVolverChat(() => fn)
+                              }
                               onPedirExamen={
                                 pedirExamenChatGpt
                               }

@@ -201,12 +201,14 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  margin: 0 auto 26px;
+  margin: 0 auto 40px;
   padding: var(--space-3) var(--space-4) var(--space-4);
   color: var(--secondary-dark);
   font-family: var(--font);
-  font-size: var(--fs-md);
-  font-weight: var(--fw-bold);
+  /* Mismo estilo que "temas recomendados" */
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: 0.04em;
   gap: 14px;
   text-align: center;
   border-radius: var(--radius-full);
@@ -217,7 +219,7 @@
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
+  top: calc(100% - 24px);
   width: 50%;
   height: 5px;
   transform: translateX(-50%);
@@ -227,8 +229,7 @@
 
 @media (min-width: 640px) {
   .welcome-section__category-title {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
+    margin-bottom: 46px;
     padding: var(--space-4) var(--space-5) var(--space-4);
     gap: 18px;
   }
