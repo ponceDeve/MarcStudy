@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
+import { useAtajoBuscador } from "../../hooks/useAtajoBuscador";
 import RutaNiveles from "../../components/InglesRutaNiveles";
 import NivelView from "../../components/InglesNivelView";
 import {
@@ -26,6 +27,7 @@ export default function InglesPage() {
   const [progreso, setProgreso] = useState(cargarProgreso);
   const [nivelAbierto, setNivelAbierto] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  useAtajoBuscador(() => setSearchOpen(true));
   const niveles = indice.map((n) => ({
     id: n.id,
     nombre: n.nombre,

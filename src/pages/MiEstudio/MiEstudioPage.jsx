@@ -24,6 +24,7 @@ import BuscadorTemaFlotante from "./BuscadorTemaFlotante";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
+import { useAtajoBuscador } from "../../hooks/useAtajoBuscador";
 import Modal from "../../components/Modal";
 import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
@@ -2229,6 +2230,9 @@ ${bloques.join("\n\n\n")}`;
         2000
       );
   }
+  useAtajoBuscador(() => {
+    if (!temasOpen && !configOpen) setSearchOpen(true);
+  });
   useEffect(() => {
     function onKeyDown(e) {
       const tecla =
@@ -2499,8 +2503,8 @@ ${bloques.join("\n\n\n")}`;
           }
           return;
         }
-        // M → ejercicios
-        if (tecla === "m") {
+        // E → ejercicios (la M ahora es la música global)
+        if (tecla === "e") {
           e.preventDefault();
           const idsEjercicios =
             flatPuntos

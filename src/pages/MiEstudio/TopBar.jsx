@@ -95,7 +95,7 @@ export default function TopBar({
     {
       key: "musica",
       label: musicaOn ? "Silenciar música" : "Activar música",
-      atajo: "B",
+      atajo: "M",
       icon: musicaOn
         ? "fa-solid fa-volume-high"
         : "fa-solid fa-volume-xmark",
@@ -402,9 +402,10 @@ export default function TopBar({
                   setMenuMobileOpen(true)
                 }
                 title="Menú"
-                className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+                className="topbar__nav-btn topbar__hamburger"
               >
-                <i className="fa-solid fa-gear" />
+                <i className="fa-solid fa-gear topbar__btn-icon" />
+                <span className="topbar__btn-title">Menú</span>
               </button>
             )}
           </div>

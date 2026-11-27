@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { alternarMusica } from "../lib/musicaFondo";
+import { pedirAbrirBuscador } from "./useAtajoBuscador";
 // Atajos de teclado globales (funcionan en cualquier página de la app):
 //   F → entrar / salir de pantalla completa
-//   B → activar / silenciar la música de fondo (bocina)
+//   B → abrir el buscador (en las páginas que lo tienen)
+//   M → activar / silenciar la música de fondo (bocina)
 function alternarPantallaCompleta() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen?.().catch(() => {});
@@ -31,6 +33,9 @@ export function useAtajosGlobales() {
         e.preventDefault();
         alternarPantallaCompleta();
       } else if (e.code === "KeyB") {
+        e.preventDefault();
+        pedirAbrirBuscador();
+      } else if (e.code === "KeyM") {
         e.preventDefault();
         alternarMusica();
       }

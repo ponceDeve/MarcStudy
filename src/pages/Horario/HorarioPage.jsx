@@ -29,6 +29,7 @@ import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
 import { RelojFlip } from "../../components/RelojPared";
 import SearchModal from "../../components/SearchModal";
+import { useAtajoBuscador } from "../../hooks/useAtajoBuscador";
 import PreguntaAgregarPomodoro from "../../components/PreguntaAgregarPomodoro";
 // Los cursos salen del plan recomendado, no del día: el selector de días
 // (Lun–Dom) y el título con el nombre del día quedan ocultos.
@@ -193,6 +194,7 @@ export default function HorarioPage() {
   const [manualBreak, setManualBreak] = useState(null);
   const [breakDuration, setBreakDuration] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  useAtajoBuscador(() => setSearchOpen(true));
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
   const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
   const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);

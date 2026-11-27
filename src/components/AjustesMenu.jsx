@@ -29,14 +29,15 @@ export default function AjustesMenu({ controles }) {
     <div className="ajustes-menu" ref={refRaiz}>
       <button
         type="button"
-        className="topbar__control-btn ajustes-menu__btn"
+        className="topbar__nav-btn ajustes-menu__btn"
         onClick={() => setAbierto((v) => !v)}
         title="Ajustes"
         aria-label="Ajustes"
         aria-haspopup="menu"
         aria-expanded={abierto}
       >
-        <i className="fa-solid fa-sliders" />
+        <i className="fa-solid fa-sliders topbar__btn-icon" />
+        <span className="topbar__btn-title">Ajustes</span>
       </button>
       {abierto && (
         <div className="ajustes-menu__panel" role="menu">
@@ -53,7 +54,7 @@ export default function AjustesMenu({ controles }) {
             >
               <i className={`${c.icon} ajustes-menu__icon`} />
               <span className="ajustes-menu__label">{c.label}</span>
-              {/* {c.atajo && <kbd className="topbar__atajo">{c.atajo}</kbd>} */}
+              {c.atajo && <kbd className="topbar__atajo">({c.atajo})</kbd>}
             </button>
           ))}
         </div>

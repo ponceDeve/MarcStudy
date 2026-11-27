@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
+import { useAtajoBuscador } from "../../hooks/useAtajoBuscador";
 import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import {
   construirPromptRepaso,
@@ -232,6 +233,7 @@ export default function RepasoPage() {
   const [tab, setTab] = useState("hoy");
   const [log, setLog] = useState(() => leerLog());
   const [searchOpen, setSearchOpen] = useState(false);
+  useAtajoBuscador(() => setSearchOpen(true));
   const [repasosVistos, setRepasosVistos] = useState(() =>
     leerRepasosVistos()
   );
